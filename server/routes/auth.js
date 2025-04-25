@@ -2,22 +2,19 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-import { v4 as uuidv4 } from 'uuid';
-
 import { protect } from '../middleware/auth.js';
-
+import prisma from '../utils/prisma.js';
 
 const router = express.Router();
-
-// Fake in-memory DB (for now)
-const users = [];
 
 // Signup route
 router.post('/signup', async (req, res) => {
   const { email, password } = req.body;
 
   // Check if user already exists
-  const userExists = users.find(u => u.email === email);
+  const userExists = await prisma.user.findUnique({
+    where: { email },
+  });
 
   if (userExists) {
     return res.status(400).json({ message: 'User already exists' });
@@ -26,18 +23,28 @@ router.post('/signup', async (req, res) => {
   // Hash password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // Create user
-  const newUser = { id: uuidv4(), email, password: hashedPassword };
-  users.push(newUser);
+  try {
+    await prisma.user.create({
+      data: {
+        email,
+        password: hashedPassword,
+      },
+    });
 
-  res.status(201).json({ message: 'User created' });
+    res.status(201).json({ message: 'User created' });
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 });
 
 // Login route
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
-  const user = users.find(u => u.email === email);
+  const user = await prisma.user.findUnique({
+    where: { email },
+  });
 
   if (!user) {
     return res.status(400).json({ message: 'Invalid credentials' });
@@ -53,9 +60,8 @@ router.post('/login', async (req, res) => {
 
   res.cookie('token', token, {
     httpOnly: true,
-    secure: false,      // ✅ must be false for localhost!
-    sameSite: 'Lax',     // ✅ needed to allow cross-origin cookies
-    path: '/',           // ✅ so it covers the entire site
+    secure: process.env.NODE_ENV === 'production', // Dynamically set based on environment
+    sameSite: 'Lax',
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
 
