@@ -42,7 +42,7 @@ function Login() {
       // Login
       const res = await axios.post(`${API}/api/auth/login`, { email, password }, { withCredentials: true });
       if (res.data.success) {
-        navigate('/me');
+        navigate('/dashboard');
       } else {
         setError('Invalid credentials');
         setSuccess('');
@@ -66,7 +66,7 @@ function Login() {
       })
       .then(() => {
         // User is already logged in
-        navigate('/me');
+        navigate('/dashboard');
       })
       .catch((err) => {
         if (err.name !== 'CanceledError') {
