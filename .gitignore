@@ -2,3 +2,14 @@ node_modules
 .env
 /client/dist
 /client/.vite
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
