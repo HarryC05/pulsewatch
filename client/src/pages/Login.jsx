@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -56,6 +56,28 @@ function Login() {
       setConfirmPassword('');
     }
   };
+
+  // Check if the user is already logged in
+  useEffect(() => {
+    const controller = new AbortController();
+    axios.get(`${API}/api/auth/me`, { 
+        withCredentials: true, 
+        signal: controller.signal 
+      })
+      .then(() => {
+        // User is already logged in
+        navigate('/me');
+      })
+      .catch((err) => {
+        if (err.name !== 'CanceledError') {
+          // No action needed - stay on login page
+        }
+      });
+
+    return () => {
+      controller.abort();
+    };
+  }, [navigate]);
 
   return (
     <div className="login-page">
