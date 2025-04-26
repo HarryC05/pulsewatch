@@ -18,10 +18,22 @@ model User {
 }
 
 model Monitor {
-  id        String   @id @default(uuid())
-  userId    String
-  url       String
-  createdAt DateTime @default(now())
+  id         String   @id @default(uuid())
+  userId     String
+  name       String
+  url        String
+  createdAt  DateTime @default(now())
+  heartbeats Heartbeat[]
 
-  user      User @relation(fields: [userId], references: [id])
+  user       User @relation(fields: [userId], references: [id])
+}
+
+model Heartbeat {
+  id           String   @id @default(uuid())
+  monitorId    String
+  status       String   // "up" or "down"
+  responseTime Int?    // in ms
+  createdAt    DateTime @default(now())
+
+  monitor      Monitor @relation(fields: [monitorId], references: [id])
 }
