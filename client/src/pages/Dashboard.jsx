@@ -26,7 +26,7 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    axios.get(`${API}/api/auth/me`, { withCredentials: true })
+    axios.get(`${API}/api/account/me`, { withCredentials: true })
       .then((res) => {
         setUser(res.data.user);
         setLoading(false);

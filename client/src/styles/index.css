@@ -63,3 +63,20 @@ main {
   font: inherit;
   padding: 0;
 }
+
+.notice {
+  border-radius: 5px;
+  padding: 0.25rem;
+  text-align: center;
+  width: 100%;
+}
+
+.notice--success {
+  background-color: var(--status-green);
+  color: #000000;
+}
+
+.notice--error {
+  background-color: var(--status-red);
+  color: #000000;
+}

@@ -3,12 +3,10 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 import { protect } from '../middleware/auth.js';
+import { emailRegex, usernameRegex, passwordRegex } from '../utils/regex.js';
 import prisma from '../utils/prisma.js';
 
 const router = express.Router();
-
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const usernameRegex = /^[a-zA-Z0-9_-]{3,}$/; // Alphanumeric and underscores, at least 3 characters
 
 // Signup route
 router.post('/signup', async (req, res) => {
@@ -20,17 +18,14 @@ router.post('/signup', async (req, res) => {
   }
 
   if (!emailRegex.test(email)) {
-    return res.status(400).json({ message: 'Invalid email format' });
+    return res.status(400).json({ message: 'Invalid email' });
   }
 
   if (!usernameRegex.test(username)) {
-    return res.status(400).json({ message: 'Invalid username format' });
+    return res.status(400).json({ message: 'Invalid username, must be 3-16 characters long and can only contain letters, numbers, underscores, and hyphens' });
   }
 
   // Check if password is strong
-  // At least 8 characters, one uppercase, one lowercase, one number, one special character
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
   if (!passwordRegex.test(password)) {
     return res.status(400).json({ message: 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@, $, !, %, *, ?, &)' });
   }
@@ -129,39 +124,13 @@ router.post('/login', async (req, res) => {
 });
 
 // Logout route
-router.post('/logout', (req, res) => {
+router.post('/logout', protect, (req, res) => {
   res.clearCookie('token', {
     httpOnly: true,
     // secure: true, // Only set if using HTTPS
     sameSite: 'Strict'
   });
   res.json({ message: 'Logged out' });
-});
-
-// Protected me route
-router.get('/me', protect, (req, res) => {
-  // Get user data from the request
-  const user = req.user;
-  // Find the user in the database
-  prisma.user.findUnique({
-    where: {
-      id: user.id,
-    },
-  })
-    .then((userData) => {
-      if (!userData) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-      res.json({ message: 'User authenticated', user: {
-        id: userData.id,
-        username: userData.username,
-        email: userData.email,
-      } });
-    })
-    .catch((error) => {
-      console.error('Error fetching user data:', error);
-      res.status(500).json({ message: 'Internal server error' });
-    });
 });
 
 

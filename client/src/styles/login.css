@@ -82,20 +82,3 @@
 .login-page--form-button:hover {
   background-color: light-dark(#d4d4d4, #6f6f6f);
 }
-
-.login-page--notice {
-  border-radius: 5px;
-  padding: 0.25rem;
-  text-align: center;
-  width: 100%;
-}
-
-.login-page--success {
-  background-color: #90ee90;
-  color: #000000;s
-}
-
-.login-page--error {
-  background-color: #ffcccb;
-  color: #000000;
-}

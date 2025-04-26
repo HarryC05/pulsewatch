@@ -22,7 +22,7 @@ const NavBar = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    axios.get(`${API}/api/auth/me`, { 
+    axios.get(`${API}/api/account/me`, { 
         withCredentials: true, 
         signal: controller.signal 
       })

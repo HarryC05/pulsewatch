@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
+import accountRoutes from './routes/account.js';
 import authRoutes from './routes/auth.js';
 import monitorRoutes from './routes/monitor.js';
 
@@ -16,6 +17,9 @@ app.use(cors({
 }));
 
 app.use(cookieParser());
+
+// Account routes
+app.use('/api/account', accountRoutes);
 
 // Authentication routes
 app.use('/api/auth', authRoutes);

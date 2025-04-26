@@ -77,7 +77,7 @@ function Login() {
   // Check if the user is already logged in
   useEffect(() => {
     const controller = new AbortController();
-    axios.get(`${API}/api/auth/me`, { 
+    axios.get(`${API}/api/account/me`, { 
         withCredentials: true, 
         signal: controller.signal 
       })
@@ -133,8 +133,8 @@ function Login() {
             <h2>Signup</h2>
           </button>
         </div>
-        {error && <div className="login-page--notice login-page--error">{error}</div>}
-        {success && <div className="login-page--notice login-page--success">{success}</div>}
+        {error && <div className="notice notice--error">{error}</div>}
+        {success && <div className="notice notice--success">{success}</div>}
         <form onSubmit={handleLogin} className="login-page--form">
           {signup && (
             <>
