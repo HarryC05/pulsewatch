@@ -8,39 +8,56 @@ const API = import.meta.env.VITE_API_URL;
 
 function Login() {
   const [email, setEmail] = useState('');
+  const [identifier, setIdentifier] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [signup, setSignup] = useState(false);
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      setError('');
+    setError('');
 
-      // Check if the user is signing up or logging in
-      if (signup) {
+    if (signup) {
+      try {
         if (password !== confirmPassword) {
           setError('Passwords do not match');
           return;
         }
-        await axios.post(`${API}/api/auth/signup`, { email, password });
+
+        await axios.post(`${API}/api/auth/signup`, { username, email, password }, { withCredentials: true });
+
         setSuccess('Signup successful! Please login.');
         setTimeout(() => {
           setSuccess('');
         }, 3000);
+
+        // Reset form fields
+        setIdentifier(username);
+        setUsername('');
+        setEmail('');
         setSignup(false);
         setPassword('');
         setConfirmPassword('');
         return;
+      } catch (err) {
+        // Get the error message from the response
+        const errorMessage = err.response?.data?.message || 'An error occurred';
+        setError(errorMessage);
+        setSuccess('');
+        setPassword('');
+        setConfirmPassword('');
+        return;
       }
+    }
 
-      // Login
-      const res = await axios.post(`${API}/api/auth/login`, { email, password }, { withCredentials: true });
+    // Login
+    try {
+      const res = await axios.post(`${API}/api/auth/login`, { identifier, password }, { withCredentials: true });
       if (res.data.success) {
         navigate('/dashboard');
       } else {
@@ -113,14 +130,36 @@ function Login() {
         {error && <div className="login-page--notice login-page--error">{error}</div>}
         {success && <div className="login-page--notice login-page--success">{success}</div>}
         <form onSubmit={handleLogin} className="login-page--form">
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="login-page--form-input"
-            required
-          />
+          {signup && (
+            <>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="login-page--form-input"
+                required
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="login-page--form-input"
+                required
+              />
+            </>
+          )}
+          { !signup && (
+            <input
+              type="text"
+              placeholder="Email/Username"
+              value={identifier}
+              onChange={(e) => setIdentifier(e.target.value)}
+              className="login-page--form-input"
+              required
+            />
+          )}
           <input
             type="password"
             placeholder="Password"
@@ -142,7 +181,12 @@ function Login() {
           <button
             type="submit"
             className="login-page--form-button"
-            disabled={!email || !password || (signup && password !== confirmPassword)}
+            disabled={
+              (signup && !email)
+              || (!signup && !identifier)
+              || !password
+              || (signup && password !== confirmPassword)
+            }
           >
             {signup ? 'Signup' : 'Login'}
           </button>

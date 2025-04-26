@@ -1,29 +1,36 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
+import axios from 'axios';
 
 const API = import.meta.env.VITE_API_URL;
 
-function Me() {
-  const [message, setMessage] = useState('');
+const Dashboard = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     axios.get(`${API}/api/auth/me`, { withCredentials: true })
       .then((res) => {
-        setMessage(res.data.message)
+        setUser(res.data.user);
+        setLoading(false);
       })
       .catch((err) => {
         navigate('/login');
       });
   }, [navigate]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
-      <h1>Dashboard</h1>
-      <p>{message}</p>
+      <h1>Welcome {user?.username}!</h1>
+      {/* Dashboard content */}
     </div>
   );
-}
+};
 
-export default Me;
+export default Dashboard;
