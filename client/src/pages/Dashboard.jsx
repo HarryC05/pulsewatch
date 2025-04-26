@@ -3,13 +3,25 @@ import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
+import '../styles/dashboard.css';
+
 const API = import.meta.env.VITE_API_URL;
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
-  const [monitor, setMonitor] = useState({});
+  const [monitors, setMonitors] = useState([]);
+
+  const getMonitors = () => {
+    axios.get(`${API}/api/monitor/list`, { withCredentials: true })
+      .then((res) => {
+        setMonitors(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
   useEffect(() => {
     axios.get(`${API}/api/auth/me`, { withCredentials: true })
@@ -20,35 +32,93 @@ const Dashboard = () => {
       .catch((err) => {
         navigate('/login');
       });
+
+    getMonitors();
   }, [navigate]);
+
+  // Polling for monitor updates every 30 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getMonitors();
+    }, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
+    <div className='dashboard-page'>
       <h1>Welcome {user?.username}!</h1>
-      <form>
-        <input
-          type="text"
-          placeholder="Monitor Name"
-          value={monitor.name || ''}
-          onChange={(e) => setMonitor({ ...monitor, name: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Monitor URL"
-          value={monitor.url || ''}
-          onChange={(e) => setMonitor({ ...monitor, url: e.target.value })}
-        />
-        <button type="submit">
-          Create Monitor
-        </button>
-      </form>
-      <button>
-        log monitors
-      </button>
+      <div className='dashboard--content'>
+        <div className='dashboard--content-header'>
+          <h2>Your Monitors</h2>
+        </div>
+        <div className='dashboard--content-summary'>
+          <div className='dashboard--content-summary-item'>
+            <h3>Total Monitors</h3>
+            <h4>{monitors.length}</h4>
+          </div>
+          <div className='dashboard--content-summary-item'>
+            <h3>Online</h3>
+            <h4 className='text-colour-green'>
+              {monitors.filter(m => m.latestStatus === 'up').length}
+            </h4>
+          </div>
+          <div className='dashboard--content-summary-item'>
+            <h3>Offline</h3>
+            <h4 className='text-colour-red'>
+              {monitors.filter(m => m.latestStatus === 'down').length}
+            </h4>
+          </div>
+          <div className='dashboard--content-summary-item'>
+            <h3>Unknown</h3>
+            <h4>{monitors.filter(m => m.latestStatus === 'unknown').length}</h4>
+          </div>
+        </div>
+        <table className='dashboard--table'>
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Name</th>
+              <th>URL</th>
+              <th>Uptime</th>
+              <th>Response Time</th>
+              <th>Last Checked</th>
+            </tr>
+          </thead>
+          <tbody>
+            {monitors.map((monitor) => (
+              <tr key={monitor.id}>
+                <td>
+                  <span
+                    className={`dashboard--table-status ${monitor.latestStatus}`}
+                    title={monitor.latestStatus}
+                  />
+                </td>
+                <td>{monitor.name}</td>
+                <td>
+                  <a href={monitor.url} target='_blank' rel='noopener noreferrer'>
+                    {monitor.url}
+                  </a>
+                </td>
+                <td>
+                  <span
+                    className={
+                      `dashboard--table-uptime ${monitor?.uptime ? monitor.uptime > 90 ? 'high' : monitor.uptime > 50 ? 'medium' : 'low' : 'unknown'}`
+                    }
+                  >
+                    {monitor.uptime ? `${monitor.uptime}%` : 'N/A'}
+                  </span>
+                </td>
+                <td>{monitor.latestResponseTime ? `${monitor.latestResponseTime} ms` : 'N/A'}</td>
+                <td>{monitor.lastChecked ? new Date(monitor.lastChecked).toLocaleString() : 'N/A'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

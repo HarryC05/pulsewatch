@@ -4,6 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import authRoutes from './routes/auth.js';
+import monitorRoutes from './routes/monitor.js';
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,9 @@ app.use(cookieParser());
 
 // Authentication routes
 app.use('/api/auth', authRoutes);
+
+// Monitor routes
+app.use('/api/monitor', monitorRoutes);
 
 app.get('/', (req, res) => {
   res.send('PulseWatch API Running');

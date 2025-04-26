@@ -13,4 +13,23 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  max-width: 60rem;
+  margin: 0 auto;
+
+  --status-green: #4faa4f;
+  --status-yellow: #efca46;
+  --status-red: #b85252;
+}
+
+.text-colour-green {
+  color: var(--status-green);
+}
+
+.text-colour-yellow {
+  color: var(--status-yellow);
+}
+
+.text-colour-red {
+  color: var(--status-red);
 }
