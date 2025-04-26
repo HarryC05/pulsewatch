@@ -1,0 +1,48 @@
+version: "3.9"
+services:
+  kuma:
+    container_name: uptime-kuma
+    image: louislam/uptime-kuma:latest
+    ports:
+      - "3001:3001"
+    restart: always
+    volumes:
+      - uptime-kuma:/app/data
+
+  api:
+    container_name: uptimekuma-restapi
+    image: medaziz11/uptimekuma_restapi
+    environment:
+      - KUMA_SERVER=http://host.docker.internal:3001
+      - KUMA_USERNAME=admin
+      - KUMA_PASSWORD=password1
+      - ADMIN_PASSWORD=admin
+    depends_on:
+      - kuma
+    ports:
+      - "8000:8000"
+    restart: always
+    networks:
+      - pulsewatch-net
+
+  postgres:
+    container_name: pulsewatch-postgres
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=pulsewatch
+      - POSTGRES_PASSWORD=pulsewatchpass
+      - POSTGRES_DB=pulsewatch
+    volumes:
+      - pulsewatch-db-data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - pulsewatch-net
+
+volumes:
+  uptime-kuma:
+  pulsewatch-db-data:
+
+networks:
+  pulsewatch-net:
