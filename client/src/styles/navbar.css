@@ -1,0 +1,30 @@
+.navbar {
+  background-color: #333;
+}
+
+.navbar__content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 60rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.navbar__logo img {
+  height: 3.5rem;
+  width: auto;
+  margin: 0.5rem;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.navbar__links a {
+  color: #fff;
+  text-decoration: none;
+}

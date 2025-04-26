@@ -87,7 +87,11 @@ function Login() {
       })
       .catch((err) => {
         if (err.name !== 'CanceledError') {
-          // No action needed - stay on login page
+          const urlParams = new URLSearchParams(window.location.search);
+          const isSignup = urlParams.get('signup');
+          if (isSignup) {
+            setSignup(true);
+          }
         }
       });
 
@@ -97,10 +101,12 @@ function Login() {
   }, [navigate]);
 
   return (
-    <div className="login-page">
+    <main className="login-page">
       <div className="login-page--container">
-        <img className="login-page--logo login-page--logo-dark" alt="Logo" src="/svgs/logo-dark.svg" />
-        <img className="login-page--logo login-page--logo-light" alt="Logo" src="/svgs/logo-light.svg" />
+        <a href="/">
+          <img className="login-page--logo logo-dark" alt="Logo" src="/svgs/logo-dark.svg" />
+          <img className="login-page--logo logo-light" alt="Logo" src="/svgs/logo-light.svg" />
+        </a>
         <div className='login-page--login-signup'>
           <button
             className={`login-page--login-signup-button${!signup ? ' login-page--login-signup-button--active' : ''}`}
@@ -192,7 +198,7 @@ function Login() {
           </button>
         </form>
       </div>
-    </div>
+    </main>
   );
 }
 

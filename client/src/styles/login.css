@@ -23,19 +23,6 @@
   width: 20rem;
 }
 
-.login-page--logo-dark {
-  display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  .login-page--logo-light {
-    display: none;
-  }
-  .login-page--logo-dark {
-    display: block;
-  }
-}
-
 .login-page--login-signup {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

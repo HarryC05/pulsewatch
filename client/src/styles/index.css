@@ -14,12 +14,20 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  max-width: 60rem;
-  margin: 0 auto;
-
   --status-green: #4faa4f;
   --status-yellow: #efca46;
   --status-red: #b85252;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 .text-colour-green {
@@ -32,4 +40,26 @@
 
 .text-colour-red {
   color: var(--status-red);
+}
+
+.logo-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo-light {
+    display: none;
+  }
+  .logo-dark {
+    display: block;
+  }
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
 }
