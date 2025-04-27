@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import NavBar from '../components/NavBar';
+import CreateMonitorModal from '../components/CreateMonitorModal';
 
 import '../styles/dashboard.css';
 
@@ -14,6 +15,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
   const [monitors, setMonitors] = useState([]);
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
   const getMonitors = () => {
     axios.get(`${API}/api/monitor/list`, { withCredentials: true })
@@ -52,12 +54,29 @@ const Dashboard = () => {
 
   return (
     <>
+      {showCreateModal && (
+        <CreateMonitorModal
+          onClose={() => {
+            setShowCreateModal(false);
+          }}
+          onCreate={() => {
+            setShowCreateModal(false);
+            getMonitors();
+          } }
+        />
+      )}
       <NavBar />
       <main className='dashboard-page'>
         <h1>Welcome {user?.username}!</h1>
         <div className='dashboard--content'>
           <div className='dashboard--content-header'>
             <h2>Your Monitors</h2>
+            <button
+              className='btn btn-secondary'
+              onClick={() => setShowCreateModal(true)}
+            >
+              + Add Monitor
+            </button>
           </div>
           <div className='dashboard--content-summary'>
             <div className='dashboard--content-summary-item'>

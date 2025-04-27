@@ -186,7 +186,7 @@ function Login() {
           )}
           <button
             type="submit"
-            className="login-page--form-button"
+            className="btn btn-primary"
             disabled={
               (signup && !email)
               || (!signup && !identifier)

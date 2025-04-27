@@ -94,6 +94,7 @@ const Account = () => {
           <button
             disabled={updatedUser.username === user.username && updatedUser.email === user.email}
             onClick={() => updateUser(updatedUser)}
+            className="btn btn-primary"
           >
             Update
           </button>
