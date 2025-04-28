@@ -19,16 +19,33 @@ app.use(cors({
 app.use(cookieParser());
 
 // Account routes
-app.use('/api/account', accountRoutes);
+app.use('/api/v1/account', accountRoutes);
 
 // Authentication routes
-app.use('/api/auth', authRoutes);
+app.use('/api/v1/auth', authRoutes);
 
 // Monitor routes
-app.use('/api/monitor', monitorRoutes);
+app.use('/api/v1/monitor', monitorRoutes);
 
-app.get('/', (req, res) => {
-  res.send('PulseWatch API Running');
+// Health check route
+app.get('/api/v1/health', (req, res) => {
+  res.status(200).json({ message: 'Server is running' });
+});
+
+// API routes
+app.get('/api/v1', (req, res) => {
+  res.json({
+    message: 'Welcome to PulseWatch API v1',
+    endpoints: [
+      { method: 'GET', path: '/api/v1/health', description: 'Health check' },
+      { method: 'GET', path: '/api/v1/account/me', description: 'Get logged-in user info' },
+      { method: 'POST', path: '/api/v1/auth/login', description: 'Login' },
+      { method: 'POST', path: '/api/v1/auth/register', description: 'Register' },
+      { method: 'POST', path: '/api/v1/monitor', description: 'Create a monitor' },
+      { method: 'GET', path: '/api/v1/monitor/:id', description: 'Get monitor details' },
+      { method: 'GET', path: '/api/v1/monitor/list', description: 'Get all monitors for logged-in user' },
+    ],
+  })
 });
 
 const PORT = process.env.PORT || 5050;

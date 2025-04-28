@@ -8,6 +8,18 @@ import prisma from '../utils/prisma.js';
 
 const router = express.Router();
 
+// API Routes
+router.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to the Authentication API',
+    endpoints: [
+      { method: 'POST', path: '/api/v1/auth/signup', description: 'Register a new user' },
+      { method: 'POST', path: '/api/v1/auth/login', description: 'Login' },
+      { method: 'POST', path: '/api/v1/auth/logout', description: 'Logout' },
+    ],
+  });
+});
+
 // Signup route
 router.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;

@@ -18,7 +18,7 @@ const Dashboard = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
 
   const getMonitors = () => {
-    axios.get(`${API}/api/monitor/list`, { withCredentials: true })
+    axios.get(`${API}/api/v1/monitor/list`, { withCredentials: true })
       .then((res) => {
         setMonitors(res.data);
       })
@@ -28,7 +28,7 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    axios.get(`${API}/api/account/me`, { withCredentials: true })
+    axios.get(`${API}/api/v1/account/me`, { withCredentials: true })
       .then((res) => {
         setUser(res.data.user);
         setLoading(false);

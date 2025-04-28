@@ -29,7 +29,7 @@ function Login() {
           return;
         }
 
-        await axios.post(`${API}/api/auth/signup`, { username, email, password }, { withCredentials: true });
+        await axios.post(`${API}/api/v1/auth/signup`, { username, email, password }, { withCredentials: true });
 
         setSuccess('Signup successful! Please login.');
         setTimeout(() => {
@@ -57,7 +57,7 @@ function Login() {
 
     // Login
     try {
-      const res = await axios.post(`${API}/api/auth/login`, { identifier, password }, { withCredentials: true });
+      const res = await axios.post(`${API}/api/v1/auth/login`, { identifier, password }, { withCredentials: true });
       if (res.data.success) {
         navigate('/dashboard');
       } else {
@@ -77,7 +77,7 @@ function Login() {
   // Check if the user is already logged in
   useEffect(() => {
     const controller = new AbortController();
-    axios.get(`${API}/api/account/me`, { 
+    axios.get(`${API}/api/v1/account/me`, { 
         withCredentials: true, 
         signal: controller.signal 
       })

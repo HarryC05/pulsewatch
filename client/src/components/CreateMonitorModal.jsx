@@ -34,7 +34,7 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
     }
 
     try {
-      const res = await axios.post(`${API}/api/monitor`, monitor, { withCredentials: true });
+      const res = await axios.post(`${API}/api/v1/monitor/create`, monitor, { withCredentials: true });
       onCreate();
       onClose();
     } catch (error) {

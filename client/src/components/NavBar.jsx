@@ -10,7 +10,7 @@ const NavBar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const handleLogout = () => {
-    axios.post(`${API}/api/auth/logout`, {}, { withCredentials: true })
+    axios.post(`${API}/api/v1/auth/logout`, {}, { withCredentials: true })
       .then(() => {
         setLoggedIn(false);
         window.location.href = '/';
@@ -22,7 +22,7 @@ const NavBar = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    axios.get(`${API}/api/account/me`, { 
+    axios.get(`${API}/api/v1/account/me`, { 
         withCredentials: true, 
         signal: controller.signal 
       })

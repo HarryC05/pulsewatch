@@ -4,8 +4,19 @@ import prisma from '../utils/prisma.js';
 
 const router = express.Router();
 
+// API Routes
+router.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to the Monitor API',
+    endpoints: [
+      { method: 'POST', path: '/api/v1/monitor/create', description: 'Create a new monitor' },
+      { method: 'GET', path: '/api/v1/monitor/list', description: 'Get all monitors for the logged-in user' },
+    ],
+  });
+});
+
 // Create a monitor
-router.post('/', protect, async (req, res) => {
+router.post('/create', protect, async (req, res) => {
   const { name, url } = req.body;
 
   try {

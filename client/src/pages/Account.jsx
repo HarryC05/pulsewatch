@@ -15,7 +15,7 @@ const Account = () => {
   const [success, setSuccess] = useState('');
 
   const updateUser = (user) => {
-    axios.put(`${API}/api/account/me`, user, { withCredentials: true })
+    axios.put(`${API}/api/v1/account/me`, user, { withCredentials: true })
       .then((res) => {
         setUser(res.data.user);
         setUpdatedUser({
@@ -36,7 +36,7 @@ const Account = () => {
   }
 
   useEffect(() => {
-    axios.get(`${API}/api/account/me`, { withCredentials: true })
+    axios.get(`${API}/api/v1/account/me`, { withCredentials: true })
       .then((res) => {
         setUser(res.data.user);
         setUpdatedUser({

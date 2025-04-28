@@ -6,6 +6,17 @@ import prisma from '../utils/prisma.js';
 
 const router = express.Router();
 
+// API Routes
+router.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to the Account API',
+    endpoints: [
+      { method: 'GET', path: '/api/v1/account/me', description: 'Get logged-in user info' },
+      { method: 'PUT', path: '/api/v1/account/me', description: 'Update logged-in user info' },
+    ],
+  });
+});
+
 // Get user account information
 router.get('/me', protect, (req, res) => {
   // Get user data from the request
