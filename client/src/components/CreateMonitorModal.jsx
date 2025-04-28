@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import axios from 'axios';
 
+import { urlRegex } from '../../utils/regex';
+
 import Modal from './Modal';
 
 import '../styles/components/createMonitorModal.css';
@@ -24,6 +26,7 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
     name: '',
     url: '',
   });
+  const [ disabled, setDisabled ] = useState(true);
 
   const handleCreateMonitor = async () => {
     if (!monitor.name.trim() || !monitor.url.trim()) {
@@ -39,9 +42,20 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
     }
   }
 
+  const handleUrlChange = (e) => {
+    const value = e.target.value;
+    setMonitor({ ...monitor, url: value });
+
+    if (urlRegex.test(value)) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }
+
   return (
     <Modal onClose={onClose} title="Create Monitor">
-      <div className="create-monitor--inputs">
+      <div className="create-monitor__inputs">
         <label htmlFor="monitor-name">Monitor Name</label>
         <input
           type="text"
@@ -54,13 +68,14 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
           type="text"
           id="monitor-url"
           value={monitor.url}
-          onChange={(e) => setMonitor({ ...monitor, url: e.target.value })}
+          onChange={handleUrlChange}
         />
       </div>
-      <div className='create-monitor--footer'>
+      <div className='create-monitor__footer'>
         <button
           className="btn btn-secondary"
           onClick={handleCreateMonitor}
+          disabled={disabled}
         >
           Create Monitor
         </button>

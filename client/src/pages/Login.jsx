@@ -102,14 +102,14 @@ function Login() {
 
   return (
     <main className="login-page">
-      <div className="login-page--container">
+      <div className="login-page__container">
         <a href="/">
-          <img className="login-page--logo logo-dark" alt="Logo" src="/svgs/logo-dark.svg" />
-          <img className="login-page--logo logo-light" alt="Logo" src="/svgs/logo-light.svg" />
+          <img className="login-page__logo logo-dark" alt="Logo" src="/svgs/logo-dark.svg" />
+          <img className="login-page__logo logo-light" alt="Logo" src="/svgs/logo-light.svg" />
         </a>
-        <div className='login-page--login-signup'>
+        <div className='login-page__login-signup'>
           <button
-            className={`login-page--login-signup-button${!signup ? ' login-page--login-signup-button--active' : ''}`}
+            className={`login-page__login-signup-button${!signup ? ' login-page__login-signup-button__active' : ''}`}
             onClick={() => {
               setSignup(false);
               setError('');
@@ -121,7 +121,7 @@ function Login() {
             <h2>Login</h2>
           </button>
           <button
-            className={`login-page--login-signup-button${signup ? ' login-page--login-signup-button--active' : ''}`}
+            className={`login-page__login-signup-button${signup ? ' login-page__login-signup-button__active' : ''}`}
             onClick={() => {
               setSignup(true);
               setError('');
@@ -133,9 +133,9 @@ function Login() {
             <h2>Signup</h2>
           </button>
         </div>
-        {error && <div className="notice notice--error">{error}</div>}
-        {success && <div className="notice notice--success">{success}</div>}
-        <form onSubmit={handleLogin} className="login-page--form">
+        {error && <div className="notice notice__error">{error}</div>}
+        {success && <div className="notice notice__success">{success}</div>}
+        <form onSubmit={handleLogin} className="login-page__form">
           {signup && (
             <>
               <input
@@ -143,7 +143,7 @@ function Login() {
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="login-page--form-input"
+                className="login-page__form-input"
                 required
               />
               <input
@@ -151,7 +151,7 @@ function Login() {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="login-page--form-input"
+                className="login-page__form-input"
                 required
               />
             </>
@@ -162,7 +162,7 @@ function Login() {
               placeholder="Email/Username"
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
-              className="login-page--form-input"
+              className="login-page__form-input"
               required
             />
           )}
@@ -171,7 +171,7 @@ function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="login-page--form-input"
+            className="login-page__form-input"
             required
           />
           {signup && (
@@ -180,7 +180,7 @@ function Login() {
               placeholder="Confirm Password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="login-page--form-input"
+              className="login-page__form-input"
               required
             />
           )}

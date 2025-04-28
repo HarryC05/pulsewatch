@@ -68,8 +68,8 @@ const Dashboard = () => {
       <NavBar />
       <main className='dashboard-page'>
         <h1>Welcome {user?.username}!</h1>
-        <div className='dashboard--content'>
-          <div className='dashboard--content-header'>
+        <div className='dashboard__content'>
+          <div className='dashboard__content-header'>
             <h2>Your Monitors</h2>
             <button
               className='btn btn-secondary'
@@ -78,29 +78,29 @@ const Dashboard = () => {
               + Add Monitor
             </button>
           </div>
-          <div className='dashboard--content-summary'>
-            <div className='dashboard--content-summary-item'>
+          <div className='dashboard__content-summary'>
+            <div className='dashboard__content-summary-item'>
               <h3>Total Monitors</h3>
               <h4>{monitors.length}</h4>
             </div>
-            <div className='dashboard--content-summary-item'>
+            <div className='dashboard__content-summary-item'>
               <h3>Online</h3>
               <h4 className='text-colour-green'>
                 {monitors.filter(m => m.latestStatus === 'up').length}
               </h4>
             </div>
-            <div className='dashboard--content-summary-item'>
+            <div className='dashboard__content-summary-item'>
               <h3>Offline</h3>
               <h4 className='text-colour-red'>
                 {monitors.filter(m => m.latestStatus === 'down').length}
               </h4>
             </div>
-            <div className='dashboard--content-summary-item'>
+            <div className='dashboard__content-summary-item'>
               <h3>Unknown</h3>
               <h4>{monitors.filter(m => m.latestStatus === 'unknown').length}</h4>
             </div>
           </div>
-          <table className='dashboard--table'>
+          <table className='dashboard__table'>
             <thead>
               <tr>
                 <th>Status</th>
@@ -116,20 +116,25 @@ const Dashboard = () => {
                 <tr key={monitor.id}>
                   <td>
                     <span
-                      className={`dashboard--table-status ${monitor.latestStatus}`}
+                      className={`dashboard__table-status ${monitor.latestStatus}`}
                       title={monitor.latestStatus}
                     />
                   </td>
                   <td>{monitor.name}</td>
                   <td>
-                    <a href={monitor.url} target='_blank' rel='noopener noreferrer'>
+                    <a
+                      className='dashboard__table-link'
+                      href={monitor.url}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
                       {monitor.url}
                     </a>
                   </td>
                   <td>
                     <span
                       className={
-                        `dashboard--table-uptime ${monitor?.uptime ? monitor.uptime > 90 ? 'high' : monitor.uptime > 50 ? 'medium' : 'low' : 'unknown'}`
+                        `dashboard__table-uptime ${monitor?.uptime ? monitor.uptime > 90 ? 'high' : monitor.uptime > 50 ? 'medium' : 'low' : 'unknown'}`
                       }
                     >
                       {monitor.uptime ? `${monitor.uptime}%` : 'N/A'}

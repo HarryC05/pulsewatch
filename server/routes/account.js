@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { protect } from '../middleware/auth.js';
-import { emailRegex, usernameRegex } from '../utils/regex.js';
+import { emailRegex, emailRegexError, usernameRegex, usernameRegexError } from '../utils/regex.js';
 import prisma from '../utils/prisma.js';
 
 const router = express.Router();
@@ -43,12 +43,12 @@ router.put('/me', protect, async (req, res) => {
 
   // Check if username is valid
   if (!usernameRegex.test(username)) {
-    return res.status(400).json({ message: 'Invalid username, must be 3-16 characters long and can only contain letters, numbers, underscores, and hyphens' });
+    return res.status(400).json({ message: usernameRegexError });
   }
 
   // Check if email is valid
   if (!emailRegex.test(email)) {
-    return res.status(400).json({ message: 'Invalid email' });
+    return res.status(400).json({ message: emailRegexError });
   }
 
   // Check if email is already in use

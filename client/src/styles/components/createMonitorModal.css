@@ -1,5 +1,16 @@
 .create-monitor--inputs {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: fit-content;
+}
+
+.create-monitor--inputs > input {
+  margin-bottom: 1rem;
+  max-width: 20rem;
+  width: 20vw;
+}
+
+.create-monitor--inputs > input:last-child {
+  margin-bottom: 0;
 }

@@ -6,6 +6,7 @@
  * - Cannot contain spaces
  */
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailRegexError = 'Email must be a valid email address.';
 
 /**
  * Username regex pattern
@@ -14,6 +15,7 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
  * - Cannot contain spaces or special characters
  */
 const usernameRegex = /^[a-zA-Z0-9_-]{3,16}$/;
+const usernameRegexError = 'Username must be between 3 and 16 characters long and can only contain letters, numbers, underscores, and hyphens.';
 
 /**
  * Password regex pattern
@@ -24,5 +26,6 @@ const usernameRegex = /^[a-zA-Z0-9_-]{3,16}$/;
  * - Must contain at least one special character (@, $, !, %, *, ?, &)
  */
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const passwordRegexError = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@, $, !, %, *, ?, &).';
 
-export { emailRegex, usernameRegex, passwordRegex };
+export { emailRegex, emailRegexError, usernameRegex, usernameRegexError, passwordRegex, passwordRegexError };

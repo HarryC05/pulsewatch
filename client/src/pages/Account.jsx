@@ -59,14 +59,14 @@ const Account = () => {
       <NavBar />
       <main className='account-page'>
         <h1>Account</h1>
-        <div className='account--content'>
+        <div className='account__content'>
           <h2>Your Information</h2>
           {
             error && (
-              <div className="notice notice--error">{error}</div>
+              <div className="notice notice__error">{error}</div>
             )
           }
-          {success && <div className="notice notice--success">{success}</div>}
+          {success && <div className="notice notice__success">{success}</div>}
           <table>
             <tbody>
               <tr>

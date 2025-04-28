@@ -6,7 +6,7 @@
   height: 100vh;
 }
 
-.login-page--container {
+.login-page__container {
   align-items: center;
   background-color: light-dark(#e5e5e5, #1f1f1f);
   border-radius: 0.5rem;
@@ -19,11 +19,11 @@
   width: 100%;
 }
 
-.login-page--logo {
+.login-page__logo {
   width: 20rem;
 }
 
-.login-page--login-signup {
+.login-page__login-signup {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
@@ -31,7 +31,7 @@
   list-style: none;
 }
 
-.login-page--login-signup > .login-page--login-signup-button {
+.login-page__login-signup > .login-page__login-signup-button {
   align-items: center;
   background: none;
   border: none;
@@ -40,20 +40,20 @@
   justify-content: center;
 }
 
-.login-page--login-signup > .login-page--login-signup-button--active {
+.login-page__login-signup > .login-page__login-signup-button__active {
   background-color: light-dark(#e5e5e5, #5f5f5f);
   border-bottom: #e5e5e5 4px solid;
   border-radius: 5px 5px 0 0;
 }
 
-.login-page--form {
+.login-page__form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   width: 100%;
 }
 
-.login-page--form-input {
+.login-page__form-input {
   background-color: light-dark(#fefefe, #242424);
   border: none;
   border-radius: 0.5rem;

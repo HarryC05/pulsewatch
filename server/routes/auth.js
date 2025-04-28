@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 import { protect } from '../middleware/auth.js';
-import { emailRegex, usernameRegex, passwordRegex } from '../utils/regex.js';
+import { emailRegex, emailRegexError, usernameRegex, usernameRegexError, passwordRegex, passwordRegexError } from '../utils/regex.js';
 import prisma from '../utils/prisma.js';
 
 const router = express.Router();
@@ -18,16 +18,16 @@ router.post('/signup', async (req, res) => {
   }
 
   if (!emailRegex.test(email)) {
-    return res.status(400).json({ message: 'Invalid email' });
+    return res.status(400).json({ message: emailRegexError });
   }
 
   if (!usernameRegex.test(username)) {
-    return res.status(400).json({ message: 'Invalid username, must be 3-16 characters long and can only contain letters, numbers, underscores, and hyphens' });
+    return res.status(400).json({ message: usernameRegexError });
   }
 
   // Check if password is strong
   if (!passwordRegex.test(password)) {
-    return res.status(400).json({ message: 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@, $, !, %, *, ?, &)' });
+    return res.status(400).json({ message: passwordRegexError });
   }
 
   // Check if email already exists
