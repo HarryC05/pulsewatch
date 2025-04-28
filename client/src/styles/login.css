@@ -61,4 +61,5 @@
   color: light-dark(#020202, #fefefe);
   font-size: 1rem;
   padding: 1rem;
+  width: auto;
 }
