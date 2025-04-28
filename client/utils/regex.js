@@ -3,7 +3,7 @@
  * - Must start with http:// or https://
  * - Must contain a valid domain name
  */
-const urlRegex = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d{1,5})?(\/.*)?$/;
+const urlRegex = /^(https?:\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d{1,5})?(\/.*)?$/;
 const urlRegexError = 'URL must start with http:// or https:// and contain a valid domain name.';
 
 /**

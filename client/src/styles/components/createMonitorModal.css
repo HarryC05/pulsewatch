@@ -1,16 +1,16 @@
-.create-monitor--inputs {
+.create-monitor__inputs {
   display: flex;
   flex-direction: column;
   gap: 0;
   width: fit-content;
 }
 
-.create-monitor--inputs > input {
+.create-monitor__inputs > input {
   margin-bottom: 1rem;
   max-width: 20rem;
   width: 20vw;
 }
 
-.create-monitor--inputs > input:last-child {
+.create-monitor__inputs > input:last-child {
   margin-bottom: 0;
 }

@@ -26,7 +26,7 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
     name: '',
     url: '',
   });
-  const [ disabled, setDisabled ] = useState(true);
+  const [ disabled, setDisabled ] = useState({url: true, name: true});
 
   const handleCreateMonitor = async () => {
     if (!monitor.name.trim() || !monitor.url.trim()) {
@@ -42,14 +42,27 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
     }
   }
 
+  // Handle URL input change
+  const handleNameChange = (e) => {
+    const value = e.target.value;
+    setMonitor({ ...monitor, name: value });
+
+    if (value.trim().length > 0) {
+      setDisabled({...disabled, name: false});
+    } else {
+      setDisabled({...disabled, name: true});
+    }
+  }
+
+  // Handle URL change and validate it
   const handleUrlChange = (e) => {
     const value = e.target.value;
     setMonitor({ ...monitor, url: value });
 
     if (urlRegex.test(value)) {
-      setDisabled(false);
+      setDisabled({...disabled, url: false});
     } else {
-      setDisabled(true);
+      setDisabled({...disabled, url: true});
     }
   }
 
@@ -61,7 +74,7 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
           type="text"
           id="monitor-name"
           value={monitor.name}
-          onChange={(e) => setMonitor({ ...monitor, name: e.target.value })}
+          onChange={handleNameChange}
         />
         <label htmlFor="monitor-url">Monitor URL</label>
         <input
@@ -75,7 +88,7 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
         <button
           className="btn btn-secondary"
           onClick={handleCreateMonitor}
-          disabled={disabled}
+          disabled={disabled.url || disabled.name}
         >
           Create Monitor
         </button>
