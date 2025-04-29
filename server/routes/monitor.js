@@ -1,6 +1,9 @@
+import { subDays, subHours } from 'date-fns';
 import express from 'express';
+
 import { protect } from '../middleware/auth.js';
 import prisma from '../utils/prisma.js';
+import calcUptime from '../utils/calcUptime.js';
 
 const router = express.Router();
 
@@ -47,7 +50,11 @@ router.get('/list', protect, async (req, res) => {
           orderBy: {
             createdAt: 'desc',
           },
-          take: 100,
+          where: {
+            createdAt: {
+              gte: subDays(new Date(), 7), // last 7 days
+            },
+          }
         },
       },
     });
@@ -56,12 +63,7 @@ router.get('/list', protect, async (req, res) => {
     const formatted = monitors.map(monitor => {
       const latestHeartbeat = monitor.heartbeats[0];
 
-      const upHeartbeats = monitor.heartbeats.filter(hb => hb.status === 'up').length;
-      const totalHeartbeats = monitor.heartbeats.length;
-
-      const uptime = totalHeartbeats > 0
-        ? ((upHeartbeats / totalHeartbeats) * 100).toFixed(2)
-        : null; // if no heartbeats yet
+      const uptime = calcUptime(monitor.heartbeats);
 
       return {
         id: monitor.id,
@@ -86,14 +88,21 @@ router.get('/:id', protect, async (req, res) => {
   const { id } = req.params;
 
   try {
+    // grab the monitor by ID
+    // and include the heartbeats for the last 30 days
+    // and order them by createdAt in descending order
     const monitor = await prisma.monitor.findUnique({
       where: { id },
       include: {
         heartbeats: {
           orderBy: {
-            createdAt: 'desc',
+            createdAt: 'asc',
           },
-          take: 100,
+          where: {
+            createdAt: {
+              gte: subDays(new Date(), 30), // last 30 days
+            },
+          },
         },
       },
     });
@@ -107,30 +116,39 @@ router.get('/:id', protect, async (req, res) => {
       return res.status(403).json({ message: 'Forbidden' });
     }
 
-    const heartbeats = monitor.heartbeats.map(hb => ({
-      id: hb.id,
-      status: hb.status,
-      responseTime: hb.responseTime,
-      createdAt: hb.createdAt,
-    }));
+    const now = new Date();
+    const heartbeatData = monitor.heartbeats;
 
-    const upHeartbeats = heartbeats.filter(hb => hb.status === 'up').length;
-    const totalHeartbeats = heartbeats.length;
+    const hb24h = heartbeatData.filter(hb => {
+      return hb.createdAt >= subHours(now, 24);
+    });
 
-    const uptime = totalHeartbeats > 0
-      ? ((upHeartbeats / totalHeartbeats) * 100).toFixed(2)
-      : null; // if no heartbeats yet
+    const hb7d = heartbeatData.filter(hb => {
+      return hb.createdAt >= subDays(now, 7);
+    });
+
+    const hb30d = heartbeatData.filter(hb => {
+      return hb.createdAt >= subDays(now, 30);
+    });
 
     const formattedMonitor = {
       id: monitor.id,
       name: monitor.name,
       url: monitor.url,
-      heartbeats,
-      latestStatus: heartbeats[0]?.status || 'unknown',
-      latestResponseTime: heartbeats[0]?.responseTime || null,
-      lastChecked: heartbeats[0]?.createdAt || null,
-      uptime,
-    };
+      heartbeats: {
+        last24h: hb24h,
+        last7d: hb7d,
+        last30d: hb30d,
+      },
+      latestStatus: heartbeatData[heartbeatData.length - 1]?.status || null,
+      latestResponseTime: heartbeatData[heartbeatData.length - 1]?.responseTime || null,
+      lastChecked: heartbeatData[heartbeatData.length - 1]?.createdAt || null,
+      uptime: {
+        last24h: calcUptime(hb24h),
+        last7d: calcUptime(hb7d),
+        last30d: calcUptime(hb30d),
+      },
+    }
 
     res.json(formattedMonitor);
   } catch (err) {
