@@ -47,8 +47,8 @@ async function checkAllMonitors() {
   }
 }
 
-// Schedule to run every minute
-cron.schedule('* * * * *', () => {
+// Schedule to run every 5 minutes
+cron.schedule('*/5 * * * *', () => {
   console.log('🕐 Running scheduled monitor checks...');
   checkAllMonitors();
 });
