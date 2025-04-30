@@ -1,0 +1,24 @@
+.uptime-chart {
+  background-color: var(--colour-background);
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: calc(100% - 1rem);
+}
+
+.uptime-chart__data {
+  justify-content: space-evenly;
+  display: flex;
+}
+
+.uptime-chart__data-item {
+  background-color: var(--colour-primary-light);
+  border-radius: 999px;
+  height: 2rem;
+  margin: 0.125rem;
+  width: 1rem;
+}
+
+.uptime-chart__labels {
+  display: flex;
+  justify-content: space-between;
+}

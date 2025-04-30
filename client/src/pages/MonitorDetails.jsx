@@ -5,6 +5,7 @@ import axios from 'axios';
 import NavBar from '../components/NavBar';
 import '../styles/monitorDetails.css';
 import Uptime from '../components/Uptime';
+import UptimeChart from '../components/UptimeChart';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -107,6 +108,9 @@ const MonitorDetails = () => {
                   <Uptime uptime={monitor.uptime.last30d} />
                 </div>
               </div>
+              <UptimeChart
+                data={monitor.heartbeats.last24h}
+              />
             </div>
           </>
         )}
