@@ -43,12 +43,6 @@
   width: .5rem;
 }
 
-.dashboard__table-uptime {
-  background-color: var(--colour-primary-light);
-  border-radius: 999px;
-  padding: 0.25rem 0.5rem;
-}
-
 .dashboard__content-summary {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -67,18 +61,4 @@
 .dashboard__content-summary-item > h3,
 .dashboard__content-summary-item > h4 {
   margin: 0;
-}
-
-.dashboard__table-status.up,
-.dashboard__table-uptime.high {
-  background-color: var(--colour-status-green);
-}
-
-.dashboard__table-uptime.medium {
-  background-color: var(--colour-status-yellow);
-}
-
-.dashboard__table-status.down,
-.dashboard__table-uptime.low {
-  background-color: var(--colour-status-red);
 }

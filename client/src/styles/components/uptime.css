@@ -1,0 +1,5 @@
+.uptime {
+  background-color: var(--colour-primary-light);
+  border-radius: 999px;
+  padding: 0.25rem 0.5rem;
+}

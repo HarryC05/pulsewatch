@@ -7,6 +7,7 @@ import NavBar from '../components/NavBar';
 import CreateMonitorModal from '../components/CreateMonitorModal';
 
 import '../styles/dashboard.css';
+import Uptime from '../components/Uptime';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -123,7 +124,7 @@ const Dashboard = () => {
                 >
                   <td>
                     <span
-                      className={`dashboard__table-status ${monitor.latest.status}`}
+                      className={`dashboard__table-status ${monitor.latest.status === 'up' ? 'background-colour-green' : monitor.latest.status === 'down' ? 'background-colour-red' : ''}`}
                       title={monitor.latest.status}
                     />
                   </td>
@@ -139,14 +140,7 @@ const Dashboard = () => {
                     </a>
                   </td>
                   <td>
-                    <span
-                      className={
-                        `dashboard__table-uptime ${monitor?.uptime ? monitor.uptime > 90 ? 'high' : monitor.uptime > 50 ? 'medium' : 'low' : 'unknown'}`
-                      }
-                      title={monitor.uptime ? `${monitor.uptime}% uptime in the last 7 days` : 'No data'}
-                    >
-                      {monitor.uptime ? `${monitor.uptime}%` : 'N/A'}
-                    </span>
+                    <Uptime uptime={monitor.uptime} />
                   </td>
                   <td>{monitor.latest.responseTime ? `${monitor.latest.responseTime} ms` : 'N/A'}</td>
                   <td>{monitor.lastChecked ? new Date(monitor.lastChecked).toLocaleString() : 'N/A'}</td>

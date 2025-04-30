@@ -1,0 +1,50 @@
+.monitor-page__details__header {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.monitor-page__details-status {
+  background-color: var(--colour-primary-light);
+  border-radius: 50%;
+  display: block;
+  height: 1rem;
+  width: 1rem;
+}
+
+.monitor-page__details {
+  background-color: var(--colour-primary);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.monitor-page__details__info {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.monitor-page__details__info__item {
+  background-color: var(--colour-primary-light);
+  border-radius: 5px;
+  display: grid;
+  padding: 1rem;
+  text-align: center;
+}
+
+.monitor-page__details__info__item h2 {
+  margin: 0;
+}
+
+.monitor-page__details__info__item__subtitle {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.monitor-page__details__info__item__value {
+  margin: 0;
+}
+
+.monitor-page__details__info__item .uptime {
+  margin-top: 0.5rem;
+}

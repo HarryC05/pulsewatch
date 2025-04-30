@@ -150,7 +150,7 @@ router.get('/:id', protect, async (req, res) => {
       latest: {
         status: heartbeatData[heartbeatData.length - 1]?.status || null,
         responseTime: heartbeatData[heartbeatData.length - 1]?.responseTime || null,
-        lastChecked: heartbeatData[heartbeatData.length - 1]?.createdAt || null,
+        createdAt: heartbeatData[heartbeatData.length - 1]?.createdAt || null,
       },
       uptime: {
         last24h: calcUptime(hb24h),
