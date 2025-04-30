@@ -9,7 +9,7 @@
 }
 
 .modal {
-  background-color: light-dark(#e5e5e5, #5f5f5f);
+  background-color: var(--colour-primary);
   border-radius: 0.5rem;
   max-width: 30rem;
   padding: 2rem;
@@ -23,7 +23,7 @@
   display: flex;
   justify-content: space-between;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid light-dark(#e5e5e5, #7f7f7f);
+  border-bottom: 1px solid var(--colour-primary-light);
 }
 
 .modal__title {

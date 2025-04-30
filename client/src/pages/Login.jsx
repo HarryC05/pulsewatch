@@ -104,8 +104,7 @@ function Login() {
     <main className="login-page">
       <div className="login-page__container">
         <a href="/">
-          <img className="login-page__logo logo-dark" alt="Logo" src="/svgs/logo-dark.svg" />
-          <img className="login-page__logo logo-light" alt="Logo" src="/svgs/logo-light.svg" />
+          <img className="login-page__logo" alt="Logo" src="/svgs/logo-dark.svg" />
         </a>
         <div className='login-page__login-signup'>
           <button

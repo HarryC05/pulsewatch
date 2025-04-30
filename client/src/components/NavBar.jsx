@@ -45,8 +45,7 @@ const NavBar = () => {
     <nav className="navbar">
       <div className="navbar__content">
         <div className="navbar__logo">
-          <img className="logo-dark" src="/svgs/logo-dark.svg" alt="Logo" />
-          <img className="logo-light" src="/svgs/logo-light.svg" alt="Logo" />
+          <img src="/svgs/logo-dark.svg" alt="Logo" />
         </div>
         <ul className="navbar__links">
           <li><a href="/">Home</a></li>
