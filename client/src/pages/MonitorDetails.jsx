@@ -15,8 +15,8 @@ const MonitorDetails = () => {
   const [loading, setLoading] = useState(true);
   const [monitor, setMonitor] = useState({});
   const [noAuth, setNoAuth] = useState(false);
-  
-  useEffect(() => {
+
+  const getMonitor = () => {
     axios.get(`${API}/api/v1/monitor/${id}`, { withCredentials: true })
       .then((res) => {
         setMonitor(res.data);
@@ -30,7 +30,19 @@ const MonitorDetails = () => {
           console.error(err);
         }
       });
-  })
+  }
+  
+  useEffect(() => {
+    // Fetch monitor details
+    getMonitor();
+
+    // Polling for monitor updates every 30 seconds
+    const interval = setInterval(() => {
+      getMonitor();
+    }, 30000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
