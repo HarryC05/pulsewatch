@@ -4,6 +4,7 @@ import express from 'express';
 import { protect } from '../middleware/auth.js';
 import prisma from '../utils/prisma.js';
 import calcUptime from '../utils/calcUptime.js';
+import calcRespTime from '../utils/calcRespTime.js';
 
 const router = express.Router();
 
@@ -69,9 +70,11 @@ router.get('/list', protect, async (req, res) => {
         id: monitor.id,
         name: monitor.name,
         url: monitor.url,
-        latestStatus: latestHeartbeat?.status || 'unknown',
-        latestResponseTime: latestHeartbeat?.responseTime || null,
-        lastChecked: latestHeartbeat?.createdAt || null,
+        latest: {
+          status: latestHeartbeat?.status || 'unknown',
+          responseTime: latestHeartbeat?.responseTime || null,
+          checked: latestHeartbeat?.createdAt || null,
+        },
         uptime,
       };
     });
@@ -140,9 +143,15 @@ router.get('/:id', protect, async (req, res) => {
         last7d: hb7d,
         last30d: hb30d,
       },
-      latestStatus: heartbeatData[heartbeatData.length - 1]?.status || null,
-      latestResponseTime: heartbeatData[heartbeatData.length - 1]?.responseTime || null,
-      lastChecked: heartbeatData[heartbeatData.length - 1]?.createdAt || null,
+      responseTimes: {
+        last24h: calcRespTime(hb24h),
+        last7d: calcRespTime(hb7d),
+      },
+      latest: {
+        status: heartbeatData[heartbeatData.length - 1]?.status || null,
+        responseTime: heartbeatData[heartbeatData.length - 1]?.responseTime || null,
+        lastChecked: heartbeatData[heartbeatData.length - 1]?.createdAt || null,
+      },
       uptime: {
         last24h: calcUptime(hb24h),
         last7d: calcUptime(hb7d),

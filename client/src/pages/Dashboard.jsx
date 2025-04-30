@@ -86,18 +86,18 @@ const Dashboard = () => {
             <div className='dashboard__content-summary-item'>
               <h3>Online</h3>
               <h4 className='text-colour-green'>
-                {monitors.filter(m => m.latestStatus === 'up').length}
+                {monitors.filter(m => m.latest.status === 'up').length}
               </h4>
             </div>
             <div className='dashboard__content-summary-item'>
               <h3>Offline</h3>
               <h4 className='text-colour-red'>
-                {monitors.filter(m => m.latestStatus === 'down').length}
+                {monitors.filter(m => m.latest.status === 'down').length}
               </h4>
             </div>
             <div className='dashboard__content-summary-item'>
               <h3>Unknown</h3>
-              <h4>{monitors.filter(m => m.latestStatus === 'unknown').length}</h4>
+              <h4>{monitors.filter(m => m.latest.status === 'unknown').length}</h4>
             </div>
           </div>
           <table className='dashboard__table'>
@@ -106,18 +106,25 @@ const Dashboard = () => {
                 <th>Status</th>
                 <th>Name</th>
                 <th>URL</th>
-                <th>Uptime</th>
+                <th
+                  title='Uptime is calculated based on the last 7 days of heartbeats'
+                >
+                  Uptime (%)
+                </th>
                 <th>Response Time</th>
                 <th>Last Checked</th>
               </tr>
             </thead>
             <tbody>
               {monitors.map((monitor) => (
-                <tr key={monitor.id}>
+                <tr
+                  key={monitor.id}
+                  onClick={(e) => ! e.target.classList.contains('dashboard__table-link') && navigate(`/monitor/${monitor.id}`)}
+                >
                   <td>
                     <span
-                      className={`dashboard__table-status ${monitor.latestStatus}`}
-                      title={monitor.latestStatus}
+                      className={`dashboard__table-status ${monitor.latest.status}`}
+                      title={monitor.latest.status}
                     />
                   </td>
                   <td>{monitor.name}</td>
@@ -136,11 +143,12 @@ const Dashboard = () => {
                       className={
                         `dashboard__table-uptime ${monitor?.uptime ? monitor.uptime > 90 ? 'high' : monitor.uptime > 50 ? 'medium' : 'low' : 'unknown'}`
                       }
+                      title={monitor.uptime ? `${monitor.uptime}% uptime in the last 7 days` : 'No data'}
                     >
                       {monitor.uptime ? `${monitor.uptime}%` : 'N/A'}
                     </span>
                   </td>
-                  <td>{monitor.latestResponseTime ? `${monitor.latestResponseTime} ms` : 'N/A'}</td>
+                  <td>{monitor.latest.responseTime ? `${monitor.latest.responseTime} ms` : 'N/A'}</td>
                   <td>{monitor.lastChecked ? new Date(monitor.lastChecked).toLocaleString() : 'N/A'}</td>
                 </tr>
               ))}
