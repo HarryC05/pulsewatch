@@ -15,4 +15,15 @@ const urlRegexError = 'URL must start with http:// or https:// and contain a val
 const monitorNameRegex = /^[a-zA-Z0-9-_ ]{3,32}$/;
 const monitorNameRegexError = 'Monitor name must be between 3 and 32 characters long and can only contain letters, numbers, hyphens, underscores, and spaces.';
 
-export { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError };
+/**
+ * Password regex pattern
+ * - Must be at least 8 characters long
+ * - Must contain at least one uppercase letter
+ * - Must contain at least one lowercase letter
+ * - Must contain at least one number
+ * - Must contain at least one special character (@, $, !, %, *, ?, &)
+ */
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const passwordRegexError = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@, $, !, %, *, ?, &).';
+
+export { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError, passwordRegex, passwordRegexError };

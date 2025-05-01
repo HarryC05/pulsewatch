@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import Notice from "../components/Notice";
+
 const API = import.meta.env.VITE_API_URL;
 
 const Account = () => {
@@ -59,10 +61,10 @@ const Account = () => {
         <h2>Your Information</h2>
         {
           error && (
-            <div className="notice notice__error">{error}</div>
+            <Notice message={error} type="error" />
           )
         }
-        {success && <div className="notice notice__success">{success}</div>}
+        {success && <Notice message={success} type="success" />}
         <table>
           <tbody>
             <tr>

@@ -98,24 +98,6 @@ main {
   padding: 0;
 }
 
-.notice {
-  border-radius: 5px;
-  padding: 0.25rem;
-  max-width: 20rem;
-  text-align: center;
-  width: 100%;
-}
-
-.notice__success {
-  background-color: var(--colour-status-green);
-  color: var(--colour-black);
-}
-
-.notice__error {
-  background-color: var(--colour-status-red);
-  color: var(--colour-white);
-}
-
 input {
   background-color: var(--colour-background);
   border: none;

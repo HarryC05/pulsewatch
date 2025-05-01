@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import Notice from '../components/Notice';
+
 import '../styles/login.css';
 
 const API = import.meta.env.VITE_API_URL;
@@ -132,8 +134,8 @@ function Login() {
             <h2>Signup</h2>
           </button>
         </div>
-        {error && <div className="notice notice__error">{error}</div>}
-        {success && <div className="notice notice__success">{success}</div>}
+        {error && <Notice message={error} type="error" />}
+        {success && <Notice message={success} type="success" />}
         <form onSubmit={handleLogin} className="login-page__form">
           {signup && (
             <>

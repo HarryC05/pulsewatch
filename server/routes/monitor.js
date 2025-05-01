@@ -2,6 +2,7 @@ import { subDays, subHours } from 'date-fns';
 import express from 'express';
 
 import { protect } from '../middleware/auth.js';
+import { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError } from '../../client/utils/regex.js';
 import prisma from '../utils/prisma.js';
 import calcUptime from '../utils/calcUptime.js';
 import calcRespTime from '../utils/calcRespTime.js';
@@ -24,6 +25,16 @@ router.get('/', (req, res) => {
 // Create a monitor
 router.post('/create', protect, async (req, res) => {
   const { name, url } = req.body;
+
+  // Validate monitor name
+  if (!name.match(monitorNameRegex)) {
+    return res.status(400).json({ message: monitorNameRegexError });
+  }
+
+  // Validate URL
+  if (!url.match(urlRegex)) {
+    return res.status(400).json({ message: urlRegexError });
+  }
 
   try {
     const newMonitor = await prisma.monitor.create({
@@ -171,6 +182,29 @@ router.get('/:id', protect, async (req, res) => {
 router.put('/:id', protect, async (req, res) => {
   const { id } = req.params;
   const { name, url } = req.body;
+
+  // Validate monitor name
+  if (name && !name.match(monitorNameRegex)) {
+    return res.status(400).json({ message: monitorNameRegexError });
+  }
+
+  // Validate URL
+  if (url && !url.match(urlRegex)) {
+    return res.status(400).json({ message: urlRegexError });
+  }
+
+  // Check if the monitor belongs to the logged-in user
+  const monitor = await prisma.monitor.findUnique({
+    where: { id },
+  });
+
+  if (!monitor) {
+    return res.status(404).json({ message: 'Monitor not found' });
+  }
+
+  if (monitor.userId !== req.user.id) {
+    return res.status(403).json({ message: 'Forbidden' });
+  }
 
   try {
     const updatedMonitor = await prisma.monitor.update({
