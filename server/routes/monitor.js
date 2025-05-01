@@ -122,10 +122,6 @@ router.get('/:id', protect, async (req, res) => {
     const now = new Date();
     const heartbeatData = monitor.heartbeats;
 
-    const hb3h = heartbeatData.filter(hb => {
-      return hb.createdAt >= subHours(now, 3);
-    });
-
     const hb24h = heartbeatData.filter(hb => {
       return hb.createdAt >= subHours(now, 24);
     });
@@ -143,7 +139,6 @@ router.get('/:id', protect, async (req, res) => {
       name: monitor.name,
       url: monitor.url,
       heartbeats: {
-        last3h: hb3h,
         last24h: hb24h,
         last7d: hb7d,
         last30d: hb30d,
@@ -158,7 +153,6 @@ router.get('/:id', protect, async (req, res) => {
         createdAt: heartbeatData[heartbeatData.length - 1]?.createdAt || null,
       },
       uptime: {
-        last3h: calcUptime(hb3h),
         last24h: calcUptime(hb24h),
         last7d: calcUptime(hb7d),
         last30d: calcUptime(hb30d),

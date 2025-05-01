@@ -6,6 +6,7 @@ import NavBar from '../components/NavBar';
 import '../styles/monitorDetails.css';
 import Uptime from '../components/Uptime';
 import UptimeChart from '../components/UptimeChart';
+import ResponseChart from '../components/ResponseChart';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -123,6 +124,7 @@ const MonitorDetails = () => {
               <UptimeChart
                 data={monitor.heartbeats.last24h}
               />
+              <ResponseChart title='24 Hour Response Time' heartbeats={monitor.heartbeats.last24h} />
             </div>
           </>
         )}

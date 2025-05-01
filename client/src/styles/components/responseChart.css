@@ -1,0 +1,12 @@
+.ResponseChart {
+  background-color: var(--colour-background);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.ResponseChart > h2 {
+  margin: 0;
+}
