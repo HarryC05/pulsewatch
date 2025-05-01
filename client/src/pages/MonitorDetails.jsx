@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import Uptime from '../components/Uptime';
+import UptimePill from '../components/UptimePill';
 import UptimeChart from '../components/UptimeChart';
 import ResponseChart from '../components/ResponseChart';
 
@@ -102,21 +102,21 @@ const MonitorDetails = () => {
                   <span className='monitor-page__details__info__item__subtitle'>
                     (24 hrs)
                   </span>
-                  <Uptime uptime={monitor.uptime.last24h} />
+                  <UptimePill uptime={monitor.uptime.last24h} />
                 </div>
                 <div className='monitor-page__details__info__item'>
                   <h2>Uptime</h2>
                   <span className='monitor-page__details__info__item__subtitle'>
                     (7 Days)
                   </span>
-                  <Uptime uptime={monitor.uptime.last7d} />
+                  <UptimePill uptime={monitor.uptime.last7d} />
                 </div>
                 <div className='monitor-page__details__info__item'>
                   <h2>Uptime</h2>
                   <span className='monitor-page__details__info__item__subtitle'>
                     (30 Days)
                   </span>
-                  <Uptime uptime={monitor.uptime.last30d} />
+                  <UptimePill uptime={monitor.uptime.last30d} />
                 </div>
               </div>
               <UptimeChart

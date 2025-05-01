@@ -1,4 +1,4 @@
-import '../styles/components/uptime.css';
+import '../styles/components/uptimePill.css';
 
 /**
  * @description Uptime component for displaying the uptime of a monitor
@@ -8,11 +8,11 @@ import '../styles/components/uptime.css';
  * 
  * @returns {JSX.Element} - The rendered component
  */
-const Uptime = ({ uptime }) => {
+const UptimePill = ({ uptime }) => {
   return (
     <span
       className={
-        `uptime ${uptime ? uptime > 90 ? 'background-colour-green' : uptime > 50 ? 'background-colour-yellow' : 'background-colour-red' : ''}`
+        `uptime-pill ${uptime ? uptime > 90 ? 'background-colour-green' : uptime > 50 ? 'background-colour-yellow' : 'background-colour-red' : ''}`
       }
       title={uptime ? `${uptime}% uptime in the last 7 days` : 'No data'}
     >
@@ -21,4 +21,4 @@ const Uptime = ({ uptime }) => {
   )
 };
 
-export default Uptime;
+export default UptimePill;

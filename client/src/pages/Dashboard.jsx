@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import CreateMonitorModal from '../components/CreateMonitorModal';
-import Uptime from '../components/Uptime';
+import Uptime from '../components/UptimePill';
 import '../styles/dashboard.css';
 
 const API = import.meta.env.VITE_API_URL;
