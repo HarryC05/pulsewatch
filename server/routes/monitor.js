@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
       { method: 'POST', path: '/api/v1/monitor/create', description: 'Create a new monitor' },
       { method: 'GET', path: '/api/v1/monitor/list', description: 'Get all monitors for the logged-in user' },
       { method: 'GET', path: '/api/v1/monitor/:id', description: 'Get a specific monitor by ID' },
+      { method: 'PUT', path: '/api/v1/monitor/:id', description: 'Update a monitor' },
     ],
   });
 });
