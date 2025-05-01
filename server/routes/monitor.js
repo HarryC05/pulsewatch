@@ -166,4 +166,25 @@ router.get('/:id', protect, async (req, res) => {
   }
 });
 
+// Update a monitor
+router.put('/:id', protect, async (req, res) => {
+  const { id } = req.params;
+  const { name, url } = req.body;
+
+  try {
+    const updatedMonitor = await prisma.monitor.update({
+      where: { id },
+      data: {
+        name,
+        url,
+      },
+    });
+
+    res.json(updatedMonitor);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to update monitor' });
+  }
+});
+
 export default router;

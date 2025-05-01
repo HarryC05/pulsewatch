@@ -1,7 +1,18 @@
 .monitor-page__details__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.monitor-page__details__header__status {
   align-items: center;
   display: flex;
   gap: 1rem;
+}
+
+.monitor-page__details__header__buttons {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .monitor-page__details-status {

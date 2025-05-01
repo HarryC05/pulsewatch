@@ -101,18 +101,19 @@ main {
 .notice {
   border-radius: 5px;
   padding: 0.25rem;
+  max-width: 20rem;
   text-align: center;
   width: 100%;
 }
 
-.notice--success {
+.notice__success {
   background-color: var(--colour-status-green);
   color: var(--colour-black);
 }
 
-.notice--error {
+.notice__error {
   background-color: var(--colour-status-red);
-  color: var(--colour-black);
+  color: var(--colour-white);
 }
 
 input {
