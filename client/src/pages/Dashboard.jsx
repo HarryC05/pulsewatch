@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import axios from 'axios';
 
-import NavBar from '../components/NavBar';
 import CreateMonitorModal from '../components/CreateMonitorModal';
-
-import '../styles/dashboard.css';
 import Uptime from '../components/Uptime';
+import '../styles/dashboard.css';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -66,7 +63,6 @@ const Dashboard = () => {
           } }
         />
       )}
-      <NavBar />
       <main className='dashboard-page'>
         <h1>Welcome {user?.username}!</h1>
         <div className='dashboard__content'>

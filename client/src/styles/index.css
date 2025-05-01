@@ -17,6 +17,8 @@
   --colour-status-yellow: #efca46;
   --colour-status-red: #b85252;
 
+  --nav-height: calc(3.5rem + 1rem); /* 3.5rem for logo height, 1rem for padding */
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

@@ -9,7 +9,6 @@ import {
   Legend,
   TimeScale,
 } from 'chart.js';
-
 import 'chartjs-adapter-date-fns';
 
 import '../styles/components/responseChart.css';

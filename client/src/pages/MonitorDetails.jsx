@@ -2,11 +2,11 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import NavBar from '../components/NavBar';
-import '../styles/monitorDetails.css';
 import Uptime from '../components/Uptime';
 import UptimeChart from '../components/UptimeChart';
 import ResponseChart from '../components/ResponseChart';
+
+import '../styles/monitorDetails.css';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -46,9 +46,7 @@ const MonitorDetails = () => {
   }, []);
 
   return (
-    <>
-      <NavBar />
-      <main className='monitor-page'>
+    <main className='monitor-page'>
         {loading ? (
           <div className='loading'>Loading...</div>
         ) : noAuth ? (
@@ -128,8 +126,7 @@ const MonitorDetails = () => {
             </div>
           </>
         )}
-      </main>
-    </>
+    </main>
   );
 };
 

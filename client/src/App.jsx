@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import NavBar from './components/NavBar';
+
 import Homepage from './pages/Homepage';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -8,15 +10,18 @@ import MonitorDetails from './pages/MonitorDetails';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/monitor/:id" element={<MonitorDetails />} />
-      </Routes>
-    </Router>
+    <>
+      <NavBar />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/monitor/:id" element={<MonitorDetails />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

@@ -1,11 +1,8 @@
 import { useState } from 'react';
-
 import axios from 'axios';
 
 import { urlRegex } from '../../utils/regex';
-
 import Modal from './Modal';
-
 import '../styles/components/createMonitorModal.css';
 
 const API = import.meta.env.VITE_API_URL;
