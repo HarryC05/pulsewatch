@@ -16,6 +16,7 @@ const MonitorDetails = () => {
   const [loading, setLoading] = useState(true);
   const [monitor, setMonitor] = useState({});
   const [noAuth, setNoAuth] = useState(false);
+  const [responseTimeOption, setResponseTimeOption] = useState('last24h');
 
   const getMonitor = () => {
     axios.get(`${API}/api/v1/monitor/${id}`, { withCredentials: true })
@@ -122,7 +123,21 @@ const MonitorDetails = () => {
               <UptimeChart
                 data={monitor.heartbeats.last24h}
               />
-              <ResponseChart title='24 Hour Response Time' heartbeats={monitor.heartbeats.last24h} />
+              <div className='monitor-page__details__response-time'>
+                <div className='monitor-page__details__response-time__header'>
+                  <h2>Response Time</h2>
+                  <select
+                    className='monitor-page__details__response-time__header__select'
+                    value={responseTimeOption}
+                    onChange={(e) => setResponseTimeOption(e.target.value)}
+                  >
+                    <option value='last24h'>Last 24 hours</option>
+                    <option value='last7d'>Last 7 days</option>
+                    <option value='last30d'>Last 30 days</option>
+                  </select>
+                </div>
+                <ResponseChart heartbeats={monitor.heartbeats[responseTimeOption]} />
+              </div>
             </div>
           </>
         )}

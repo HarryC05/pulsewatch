@@ -27,12 +27,11 @@ ChartJS.register(
  * @description This component is used to display the response time of the server in a chart.
  * 
  * @param {Object} props            - The component props
- * @param {string} props.title      - The title of the chart
  * @param {Array}  props.heartbeats - The heartbeats data to be displayed in the chart
  * 
  * @returns {JSX.Element} - The rendered component
  */
-const ResponseChart = ({ title, heartbeats }) => {
+const ResponseChart = ({ heartbeats }) => {
   const skipped = (ctx, value) => ctx.p0.skip || ctx.p1.skip ? value : undefined;
 
   const data = {
@@ -91,7 +90,6 @@ const ResponseChart = ({ title, heartbeats }) => {
 
   return (
     <div className='ResponseChart'>
-      <h2>{title}</h2>
       <Line data={data} options={options} />
     </div>
   )
