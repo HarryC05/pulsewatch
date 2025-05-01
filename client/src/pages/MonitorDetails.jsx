@@ -2,10 +2,14 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import UptimePill from '../components/UptimePill';
-import UptimeChart from '../components/UptimeChart';
-import ResponseChart from '../components/ResponseChart';
-import EditMonitorModal from '../components/EditMonitorModal';
+import {
+  UptimePill,
+  UptimeChart,
+  ResponseChart,
+  EditMonitorModal,
+  Section,
+  Card,
+} from '../components';
 
 import '../styles/monitorDetails.css';
 
@@ -87,12 +91,12 @@ const MonitorDetails = () => {
                   </button>
                 </div>
               </div>
-              <div className='monitor-page__details'>
+              <Section className='monitor-page__details'>
                 <h4>
                   Last Check: {new Date(monitor.latest.createdAt).toLocaleString()}
                 </h4>
                 <div className='monitor-page__details__info'>
-                  <div className='monitor-page__details__info__item'>
+                  <Card className='monitor-page__details__info__item'>
                     <h2>Response</h2>
                     <span className='monitor-page__details__info__item__subtitle'>
                       (current)
@@ -100,8 +104,8 @@ const MonitorDetails = () => {
                     <h3 className='monitor-page__details__info__item__value'>
                       {monitor.latest.responseTime ? `${monitor.latest.responseTime} ms` : 'N/A'}
                     </h3>
-                  </div>
-                  <div className='monitor-page__details__info__item'>
+                  </Card>
+                  <Card className='monitor-page__details__info__item'>
                     <h2>Response</h2>
                     <span className='monitor-page__details__info__item__subtitle'>
                       (Avg. 24 hrs)
@@ -109,8 +113,8 @@ const MonitorDetails = () => {
                     <h3 className='monitor-page__details__info__item__value'>
                       {monitor.responseTimes.last24h ? `${monitor.responseTimes.last24h} ms` : 'N/A'}
                     </h3>
-                  </div>
-                  <div className='monitor-page__details__info__item'>
+                  </Card>
+                  <Card className='monitor-page__details__info__item'>
                     <h2>Response</h2>
                     <span className='monitor-page__details__info__item__subtitle'>
                       (Avg. 7 days)
@@ -118,28 +122,28 @@ const MonitorDetails = () => {
                     <h3 className='monitor-page__details__info__item__value'>
                       {monitor.responseTimes.last7d ? `${monitor.responseTimes.last7d} ms` : 'N/A'}
                     </h3>
-                  </div>
-                  <div className='monitor-page__details__info__item'>
+                  </Card>
+                  <Card className='monitor-page__details__info__item'>
                     <h2>Uptime</h2>
                     <span className='monitor-page__details__info__item__subtitle'>
                       (24 hrs)
                     </span>
                     <UptimePill uptime={monitor.uptime.last24h} />
-                  </div>
-                  <div className='monitor-page__details__info__item'>
+                  </Card>
+                  <Card className='monitor-page__details__info__item'>
                     <h2>Uptime</h2>
                     <span className='monitor-page__details__info__item__subtitle'>
                       (7 Days)
                     </span>
                     <UptimePill uptime={monitor.uptime.last7d} />
-                  </div>
-                  <div className='monitor-page__details__info__item'>
+                  </Card>
+                  <Card className='monitor-page__details__info__item'>
                     <h2>Uptime</h2>
                     <span className='monitor-page__details__info__item__subtitle'>
                       (30 Days)
                     </span>
                     <UptimePill uptime={monitor.uptime.last30d} />
-                  </div>
+                  </Card>
                 </div>
                 <UptimeChart
                   data={monitor.heartbeats.last24h}
@@ -159,7 +163,7 @@ const MonitorDetails = () => {
                   </div>
                   <ResponseChart heartbeats={monitor.heartbeats[responseTimeOption]} />
                 </div>
-              </div>
+              </Section>
             </>
           )}
       </main>

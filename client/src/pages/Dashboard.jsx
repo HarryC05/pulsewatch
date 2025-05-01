@@ -2,8 +2,13 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import CreateMonitorModal from '../components/CreateMonitorModal';
-import Uptime from '../components/UptimePill';
+import {
+  CreateMonitorModal,
+  UptimePill,
+  Section,
+  Card,
+} from '../components';
+
 import '../styles/dashboard.css';
 
 const API = import.meta.env.VITE_API_URL;
@@ -65,7 +70,7 @@ const Dashboard = () => {
       )}
       <main className='dashboard-page'>
         <h1>Welcome {user?.username}!</h1>
-        <div className='dashboard__content'>
+        <Section className='dashboard__content'>
           <div className='dashboard__content-header'>
             <h2>Your Monitors</h2>
             <button
@@ -76,26 +81,26 @@ const Dashboard = () => {
             </button>
           </div>
           <div className='dashboard__content-summary'>
-            <div className='dashboard__content-summary-item'>
+            <Card className='dashboard__content-summary-item'>
               <h3>Total Monitors</h3>
               <h4>{monitors.length}</h4>
-            </div>
-            <div className='dashboard__content-summary-item'>
+            </Card>
+            <Card className='dashboard__content-summary-item'>
               <h3>Online</h3>
               <h4 className='text-colour-green'>
                 {monitors.filter(m => m.latest.status === 'up').length}
               </h4>
-            </div>
-            <div className='dashboard__content-summary-item'>
+            </Card>
+            <Card className='dashboard__content-summary-item'>
               <h3>Offline</h3>
               <h4 className='text-colour-red'>
                 {monitors.filter(m => m.latest.status === 'down').length}
               </h4>
-            </div>
-            <div className='dashboard__content-summary-item'>
+            </Card>
+            <Card className='dashboard__content-summary-item'>
               <h3>Unknown</h3>
               <h4>{monitors.filter(m => m.latest.status === 'unknown').length}</h4>
-            </div>
+            </Card>
           </div>
           <table className='dashboard__table'>
             <thead>
@@ -136,7 +141,7 @@ const Dashboard = () => {
                     </a>
                   </td>
                   <td>
-                    <Uptime uptime={monitor.uptime} />
+                    <UptimePill uptime={monitor.uptime} />
                   </td>
                   <td>{monitor.latest.responseTime ? `${monitor.latest.responseTime} ms` : 'N/A'}</td>
                   <td>{monitor.lastChecked ? new Date(monitor.lastChecked).toLocaleString() : 'N/A'}</td>
@@ -144,7 +149,7 @@ const Dashboard = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </Section>
       </main>
     </>
   );

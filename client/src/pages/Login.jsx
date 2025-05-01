@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import Notice from '../components/Notice';
+import { Notice } from '../components';
 
 import '../styles/login.css';
 
