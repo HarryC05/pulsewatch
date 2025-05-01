@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-import { urlRegex } from '../../utils/regex';
+import { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError } from '../../utils/regex';
 import Modal from './Modal';
+import Notice from './Notice';
 import '../styles/components/createMonitorModal.css';
 
 const API = import.meta.env.VITE_API_URL;
@@ -24,6 +25,9 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
     url: '',
   });
   const [ disabled, setDisabled ] = useState({url: true, name: true});
+  const [nameError, setNameError] = useState('');
+  const [urlError, setUrlError] = useState('');
+  const [error, setError] = useState('');
 
   const handleCreateMonitor = async () => {
     if (!monitor.name.trim() || !monitor.url.trim()) {
@@ -36,6 +40,11 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
       onClose();
     } catch (error) {
       console.error('Error creating monitor:', error);
+      if (error.response) {
+        setError(error.response.data.message);
+      } else {
+        setError('An error occurred while creating the monitor.');
+      }
     }
   }
 
@@ -44,10 +53,12 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
     const value = e.target.value;
     setMonitor({ ...monitor, name: value });
 
-    if (value.trim().length > 0) {
-      setDisabled({...disabled, name: false});
-    } else {
+    if (!value.match(monitorNameRegex)) {
+      setNameError(monitorNameRegexError);
       setDisabled({...disabled, name: true});
+    } else {
+      setNameError('');
+      setDisabled({...disabled, name: false});
     }
   }
 
@@ -57,14 +68,17 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
     setMonitor({ ...monitor, url: value });
 
     if (urlRegex.test(value)) {
+      setUrlError('');
       setDisabled({...disabled, url: false});
     } else {
+      setUrlError(urlRegexError);
       setDisabled({...disabled, url: true});
     }
   }
 
   return (
     <Modal onClose={onClose} title="Create Monitor">
+      {error && <Notice message={error} type="error" />}
       <div className="create-monitor__inputs">
         <label htmlFor="monitor-name">Monitor Name</label>
         <input
@@ -73,6 +87,7 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
           value={monitor.name}
           onChange={handleNameChange}
         />
+        {nameError && <Notice message={nameError} type="error" />}
         <label htmlFor="monitor-url">Monitor URL</label>
         <input
           type="text"
@@ -80,6 +95,7 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
           value={monitor.url}
           onChange={handleUrlChange}
         />
+        {urlError && <Notice message={urlError} type="error" />}
       </div>
       <div className='create-monitor__footer'>
         <button

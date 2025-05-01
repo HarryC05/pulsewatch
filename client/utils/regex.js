@@ -9,10 +9,10 @@ const urlRegexError = 'URL must start with http:// or https:// and contain a val
 /**
  * Monitor name regex pattern
  * - Must be between 3 and 32 characters long
- * - Can contain letters, numbers, hyphens, underscores, and spaces
+ * - Can contain letters, numbers, hyphens, underscores, spaces, and full stops
  * - Cannot contain special characters
  */
-const monitorNameRegex = /^[a-zA-Z0-9-_ ]{3,32}$/;
+const monitorNameRegex = /^[a-zA-Z0-9-_. ]{3,32}$/;
 const monitorNameRegexError = 'Monitor name must be between 3 and 32 characters long and can only contain letters, numbers, hyphens, underscores, and spaces.';
 
 /**

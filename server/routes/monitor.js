@@ -2,7 +2,7 @@ import { subDays, subHours } from 'date-fns';
 import express from 'express';
 
 import { protect } from '../middleware/auth.js';
-import { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError } from '../../client/utils/regex.js';
+import { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError } from '../utils/regex.js';
 import prisma from '../utils/prisma.js';
 import calcUptime from '../utils/calcUptime.js';
 import calcRespTime from '../utils/calcRespTime.js';

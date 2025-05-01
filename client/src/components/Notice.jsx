@@ -11,13 +11,13 @@ import '../styles/components/notice.css';
  */
 const Notice = ({ message, type }) => {
   const noticeTypes = {
-    success: 'notice-success',
-    error: 'notice-error',
-    info: 'notice-info',
-    warning: 'notice-warning'
+    success: 'notice__success',
+    error: 'notice__error',
+    info: 'notice__info',
+    warning: 'notice__warning'
   };
 
-  const noticeType = noticeTypes[type] || 'notice-info';
+  const noticeType = noticeTypes[type] || 'notice__info';
 
   const noticeClass = `notice ${noticeType}`;
 
