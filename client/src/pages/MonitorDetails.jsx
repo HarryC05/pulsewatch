@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -20,10 +20,12 @@ const MonitorDetails = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [monitor, setMonitor] = useState({});
-  const [noAuth, setNoAuth] = useState(false);
   const [responseTimeOption, setResponseTimeOption] = useState('last24h');
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const getMonitor = () => {
     axios.get(`${API}/api/v1/monitor/${id}`, { withCredentials: true })
@@ -32,10 +34,11 @@ const MonitorDetails = () => {
         setLoading(false);
       })
       .catch((err) => {
-        if (err.response.status === 403) {
-          setNoAuth(true);
-          setLoading(false);
+        if (err.response.status === 401) {
+          navigate('/login');
         } else {
+          setLoading(false);
+          setError('An error occurred while fetching monitor details.');
           console.error(err);
         }
       });
@@ -63,10 +66,9 @@ const MonitorDetails = () => {
         />
       )}
       <main className='monitor-page'>
-          {loading ? (
-            <div className='loading'>Loading...</div>
-          ) : noAuth ? (
-            <div className='no-auth'>You do not have permission to view this monitor.</div>
+        {error && <Notice type='error' message={error} />}
+        {loading ? (
+          <div className='loading'>Loading...</div>
           ) : (
             <>
               <div className='monitor-page__details__header'>
