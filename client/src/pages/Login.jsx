@@ -2,7 +2,15 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { Notice } from '../components';
+import {
+  usernameRegex,
+  usernameRegexError,
+  emailRegex,
+  emailRegexError,
+  passwordRegex,
+  passwordRegexError,
+} from '../../utils/regex';
+import { Notice, Button } from '../components';
 
 import '../styles/login.css';
 
@@ -17,6 +25,10 @@ function Login() {
   const [signup, setSignup] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [usernameError, setUsernameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
   const navigate = useNavigate();
 
@@ -73,6 +85,56 @@ function Login() {
       setSuccess('');
       setPassword('');
       setConfirmPassword('');
+    }
+  };
+
+  const handleUsernameChange = (e) => {
+    const value = e.target.value;
+    setUsername(value);
+
+    if (!usernameRegex.test(value)) {
+      setUsernameError(usernameRegexError);
+    } else {
+      setUsernameError('');
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    if (!emailRegex.test(value)) {
+      setEmailError(emailRegexError);
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+
+    if (!passwordRegex.test(value)) {
+      setPasswordError(passwordRegexError);
+    } else {
+      setPasswordError('');
+    }
+
+    if (value !== confirmPassword) {
+      setConfirmPasswordError('Passwords do not match');
+    } else {
+      setConfirmPasswordError('');
+    }
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    const value = e.target.value;
+    setConfirmPassword(value);
+
+    if (value !== password) {
+      setConfirmPasswordError('Passwords do not match');
+    } else {
+      setConfirmPasswordError('');
     }
   };
 
@@ -143,18 +205,20 @@ function Login() {
                 type="text"
                 placeholder="Username"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={handleUsernameChange}
                 className="login-page__form-input"
                 required
               />
+              {usernameError && <Notice message={usernameError} variant="error" />}
               <input
                 type="email"
                 placeholder="Email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleEmailChange}
                 className="login-page__form-input"
                 required
               />
+              {emailError && <Notice message={emailError} variant="error" />}
             </>
           )}
           { !signup && (
@@ -171,32 +235,35 @@ function Login() {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
             className="login-page__form-input"
             required
           />
+          {passwordError && signup && <Notice message={passwordError} variant="error" />}
           {signup && (
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="login-page__form-input"
-              required
-            />
+            <>
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+                className="login-page__form-input"
+                required
+              />
+              {confirmPasswordError && <Notice message={confirmPasswordError} variant="error" />}
+            </>
           )}
-          <button
+          <Button
             type="submit"
-            className="btn btn-primary"
+            variant="primary"
             disabled={
-              (signup && !email)
-              || (!signup && !identifier)
-              || !password
-              || (signup && password !== confirmPassword)
+              (signup && (!username || !email || !password || !confirmPassword)) ||
+              (signup && (usernameError || emailError || passwordError || confirmPasswordError)) ||
+              (!signup && (!identifier || !password))
             }
           >
             {signup ? 'Signup' : 'Login'}
-          </button>
+          </Button>
         </form>
       </div>
     </main>

@@ -8,6 +8,7 @@ import '../styles/components/button.css';
  * @param {string}    props.className - Additional class names to apply to the button
  * @param {string}    props.variant   - The variant of the button (e.g., primary, secondary, danger)
  * @param {boolean}   props.disabled  - Whether the button is disabled
+ * @param {string}    props.type      - The type of the button (e.g., button, submit)
  * @param {ReactNode} props.children  - The content to display inside the button
  * 
  * @returns {JSX.Element} - The rendered button component
@@ -17,6 +18,7 @@ const Button = ({
   className='',
   variant='primary',
   disabled=false,
+  type='button',
   children,
 }) => {
   const variants = {
@@ -29,7 +31,12 @@ const Button = ({
   const variantClass = variants[variant];
 
   return (
-    <button className={`btn ${variantClass} ${className}`} onClick={onClick} disabled={disabled}>
+    <button
+      className={`btn ${variantClass} ${className}`}
+      onClick={onClick}
+      disabled={disabled}
+      type={type}
+    >
       {children}
     </button>
   );
