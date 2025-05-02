@@ -42,7 +42,7 @@ const ResponseChart = ({ heartbeats }) => {
             x: new Date(heartbeat.createdAt),
             y: heartbeat.responseTime,
           })),
-        borderColor: '#4faa4f', // var(--colour-status-green)
+        borderColor: '#4faa4f', // var(--colour-green)
         spanGaps: true,
         pointRadius: 2,
         segment: {

@@ -10,9 +10,10 @@
   --colour-background: #242424;
   --colour-text: var(--colour-offwhite);
 
-  --colour-status-green: #4faa4f;
-  --colour-status-yellow: #efca46;
-  --colour-status-red: #b85252;
+  --colour-green: #4faa4f;
+  --colour-green-light: #8eff8e;
+  --colour-yellow: #efca46;
+  --colour-red: #b85252;
 
   --colour-btn-primary: var(--colour-primary-light);
   --colour-btn-primary-hover: #6f6f6f;
@@ -20,7 +21,7 @@
   --colour-btn-secondary: var(--colour-primary);
   --colour-btn-secondary-hover: #4b5563;
   --colour-btn-secondary-text: var(--colour-offwhite);
-  --colour-btn-dangerous: var(--colour-status-red);
+  --colour-btn-dangerous: var(--colour-red);
   --colour-btn-dangerous-hover: #b77676;
   --colour-btn-dangerous-text: var(--colour-offwhite);
 
@@ -54,27 +55,35 @@ main {
 }
 
 .text-colour-green {
-  color: var(--colour-status-green) !important;
+  color: var(--colour-green) !important;
 }
 
 .background-colour-green {
-  background-color: var(--colour-status-green) !important;
+  background-color: var(--colour-green) !important;
+}
+
+.text-colour-green-light {
+  color: var(--colour-green-light) !important;
+}
+
+.background-colour-green-light {
+  background-color: var(--colour-green-light) !important;
 }
 
 .text-colour-yellow {
-  color: var(--colour-status-yellow) !important;
+  color: var(--colour-yellow) !important;
 }
 
 .background-colour-yellow {
-  background-color: var(--colour-status-yellow) !important;
+  background-color: var(--colour-yellow) !important;
 }
 
 .text-colour-red {
-  color: var(--colour-status-red) !important;
+  color: var(--colour-red) !important;
 }
 
 .background-colour-red {
-  background-color: var(--colour-status-red) !important;
+  background-color: var(--colour-red) !important;
 }
 
 input {

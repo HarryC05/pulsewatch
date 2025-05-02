@@ -88,7 +88,7 @@ const Dashboard = () => {
             </Card>
             <Card className='dashboard__content-summary-item'>
               <h3>Online</h3>
-              <h4 className='text-colour-green'>
+              <h4 className='text-colour-green-light'>
                 {monitors.filter(m => m.latest.status === 'up').length}
               </h4>
             </Card>

@@ -1,17 +1,20 @@
 .notice {
   border-radius: 5px;
   padding: 0.25rem;
-  max-width: 20rem;
   text-align: center;
   width: 100%;
 }
 
 .notice__success {
-  background-color: var(--colour-status-green);
+  background-color: var(--colour-green);
   color: var(--colour-black);
 }
 
 .notice__error {
-  background-color: var(--colour-status-red);
+  background-color: var(--colour-red);
   color: var(--colour-white);
+}
+
+.modal .notice {
+  max-width: 20rem;
 }
