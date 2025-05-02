@@ -7,3 +7,7 @@
 .account__content > h2 {
   margin: 0;
 }
+
+.account__info .notice {
+  grid-column: span 2;
+}

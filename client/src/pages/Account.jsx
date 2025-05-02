@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import { usernameRegex, usernameRegexError, emailRegex, emailRegexError } from "../../utils/regex";
 import { Notice, Section, Button } from "../components";
 import "../styles/account.css";
 
@@ -14,6 +15,8 @@ const Account = () => {
   const [updatedUser, setUpdatedUser] = useState({});
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
 
   const updateUser = (user) => {
     axios.put(`${API}/api/v1/account/me`, user, { withCredentials: true })
@@ -36,6 +39,28 @@ const Account = () => {
       });
   }
 
+  const handleUsernameChange = (e) => {
+    const value = e.target.value;
+    setUpdatedUser({ ...updatedUser, username: value });
+
+    if (!usernameRegex.test(value)) {
+      setNameError(usernameRegexError);
+    } else {
+      setNameError('');
+    }
+  }
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setUpdatedUser({ ...updatedUser, email: value });
+
+    if (!emailRegex.test(value)) {
+      setEmailError(emailRegexError);
+    } else {
+      setEmailError('');
+    }
+  }
+
   useEffect(() => {
     axios.get(`${API}/api/v1/account/me`, { withCredentials: true })
       .then((res) => {
@@ -46,7 +71,7 @@ const Account = () => {
         });
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         navigate('/login');
       });
   }, [navigate]);
@@ -71,18 +96,20 @@ const Account = () => {
           <input
             type="text"
             value={updatedUser.username}
-            onChange={(e) => setUpdatedUser({ ...updatedUser, username: e.target.value })}
+            onChange={handleUsernameChange}
           />
+          {nameError && <Notice message={nameError} variant="error" />}
           <label>Email:</label>
           <input
             type="email"
             value={updatedUser.email}
-            onChange={(e) => setUpdatedUser({ ...updatedUser, email: e.target.value })}
+            onChange={handleEmailChange}
           />
+          {emailError && <Notice message={emailError} variant="error" />}
         </div>
         <Button
           variant="primary"
-          disabled={updatedUser.username === user.username && updatedUser.email === user.email}
+          disabled={(updatedUser.username === user.username && updatedUser.email === user.email) || nameError || emailError}
           onClick={() => updateUser(updatedUser)}
         >
           Update

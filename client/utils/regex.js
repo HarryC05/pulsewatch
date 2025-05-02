@@ -26,4 +26,23 @@ const monitorNameRegexError = 'Monitor name must be between 3 and 32 characters 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 const passwordRegexError = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@, $, !, %, *, ?, &).';
 
-export { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError, passwordRegex, passwordRegexError };
+/**
+ * Email regex pattern
+ * - Must contain an '@' symbol
+ * - Must contain a domain name
+ * - Must contain a top-level domain (e.g., .com, .net)
+ * - Cannot contain spaces
+ */
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailRegexError = 'Email must be a valid email address.';
+
+/**
+ * Username regex pattern
+ * - Must be between 3 and 16 characters long
+ * - Can contain letters, numbers, underscores, and hyphens
+ * - Cannot contain spaces or special characters
+ */
+const usernameRegex = /^[a-zA-Z0-9_-]{3,16}$/;
+const usernameRegexError = 'Username must be between 3 and 16 characters long and can only contain letters, numbers, underscores, and hyphens.';
+
+export { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError, passwordRegex, passwordRegexError, emailRegex, emailRegexError, usernameRegex, usernameRegexError };
