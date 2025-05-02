@@ -1,3 +1,4 @@
+import Button from "./Button";
 import Card from "./Card";
 import CreateMonitorModal from "./CreateMonitorModal";
 import EditMonitorModal from "./EditMonitorModal";
@@ -10,6 +11,7 @@ import UptimeChart from "./UptimeChart";
 import UptimePill from "./UptimePill";
 
 export {
+  Button,
   Card,
   CreateMonitorModal,
   EditMonitorModal,

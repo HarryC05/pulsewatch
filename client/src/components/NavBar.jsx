@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import { Button } from "./"
 import "../styles/components/navbar.css";
 
 const API = import.meta.env.VITE_API_URL;
@@ -53,9 +54,9 @@ const NavBar = () => {
               <li><a href="/dashboard">Dashboard</a></li>
               <li><a href="/account">Account</a></li>
               <li>
-                <button className="btn-text" onClick={handleLogout}>
+                <Button variant="text" onClick={handleLogout}>
                   Logout
-                </button>
+                </Button>
               </li>
             </>
           )}

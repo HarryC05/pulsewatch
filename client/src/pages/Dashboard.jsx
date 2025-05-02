@@ -7,6 +7,7 @@ import {
   UptimePill,
   Section,
   Card,
+  Button,
 } from '../components';
 
 import '../styles/dashboard.css';
@@ -73,12 +74,12 @@ const Dashboard = () => {
         <Section className='dashboard__content'>
           <div className='dashboard__content-header'>
             <h2>Your Monitors</h2>
-            <button
-              className='btn btn-secondary'
+            <Button
+              variant='primary'
               onClick={() => setShowCreateModal(true)}
             >
               + Add Monitor
-            </button>
+            </Button>
           </div>
           <div className='dashboard__content-summary'>
             <Card className='dashboard__content-summary-item'>

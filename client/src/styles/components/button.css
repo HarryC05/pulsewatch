@@ -1,0 +1,48 @@
+.btn {
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: var(--colour-btn-primary);
+  color: var(--colour-btn-primary-text);
+}
+
+.btn-primary:hover {
+  background-color: var(--colour-btn-primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--colour-btn-secondary);
+  color: var(--colour-btn-secondary-text);
+}
+
+.btn-secondary:hover {
+  background-color: var(--colour-btn-secondary-hover);
+}
+
+.btn-dangerous {
+  background-color: var(--colour-btn-dangerous);
+  color: var(--colour-btn-dangerous-text);
+}
+
+.btn-dangerous:hover {
+  background-color: var(--colour-btn-dangerous-hover);
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}

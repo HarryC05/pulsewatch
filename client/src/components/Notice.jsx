@@ -3,13 +3,13 @@ import '../styles/components/notice.css';
 /**
  * @description A simple notice component that displays a message.
  * 
- * @param {Object} props - The component props
+ * @param {Object} props         - The component props
  * @param {string} props.message - The message to display
- * @param {string} props.type - The type of notice (e.g., success, error)
+ * @param {string} props.variant - The type of notice (e.g., success, error)
  * 
  * @returns {JSX.Element} - The rendered component
  */
-const Notice = ({ message, type }) => {
+const Notice = ({ message, variant }) => {
   const noticeTypes = {
     success: 'notice__success',
     error: 'notice__error',
@@ -17,7 +17,7 @@ const Notice = ({ message, type }) => {
     warning: 'notice__warning'
   };
 
-  const noticeType = noticeTypes[type] || 'notice__info';
+  const noticeType = noticeTypes[variant] || 'notice__info';
 
   const noticeClass = `notice ${noticeType}`;
 

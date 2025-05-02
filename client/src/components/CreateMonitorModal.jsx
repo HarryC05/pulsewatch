@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 import { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError } from '../../utils/regex';
-import { Modal, Notice } from './';
+import { Modal, Notice, Button } from './';
 import '../styles/components/createMonitorModal.css';
 
 const API = import.meta.env.VITE_API_URL;
@@ -77,7 +77,7 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
 
   return (
     <Modal onClose={onClose} title="Create Monitor">
-      {error && <Notice message={error} type="error" />}
+      {error && <Notice message={error} variant="error" />}
       <div className="create-monitor__inputs">
         <label htmlFor="monitor-name">Monitor Name</label>
         <input
@@ -86,7 +86,7 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
           value={monitor.name}
           onChange={handleNameChange}
         />
-        {nameError && <Notice message={nameError} type="error" />}
+        {nameError && <Notice message={nameError} variant="error" />}
         <label htmlFor="monitor-url">Monitor URL</label>
         <input
           type="text"
@@ -94,16 +94,15 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
           value={monitor.url}
           onChange={handleUrlChange}
         />
-        {urlError && <Notice message={urlError} type="error" />}
+        {urlError && <Notice message={urlError} variant="error" />}
       </div>
       <div className='create-monitor__footer'>
-        <button
-          className="btn btn-secondary"
+        <Button
           onClick={handleCreateMonitor}
           disabled={disabled.url || disabled.name}
         >
           Create Monitor
-        </button>
+        </Button>
       </div>
     </Modal>
   );

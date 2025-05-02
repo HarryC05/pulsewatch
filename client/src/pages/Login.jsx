@@ -134,8 +134,8 @@ function Login() {
             <h2>Signup</h2>
           </button>
         </div>
-        {error && <Notice message={error} type="error" />}
-        {success && <Notice message={success} type="success" />}
+        {error && <Notice message={error} variant="error" />}
+        {success && <Notice message={success} variant="success" />}
         <form onSubmit={handleLogin} className="login-page__form">
           {signup && (
             <>

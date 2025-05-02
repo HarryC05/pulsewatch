@@ -9,6 +9,8 @@ import {
   EditMonitorModal,
   Section,
   Card,
+  Notice,
+  Button
 } from '../components';
 
 import '../styles/monitorDetails.css';
@@ -66,7 +68,7 @@ const MonitorDetails = () => {
         />
       )}
       <main className='monitor-page'>
-        {error && <Notice type='error' message={error} />}
+        {error && <Notice variant='error' message={error} />}
         {loading ? (
           <div className='loading'>Loading...</div>
           ) : (
@@ -85,12 +87,12 @@ const MonitorDetails = () => {
                   </h1>
                 </div>
                 <div className='monitor-page__details__header__buttons'>
-                  <button className='btn btn-primary' onClick={() => setShowEditModal(true)}>
+                  <Button variant="primary" onClick={() => setShowEditModal(true)}>
                     Edit
-                  </button>
-                  <button className='btn btn-danger background-colour-red' onClick={() => setShowDeleteModal(true)}>
+                  </Button>
+                  <Button variant="dangerous" onClick={() => setShowDeleteModal(true)}>
                     Delete
-                  </button>
+                  </Button>
                 </div>
               </div>
               <Section className='monitor-page__details'>

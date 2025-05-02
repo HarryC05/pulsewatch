@@ -10,12 +10,19 @@
   --colour-background: #242424;
   --colour-text: var(--colour-offwhite);
 
-  --colour-btn-primary: var(--colour-primary);
-  --colour-btn-primary-hover: #6f6f6f;
-
   --colour-status-green: #4faa4f;
   --colour-status-yellow: #efca46;
   --colour-status-red: #b85252;
+
+  --colour-btn-primary: var(--colour-primary-light);
+  --colour-btn-primary-hover: #6f6f6f;
+  --colour-btn-primary-text: var(--colour-offwhite);
+  --colour-btn-secondary: var(--colour-primary);
+  --colour-btn-secondary-hover: #4b5563;
+  --colour-btn-secondary-text: var(--colour-offwhite);
+  --colour-btn-dangerous: var(--colour-status-red);
+  --colour-btn-dangerous-hover: #b77676;
+  --colour-btn-dangerous-text: var(--colour-offwhite);
 
   --nav-height: calc(3.5rem + 1rem); /* 3.5rem for logo height, 1rem for padding */
 
@@ -68,34 +75,6 @@ main {
 
 .background-colour-red {
   background-color: var(--colour-status-red) !important;
-}
-
-.btn {
-  background-color: var(--colour-btn-primary);
-  border: none;
-  border-radius: 0.5rem;
-  color: var(--colour-text);
-  cursor: pointer;
-  font-size: 1rem;
-  padding: 1rem;
-}
-
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.btn:hover {
-  background-color: var(--colour-btn-primary-hover);
-}
-
-.btn-text {
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  padding: 0;
 }
 
 input {

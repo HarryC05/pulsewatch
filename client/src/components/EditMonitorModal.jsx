@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 import { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError } from '../../utils/regex';
-import { Modal, Notice } from './';
+import { Modal, Notice, Button } from './';
 import '../styles/components/editMonitorModal.css';
 
 const API = import.meta.env.VITE_API_URL;
@@ -75,7 +75,7 @@ const EditMonitorModal = ({onClose, monitor, getMonitor}) => {
           value={tmpMonitor.name}
           onChange={handleNameChange}
         />
-        {nameError && <Notice message={nameError} type="error" />}
+        {nameError && <Notice message={nameError} variant="error" />}
         <label htmlFor="monitor-url">Monitor URL</label>
         <input
           type="text"
@@ -83,22 +83,21 @@ const EditMonitorModal = ({onClose, monitor, getMonitor}) => {
           value={tmpMonitor.url}
           onChange={handleUrlChange}
         />
-        {urlError && <Notice message={urlError} type="error" />}
+        {urlError && <Notice message={urlError} variant="error" />}
       </div>
       <div className='edit-monitor__footer'>
-        <button
-          className="btn btn-primary"
+        <Button
           onClick={onSave}
           disabled={(tmpMonitor.name === monitor.name && tmpMonitor.url === monitor.url) || nameError || urlError}
         >
           Save
-        </button>
-        <button
-          className="btn btn-secondary"
+        </Button>
+        <Button
+          variant="secondary"
           onClick={onClose}
         >
           Cancel
-        </button>
+        </Button>
       </div>
     </Modal>
   );

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { Notice, Section } from "../components";
+import { Notice, Section, Button } from "../components";
 import "../styles/account.css";
 
 const API = import.meta.env.VITE_API_URL;
@@ -62,31 +62,31 @@ const Account = () => {
         <h2>Your Information</h2>
         {
           error && (
-            <Notice message={error} type="error" />
+            <Notice message={error} variant="error" />
           )
         }
-        {success && <Notice message={success} type="success" />}
+        {success && <Notice message={success} variant="success" />}
         <div className="account__info">
           <label>Username:</label>
           <input
             type="text"
-            value={user.username}
+            value={updatedUser.username}
             onChange={(e) => setUpdatedUser({ ...updatedUser, username: e.target.value })}
           />
           <label>Email:</label>
           <input
             type="email"
-            value={user.email}
+            value={updatedUser.email}
             onChange={(e) => setUpdatedUser({ ...updatedUser, email: e.target.value })}
           />
         </div>
-        <button
+        <Button
+          variant="primary"
           disabled={updatedUser.username === user.username && updatedUser.email === user.email}
           onClick={() => updateUser(updatedUser)}
-          className="btn btn-primary"
         >
           Update
-        </button>
+        </Button>
       </Section>
     </main>
   );
