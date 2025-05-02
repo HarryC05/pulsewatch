@@ -40,7 +40,6 @@
 .dashboard__content-summary {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding: 2rem 0;
   gap: 1rem;
 }
 
