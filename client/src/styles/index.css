@@ -105,5 +105,5 @@ input {
   color: var(--colour-text);
   font-size: 1rem;
   padding: 0.5rem;
-  width: 100%;
+  width: calc(100% - 1rem);
 }

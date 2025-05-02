@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { Notice } from "../components";
+import { Notice, Section } from "../components";
+import "../styles/account.css";
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -57,7 +58,7 @@ const Account = () => {
   return (
     <main className='account-page'>
       <h1>Account</h1>
-      <div className='account__content'>
+      <Section className='account__content'>
         <h2>Your Information</h2>
         {
           error && (
@@ -65,30 +66,20 @@ const Account = () => {
           )
         }
         {success && <Notice message={success} type="success" />}
-        <table>
-          <tbody>
-            <tr>
-              <td>Username:</td>
-              <td>
-                <input
-                  type="text"
-                  value={updatedUser.username}
-                  onChange={(e) => setUpdatedUser({ ...updatedUser, username: e.target.value })}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Email:</td>
-              <td>
-                <input
-                  type="email"
-                  value={updatedUser.email}
-                  onChange={(e) => setUpdatedUser({ ...updatedUser, email: e.target.value })}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="account__info">
+          <label>Username:</label>
+          <input
+            type="text"
+            value={user.username}
+            onChange={(e) => setUpdatedUser({ ...updatedUser, username: e.target.value })}
+          />
+          <label>Email:</label>
+          <input
+            type="email"
+            value={user.email}
+            onChange={(e) => setUpdatedUser({ ...updatedUser, email: e.target.value })}
+          />
+        </div>
         <button
           disabled={updatedUser.username === user.username && updatedUser.email === user.email}
           onClick={() => updateUser(updatedUser)}
@@ -96,7 +87,7 @@ const Account = () => {
         >
           Update
         </button>
-      </div>
+      </Section>
     </main>
   );
 }
