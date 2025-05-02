@@ -10,7 +10,8 @@ import {
   Section,
   Card,
   Notice,
-  Button
+  Button,
+  DeleteMonitorModal,
 } from '../components';
 
 import '../styles/monitorDetails.css';
@@ -67,12 +68,22 @@ const MonitorDetails = () => {
           getMonitor={getMonitor}
         />
       )}
+      {showDeleteModal && (
+        <DeleteMonitorModal
+          onClose={() => setShowDeleteModal(false)}
+          monitorId={monitor.id}
+          monitorName={monitor.name}
+        />
+      )}
       <main className='monitor-page'>
         {error && <Notice variant='error' message={error} />}
         {loading ? (
           <div className='loading'>Loading...</div>
           ) : (
             <>
+              <Button variant="text" onClick={() => navigate(-1)} className='monitor-page__details__back'>
+                <h4>← Back</h4>
+              </Button>
               <div className='monitor-page__details__header'>
                 <div className='monitor-page__details__header__status'>
                   <span

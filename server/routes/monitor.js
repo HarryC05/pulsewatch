@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
       { method: 'GET', path: '/api/v1/monitor/list', description: 'Get all monitors for the logged-in user' },
       { method: 'GET', path: '/api/v1/monitor/:id', description: 'Get a specific monitor by ID' },
       { method: 'PUT', path: '/api/v1/monitor/:id', description: 'Update a monitor' },
+      { method: 'DELETE', path: '/api/v1/monitor/:id', description: 'Delete a monitor' },
     ],
   });
 });
@@ -219,6 +220,41 @@ router.put('/:id', protect, async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Failed to update monitor' });
+  }
+});
+
+// Delete a monitor
+router.delete('/:id', protect, async (req, res) => {
+  const { id } = req.params;
+
+  // Check if the monitor belongs to the logged-in user
+  const monitor = await prisma.monitor.findUnique({
+    where: { id },
+  });
+
+  if (!monitor) {
+    return res.status(404).json({ message: 'Monitor not found' });
+  }
+
+  if (monitor.userId !== req.user.id) {
+    return res.status(403).json({ message: 'Forbidden' });
+  }
+
+  try {
+    // Delete all heartbeats associated with the monitor
+    await prisma.heartbeat.deleteMany({
+      where: { monitorId: id },
+    });
+
+    // Delete the monitor
+    await prisma.monitor.delete({
+      where: { id },
+    });
+
+    res.json({ message: 'Monitor deleted successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to delete monitor' });
   }
 });
 

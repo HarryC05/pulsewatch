@@ -1,0 +1,15 @@
+.delete-monitor-modal > p {
+  margin: 0;
+}
+
+.delete-monitor-modal__actions code {
+  background-color: var(--colour-primary-light);
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+}
+
+.delete-monitor-modal__buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
