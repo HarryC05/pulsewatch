@@ -12,6 +12,7 @@ import {
 import 'chartjs-adapter-date-fns';
 
 import '../styles/components/responseChart.css';
+import Section from './Section';
 
 ChartJS.register(
   LineElement,
@@ -89,9 +90,9 @@ const ResponseChart = ({ heartbeats }) => {
   };
 
   return (
-    <div className='ResponseChart'>
+    <Section variant="dark" className='ResponseChart'>
       <Line data={data} options={options} />
-    </div>
+    </Section>
   )
 }
 export default ResponseChart;

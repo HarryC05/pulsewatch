@@ -1,6 +1,5 @@
 .uptime-chart {
-  background-color: var(--colour-background);
-  border-radius: 5px;
+  display: block;
   padding: 0.5rem;
   width: calc(100% - 1rem);
 }

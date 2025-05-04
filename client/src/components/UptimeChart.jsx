@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import '../styles/components/uptimeChart.css';
+import Section from './Section';
 
 /**
  * @description: A React component that displays an uptime chart.
@@ -33,7 +34,7 @@ const UptimeChart = ({ data }) => {
   }, []);
 
   return (
-    <div className="uptime-chart">
+    <Section variant="dark" className="uptime-chart">
       <div className="uptime-chart__data" ref={containerRef}>
         {visibleData.map((item, index) => (
           <span
@@ -49,7 +50,7 @@ const UptimeChart = ({ data }) => {
         </span>
         <span className="uptime-chart__label">Now</span>
         </div>
-    </div>
+    </Section>
   );
 }
 

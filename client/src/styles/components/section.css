@@ -6,3 +6,7 @@
   gap: 1rem;
   padding: 1rem;
 }
+
+.section__dark {
+  background-color: var(--colour-background);
+}
