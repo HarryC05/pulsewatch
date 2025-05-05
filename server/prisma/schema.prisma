@@ -31,8 +31,10 @@ model Monitor {
 model Heartbeat {
   id           String   @id @default(uuid())
   monitorId    String
-  status       String   // "up" or "down"
+  status       String  // "up" or "down"
   responseTime Int?    // in ms
+  responseCode  Int?   // response code
+  errorMessage String? // error message if any
   createdAt    DateTime @default(now())
 
   monitor      Monitor @relation(fields: [monitorId], references: [id])
