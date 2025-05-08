@@ -88,5 +88,28 @@ cron.schedule('*/5 * * * *', () => {
   checkAllMonitors();
 });
 
-// Also run once on startup
+// run once on startup
 checkAllMonitors();
+
+/**
+ * Daily cleanup of old heartbeats
+ * This will delete heartbeats older than 1 year
+ * This is a simple cleanup task that runs once a day at 03:00 AM
+ */
+cron.schedule('0 3 * * *', async () => {
+  try {
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+
+    const deletedHeartbeats = await prisma.heartbeat.deleteMany({
+      where: {
+        createdAt: {
+          lt: oneYearAgo,
+        },
+      },
+    });
+    console.log(`🗑️ Deleted ${deletedHeartbeats.count} heartbeats older than 12 months.`);
+  } catch (error) {
+    console.error('❌ Failed to delete old heartbeats:', error);
+  }
+});
