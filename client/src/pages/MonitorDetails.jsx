@@ -23,6 +23,7 @@ const MonitorDetails = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [monitor, setMonitor] = useState({});
+  const [downHBs, setDownHBs] = useState([]);
   const [responseTimeOption, setResponseTimeOption] = useState('last24h');
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -30,10 +31,16 @@ const MonitorDetails = () => {
 
   const navigate = useNavigate();
 
+  const filterDownHBs = (heartbeats) => {
+    const filtered = heartbeats.filter((heartbeat) => heartbeat.status === 'down');
+    setDownHBs(filtered.reverse());
+  }
+
   const getMonitor = () => {
     axios.get(`${API}/api/v1/monitor/${id}`, { withCredentials: true })
       .then((res) => {
         setMonitor(res.data);
+        filterDownHBs(res.data.heartbeats.last30d);
         setLoading(false);
       })
       .catch((err) => {
@@ -163,7 +170,7 @@ const MonitorDetails = () => {
                 <UptimeChart
                   data={monitor.heartbeats.last24h}
                 />
-                <div className='monitor-page__details__response-time'>
+                <Section variant="dark" className='monitor-page__details__response-time'>
                   <div className='monitor-page__details__response-time__header'>
                     <h2>Response Time</h2>
                     <select
@@ -177,7 +184,42 @@ const MonitorDetails = () => {
                     </select>
                   </div>
                   <ResponseChart heartbeats={monitor.heartbeats[responseTimeOption]} />
-                </div>
+                </Section>
+                <Section variant="dark" className='monitor-page__details__downtime'>
+                  <h2>Downtime</h2>
+                  <div className='monitor-page__details__downtime__list'>
+                    {downHBs.length > 0 ? (
+                      <table className='monitor-page__details__downtime__list__table'>
+                        <thead>
+                          <tr>
+                            <th className='monitor-page__details__downtime__list__table__header__date'>
+                              Date
+                            </th>
+                            <th className='monitor-page__details__downtime__list__table__header__response-code'>
+                              Response Code
+                            </th>
+                            <th className='monitor-page__details__downtime__list__table__header__error-message'>
+                              Error Message
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {downHBs.map((heartbeat) => (
+                            <tr key={heartbeat.id}>
+                              <td>
+                                {new Date(heartbeat.createdAt).toLocaleString()}
+                              </td>
+                              <td>{heartbeat.responseCode || 'N/A'}</td>
+                              <td>{heartbeat.errorMessage || 'N/A'}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    ) : (
+                      <p>No downtime recorded in the last 30 days.</p>
+                    )}
+                  </div>
+                </Section>
               </Section>
             </>
           )}

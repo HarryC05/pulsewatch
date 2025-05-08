@@ -41,15 +41,6 @@
   margin-top: 0.5rem;
 }
 
-.monitor-page__details__response-time {
-  background-color: var(--colour-background);
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-}
-
 .monitor-page__details__response-time__header {
   display: flex;
   justify-content: space-between;
@@ -63,11 +54,40 @@
   padding: 0.5rem;
 }
 
+.monitor-page__details__downtime__list__table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.monitor-page__details__downtime__list__table th {
+  border-bottom: 2px solid var(--colour-primary-light);
+}
+
+.monitor-page__details__downtime__list__table__header__date {
+  width: 35%;
+}
+
+.monitor-page__details__downtime__list__table__header__error-message {
+  width: 50%;
+}
+
+.monitor-page__details__downtime__list__table td {
+  border-bottom: 1px solid var(--colour-primary-light);
+  padding: 1rem;
+  text-align: center;
+}
+
+.monitor-page__details__downtime__list__table tr:last-child td {
+  border-bottom: none;
+}
+
 .monitor-page__details__info__item > h2,
 .monitor-page__details > h4,
 .monitor-page__details__back > h4,
 .monitor-page__details__info__item__value,
 .monitor-page__details__info__item__subtitle,
-.monitor-page__details__response-time__header > h2 {
+.monitor-page__details__response-time__header > h2,
+.monitor-page__details__downtime > h2 {
   margin: 0;
 }
