@@ -18,29 +18,39 @@ router.get('/', (req, res) => {
 });
 
 // Get user account information
-router.get('/me', protect, (req, res) => {
+router.get('/me', protect, async (req, res) => {
   // Get user data from the request
   const user = req.user;
-  // Find the user in the database
-  prisma.user.findUnique({
-    where: {
-      id: user.id,
-    },
-  })
-    .then((userData) => {
-      if (!userData) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-      res.json({ message: 'User authenticated', user: {
-        id: userData.id,
-        username: userData.username,
-        email: userData.email,
-      } });
+
+  try {
+    // Find the user in the database
+    const userData = await prisma.user.findUnique({
+      where: {
+        id: user.id,
+      },
     })
-    .catch((error) => {
-      console.error('Error fetching user data:', error);
-      res.status(500).json({ message: 'Internal server error' });
+
+    if (!userData) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Get total monitors for the user
+    const totalMonitors = await prisma.monitor.count({
+      where: {
+        userId: user.id,
+      },
     });
+
+    res.json({ message: 'User authenticated', user: {
+      id: userData.id,
+      username: userData.username,
+      email: userData.email,
+      totalMonitors
+    } });
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 });
 
 // Update user account information

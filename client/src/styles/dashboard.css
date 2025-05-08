@@ -3,6 +3,12 @@
   justify-content: space-between;
 }
 
+.dashboard__content-header-title {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
 .dashboard__table {
   width: 100%;
   border-collapse: separate;
@@ -43,7 +49,8 @@
   gap: 1rem;
 }
 
-.dashboard__content > .dashboard__content-header > h2,
+.dashboard__content-header-title > h2,
+.dashboard__content-header-title > h4,
 .dashboard__content-summary-item > h3,
 .dashboard__content-summary-item > h4 {
   margin: 0;

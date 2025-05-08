@@ -73,7 +73,12 @@ const Dashboard = () => {
         <h1>Welcome {user?.username}!</h1>
         <Section className='dashboard__content'>
           <div className='dashboard__content-header'>
-            <h2>Your Monitors</h2>
+            <div className='dashboard__content-header-title'>
+              <h2>Your Monitors</h2>
+              <h4>
+                ({user?.totalMonitors}/10)
+              </h4>
+            </div>
             <Button
               variant='primary'
               onClick={() => setShowCreateModal(true)}

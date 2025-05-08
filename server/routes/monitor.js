@@ -27,6 +27,17 @@ router.get('/', (req, res) => {
 router.post('/create', protect, async (req, res) => {
   const { name, url } = req.body;
 
+  // Check if the user has reached their monitor limit
+  const userMonitors = await prisma.monitor.count({
+    where: { userId: req.user.id },
+  });
+
+  const monitorLimit = 10;
+
+  if (userMonitors >= monitorLimit) {
+    return res.status(403).json({ message: `Monitor limit of ${monitorLimit} reached` });
+  }
+
   // Validate monitor name
   if (!name.match(monitorNameRegex)) {
     return res.status(400).json({ message: monitorNameRegexError });
