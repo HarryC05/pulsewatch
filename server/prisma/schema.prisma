@@ -14,7 +14,9 @@ model User {
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
+
   monitors  Monitor[]
+  statusPages StatusPage[]
 }
 
 model Monitor {
@@ -26,6 +28,7 @@ model Monitor {
   heartbeats Heartbeat[]
 
   user       User @relation(fields: [userId], references: [id])
+  statusPage StatusPageMonitor[]
 }
 
 model Heartbeat {
@@ -38,4 +41,29 @@ model Heartbeat {
   createdAt    DateTime @default(now())
 
   monitor      Monitor @relation(fields: [monitorId], references: [id])
+}
+
+model StatusPage {
+  id          String   @id @default(uuid())
+  userId      String
+  slug        String   @unique
+  title       String
+  description String?
+  isPublic    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user        User     @relation(fields: [userId], references: [id])
+  monitors    StatusPageMonitor[]
+}
+
+model StatusPageMonitor {
+  id           String   @id @default(uuid())
+  statusPageId String
+  monitorId    String
+
+  statusPage   StatusPage @relation(fields: [statusPageId], references: [id])
+  monitor      Monitor     @relation(fields: [monitorId], references: [id])
+
+  @@unique([statusPageId, monitorId], name: "unique_status_page_monitor")
 }
