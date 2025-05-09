@@ -12,7 +12,13 @@ import { prisma } from '../utils/index.js';
 
 const router = express.Router();
 
-// API Routes
+/**
+ * API Routes
+ * @route GET /api/v1/auth
+ * @access Public
+ * 
+ * @returns {Object} - API information
+ */
 router.get('/', (req, res) => {
   res.json({
     message: 'Welcome to the Authentication API',
@@ -24,8 +30,22 @@ router.get('/', (req, res) => {
   });
 });
 
-// Signup route
+/**
+ * Register a new user
+ * @route POST /api/v1/auth/signup
+ * @access Public
+ * 
+ * @param {string} username - User's username
+ * @param {string} email    - User's email
+ * 
+ * @returns {Object} - User registration status
+ */
 router.post('/signup', async (req, res) => {
+  // Check that the body is provided
+  if (!req.body) {
+    return res.status(400).json({ message: 'Body is required' });
+  }
+
   const { username, email, password } = req.body;
 
   // Check if all fields are provided
@@ -87,8 +107,22 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-// Login route
+/**
+ * Login user
+ * @route POST /api/v1/auth/login
+ * @access Public
+ * 
+ * @param {string} identifier - User's email or username
+ * @param {string} password   - User's password
+ * 
+ * @returns {Object} - User login status
+ */
 router.post('/login', async (req, res) => {
+  // Check that the body is provided
+  if (!req.body) {
+    return res.status(400).json({ message: 'Body is required' });
+  }
+
   const { identifier, password } = req.body;
 
   // Check if all fields are provided
@@ -143,7 +177,13 @@ router.post('/login', async (req, res) => {
   res.json({ success: true });
 });
 
-// Logout route
+/**
+ * Logout user
+ * @route POST /api/v1/auth/logout
+ * @access Private
+ * 
+ * @returns {Object} - User logout status
+ */
 router.post('/logout', protect, (req, res) => {
   res.clearCookie('token', {
     httpOnly: true,

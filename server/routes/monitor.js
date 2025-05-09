@@ -11,7 +11,13 @@ import {
 
 const router = express.Router();
 
-// API Routes
+/**
+ * API Routes
+ * @route GET /api/v1/monitor
+ * @access Public
+ * 
+ * @returns {Object} - API information
+ */
 router.get('/', (req, res) => {
   res.json({
     message: 'Welcome to the Monitor API',
@@ -25,8 +31,22 @@ router.get('/', (req, res) => {
   });
 });
 
-// Create a monitor
+/**
+ * Create a new monitor
+ * @route POST /api/v1/monitor/create
+ * @access Private
+ * 
+ * @param {string} name - Monitor name
+ * @param {string} url  - Monitor URL
+ * 
+ * @returns {Object} - Created monitor information
+ */
 router.post('/create', protect, async (req, res) => {
+  // Check that the body is provided
+  if (!req.body) {
+    return res.status(400).json({ message: 'Body is required' });
+  }
+
   const { name, url } = req.body;
 
   // Check if the user has reached their monitor limit
@@ -66,7 +86,13 @@ router.post('/create', protect, async (req, res) => {
   }
 });
 
-// Get all monitors for the logged-in user
+/**
+ * Get all monitors for the logged-in user
+ * @route GET /api/v1/monitor/list
+ * @access Private
+ * 
+ * @returns {Array} - List of monitors
+ */
 router.get('/list', protect, async (req, res) => {
   try {
     // Get monitors belonging to logged-in user
@@ -112,7 +138,15 @@ router.get('/list', protect, async (req, res) => {
   }
 });
 
-// Get a specific monitor by ID
+/**
+ * Get a specific monitor by ID
+ * @route GET /api/v1/monitor/:id
+ * @access Private
+ * 
+ * @param {string} id - Monitor ID
+ * 
+ * @returns {Object} - Monitor information
+ */
 router.get('/:id', protect, async (req, res) => {
   const { id } = req.params;
 
@@ -192,9 +226,25 @@ router.get('/:id', protect, async (req, res) => {
   }
 });
 
-// Update a monitor
+/**
+ * Update a monitor
+ * @route PUT /api/v1/monitor/:id
+ * @access Private
+ * 
+ * @param {string} id - Monitor ID
+ * @param {string} name - Monitor name
+ * @param {string} url  - Monitor URL
+ * 
+ * @returns {Object} - Updated monitor information
+ */
 router.put('/:id', protect, async (req, res) => {
   const { id } = req.params;
+
+  // Check that the body is provided
+  if (!req.body) {
+    return res.status(400).json({ message: 'Body is required' });
+  }
+
   const { name, url } = req.body;
 
   // Validate monitor name
@@ -236,7 +286,15 @@ router.put('/:id', protect, async (req, res) => {
   }
 });
 
-// Delete a monitor
+/**
+ * Delete a monitor
+ * @route DELETE /api/v1/monitor/:id
+ * @access Private
+ * 
+ * @param {string} id - Monitor ID
+ * 
+ * @returns {Object} - Deletion status
+ */
 router.delete('/:id', protect, async (req, res) => {
   const { id } = req.params;
 

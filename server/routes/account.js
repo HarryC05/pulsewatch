@@ -6,7 +6,13 @@ import { prisma } from '../utils/index.js';
 
 const router = express.Router();
 
-// API Routes
+/**
+ * API Routes
+ * @route GET /api/v1/account
+ * @access Public
+ * 
+ * @returns {Object} - API information
+ */
 router.get('/', (req, res) => {
   res.json({
     message: 'Welcome to the Account API',
@@ -17,7 +23,13 @@ router.get('/', (req, res) => {
   });
 });
 
-// Get user account information
+/**
+ * Get logged-in user information
+ * @route GET /api/v1/account/me
+ * @access Private
+ * 
+ * @returns {Object} - User information
+ */
 router.get('/me', protect, async (req, res) => {
   // Get user data from the request
   const user = req.user;
@@ -53,8 +65,22 @@ router.get('/me', protect, async (req, res) => {
   }
 });
 
-// Update user account information
+/**
+ * Update logged-in user information
+ * @route PUT /api/v1/account/me
+ * @access Private
+ * 
+ * @param {string} username - User's new username
+ * @param {string} email    - User's new email
+ * 
+ * @returns {Object} - Updated user information
+ */
 router.put('/me', protect, async (req, res) => {
+  // Check that the body is provided
+  if (!req.body) {
+    return res.status(400).json({ message: 'Body is required' });
+  }
+
   const { username, email } = req.body;
 
   // Validate input

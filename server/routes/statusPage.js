@@ -10,7 +10,13 @@ import { prisma, formatPage } from '../utils/index.js';
 
 const router = express.Router();
 
-// API Routes
+/**
+ * API Routes
+ * @route GET /api/v1/status-page
+ * @access Public
+ * 
+ * @returns {object} - API information
+ */
 router.get('/', (req, res) => {
   res.json({
     message: 'Welcome to the Status Page API',
