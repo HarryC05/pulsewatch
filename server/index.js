@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import accountRoutes from './routes/account.js';
 import authRoutes from './routes/auth.js';
 import monitorRoutes from './routes/monitor.js';
+import statusPageRoutes from './routes/statusPage.js';
 
 dotenv.config();
 const app = express();
@@ -26,6 +27,9 @@ app.use('/api/v1/auth', authRoutes);
 
 // Monitor routes
 app.use('/api/v1/monitor', monitorRoutes);
+
+// Status page routes
+app.use('/api/v1/status-page', statusPageRoutes);
 
 // Health check route
 app.get('/api/v1/health', (req, res) => {

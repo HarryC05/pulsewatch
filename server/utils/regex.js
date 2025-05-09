@@ -45,4 +45,48 @@ const urlRegexError = 'URL must start with http:// or https:// and contain a val
 const monitorNameRegex = /^[a-zA-Z0-9-_. ]{3,32}$/;
 const monitorNameRegexError = 'Monitor name must be between 3 and 32 characters long and can only contain letters, numbers, hyphens, underscores, and spaces.';
 
-export { emailRegex, emailRegexError, usernameRegex, usernameRegexError, passwordRegex, passwordRegexError, monitorNameRegex, monitorNameRegexError, urlRegex, urlRegexError };
+/**
+ * Status page name regex pattern
+ * - Must be between 3 and 32 characters long
+ * - Can contain letters, numbers, hyphens, underscores, spaces, and full stops
+ * - Cannot contain special characters
+ */
+const statusPageNameRegex = /^[a-zA-Z0-9-_. ]{3,32}$/;
+const statusPageNameRegexError = 'Status page name must be between 3 and 32 characters long and can only contain letters, numbers, hyphens, underscores, and spaces.';
+
+/**
+ * Status page slug regex pattern
+ * - Must be between 3 and 32 characters long
+ * - can only contain lowercase letters, numbers, and hyphens
+ * - Cannot contain spaces or special characters
+ */
+const statusPageSlugRegex = /^[a-z0-9-]{3,32}$/;
+const statusPageSlugRegexError = 'Status page slug must be between 3 and 32 characters long and can only contain lowercase letters, numbers, and hyphens.';
+
+/**
+ * Status page description regex pattern
+ * - Must be between 0 and 500 characters long
+ * - Can contain letters, numbers, hyphens, underscores, spaces, full stops, commas, exclamation marks, question marks, colons, semicolons, apostrophes, quotes, parentheses, dashes, slashes, and ampersands
+ * - Cannot contain special characters
+ */
+const statusPageDescriptionRegex = /^[a-zA-Z0-9-_. ,!?;:'"()&/\\]{0,500}$/;
+const statusPageDescriptionRegexError = 'Status page description must be no longer than 500 characters and can only contain letters, numbers, hyphens, underscores, spaces, full stops, commas, exclamation marks, question marks, colons, semicolons, apostrophes, quotes, parentheses, dashes, slashes, and ampersands.';
+
+export {
+  emailRegex,
+  emailRegexError,
+  usernameRegex,
+  usernameRegexError,
+  passwordRegex,
+  passwordRegexError,
+  monitorNameRegex,
+  monitorNameRegexError,
+  urlRegex,
+  urlRegexError,
+  statusPageNameRegex,
+  statusPageNameRegexError,
+  statusPageSlugRegex,
+  statusPageSlugRegexError,
+  statusPageDescriptionRegex,
+  statusPageDescriptionRegexError,
+};
