@@ -1,0 +1,72 @@
+{
+	"env": {
+		"node": true,
+		"es2021": true
+	},
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:jsdoc/recommended",
+		"plugin:prettier/recommended"
+	],
+	"plugins": [
+		"jsdoc",
+		"prettier"
+	],
+	"rules": {
+		"prettier/prettier": "error",
+		"jsdoc/require-jsdoc": [
+			"warn",
+			{
+				"require": {
+					"FunctionDeclaration": true,
+					"MethodDefinition": true,
+					"ClassDeclaration": true
+				}
+			}
+		],
+		"jsdoc/require-param": "error",
+		"jsdoc/require-returns": "error",
+		"jsdoc/tag-lines": [
+			"error",
+			"any",
+			{
+				"startLines": 1
+			}
+		],
+		"jsdoc/no-undefined-types": "off",
+		"jsdoc/check-line-alignment": [
+			"error",
+			"always",
+			{
+				"tags": [
+					"param"
+				]
+			}
+		],
+		"jsdoc/check-tag-names": [
+			"error",
+			{
+				"definedTags": [
+					"access",
+					"route"
+				]
+			}
+		]
+	},
+	"settings": {
+		"jsdoc": {
+			"tagNamePreference": {
+				"route": "route",
+				"access": "access"
+			},
+			"structuredTags": {
+				"route": {},
+				"access": {}
+			}
+		}
+	}
+}

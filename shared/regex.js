@@ -17,7 +17,8 @@ emailRegex.err = 'Email must be a valid email address.';
  */
 const unameRegex = {};
 unameRegex.pattern = /^[a-zA-Z0-9_-]{3,16}$/;
-unameRegex.err = 'Username must be between 3 and 16 characters long and can only contain letters, numbers, underscores, and hyphens.';
+unameRegex.err =
+	'Username must be between 3 and 16 characters long and can only contain letters, numbers, underscores, and hyphens.';
 
 /**
  * Password regex pattern
@@ -28,8 +29,10 @@ unameRegex.err = 'Username must be between 3 and 16 characters long and can only
  * - Must contain at least one special character (@, $, !, %, *, ?, &)
  */
 const passwordRegex = {};
-passwordRegex.pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-passwordRegex.err = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@, $, !, %, *, ?, &).';
+passwordRegex.pattern =
+	/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+passwordRegex.err =
+	'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@, $, !, %, *, ?, &).';
 
 /**
  * URL regex pattern
@@ -37,8 +40,10 @@ passwordRegex.err = 'Password must be at least 8 characters long and contain at 
  * - Must contain a valid domain name
  */
 const urlRegex = {};
-urlRegex.pattern = /^(https?:\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d{1,5})?(\/.*)?$/;
-urlRegex.err = 'URL must start with http:// or https:// and contain a valid domain name.';
+urlRegex.pattern =
+	/^(https?:\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d{1,5})?(\/.*)?$/;
+urlRegex.err =
+	'URL must start with http:// or https:// and contain a valid domain name.';
 
 /**
  * Name regex pattern
@@ -48,7 +53,8 @@ urlRegex.err = 'URL must start with http:// or https:// and contain a valid doma
  */
 const nameRegex = {};
 nameRegex.pattern = /^[a-zA-Z0-9-_. ]{3,32}$/;
-nameRegex.err = 'Name must be between 3 and 32 characters long and can only contain letters, numbers, hyphens, underscores, and spaces.';
+nameRegex.err =
+	'Name must be between 3 and 32 characters long and can only contain letters, numbers, hyphens, underscores, and spaces.';
 
 /**
  * Slug regex pattern
@@ -58,7 +64,8 @@ nameRegex.err = 'Name must be between 3 and 32 characters long and can only cont
  */
 const slugRegex = {};
 slugRegex.pattern = /^[a-z0-9-]{3,32}$/;
-slugRegex.err = 'Slug must be between 3 and 32 characters long and can only contain lowercase letters, numbers, and hyphens.';
+slugRegex.err =
+	'Slug must be between 3 and 32 characters long and can only contain lowercase letters, numbers, and hyphens.';
 
 /**
  * Status page description regex pattern
@@ -68,14 +75,15 @@ slugRegex.err = 'Slug must be between 3 and 32 characters long and can only cont
  */
 const descRegex = {};
 descRegex.pattern = /^[a-zA-Z0-9-_. ,!?;:'"()&/\\]{0,500}$/;
-descRegex.err = 'Status page description must be no longer than 500 characters and can only contain letters, numbers, hyphens, underscores, spaces, full stops, commas, exclamation marks, question marks, colons, semicolons, apostrophes, quotes, parentheses, dashes, slashes, and ampersands.';
+descRegex.err =
+	'Status page description must be no longer than 500 characters and can only contain letters, numbers, hyphens, underscores, spaces, full stops, commas, exclamation marks, question marks, colons, semicolons, apostrophes, quotes, parentheses, dashes, slashes, and ampersands.';
 
 export {
-  emailRegex,
-  unameRegex,
-  passwordRegex,
-  urlRegex,
-  nameRegex,
-  slugRegex,
-  descRegex,
+	emailRegex,
+	unameRegex,
+	passwordRegex,
+	urlRegex,
+	nameRegex,
+	slugRegex,
+	descRegex,
 };

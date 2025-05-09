@@ -12,16 +12,16 @@ import UptimeChart from './UptimeChart';
 import UptimePill from './UptimePill';
 
 export {
-  Button,
-  Card,
-  CreateMonitorModal,
-  DeleteMonitorModal,
-  EditMonitorModal,
-  Modal,
-  NavBard,
-  Notice,
-  ResponseChart,
-  Section,
-  UptimeChart,
-  UptimePill
+	Button,
+	Card,
+	CreateMonitorModal,
+	DeleteMonitorModal,
+	EditMonitorModal,
+	Modal,
+	NavBard,
+	Notice,
+	ResponseChart,
+	Section,
+	UptimeChart,
+	UptimePill,
 };

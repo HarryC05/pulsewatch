@@ -3,9 +3,4 @@ import calcUptime from './calcUptime.js';
 import formatPage from './formatPage.js';
 import prisma from './prisma.js';
 
-export {
-  calcRespTime,
-  calcUptime,
-  formatPage,
-  prisma,
-};
+export { calcRespTime, calcUptime, formatPage, prisma };

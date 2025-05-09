@@ -1,9 +1,9 @@
 import '../styles/components/section.css';
 
 /**
- * @description A simple section component that wraps its children in a div with a specific class.
+ * Section component
  *
- * @param {Object}    props           - The component props
+ * @param {object}    props           - The component props
  * @param {string}    props.className - Additional class name to apply to the section
  * @param {string}    props.variant   - The variant of the section (not used in this implementation)
  * @param {ReactNode} props.children  - The children to render inside the section
@@ -11,18 +11,16 @@ import '../styles/components/section.css';
  * @returns {JSX.Element} - The rendered component
  */
 const Section = ({ className, variant, children }) => {
-  const variants = {
-    default: '',
-    dark: 'section__dark',
-  };
+	const variants = {
+		default: '',
+		dark: 'section__dark',
+	};
 
-  const variantClass = variants[variant] || variants.default;
+	const variantClass = variants[variant] || variants.default;
 
-  return (
-    <div className={`section ${variantClass} ${className}`}>
-      {children}
-    </div>
-  );
-}
+	return (
+		<div className={`section ${variantClass} ${className}`}>{children}</div>
+	);
+};
 
 export default Section;

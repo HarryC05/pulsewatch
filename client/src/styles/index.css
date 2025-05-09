@@ -1,11 +1,12 @@
 :root {
+
   /* Colours */
   --colour-primary: #5f5f5f;
   --colour-primary-light: #808080;
   --colour-primary-dark: #4b5563;
   --colour-offwhite: #fefefe;
-  --colour-white: #ffffff;
-  --colour-black: #000000;
+  --colour-white: #fff;
+  --colour-black: #000;
 
   --colour-background: #242424;
   --colour-text: var(--colour-offwhite);
