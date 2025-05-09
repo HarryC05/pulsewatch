@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { unameRegex, emailRegex }  from '../../../shared/regex';
-import { usernameRegex, usernameRegexError, emailRegex, emailRegexError } from '../../utils/regex';
 import { Notice, Section, Button } from '../components';
 import '../styles/account.css';
 
@@ -44,8 +43,8 @@ const Account = () => {
     const value = e.target.value;
     setUpdatedUser({ ...updatedUser, username: value });
 
-    if (!usernameRegex.test(value)) {
-      setNameError(usernameRegexError);
+    if (!unameRegex.pattern.test(value)) {
+      setNameError(unameRegex.err);
     } else {
       setNameError('');
     }
@@ -55,8 +54,8 @@ const Account = () => {
     const value = e.target.value;
     setUpdatedUser({ ...updatedUser, email: value });
 
-    if (!emailRegex.test(value)) {
-      setEmailError(emailRegexError);
+    if (!emailRegex.pattern.test(value)) {
+      setEmailError(emailRegex.err);
     } else {
       setEmailError('');
     }
