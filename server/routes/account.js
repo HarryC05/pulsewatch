@@ -1,8 +1,8 @@
 import express from 'express';
 
 import { protect } from '../middleware/auth.js';
-import { emailRegex, unameRegexRegex } from '../../shared/regex.js';
-import prisma from '../utils/prisma.js';
+import { emailRegex, unameRegex } from '../../shared/regex.js';
+import { prisma } from '../utils/index.js';
 
 const router = express.Router();
 

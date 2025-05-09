@@ -8,7 +8,7 @@ import {
   emailRegex,
   passwordRegex,
 } from '../../shared/regex.js';
-import prisma from '../utils/prisma.js';
+import { prisma } from '../utils/index.js';
 
 const router = express.Router();
 

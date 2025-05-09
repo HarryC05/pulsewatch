@@ -3,9 +3,11 @@ import express from 'express';
 
 import { protect } from '../middleware/auth.js';
 import { urlRegex, nameRegex } from '../../shared/regex.js';
-import prisma from '../utils/prisma.js';
-import calcUptime from '../utils/calcUptime.js';
-import calcRespTime from '../utils/calcRespTime.js';
+import {
+  prisma,
+  calcRespTime,
+  calcUptime
+} from '../utils/index.js';
 
 const router = express.Router();
 
