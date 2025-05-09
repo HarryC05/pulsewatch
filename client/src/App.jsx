@@ -1,7 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import NavBar from './components/NavBar';
-
 import Homepage from './pages/Homepage';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -16,7 +14,6 @@ import MonitorDetails from './pages/MonitorDetails';
 function App() {
 	return (
 		<>
-			<NavBar />
 			<Router>
 				<Routes>
 					<Route path="/" element={<Homepage />} />

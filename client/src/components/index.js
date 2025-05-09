@@ -4,7 +4,7 @@ import CreateMonitorModal from './CreateMonitorModal';
 import DeleteMonitorModal from './DeleteMonitorModal';
 import EditMonitorModal from './EditMonitorModal';
 import Modal from './Modal';
-import NavBard from './NavBar';
+import NavBar from './NavBar';
 import Notice from './Notice';
 import ResponseChart from './ResponseChart';
 import Section from './Section';
@@ -18,7 +18,7 @@ export {
 	DeleteMonitorModal,
 	EditMonitorModal,
 	Modal,
-	NavBard,
+	NavBar,
 	Notice,
 	ResponseChart,
 	Section,

@@ -8,6 +8,7 @@ import {
 	Section,
 	Card,
 	Button,
+	NavBar,
 } from '../components';
 
 import '../styles/dashboard.css';
@@ -79,6 +80,7 @@ const Dashboard = () => {
 					}}
 				/>
 			)}
+			<NavBar />
 			<main className="dashboard-page">
 				<h1>Welcome {user?.username}!</h1>
 				<Section className="dashboard__content">

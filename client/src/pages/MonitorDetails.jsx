@@ -12,6 +12,7 @@ import {
 	Notice,
 	Button,
 	DeleteMonitorModal,
+	NavBar,
 } from '../components';
 
 import '../styles/monitorDetails.css';
@@ -99,6 +100,7 @@ const MonitorDetails = () => {
 					monitorName={monitor.name}
 				/>
 			)}
+			<NavBar />
 			<main className="monitor-page">
 				{error && <Notice variant="error" message={error} />}
 				{loading ? (
