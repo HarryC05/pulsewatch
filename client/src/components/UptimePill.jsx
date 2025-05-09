@@ -2,10 +2,10 @@ import '../styles/components/uptimePill.css';
 
 /**
  * @description Uptime component for displaying the uptime of a monitor
- * 
+ *
  * @param {Object} props - The component props
  * @param {number} props.uptime - The uptime percentage to display
- * 
+ *
  * @returns {JSX.Element} - The rendered component
  */
 const UptimePill = ({ uptime }) => {

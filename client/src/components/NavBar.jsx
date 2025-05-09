@@ -22,9 +22,9 @@ const NavBar = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    axios.get(`${API}/api/v1/account/me`, { 
-        withCredentials: true, 
-        signal: controller.signal 
+    axios.get(`${API}/api/v1/account/me`, {
+        withCredentials: true,
+        signal: controller.signal
       })
       .then(() => {
         // User is already logged in

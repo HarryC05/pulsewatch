@@ -14,7 +14,7 @@ const router = express.Router();
  * API Routes
  * @route GET /api/v1/status-page
  * @access Public
- * 
+ *
  * @returns {object} - API information
  */
 router.get('/', (req, res) => {
@@ -34,13 +34,13 @@ router.get('/', (req, res) => {
  * Create a new status page
  * @route POST /api/v1/status-page/create
  * @access Private
- * 
+ *
  * @param {string}   title        - The name of the status page
  * @param {string}   slug        - The slug of the status page
  * @param {string}   description - The description of the status page
  * @param {boolean}  isPublic    - Whether the status page is public or private
  * @param {string[]} monitors    - The list of monitor IDs associated with the status page
- * 
+ *
  * @returns {object} - The created status page object
  */
 router.post('/create', protect, async (req, res) => {
@@ -139,7 +139,7 @@ router.post('/create', protect, async (req, res) => {
  * Get all status pages for the logged-in user
  * @route GET /api/v1/status-page/list
  * @access Private
- * 
+ *
  * @returns {Array} - List of status pages for the logged-in user
  */
 router.get('/list', protect, async (req, res) => {
@@ -167,9 +167,9 @@ router.get('/list', protect, async (req, res) => {
  * Get a specific status page by slug
  * @route GET /api/v1/status-page/:slug
  * @access Public
- * 
+ *
  * @param {string} slug - The slug of the status page
- * 
+ *
  * @returns {object} - The status page object
  */
 router.get('/:slug', async (req, res) => {
@@ -232,14 +232,14 @@ router.get('/:slug', async (req, res) => {
  * Update a status page
  * @route PUT /api/v1/status-page/:id
  * @access Private
- * 
+ *
  * @param {string}   id          - The ID of the status page
  * @param {string}   title       - The name of the status page
  * @param {string}   slug        - The slug of the status page
  * @param {string}   description - The description of the status page
  * @param {boolean}  isPublic    - Whether the status page is public or private
  * @param {string[]} monitors    - The list of monitor IDs associated with the status page
- * 
+ *
  * @returns {object} - The updated status page object
  */
 router.put('/:id', protect, async (req, res) => {
@@ -328,9 +328,9 @@ router.put('/:id', protect, async (req, res) => {
  * Delete a status page
  * @route DELETE /api/v1/status-page/:id
  * @access Private
- * 
+ *
  * @param {string} id - The ID of the status page
- * 
+ *
  * @returns {object} - The deleted status page object
  */
 router.delete('/:id', protect, async (req, res) => {

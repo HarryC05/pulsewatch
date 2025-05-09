@@ -26,10 +26,10 @@ ChartJS.register(
 
 /**
  * @description This component is used to display the response time of the server in a chart.
- * 
+ *
  * @param {Object} props            - The component props
  * @param {Array}  props.heartbeats - The heartbeats data to be displayed in the chart
- * 
+ *
  * @returns {JSX.Element} - The rendered component
  */
 const ResponseChart = ({ heartbeats }) => {

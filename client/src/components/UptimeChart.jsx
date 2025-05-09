@@ -5,10 +5,10 @@ import Section from './Section';
 
 /**
  * @description: A React component that displays an uptime chart.
- * 
+ *
  * @param {Object} props       - The component props
  * @param {Array}  props.data - The data to be displayed in the chart
- * 
+ *
  * @returns {JSX.Element} - The rendered component
  */
 const UptimeChart = ({ data }) => {

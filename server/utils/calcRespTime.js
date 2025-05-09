@@ -1,8 +1,8 @@
 /**
  * @description Calculate the average response time of the server based on heartbeats
- * 
+ *
  * @param {Array} heartBeats - Array of heartbeats
- * 
+ *
  * @returns {String|null} - Average response time in milliseconds as a string or null if no heartbeats
  */
 const calcRespTime = (heartBeats) => {

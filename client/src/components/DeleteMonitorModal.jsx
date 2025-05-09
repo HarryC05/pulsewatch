@@ -9,14 +9,14 @@ const API = import.meta.env.VITE_API_URL;
 
 /**
  * DeleteMonitorModal component
- * 
+ *
  * @description This component renders a modal for confirming the deletion of a monitor.
- * 
+ *
  * @param {Object}   props          - Props for the component
  * @param {Function} props.onClose  - Function to close the modal
  * @param {string}   props.monitorId - ID of the monitor to be deleted
  * @param {string}   props.monitorName - Name of the monitor to be deleted
- * 
+ *
  * @returns {JSX.Element} - Rendered component
  */
 const DeleteMonitorModal = ({onClose, monitorId, monitorName}) => {

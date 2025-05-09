@@ -2,14 +2,14 @@ import '../styles/components/modal.css';
 
 /**
  * Modal component
- * 
+ *
  * @description This component renders a modal for creating a new monitor.
- * 
+ *
  * @param {Object}    props          - Props for the component
  * @param {string}    props.title    - Title of the modal
  * @param {Function}  props.onClose  - Function to close the modal
  * @param {ReactNode} props.children - Content to be displayed inside the modal
- * 
+ *
  * @returns {JSX.Element} - Rendered component
  */
 const Modal = ({title, onClose, children}) => {

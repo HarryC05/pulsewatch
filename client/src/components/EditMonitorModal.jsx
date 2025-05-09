@@ -9,14 +9,14 @@ const API = import.meta.env.VITE_API_URL;
 
 /**
  * Edit component
- * 
+ *
  * @description This component renders a modal for editing a monitor.
- * 
+ *
  * @param {Object}   props            - Props for the component
  * @param {Function} props.onClose    - Function to close the modal
  * @param {Object}   props.monitor    - Monitor object to be edited
  * @param {Function} props.getMonitor - Function to fetch the monitor data
- * 
+ *
  * @returns {JSX.Element} - Rendered component
  */
 const EditMonitorModal = ({onClose, monitor, getMonitor}) => {

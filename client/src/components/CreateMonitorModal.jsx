@@ -9,13 +9,13 @@ const API = import.meta.env.VITE_API_URL;
 
 /**
  * CreateMonitorModal component
- * 
+ *
  * @description This component renders a modal for creating a new monitor.
- * 
+ *
  * @param {Object}   props          - Props for the component
  * @param {Function} props.onClose  - Function to close the modal
  * @param {Function} props.onCreate - Function to handle monitor creation
- * 
+ *
  * @returns {JSX.Element} - Rendered component
  */
 const CreateMonitorModal = ({onClose, onCreate}) => {

@@ -1,8 +1,8 @@
 /**
  * @description Calculate the uptime of the server based on heartbeats
- * 
+ *
  * @param {Array} heartBeats - Array of heartbeats
- * 
+ *
  * @returns {String|null} - Uptime percentage as a string or null if no heartbeats
  */
 const calcUptime = (heartBeats) => {

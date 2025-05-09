@@ -2,11 +2,11 @@ import '../styles/components/notice.css';
 
 /**
  * @description A simple notice component that displays a message.
- * 
+ *
  * @param {Object} props         - The component props
  * @param {string} props.message - The message to display
  * @param {string} props.variant - The type of notice (e.g., success, error)
- * 
+ *
  * @returns {JSX.Element} - The rendered component
  */
 const Notice = ({ message, variant }) => {

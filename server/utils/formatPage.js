@@ -1,3 +1,20 @@
+/**
+ * Formats the page object to a more readable structure
+ *
+ * @param {Object} page - The page object containing monitor data
+ * @param {String} page.title - The title of the page
+ * @param {String} page.description - The description of the page
+ * @param {Array}  page.monitors - Array of monitor objects
+ * @param {String} page.monitors[].id - The ID of the monitor
+ * @param {String} page.monitors[].name - The name of the monitor
+ * @param {String} page.monitors[].url - The URL of the monitor
+ * @param {Array} page.monitors[].monitor.heartbeats - Array of heartbeat objects
+ * @param {String} page.monitors[].monitor.heartbeats[].id - The ID of the heartbeat
+ * @param {String} page.monitors[].monitor.heartbeats[].status - The status of the heartbeat
+ * @param {Number} page.monitors[].monitor.heartbeats[].responseTime - The response time of the heartbeat
+ * @param {String} page.monitors[].monitor.heartbeats[].createdAt - The creation date of the heartbeat
+ * @returns
+ */
 const formatPage = (page) => {
   return {
     title: page.title,

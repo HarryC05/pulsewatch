@@ -2,7 +2,7 @@ import '../styles/components/button.css';
 
 /**
  * @description A simple button component that can be used throughout the application.
- * 
+ *
  * @param {Object}    props           - The component props
  * @param {Function}  props.onClick   - The function to call when the button is clicked
  * @param {string}    props.className - Additional class names to apply to the button
@@ -10,7 +10,7 @@ import '../styles/components/button.css';
  * @param {boolean}   props.disabled  - Whether the button is disabled
  * @param {string}    props.type      - The type of the button (e.g., button, submit)
  * @param {ReactNode} props.children  - The content to display inside the button
- * 
+ *
  * @returns {JSX.Element} - The rendered button component
  */
 const Button = ({

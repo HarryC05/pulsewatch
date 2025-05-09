@@ -10,7 +10,7 @@ const router = express.Router();
  * API Routes
  * @route GET /api/v1/account
  * @access Public
- * 
+ *
  * @returns {Object} - API information
  */
 router.get('/', (req, res) => {
@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
  * Get logged-in user information
  * @route GET /api/v1/account/me
  * @access Private
- * 
+ *
  * @returns {Object} - User information
  */
 router.get('/me', protect, async (req, res) => {
@@ -69,10 +69,10 @@ router.get('/me', protect, async (req, res) => {
  * Update logged-in user information
  * @route PUT /api/v1/account/me
  * @access Private
- * 
+ *
  * @param {string} username - User's new username
  * @param {string} email    - User's new email
- * 
+ *
  * @returns {Object} - Updated user information
  */
 router.put('/me', protect, async (req, res) => {

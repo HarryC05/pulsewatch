@@ -73,7 +73,7 @@ async function checkAllMonitors() {
   try {
     const monitors = await prisma.monitor.findMany();
     console.log(`🔄 Checking ${monitors.length} monitor(s)...`);
-    
+
     for (const monitor of monitors) {
       await checkMonitor(monitor);
     }

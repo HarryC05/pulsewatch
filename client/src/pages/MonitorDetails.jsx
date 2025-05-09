@@ -53,7 +53,7 @@ const MonitorDetails = () => {
         }
       });
   }
-  
+
   useEffect(() => {
     // Fetch monitor details
     getMonitor();
