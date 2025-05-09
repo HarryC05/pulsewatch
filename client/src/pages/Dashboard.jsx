@@ -69,53 +69,53 @@ const Dashboard = () => {
           } }
         />
       )}
-      <main className='dashboard-page'>
+      <main className="dashboard-page">
         <h1>Welcome {user?.username}!</h1>
-        <Section className='dashboard__content'>
-          <div className='dashboard__content-header'>
-            <div className='dashboard__content-header-title'>
+        <Section className="dashboard__content">
+          <div className="dashboard__content-header">
+            <div className="dashboard__content-header-title">
               <h2>Your Monitors</h2>
               <h4>
                 ({user?.totalMonitors}/10)
               </h4>
             </div>
             <Button
-              variant='primary'
+              variant="primary"
               onClick={() => setShowCreateModal(true)}
             >
               + Add Monitor
             </Button>
           </div>
-          <div className='dashboard__content-summary'>
-            <Card className='dashboard__content-summary-item'>
+          <div className="dashboard__content-summary">
+            <Card className="dashboard__content-summary-item">
               <h3>Total Monitors</h3>
               <h4>{monitors.length}</h4>
             </Card>
-            <Card className='dashboard__content-summary-item'>
+            <Card className="dashboard__content-summary-item">
               <h3>Online</h3>
-              <h4 className='text-colour-green-light'>
+              <h4 className="text-colour-green-light">
                 {monitors.filter(m => m.latest.status === 'up').length}
               </h4>
             </Card>
-            <Card className='dashboard__content-summary-item'>
+            <Card className="dashboard__content-summary-item">
               <h3>Offline</h3>
-              <h4 className='text-colour-red'>
+              <h4 className="text-colour-red">
                 {monitors.filter(m => m.latest.status === 'down').length}
               </h4>
             </Card>
-            <Card className='dashboard__content-summary-item'>
+            <Card className="dashboard__content-summary-item">
               <h3>Unknown</h3>
               <h4>{monitors.filter(m => m.latest.status === 'unknown').length}</h4>
             </Card>
           </div>
-          <table className='dashboard__table'>
+          <table className="dashboard__table">
             <thead>
               <tr>
                 <th>Status</th>
                 <th>Name</th>
                 <th>URL</th>
                 <th
-                  title='Uptime is calculated based on the last 7 days of heartbeats'
+                  title="Uptime is calculated based on the last 7 days of heartbeats"
                 >
                   Uptime (%)
                 </th>
@@ -138,10 +138,10 @@ const Dashboard = () => {
                   <td>{monitor.name}</td>
                   <td>
                     <a
-                      className='dashboard__table-link'
+                      className="dashboard__table-link"
                       href={monitor.url}
-                      target='_blank'
-                      rel='noopener noreferrer'
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {monitor.url}
                     </a>

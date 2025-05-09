@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-import { usernameRegex, usernameRegexError, emailRegex, emailRegexError } from "../../utils/regex";
-import { Notice, Section, Button } from "../components";
-import "../styles/account.css";
+import { unameRegex, emailRegex }  from '../../../shared/regex';
+import { usernameRegex, usernameRegexError, emailRegex, emailRegexError } from '../../utils/regex';
+import { Notice, Section, Button } from '../components';
+import '../styles/account.css';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -81,9 +82,9 @@ const Account = () => {
   }
 
   return (
-    <main className='account-page'>
+    <main className="account-page">
       <h1>Account</h1>
-      <Section className='account__content'>
+      <Section className="account__content">
         <h2>Your Information</h2>
         {
           error && (

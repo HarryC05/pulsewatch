@@ -90,7 +90,7 @@ const ResponseChart = ({ heartbeats }) => {
   };
 
   return (
-    <Section variant="dark" className='ResponseChart'>
+    <Section variant="dark" className="ResponseChart">
       <Line data={data} options={options} />
     </Section>
   )

@@ -3,13 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import {
-  usernameRegex,
-  usernameRegexError,
+  unameRegex,
   emailRegex,
-  emailRegexError,
   passwordRegex,
-  passwordRegexError,
-} from '../../utils/regex';
+} from '../../../shared/regex';
 import { Notice, Button } from '../components';
 
 import '../styles/login.css';
@@ -92,8 +89,8 @@ function Login() {
     const value = e.target.value;
     setUsername(value);
 
-    if (!usernameRegex.test(value)) {
-      setUsernameError(usernameRegexError);
+    if (!unameRegex.pattern.test(value)) {
+      setUsernameError(unameRegex.err);
     } else {
       setUsernameError('');
     }
@@ -103,8 +100,8 @@ function Login() {
     const value = e.target.value;
     setEmail(value);
 
-    if (!emailRegex.test(value)) {
-      setEmailError(emailRegexError);
+    if (!emailRegex.pattern.test(value)) {
+      setEmailError(emailRegex.err);
     } else {
       setEmailError('');
     }
@@ -114,8 +111,8 @@ function Login() {
     const value = e.target.value;
     setPassword(value);
 
-    if (!passwordRegex.test(value)) {
-      setPasswordError(passwordRegexError);
+    if (!passwordRegex.pattern.test(value)) {
+      setPasswordError(passwordRegex.err);
     } else {
       setPasswordError('');
     }

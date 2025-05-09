@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-import { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError } from '../../utils/regex';
+import {urlRegex, nameRegex} from '../../../shared/regex';
 import { Modal, Notice, Button } from './';
 import '../styles/components/createMonitorModal.css';
 
@@ -52,8 +52,8 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
     const value = e.target.value;
     setMonitor({ ...monitor, name: value });
 
-    if (!value.match(monitorNameRegex)) {
-      setNameError(monitorNameRegexError);
+    if (!nameRegex.pattern.test(value)) {
+      setNameError(nameRegex.err);
       setDisabled({...disabled, name: true});
     } else {
       setNameError('');
@@ -66,11 +66,11 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
     const value = e.target.value;
     setMonitor({ ...monitor, url: value });
 
-    if (urlRegex.test(value)) {
+    if (urlRegex.pattern.test(value)) {
       setUrlError('');
       setDisabled({...disabled, url: false});
     } else {
-      setUrlError(urlRegexError);
+      setUrlError(urlRegex.err);
       setDisabled({...disabled, url: true});
     }
   }
@@ -96,7 +96,7 @@ const CreateMonitorModal = ({onClose, onCreate}) => {
         />
         {urlError && <Notice message={urlError} variant="error" />}
       </div>
-      <div className='create-monitor__footer'>
+      <div className="create-monitor__footer">
         <Button
           onClick={handleCreateMonitor}
           disabled={disabled.url || disabled.name}

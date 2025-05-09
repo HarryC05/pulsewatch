@@ -82,29 +82,29 @@ const MonitorDetails = () => {
           monitorName={monitor.name}
         />
       )}
-      <main className='monitor-page'>
-        {error && <Notice variant='error' message={error} />}
+      <main className="monitor-page">
+        {error && <Notice variant="error" message={error} />}
         {loading ? (
-          <div className='loading'>Loading...</div>
+          <div className="loading">Loading...</div>
           ) : (
             <>
-              <Button variant="text" onClick={() => navigate(-1)} className='monitor-page__details__back'>
+              <Button variant="text" onClick={() => navigate(-1)} className="monitor-page__details__back">
                 <h4>← Back</h4>
               </Button>
-              <div className='monitor-page__details__header'>
-                <div className='monitor-page__details__header__status'>
+              <div className="monitor-page__details__header">
+                <div className="monitor-page__details__header__status">
                   <span
                     className={`monitor-page__details-status ${monitor.latest.status === 'up' ? 'background-colour-green' : 'background-colour-red'}`}
                     title={monitor.latest.status}
                   />
                   <h1>
                     {monitor.name} -{' '}
-                    <a href={monitor.url} target='_blank' rel='noopener noreferrer' className='monitor-page__details__info__url'>
+                    <a href={monitor.url} target="_blank" rel="noopener noreferrer" className="monitor-page__details__info__url">
                       {monitor.url}
                     </a>
                   </h1>
                 </div>
-                <div className='monitor-page__details__header__buttons'>
+                <div className="monitor-page__details__header__buttons">
                   <Button variant="primary" onClick={() => setShowEditModal(true)}>
                     Edit
                   </Button>
@@ -113,55 +113,55 @@ const MonitorDetails = () => {
                   </Button>
                 </div>
               </div>
-              <Section className='monitor-page__details'>
+              <Section className="monitor-page__details">
                 <h4>
                   Last Check: {new Date(monitor.latest.createdAt).toLocaleString()}
                 </h4>
-                <div className='monitor-page__details__info'>
-                  <Card className='monitor-page__details__info__item'>
+                <div className="monitor-page__details__info">
+                  <Card className="monitor-page__details__info__item">
                     <h2>Response</h2>
-                    <span className='monitor-page__details__info__item__subtitle'>
+                    <span className="monitor-page__details__info__item__subtitle">
                       (current)
                     </span>
-                    <h3 className='monitor-page__details__info__item__value'>
+                    <h3 className="monitor-page__details__info__item__value">
                       {monitor.latest.responseTime ? `${monitor.latest.responseTime} ms` : 'N/A'}
                     </h3>
                   </Card>
-                  <Card className='monitor-page__details__info__item'>
+                  <Card className="monitor-page__details__info__item">
                     <h2>Response</h2>
-                    <span className='monitor-page__details__info__item__subtitle'>
+                    <span className="monitor-page__details__info__item__subtitle">
                       (Avg. 24 hrs)
                     </span>
-                    <h3 className='monitor-page__details__info__item__value'>
+                    <h3 className="monitor-page__details__info__item__value">
                       {monitor.responseTimes.last24h ? `${monitor.responseTimes.last24h} ms` : 'N/A'}
                     </h3>
                   </Card>
-                  <Card className='monitor-page__details__info__item'>
+                  <Card className="monitor-page__details__info__item">
                     <h2>Response</h2>
-                    <span className='monitor-page__details__info__item__subtitle'>
+                    <span className="monitor-page__details__info__item__subtitle">
                       (Avg. 7 days)
                     </span>
-                    <h3 className='monitor-page__details__info__item__value'>
+                    <h3 className="monitor-page__details__info__item__value">
                       {monitor.responseTimes.last7d ? `${monitor.responseTimes.last7d} ms` : 'N/A'}
                     </h3>
                   </Card>
-                  <Card className='monitor-page__details__info__item'>
+                  <Card className="monitor-page__details__info__item">
                     <h2>Uptime</h2>
-                    <span className='monitor-page__details__info__item__subtitle'>
+                    <span className="monitor-page__details__info__item__subtitle">
                       (24 hrs)
                     </span>
                     <UptimePill uptime={monitor.uptime.last24h} />
                   </Card>
-                  <Card className='monitor-page__details__info__item'>
+                  <Card className="monitor-page__details__info__item">
                     <h2>Uptime</h2>
-                    <span className='monitor-page__details__info__item__subtitle'>
+                    <span className="monitor-page__details__info__item__subtitle">
                       (7 Days)
                     </span>
                     <UptimePill uptime={monitor.uptime.last7d} />
                   </Card>
-                  <Card className='monitor-page__details__info__item'>
+                  <Card className="monitor-page__details__info__item">
                     <h2>Uptime</h2>
-                    <span className='monitor-page__details__info__item__subtitle'>
+                    <span className="monitor-page__details__info__item__subtitle">
                       (30 Days)
                     </span>
                     <UptimePill uptime={monitor.uptime.last30d} />
@@ -170,35 +170,35 @@ const MonitorDetails = () => {
                 <UptimeChart
                   data={monitor.heartbeats.last24h}
                 />
-                <Section variant="dark" className='monitor-page__details__response-time'>
-                  <div className='monitor-page__details__response-time__header'>
+                <Section variant="dark" className="monitor-page__details__response-time">
+                  <div className="monitor-page__details__response-time__header">
                     <h2>Response Time</h2>
                     <select
-                      className='monitor-page__details__response-time__header__select'
+                      className="monitor-page__details__response-time__header__select"
                       value={responseTimeOption}
                       onChange={(e) => setResponseTimeOption(e.target.value)}
                     >
-                      <option value='last24h'>Last 24 hours</option>
-                      <option value='last7d'>Last 7 days</option>
-                      <option value='last30d'>Last 30 days</option>
+                      <option value="last24h">Last 24 hours</option>
+                      <option value="last7d">Last 7 days</option>
+                      <option value="last30d">Last 30 days</option>
                     </select>
                   </div>
                   <ResponseChart heartbeats={monitor.heartbeats[responseTimeOption]} />
                 </Section>
-                <Section variant="dark" className='monitor-page__details__downtime'>
+                <Section variant="dark" className="monitor-page__details__downtime">
                   <h2>Downtime</h2>
-                  <div className='monitor-page__details__downtime__list'>
+                  <div className="monitor-page__details__downtime__list">
                     {downHBs.length > 0 ? (
-                      <table className='monitor-page__details__downtime__list__table'>
+                      <table className="monitor-page__details__downtime__list__table">
                         <thead>
                           <tr>
-                            <th className='monitor-page__details__downtime__list__table__header__date'>
+                            <th className="monitor-page__details__downtime__list__table__header__date">
                               Date
                             </th>
-                            <th className='monitor-page__details__downtime__list__table__header__response-code'>
+                            <th className="monitor-page__details__downtime__list__table__header__response-code">
                               Response Code
                             </th>
-                            <th className='monitor-page__details__downtime__list__table__header__error-message'>
+                            <th className="monitor-page__details__downtime__list__table__header__error-message">
                               Error Message
                             </th>
                           </tr>

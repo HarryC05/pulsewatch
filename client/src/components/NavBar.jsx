@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import { Button } from "./"
-import "../styles/components/navbar.css";
+import { Button } from './'
+import '../styles/components/navbar.css';
 
 const API = import.meta.env.VITE_API_URL;
 

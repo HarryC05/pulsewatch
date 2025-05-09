@@ -3,7 +3,11 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 import { protect } from '../middleware/auth.js';
-import { emailRegex, emailRegexError, usernameRegex, usernameRegexError, passwordRegex, passwordRegexError } from '../utils/regex.js';
+import {
+  unameRegex,
+  emailRegex,
+  passwordRegex,
+} from '../../shared/regex.js';
 import prisma from '../utils/prisma.js';
 
 const router = express.Router();
@@ -29,17 +33,17 @@ router.post('/signup', async (req, res) => {
     return res.status(400).json({ message: 'Please fill in all fields' });
   }
 
-  if (!emailRegex.test(email)) {
-    return res.status(400).json({ message: emailRegexError });
+  if (!emailRegex.pattern.test(email)) {
+    return res.status(400).json({ message: emailRegex.err });
   }
 
-  if (!usernameRegex.test(username)) {
-    return res.status(400).json({ message: usernameRegexError });
+  if (!unameRegex.pattern.test(username)) {
+    return res.status(400).json({ message: unameRegex.err });
   }
 
   // Check if password is strong
-  if (!passwordRegex.test(password)) {
-    return res.status(400).json({ message: passwordRegexError });
+  if (!passwordRegex.pattern.test(password)) {
+    return res.status(400).json({ message: passwordRegex.err });
   }
 
   // Check if email already exists
@@ -93,8 +97,12 @@ router.post('/login', async (req, res) => {
   }
 
   // Check if identifier is an email or username
-  const isEmail = emailRegex.test(identifier);
-  const isUsername = usernameRegex.test(identifier);
+  const isEmail = emailRegex.pattern.test(identifier);
+  const isUsername = unameRegex.pattern.test(identifier);
+
+  if (!isEmail && !isUsername) {
+    return res.status(400).json({ message: 'Invalid username or email' });
+  }
 
   // Find user by email or username
   let user;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-import { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError } from '../../utils/regex';
+import { urlRegex, nameRegex } from '../../../shared/regex';
 import { Modal, Notice, Button } from './';
 import '../styles/components/editMonitorModal.css';
 
@@ -42,8 +42,8 @@ const EditMonitorModal = ({onClose, monitor, getMonitor}) => {
     const value = e.target.value;
 
     // Validate monitor name
-    if (!value.match(monitorNameRegex)) {
-      setNameError(monitorNameRegexError);
+    if (!nameRegex.pattern.test(value)) {
+      setNameError(nameRegex.err);
     } else {
       setNameError('');
     }
@@ -56,8 +56,8 @@ const EditMonitorModal = ({onClose, monitor, getMonitor}) => {
     const value = e.target.value;
 
     // Validate URL
-    if (!value.match(urlRegex)) {
-      setUrlError(urlRegexError);
+    if (!urlRegex.pattern.test(value)) {
+      setUrlError(urlRegex.err);
     } else {
       setUrlError('');
     }
@@ -85,7 +85,7 @@ const EditMonitorModal = ({onClose, monitor, getMonitor}) => {
         />
         {urlError && <Notice message={urlError} variant="error" />}
       </div>
-      <div className='edit-monitor__footer'>
+      <div className="edit-monitor__footer">
         <Button
           onClick={onSave}
           disabled={(tmpMonitor.name === monitor.name && tmpMonitor.url === monitor.url) || nameError || urlError}

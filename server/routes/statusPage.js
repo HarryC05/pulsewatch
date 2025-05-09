@@ -2,13 +2,10 @@ import express from 'express';
 
 import { protect } from '../middleware/auth.js';
 import {
-  statusPageNameRegex,
-  statusPageNameRegexError,
-  statusPageSlugRegex,
-  statusPageSlugRegexError,
-  statusPageDescriptionRegex,
-  statusPageDescriptionRegexError,
-} from '../utils/regex.js';
+  descRegex,
+  nameRegex,
+  slugRegex,
+} from '../../shared/regex.js';
 import prisma from '../utils/prisma.js';
 import formatPage from '../utils/formatPage.js';
 
@@ -61,18 +58,18 @@ router.post('/create', protect, async (req, res) => {
   }
 
   // Validate status page name
-  if (!title.match(statusPageNameRegex)) {
-    return res.status(400).json({ message: statusPageNameRegexError });
+  if (!nameRegex.pattern.test(title)) {
+    return res.status(400).json({ message: nameRegex.err });
   }
 
   // Validate status page slug
-  if (!slug.match(statusPageSlugRegex)) {
-    return res.status(400).json({ message: statusPageSlugRegexError });
+  if (!slugRegex.pattern.test(slug)) {
+    return res.status(400).json({ message: slugRegex.err });
   }
 
   // Validate status page description
-  if (!description.match(statusPageDescriptionRegex)) {
-    return res.status(400).json({ message: statusPageDescriptionRegexError });
+  if (!descRegex.pattern.test(description)) {
+    return res.status(400).json({ message: descRegex.err });
   }
 
   // Check if the user has reached their status page limit
@@ -267,18 +264,18 @@ router.put('/:id', protect, async (req, res) => {
   }
 
   // Validate status page name
-  if (!title.match(statusPageNameRegex)) {
-    return res.status(400).json({ message: statusPageNameRegexError });
+  if (!nameRegex.pattern.test(title)) {
+    return res.status(400).json({ message: nameRegex.err });
   }
 
   // Validate status page slug
-  if (!slug.match(statusPageSlugRegex)) {
-    return res.status(400).json({ message: statusPageSlugRegexError });
+  if (!slugRegex.pattern.test(slug)) {
+    return res.status(400).json({ message: slugRegex.err });
   }
 
   // Validate status page description
-  if (!description.match(statusPageDescriptionRegex)) {
-    return res.status(400).json({ message: statusPageDescriptionRegexError });
+  if (!descRegex.pattern.test(description)) {
+    return res.status(400).json({ message: descRegex.err });
   }
 
   try {

@@ -2,7 +2,7 @@ import { subDays, subHours } from 'date-fns';
 import express from 'express';
 
 import { protect } from '../middleware/auth.js';
-import { urlRegex, urlRegexError, monitorNameRegex, monitorNameRegexError } from '../utils/regex.js';
+import { urlRegex, nameRegex } from '../../shared/regex.js';
 import prisma from '../utils/prisma.js';
 import calcUptime from '../utils/calcUptime.js';
 import calcRespTime from '../utils/calcRespTime.js';
@@ -39,13 +39,13 @@ router.post('/create', protect, async (req, res) => {
   }
 
   // Validate monitor name
-  if (!name.match(monitorNameRegex)) {
-    return res.status(400).json({ message: monitorNameRegexError });
+  if (!nameRegex.pattern.test(name)) {
+    return res.status(400).json({ message: nameRegex.err });
   }
 
   // Validate URL
-  if (!url.match(urlRegex)) {
-    return res.status(400).json({ message: urlRegexError });
+  if (!urlRegex.pattern.test(url)) {
+    return res.status(400).json({ message: urlRegex.err });
   }
 
   try {
@@ -196,13 +196,13 @@ router.put('/:id', protect, async (req, res) => {
   const { name, url } = req.body;
 
   // Validate monitor name
-  if (name && !name.match(monitorNameRegex)) {
-    return res.status(400).json({ message: monitorNameRegexError });
+  if (name && !nameRegex.pattern.test(name)) {
+    return res.status(400).json({ message: nameRegex.err });
   }
 
   // Validate URL
-  if (url && !url.match(urlRegex)) {
-    return res.status(400).json({ message: urlRegexError });
+  if (url && !urlRegex.pattern.test(url)) {
+    return res.status(400).json({ message: urlRegex.err });
   }
 
   // Check if the monitor belongs to the logged-in user
