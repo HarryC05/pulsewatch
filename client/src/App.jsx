@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Account from './pages/Account';
 import MonitorDetails from './pages/MonitorDetails';
+import Statuses from './pages/Statuses';
 
 /**
  * App component
@@ -21,6 +22,7 @@ function App() {
 					<Route path="/dashboard" element={<Dashboard />} />
 					<Route path="/account" element={<Account />} />
 					<Route path="/monitor/:id" element={<MonitorDetails />} />
+					<Route path="/statuses" element={<Statuses />} />
 				</Routes>
 			</Router>
 		</>

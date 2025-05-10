@@ -67,6 +67,9 @@ const NavBar = () => {
 								<a href="/dashboard">Dashboard</a>
 							</li>
 							<li>
+								<a href="/statuses">Pages</a>
+							</li>
+							<li>
 								<a href="/account">Account</a>
 							</li>
 							<li>
