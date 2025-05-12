@@ -1,3 +1,5 @@
+/* @define dashboard */
+
 .dashboard__content > .dashboard__content-header {
   display: flex;
   justify-content: space-between;
@@ -10,27 +12,27 @@
 }
 
 .dashboard__table {
-  width: 100%;
   border-collapse: separate;
   border-spacing: 0;
+  width: 100%;
 }
 
-.dashboard__table td {
+.dashboard__table .dashboard__table-cell {
   border-bottom: 1px solid var(--colour-primary-dark);
   padding: 1rem;
   text-align: center;
 }
 
-.dashboard__table tr:last-child td {
+.dashboard__table .dashboard__table-row:last-child .dashboard__table-cell {
   border-bottom: none;
 }
 
-.dashboard__table tbody tr {
+.dashboard__table .dashboard__table-body .dashboard__table-row {
   cursor: pointer;
-}
 
-.dashboard__table tbody tr:hover {
-  background-color: var(--colour-primary-dark);
+  &:hover {
+    background-color: var(--colour-primary-dark);
+  }
 }
 
 
@@ -45,13 +47,6 @@
 
 .dashboard__content-summary {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-}
-
-.dashboard__content-header-title > h2,
-.dashboard__content-header-title > h4,
-.dashboard__content-summary-item > h3,
-.dashboard__content-summary-item > h4 {
-  margin: 0;
+  grid-template-columns: repeat(4, 1fr);
 }

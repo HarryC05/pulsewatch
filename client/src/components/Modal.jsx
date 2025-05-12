@@ -1,5 +1,3 @@
-import '../styles/components/modal.css';
-
 /**
  * Modal component
  *

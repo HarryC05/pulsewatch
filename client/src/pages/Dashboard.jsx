@@ -8,10 +8,8 @@ import {
 	Section,
 	Card,
 	Button,
-	NavBar,
+	Page,
 } from '../components';
-
-import '../styles/dashboard.css';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -80,9 +78,7 @@ const Dashboard = () => {
 					}}
 				/>
 			)}
-			<NavBar />
-			<main className="dashboard-page">
-				<h1>Welcome {user?.username}!</h1>
+			<Page className="dashboard-page" title={`Welcome ${user?.username}!`}>
 				<Section className="dashboard__content">
 					<div className="dashboard__content-header">
 						<div className="dashboard__content-header-title">
@@ -130,23 +126,24 @@ const Dashboard = () => {
 								<th>Last Checked</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody className="dashboard__table-body">
 							{monitors.map((monitor) => (
 								<tr
+									className="dashboard__table-row"
 									key={monitor.id}
 									onClick={(e) =>
 										!e.target.classList.contains('dashboard__table-link') &&
 										navigate(`/monitor/${monitor.id}`)
 									}
 								>
-									<td>
+									<td className="dashboard__table-cell">
 										<span
 											className={`dashboard__table-status ${monitor.latest.status === 'up' ? 'background-colour-green' : monitor.latest.status === 'down' ? 'background-colour-red' : ''}`}
 											title={monitor.latest.status}
 										/>
 									</td>
-									<td>{monitor.name}</td>
-									<td>
+									<td className="dashboard__table-cell">{monitor.name}</td>
+									<td className="dashboard__table-cell">
 										<a
 											className="dashboard__table-link"
 											href={monitor.url}
@@ -156,15 +153,15 @@ const Dashboard = () => {
 											{monitor.url}
 										</a>
 									</td>
-									<td>
+									<td className="dashboard__table-cell">
 										<UptimePill uptime={monitor.uptime} />
 									</td>
-									<td>
+									<td className="dashboard__table-cell">
 										{monitor.latest.responseTime
 											? `${monitor.latest.responseTime} ms`
 											: 'N/A'}
 									</td>
-									<td>
+									<td className="dashboard__table-cell">
 										{monitor.lastChecked
 											? new Date(monitor.lastChecked).toLocaleString()
 											: 'N/A'}
@@ -174,7 +171,7 @@ const Dashboard = () => {
 						</tbody>
 					</table>
 				</Section>
-			</main>
+			</Page>
 		</>
 	);
 };

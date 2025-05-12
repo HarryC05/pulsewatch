@@ -1,5 +1,3 @@
-import '../styles/components/card.css';
-
 /**
  * Card component
  *

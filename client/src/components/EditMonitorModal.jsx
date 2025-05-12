@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import { urlRegex, nameRegex } from '../../../shared/regex';
 import { Modal, Notice, Button } from './';
-import '../styles/components/editMonitorModal.css';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -80,16 +79,22 @@ const EditMonitorModal = ({ onClose, monitor, getMonitor }) => {
 	return (
 		<Modal onClose={onClose} title="Edit Monitor">
 			<div className="edit-monitor__inputs">
-				<label htmlFor="monitor-name">Monitor Name</label>
+				<label className="edit-monitor__label" htmlFor="monitor-name">
+					Monitor Name
+				</label>
 				<input
+					className="edit-monitor__input"
 					type="text"
 					id="monitor-name"
 					value={tmpMonitor.name}
 					onChange={handleNameChange}
 				/>
 				{nameError && <Notice message={nameError} variant="error" />}
-				<label htmlFor="monitor-url">Monitor URL</label>
+				<label className="edit-monitor__label" htmlFor="monitor-url">
+					Monitor URL
+				</label>
 				<input
+					className="edit-monitor__input"
 					type="text"
 					id="monitor-url"
 					value={tmpMonitor.url}

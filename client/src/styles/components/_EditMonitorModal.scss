@@ -1,0 +1,26 @@
+/* @define edit-monitor */
+
+.edit-monitor__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: fit-content;
+
+  .edit-monitor__input {
+    margin-bottom: 0.5rem;
+    max-width: 20rem;
+    width: 20vw;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .edit-monitor__label {
+    margin-top: 0.5rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

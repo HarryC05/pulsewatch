@@ -1,0 +1,54 @@
+/* @define btn */
+
+.btn {
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 1rem;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &--primary {
+    background-color: var(--colour-primary);
+    color: var(--colour-primary-text);
+
+    &:hover {
+      background-color: var(--colour-primary-hover);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--colour-secondary);
+    color: var(--colour-secondary-text);
+
+    &:hover {
+      background-color: var(--colour-secondary-hover);
+    }
+  }
+
+  &--dangerous {
+    background-color: var(--colour-dangerous);
+    color: var(--colour-dangerous-text);
+
+    &:hover {
+      background-color: var(--colour-dangerous-hover);
+    }
+  }
+
+  &--text {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,106 @@
+/* @define monitor-page */
+
+.monitor-page__details--info-name {
+  margin-bottom: 1.25rem;
+}
+
+.monitor-page__details--header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 0;
+}
+
+.monitor-page__details--header-status {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.monitor-page__details--header-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.monitor-page__details-status {
+  background-color: var(--colour-primary-light);
+  border-radius: 50%;
+  display: block;
+  height: 1rem;
+  width: 1rem;
+}
+
+.monitor-page__details--info {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.monitor-page__details--info-item {
+  display: grid;
+}
+
+.monitor-page__details--info-item-subtitle {
+  font-size: 0.8rem;
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+.monitor-page__details--info-item .uptime-pill {
+  margin-top: 0.5rem;
+}
+
+.monitor-page__details--response-time-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.monitor-page__details--response-time-header-select {
+  background-color: var(--colour-primary-light);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.monitor-page__details--downtime-list-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+.monitor-page__details--downtime-list-table th {
+  border-bottom: 2px solid var(--colour-primary-light);
+}
+
+.monitor-page__details--downtime-list-table-header-date {
+  width: 35%;
+}
+
+.monitor-page__details--downtime-list-table-header-error-message {
+  width: 50%;
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+.monitor-page__details--downtime-list-table td {
+  border-bottom: 1px solid var(--colour-primary-light);
+  padding: 1rem;
+  text-align: center;
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+.monitor-page__details--downtime-list-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* stylelint-disable plugin/selector-bem-pattern */
+.monitor-page__details--info-item > h2,
+.monitor-page__details > h4,
+.monitor-page__details--back > h4,
+.monitor-page__details--info__item-value,
+.monitor-page__details--info__item-subtitle,
+.monitor-page__details--response-time-header > h2,
+.monitor-page__details--downtime > h2 {
+  margin: 0;
+}
+/* stylelint-enable plugin/selector-bem-pattern */

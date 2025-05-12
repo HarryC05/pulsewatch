@@ -2,14 +2,13 @@
   "name": "client",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint \"**/*.{js,jsx}\"",
     "lint:fix": "eslint \"**/*.{js,jsx}\" --fix",
-    "lint:style": "stylelint \"**/*.css\"",
-    "lint:style:fix": "stylelint \"**/*.css\" --fix",
+    "lint:style": "stylelint \"**/*.{css,scss}\"",
+    "lint:style:fix": "stylelint \"**/*.{css,scss}\" --fix",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -30,14 +29,22 @@
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-bem-classname": "file:packages/bem-classname",
     "eslint-plugin-jsdoc": "^50.6.1",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "postcss-scss": "^4.0.9",
     "prettier": "^3.4.2",
-    "stylelint": "^16.12.0",
+    "sass": "^1.88.0",
+    "sass-embedded": "^1.88.0",
+    "stylelint": "^16.19.1",
+    "stylelint-config-alphabetical-order": "^1.0.0",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-scss": "^6.12.0",
+    "stylelint-selector-bem-pattern": "^4.0.1",
     "vite": "^6.3.1"
   }
 }

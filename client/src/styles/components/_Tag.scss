@@ -1,0 +1,14 @@
+/* @define tag */
+
+.tag {
+	background-color: var(--colour-primary-light);
+	border: 1px solid var(--colour-primary-dark);
+	border-radius: 999px;
+	display: inline-block;
+	font-size: 0.875rem;
+	font-weight: 500;
+	padding: 0.5rem 1rem;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+}

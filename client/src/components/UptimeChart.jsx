@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import '../styles/components/uptimeChart.css';
-import Section from './Section';
+import { Section } from './';
 
 /**
  * UptimeChart component

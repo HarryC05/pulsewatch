@@ -3,7 +3,6 @@ import { useState } from 'react';
 import axios from 'axios';
 
 import { Modal, Button, Notice } from './';
-import '../styles/components/deleteMonitorModal.css';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -57,15 +56,19 @@ const DeleteMonitorModal = ({ onClose, monitorId, monitorName }) => {
 		<Modal onClose={onClose} title="Delete Monitor">
 			<div className="delete-monitor-modal">
 				{error && <Notice type="error" message={error} />}
-				<p>
+				<p className="delete-monitor-modal__description">
 					Are you sure you want to delete the monitor{' '}
 					<strong>{monitorName}</strong>?
 				</p>
-				<p>This action cannot be undone.</p>
+				<p className="delete-monitor-modal__description">
+					This action cannot be undone.
+				</p>
 
 				<div className="delete-monitor-modal__actions">
 					<p>
-						Confirm by typing <code>{monitorName}</code> in the box below
+						Confirm by typing{' '}
+						<code className="delete-monitor-modal__code">{monitorName}</code> in
+						the box below
 					</p>
 					<input
 						type="text"

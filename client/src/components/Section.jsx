@@ -1,5 +1,3 @@
-import '../styles/components/section.css';
-
 /**
  * Section component
  *

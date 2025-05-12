@@ -1,29 +1,28 @@
+/* @define modal */
+
 .modal__background {
-  background-color: rgba(0, 0, 0, 0.5);
-  bottom: 0;
-  left: 0;
+  background-color: rgb(0 0 0 / 50%);
+  inset: 0;
   position: fixed;
-  right: 0;
-  top: 0;
   z-index: 1000;
 }
 
 .modal {
   background-color: var(--colour-primary);
   border-radius: 0.5rem;
+  left: 50%;
   max-width: 30rem;
   padding: 2rem;
   position: absolute;
   top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .modal__header {
+  border-bottom: 1px solid var(--colour-primary-light);
   display: flex;
   justify-content: space-between;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--colour-primary-light);
 }
 
 .modal__title {
@@ -45,12 +44,12 @@
   padding-top: 1.5rem;
 }
 
-.create-monitor--inputs {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
-}
-
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
 body:has(.modal) {
   overflow: hidden;
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+.modal .notice {
+  max-width: 20rem;
 }

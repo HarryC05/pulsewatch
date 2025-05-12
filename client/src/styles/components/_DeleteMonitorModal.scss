@@ -1,8 +1,10 @@
-.delete-monitor-modal > p {
+/* @define delete-monitor-modal */
+
+.delete-monitor-modal .delete-monitor-modal__description {
   margin: 0;
 }
 
-.delete-monitor-modal__actions code {
+.delete-monitor-modal__actions .delete-monitor-modal__code {
   background-color: var(--colour-primary-light);
   border-radius: 5px;
   padding: 0.25rem 0.5rem;

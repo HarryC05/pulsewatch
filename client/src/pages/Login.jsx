@@ -3,9 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { unameRegex, emailRegex, passwordRegex } from '../../../shared/regex';
-import { Notice, Button, NavBar } from '../components';
-
-import '../styles/login.css';
+import { Notice, Button, Icon, Page } from '../components';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -197,126 +195,119 @@ function Login() {
 	}, [navigate]);
 
 	return (
-		<>
-			<NavBar />
-			<main className="login-page">
-				<div className="login-page__container">
-					<a href="/">
-						<img
-							className="login-page__logo"
-							alt="Logo"
-							src="/svgs/logo-dark.svg"
-						/>
-					</a>
-					<div className="login-page__login-signup">
-						<button
-							className={`login-page__login-signup-button${!signup ? ' login-page__login-signup-button__active' : ''}`}
-							onClick={() => {
-								setSignup(false);
-								setError('');
-								setSuccess('');
-								setPassword('');
-								setConfirmPassword('');
-							}}
-						>
-							<h2>Login</h2>
-						</button>
-						<button
-							className={`login-page__login-signup-button${signup ? ' login-page__login-signup-button__active' : ''}`}
-							onClick={() => {
-								setSignup(true);
-								setError('');
-								setSuccess('');
-								setPassword('');
-								setConfirmPassword('');
-							}}
-						>
-							<h2>Signup</h2>
-						</button>
-					</div>
-					{error && <Notice message={error} variant="error" />}
-					{success && <Notice message={success} variant="success" />}
-					<form onSubmit={handleLogin} className="login-page__form">
-						{signup && (
-							<>
-								<input
-									type="text"
-									placeholder="Username"
-									value={username}
-									onChange={handleUsernameChange}
-									className="login-page__form-input"
-									required
-								/>
-								{usernameError && (
-									<Notice message={usernameError} variant="error" />
-								)}
-								<input
-									type="email"
-									placeholder="Email"
-									value={email}
-									onChange={handleEmailChange}
-									className="login-page__form-input"
-									required
-								/>
-								{emailError && <Notice message={emailError} variant="error" />}
-							</>
-						)}
-						{!signup && (
+		<Page className="login-page">
+			<div className="login-page__container">
+				<a href="/">
+					<Icon icon="logo" alt="Logo" className="login-page__logo" />
+				</a>
+				<div className="login-page__login-signup">
+					<button
+						className={`login-page__login-signup-button${!signup ? ' login-page__login-signup-button--active' : ''}`}
+						onClick={() => {
+							setSignup(false);
+							setError('');
+							setSuccess('');
+							setPassword('');
+							setConfirmPassword('');
+						}}
+					>
+						<h2 className="login-page__login-signup-button--text">Login</h2>
+					</button>
+					<button
+						className={`login-page__login-signup-button${signup ? ' login-page__login-signup-button--active' : ''}`}
+						onClick={() => {
+							setSignup(true);
+							setError('');
+							setSuccess('');
+							setPassword('');
+							setConfirmPassword('');
+						}}
+					>
+						<h2 className="login-page__login-signup-button--text">Signup</h2>
+					</button>
+				</div>
+				{error && <Notice message={error} variant="error" />}
+				{success && <Notice message={success} variant="success" />}
+				<form onSubmit={handleLogin} className="login-page__form">
+					{signup && (
+						<>
 							<input
 								type="text"
-								placeholder="Email/Username"
-								value={identifier}
-								onChange={(e) => setIdentifier(e.target.value)}
+								placeholder="Username"
+								value={username}
+								onChange={handleUsernameChange}
 								className="login-page__form-input"
 								required
 							/>
-						)}
+							{usernameError && (
+								<Notice message={usernameError} variant="error" />
+							)}
+							<input
+								type="email"
+								placeholder="Email"
+								value={email}
+								onChange={handleEmailChange}
+								className="login-page__form-input"
+								required
+							/>
+							{emailError && <Notice message={emailError} variant="error" />}
+						</>
+					)}
+					{!signup && (
 						<input
-							type="password"
-							placeholder="Password"
-							value={password}
-							onChange={handlePasswordChange}
+							type="text"
+							placeholder="Email/Username"
+							value={identifier}
+							onChange={(e) => setIdentifier(e.target.value)}
 							className="login-page__form-input"
 							required
 						/>
-						{passwordError && signup && (
-							<Notice message={passwordError} variant="error" />
-						)}
-						{signup && (
-							<>
-								<input
-									type="password"
-									placeholder="Confirm Password"
-									value={confirmPassword}
-									onChange={handleConfirmPasswordChange}
-									className="login-page__form-input"
-									required
-								/>
-								{confirmPasswordError && (
-									<Notice message={confirmPasswordError} variant="error" />
-								)}
-							</>
-						)}
-						<Button
-							type="submit"
-							variant="primary"
-							disabled={
-								(signup &&
-									(!username || !email || !password || !confirmPassword)) ||
-								(signup &&
-									(usernameError ||
-										emailError ||
-										passwordError ||
-										confirmPasswordError)) ||
-								(!signup && (!identifier || !password))
-							}
-						>
-							{signup ? 'Signup' : 'Login'}
-						</Button>
-					</form>
-				</div>
-			</main>
-		</>
+					)}
+					<input
+						type="password"
+						placeholder="Password"
+						value={password}
+						onChange={handlePasswordChange}
+						className="login-page__form-input"
+						required
+					/>
+					{passwordError && signup && (
+						<Notice message={passwordError} variant="error" />
+					)}
+					{signup && (
+						<>
+							<input
+								type="password"
+								placeholder="Confirm Password"
+								value={confirmPassword}
+								onChange={handleConfirmPasswordChange}
+								className="login-page__form-input"
+								required
+							/>
+							{confirmPasswordError && (
+								<Notice message={confirmPasswordError} variant="error" />
+							)}
+						</>
+					)}
+					<Button
+						type="submit"
+						variant="primary"
+						disabled={
+							(signup &&
+								(!username || !email || !password || !confirmPassword)) ||
+							(signup &&
+								(usernameError ||
+									emailError ||
+									passwordError ||
+									confirmPasswordError)) ||
+							(!signup && (!identifier || !password))
+						}
+					>
+						{signup ? 'Signup' : 'Login'}
+					</Button>
+				</form>
+			</div>
+		</Page>
 	);
 }
 

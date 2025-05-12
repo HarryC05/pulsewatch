@@ -1,9 +1,15 @@
+/* @define login-page */
+
 .login-page {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: calc(100vh - var(--nav-height) - 4rem);
+  justify-content: center;
+}
+
+.login-page__login-signup-button--text {
+  margin: 1.25rem 0;
 }
 
 .login-page__container {
@@ -25,10 +31,10 @@
 
 .login-page__login-signup {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
   list-style: none;
+  width: 100%;
 }
 
 .login-page__login-signup > .login-page__login-signup-button {
@@ -45,7 +51,7 @@
   background-color: var(--colour-btn-primary-hover);
 }
 
-.login-page__login-signup > .login-page__login-signup-button__active {
+.login-page__login-signup .login-page__login-signup-button--active {
   background-color: var(--colour-btn-primary-hover);
 }
 

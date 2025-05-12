@@ -1,7 +1,21 @@
 {
-	"plugins": [],
+	"customSyntax": "postcss-scss",
+	"extends": [
+		"stylelint-config-standard",
+		"stylelint-config-alphabetical-order"
+	],
+	"plugins": ["stylelint-selector-bem-pattern", "stylelint-scss"],
 	"rules": {
-		"color-hex-length": "short",
+		"selector-class-pattern": null,
+		"plugin/selector-bem-pattern": {
+      "preset": "bem",
+      "componentName": "[a-z]+(?:-[a-z]+)*",
+      "componentSelectors": {
+        "initial": "^\\.{componentName}(?:__(?:[a-z]+(?:-[a-z]+)*))?(?:--(?:[a-z]+(?:-[a-z]+)*))?(?:[:]{1,2}[a-z-]+)?$"
+      },
+      "message": "Use strict BEM naming: block, block__element, block--modifier, or block__element--modifier only."
+    },
+		"color-hex-length": "long",
 		"color-no-invalid-hex": true,
 		"function-calc-no-unspaced-operator": true,
 		"value-no-vendor-prefix": true,
@@ -35,6 +49,12 @@
 				]
 			}
 		],
-		"comment-whitespace-inside": "always"
+		"comment-whitespace-inside": "always",
+		"import-notation": null,
+		"scss/at-else-closing-brace-newline-after": "always-last-in-chain",
+		"scss/at-else-closing-brace-space-after": "always-intermediate",
+		"scss/at-else-empty-line-before": "never",
+		"scss/at-if-closing-brace-newline-after": "always-last-in-chain",
+		"scss/at-if-closing-brace-space-after": "always-intermediate"
 	}
 }

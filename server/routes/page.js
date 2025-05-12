@@ -9,7 +9,7 @@ const router = express.Router();
 /**
  * API Routes
  *
- * @route GET /api/v1/status-page
+ * @route GET /api/v1/page
  * @access Public
  *
  * @returns {object} - API information
@@ -20,27 +20,27 @@ router.get('/', (req, res) => {
 		endpoints: [
 			{
 				method: 'POST',
-				path: '/api/v1/status-page/create',
+				path: '/api/v1/page/create',
 				description: 'Create a new status page',
 			},
 			{
 				method: 'GET',
-				path: '/api/v1/status-page/list',
+				path: '/api/v1/page/list',
 				description: 'Get all status pages for the logged-in user',
 			},
 			{
 				method: 'GET',
-				path: '/api/v1/status-page/:slug',
+				path: '/api/v1/page/:slug',
 				description: 'Get a specific status page by slug',
 			},
 			{
 				method: 'PUT',
-				path: '/api/v1/status-page/:id',
+				path: '/api/v1/page/:id',
 				description: 'Update a status page',
 			},
 			{
 				method: 'DELETE',
-				path: '/api/v1/status-page/:id',
+				path: '/api/v1/page/:id',
 				description: 'Delete a status page',
 			},
 		],
@@ -50,7 +50,7 @@ router.get('/', (req, res) => {
 /**
  * Create a new status page
  *
- * @route POST /api/v1/status-page/create
+ * @route POST /api/v1/page/create
  * @access private
  *
  * @param {string}   title       - The name of the status page
@@ -160,7 +160,7 @@ router.post('/create', protect, async (req, res) => {
 /**
  * Get all status pages for the logged-in user
  *
- * @route GET /api/v1/status-page/list
+ * @route GET /api/v1/page/list
  * @access private
  *
  * @returns {Array} - List of status pages for the logged-in user
@@ -189,7 +189,7 @@ router.get('/list', protect, async (req, res) => {
 /**
  * Get a specific status page by slug
  *
- * @route GET /api/v1/status-page/:slug
+ * @route GET /api/v1/page/:slug
  * @access Public
  *
  * @param {string} slug - The slug of the status page
@@ -255,7 +255,7 @@ router.get('/:slug', async (req, res) => {
 /**
  * Update a status page
  *
- * @route PUT /api/v1/status-page/:id
+ * @route PUT /api/v1/page/:id
  * @access private
  *
  * @param {string}   id          - The ID of the status page
@@ -352,7 +352,7 @@ router.put('/:id', protect, async (req, res) => {
 /**
  * Delete a status page
  *
- * @route DELETE /api/v1/status-page/:id
+ * @route DELETE /api/v1/page/:id
  * @access private
  *
  * @param {string} id - The ID of the status page

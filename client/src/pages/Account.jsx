@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { unameRegex, emailRegex } from '../../../shared/regex';
-import { Notice, Section, Button, NavBar } from '../components';
-import '../styles/account.css';
+import { Notice, Section, Button, Page } from '../components';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -103,45 +102,41 @@ const Account = () => {
 	}
 
 	return (
-		<>
-			<NavBar />
-			<main className="account-page">
-				<h1>Account</h1>
-				<Section className="account__content">
-					<h2>Your Information</h2>
-					{error && <Notice message={error} variant="error" />}
-					{success && <Notice message={success} variant="success" />}
-					<div className="account__info">
-						<label>Username:</label>
-						<input
-							type="text"
-							value={updatedUser.username}
-							onChange={handleUsernameChange}
-						/>
-						{nameError && <Notice message={nameError} variant="error" />}
-						<label>Email:</label>
-						<input
-							type="email"
-							value={updatedUser.email}
-							onChange={handleEmailChange}
-						/>
-						{emailError && <Notice message={emailError} variant="error" />}
-					</div>
-					<Button
-						variant="primary"
-						disabled={
-							(updatedUser.username === user.username &&
-								updatedUser.email === user.email) ||
-							nameError ||
-							emailError
-						}
-						onClick={() => updateUser(updatedUser)}
-					>
-						Update
-					</Button>
-				</Section>
-			</main>
-		</>
+		<Page className="account-page" title="Account">
+			<Section className="account__content">
+				<h2 className="account__title">Your Information</h2>
+				{error && <Notice message={error} variant="error" />}
+				{success && <Notice message={success} variant="success" />}
+				<div className="account__info">
+					<label>Username:</label>
+					<input
+						type="text"
+						value={updatedUser.username}
+						onChange={handleUsernameChange}
+					/>
+					{nameError && <Notice message={nameError} variant="error" />}
+					<label>Email:</label>
+					<input
+						type="email"
+						value={updatedUser.email}
+						onChange={handleEmailChange}
+					/>
+					{emailError && <Notice message={emailError} variant="error" />}
+				</div>
+				<Button
+					variant="primary"
+					disabled={
+						(updatedUser.username === user.username &&
+							updatedUser.email === user.email) ||
+						nameError ||
+						emailError
+					}
+					onClick={() => updateUser(updatedUser)}
+				>
+					Update
+				</Button>
+			</Section>
+		</Page>
 	);
 };
 

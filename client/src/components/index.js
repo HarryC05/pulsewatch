@@ -3,11 +3,14 @@ import Card from './Card';
 import CreateMonitorModal from './CreateMonitorModal';
 import DeleteMonitorModal from './DeleteMonitorModal';
 import EditMonitorModal from './EditMonitorModal';
+import Icon from './Icon';
 import Modal from './Modal';
 import NavBar from './NavBar';
 import Notice from './Notice';
+import Page from './Page';
 import ResponseChart from './ResponseChart';
 import Section from './Section';
+import Tag from './Tag';
 import UptimeChart from './UptimeChart';
 import UptimePill from './UptimePill';
 
@@ -17,11 +20,14 @@ export {
 	CreateMonitorModal,
 	DeleteMonitorModal,
 	EditMonitorModal,
+	Icon,
 	Modal,
 	NavBar,
 	Notice,
+	Page,
 	ResponseChart,
 	Section,
+	Tag,
 	UptimeChart,
 	UptimePill,
 };

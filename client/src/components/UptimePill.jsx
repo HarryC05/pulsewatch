@@ -1,5 +1,3 @@
-import '../styles/components/uptimePill.css';
-
 /**
  * UptimePill component
  *

@@ -1,5 +1,3 @@
-import '../styles/components/button.css';
-
 /**
  * Button component
  *
@@ -22,10 +20,10 @@ const Button = ({
 	children,
 }) => {
 	const variants = {
-		primary: 'btn-primary',
-		secondary: 'btn-secondary',
-		dangerous: 'btn-dangerous',
-		text: 'btn-text',
+		primary: 'btn--primary',
+		secondary: 'btn--secondary',
+		dangerous: 'btn--dangerous',
+		text: 'btn--text',
 	};
 
 	const variantClass = variants[variant];

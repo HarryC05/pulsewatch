@@ -1,3 +1,5 @@
+/* @define notice */
+
 .notice {
   border-radius: 5px;
   padding: 0.25rem;
@@ -13,8 +15,4 @@
 .notice__error {
   background-color: var(--colour-red);
   color: var(--colour-white);
-}
-
-.modal .notice {
-  max-width: 20rem;
 }

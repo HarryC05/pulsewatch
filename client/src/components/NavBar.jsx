@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { Button } from './';
-import '../styles/components/navbar.css';
+import { Button, Icon } from './';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -54,23 +53,29 @@ const NavBar = () => {
 	return (
 		<nav className="navbar">
 			<div className="navbar__content">
-				<div className="navbar__logo">
-					<img src="/svgs/logo-dark.svg" alt="Logo" />
-				</div>
+				<Icon icon="logo" alt="Logo" className="navbar__logo" />
 				<ul className="navbar__links">
 					<li>
-						<a href="/">Home</a>
+						<a className="navbar__links-link" href="/">
+							Home
+						</a>
 					</li>
 					{loggedIn && (
 						<>
 							<li>
-								<a href="/dashboard">Dashboard</a>
+								<a className="navbar__links-link" href="/dashboard">
+									Dashboard
+								</a>
 							</li>
 							<li>
-								<a href="/statuses">Pages</a>
+								<a className="navbar__links-link" href="/statuses">
+									Pages
+								</a>
 							</li>
 							<li>
-								<a href="/account">Account</a>
+								<a className="navbar__links-link" href="/account">
+									Account
+								</a>
 							</li>
 							<li>
 								<Button variant="text" onClick={handleLogout}>
@@ -82,10 +87,14 @@ const NavBar = () => {
 					{!loggedIn && (
 						<>
 							<li>
-								<a href="/login">Login</a>
+								<a className="navbar__links-link" href="/login">
+									Login
+								</a>
 							</li>
 							<li>
-								<a href="/login?signup=true">Sign Up</a>
+								<a className="navbar__links-link" href="/login?signup=true">
+									Sign Up
+								</a>
 							</li>
 						</>
 					)}

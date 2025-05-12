@@ -1,5 +1,3 @@
-import '../styles/components/notice.css';
-
 /**
  * Notice component
  *

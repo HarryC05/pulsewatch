@@ -5,7 +5,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Account from './pages/Account';
 import MonitorDetails from './pages/MonitorDetails';
-import Statuses from './pages/Statuses';
+import Statuses from './pages/Pages';
 
 /**
  * App component

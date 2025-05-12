@@ -1,13 +1,16 @@
+/* @define account */
+
 .account__info {
   display: grid;
   gap: 1rem;
   grid-template-columns: auto 1fr;
 }
 
-.account__content > h2 {
+.account__content .account__title {
   margin: 0;
 }
 
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
 .account__info .notice {
   grid-column: span 2;
 }

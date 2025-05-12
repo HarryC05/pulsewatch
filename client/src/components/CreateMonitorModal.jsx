@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import { urlRegex, nameRegex } from '../../../shared/regex';
 import { Modal, Notice, Button } from './';
-import '../styles/components/createMonitorModal.css';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -94,6 +93,7 @@ const CreateMonitorModal = ({ onClose, onCreate }) => {
 				<input
 					type="text"
 					id="monitor-name"
+					className="create-monitor__input"
 					value={monitor.name}
 					onChange={handleNameChange}
 				/>
@@ -102,6 +102,7 @@ const CreateMonitorModal = ({ onClose, onCreate }) => {
 				<input
 					type="text"
 					id="monitor-url"
+					className="create-monitor__input"
 					value={monitor.url}
 					onChange={handleUrlChange}
 				/>

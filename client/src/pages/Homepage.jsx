@@ -1,4 +1,4 @@
-import { NavBar } from '../components';
+import { Page } from '../components';
 
 /**
  * Homepage component
@@ -8,13 +8,11 @@ import { NavBar } from '../components';
 const Homepage = () => {
 	return (
 		<>
-			<NavBar />
-			<main className="homepage">
+			<Page className="homepage" title="Welcome to the Homepage">
 				<div className="homepage__content">
-					<h1>Welcome to the Homepage</h1>
 					<p>This is the main content area.</p>
 				</div>
-			</main>
+			</Page>
 		</>
 	);
 };

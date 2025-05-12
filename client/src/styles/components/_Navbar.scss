@@ -1,3 +1,5 @@
+/* @define navbar */
+
 .navbar {
   background-color: var(--colour-primary-dark);
 }
@@ -12,10 +14,10 @@
   width: 100%;
 }
 
-.navbar__logo img {
+.navbar__logo {
   height: 3.5rem;
-  width: auto;
   margin: 0.5rem;
+  width: auto;
 }
 
 .navbar__links {
@@ -24,7 +26,11 @@
   list-style: none;
 }
 
-.navbar__links a {
+.navbar__links .navbar__links-link {
   color: var(--colour-white);
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
