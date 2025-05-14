@@ -198,7 +198,11 @@ function Login() {
 		<Page className="login-page">
 			<div className="login-page__container">
 				<a href="/">
-					<Icon icon="logo" alt="Logo" className="login-page__logo" />
+					<img
+						src="/svgs/logo-dark.min.svg"
+						alt="Logo"
+						className="login-page__logo"
+					/>
 				</a>
 				<div className="login-page__login-signup">
 					<button
