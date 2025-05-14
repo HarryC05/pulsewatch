@@ -47,7 +47,7 @@ const Pages = () => {
 	}, [navigate]);
 
 	if (loading) {
-		return <div>Loading...</div>;
+		return <Page title="Loading..." />;
 	}
 
 	return (

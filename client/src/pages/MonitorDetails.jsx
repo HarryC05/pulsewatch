@@ -101,7 +101,7 @@ const MonitorDetails = () => {
 			<Page className="monitor-page">
 				{error && <Notice variant="error" message={error} />}
 				{loading ? (
-					<div className="loading">Loading...</div>
+					<Page title="Loading..." />
 				) : (
 					<>
 						<Button
