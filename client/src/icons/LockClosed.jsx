@@ -16,8 +16,8 @@ const LockClosed = ({ className }) => {
 			className={className}
 		>
 			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
+				fillRule="evenodd"
+				clipRule="evenodd"
 				d="M5.5 10V7a6.5 6.5 0 1113 0v3h.5a3 3 0 013 3v7a3 3 0 01-3 3H5a3 3 0 01-3-3v-7a3 3 0 013-3h.5zm4.025-5.475A3.5 3.5 0 0115.5 7v3h-7V7a3.5 3.5 0 011.025-2.475z"
 			/>
 		</svg>

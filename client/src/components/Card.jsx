@@ -4,16 +4,14 @@
  * @param {object}    props           - The component props
  * @param {string}    props.className - Additional class name to apply to the card
  * @param {ReactNode} props.children  - The children to render inside the card
- * @param {string=}   props.key       - The key for the card (optional)
  * @param {Function=} props.onClick   - Click event handler for the card (optional)
  *
  * @returns {JSX.Element} - The rendered component
  */
-const Card = ({ className, children, key, onClick }) => {
+const Card = ({ className, children, onClick }) => {
 	return (
 		<div
 			className={`card ${className}`}
-			key={key}
 			onClick={onClick}
 			role={onClick ? 'button' : undefined}
 			aria-hidden={!onClick}
