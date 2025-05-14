@@ -206,7 +206,7 @@ router.get('/:slug', async (req, res) => {
 
 	// Validate status page slug
 	if (!slugRegex.pattern.test(slug)) {
-		return res.status(400).json({ message: slugRegex.err });
+		return res.status(404).json({ message: 'Page not found' });
 	}
 
 	try {
