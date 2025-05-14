@@ -10,7 +10,7 @@ const router = express.Router();
  * API Routes
  *
  * @route GET /api/v1/account
- * @access Public
+ * @access public
  *
  * @returns {object} - API information
  */

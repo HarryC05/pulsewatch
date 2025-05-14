@@ -1,10 +1,13 @@
 import jwt from 'jsonwebtoken';
 
 /**
+ * Middleware to protect routes by verifying JWT token.
  *
- * @param req
- * @param res
- * @param next
+ * @param {object}   req  - The request object.
+ * @param {object}   res  - The response object.
+ * @param {Function} next - The next middleware function.
+ *
+ * @returns {void}
  */
 export const protect = (req, res, next) => {
 	// Get token from HTTP-only cookie (not from header)

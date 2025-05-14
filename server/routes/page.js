@@ -10,7 +10,7 @@ const router = express.Router();
  * API Routes
  *
  * @route GET /api/v1/page
- * @access Public
+ * @access public
  *
  * @returns {object} - API information
  */
@@ -190,7 +190,7 @@ router.get('/list', protect, async (req, res) => {
  * Get a specific status page by slug
  *
  * @route GET /api/v1/page/:slug
- * @access Public
+ * @access public
  *
  * @param {string} slug - The slug of the status page
  *

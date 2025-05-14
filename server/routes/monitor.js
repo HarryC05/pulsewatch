@@ -11,7 +11,7 @@ const router = express.Router();
  * API Routes
  *
  * @route GET /api/v1/monitor
- * @access Public
+ * @access public
  *
  * @returns {object} - API information
  */

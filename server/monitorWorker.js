@@ -4,8 +4,14 @@ import axios from 'axios';
 
 // Function to ping a monitor
 /**
+ * Checks the status of a monitor by sending a GET request to its URL.
  *
- * @param monitor
+ * @param {object} monitor      - The monitor object containing its details.
+ * @param {string} monitor.id   - The ID of the monitor.
+ * @param {string} monitor.name - The name of the monitor.
+ * @param {string} monitor.url  - The URL of the monitor to check.
+ *
+ * @returns {Promise<void>} - A promise that resolves when the check is complete.
  */
 async function checkMonitor(monitor) {
 	try {

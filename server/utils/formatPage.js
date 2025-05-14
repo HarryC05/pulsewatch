@@ -12,8 +12,9 @@
  * @param {string} page.monitors[].monitor.heartbeats[].id           - The ID of the heartbeat
  * @param {string} page.monitors[].monitor.heartbeats[].status       - The status of the heartbeat
  * @param {number} page.monitors[].monitor.heartbeats[].responseTime - The response time of the heartbeat
- * @param {String} page.monitors[].monitor.heartbeats[].createdAt    - The creation date of the heartbeat
- * @returns
+ * @param {string} page.monitors[].monitor.heartbeats[].createdAt    - The creation date of the heartbeat
+ *
+ * @returns {object} - Formatted page object
  */
 const formatPage = (page) => {
 	return {

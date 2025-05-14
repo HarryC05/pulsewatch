@@ -12,7 +12,7 @@ const router = express.Router();
  * API Routes
  *
  * @route GET /api/v1/auth
- * @access Public
+ * @access public
  *
  * @returns {object} - API information
  */
@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
  * Register a new user
  *
  * @route POST /api/v1/auth/signup
- * @access Public
+ * @access public
  *
  * @param {string} username - User's username
  * @param {string} email    - User's email
@@ -113,7 +113,7 @@ router.post('/signup', async (req, res) => {
  * Login user
  *
  * @route POST /api/v1/auth/login
- * @access Public
+ * @access public
  *
  * @param {string} identifier - User's email or username
  * @param {string} password   - User's password
