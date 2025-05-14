@@ -5,9 +5,9 @@
  * @param {string} page.title                                        - The title of the page
  * @param {string} page.description                                  - The description of the page
  * @param {Array}  page.monitors                                     - Array of monitor objects
- * @param {string} page.monitors[].id                                - The ID of the monitor
- * @param {string} page.monitors[].name                              - The name of the monitor
- * @param {string} page.monitors[].url                               - The URL of the monitor
+ * @param {string} page.monitors[].monitor.id                        - The ID of the monitor
+ * @param {string} page.monitors[].monitor.name                      - The name of the monitor
+ * @param {string} page.monitors[].monitor.url                       - The URL of the monitor
  * @param {Array}  page.monitors[].monitor.heartbeats                - Array of heartbeat objects
  * @param {string} page.monitors[].monitor.heartbeats[].id           - The ID of the heartbeat
  * @param {string} page.monitors[].monitor.heartbeats[].status       - The status of the heartbeat
@@ -21,9 +21,9 @@ const formatPage = (page) => {
 		title: page.title,
 		description: page.description,
 		monitors: page.monitors.map((monitor) => ({
-			id: monitor.id,
-			name: monitor.name,
-			url: monitor.url,
+			id: monitor.monitor.id,
+			name: monitor.monitor.name,
+			url: monitor.monitor.url,
 			lastChecked: monitor.monitor.heartbeats[0]?.createdAt || null,
 			responseTime: monitor.monitor.heartbeats[0]?.responseTime || null,
 			status: monitor.monitor.heartbeats[0]?.status || 'unknown',
