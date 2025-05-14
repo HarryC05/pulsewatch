@@ -5,7 +5,8 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Account from './pages/Account';
 import MonitorDetails from './pages/MonitorDetails';
-import Statuses from './pages/Pages';
+import Pages from './pages/Pages';
+import Status from './pages/Status';
 
 /**
  * App component
@@ -22,7 +23,8 @@ function App() {
 					<Route path="/dashboard" element={<Dashboard />} />
 					<Route path="/account" element={<Account />} />
 					<Route path="/monitor/:id" element={<MonitorDetails />} />
-					<Route path="/statuses" element={<Statuses />} />
+					<Route path="/pages" element={<Pages />} />
+					<Route path="/status/:slug" element={<Status />} />
 				</Routes>
 			</Router>
 		</>

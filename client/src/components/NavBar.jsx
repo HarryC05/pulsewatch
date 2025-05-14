@@ -72,7 +72,7 @@ const NavBar = () => {
 								</a>
 							</li>
 							<li>
-								<a className="navbar__links-link" href="/statuses">
+								<a className="navbar__links-link" href="/pages">
 									Pages
 								</a>
 							</li>

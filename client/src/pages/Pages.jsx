@@ -5,7 +5,6 @@ import axios from 'axios';
 import { Page, Section, Card, Tag, Icon, Button } from '../components';
 
 const API = import.meta.env.VITE_API_URL;
-const SITE_URL = import.meta.env.VITE_SITE_URL;
 
 /**
  * Pages component
