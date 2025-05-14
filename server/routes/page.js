@@ -199,6 +199,16 @@ router.get('/list', protect, async (req, res) => {
 router.get('/:slug', async (req, res) => {
 	const { slug } = req.params;
 
+	// Check that the slug is provided
+	if (!slug) {
+		return res.status(400).json({ message: 'Slug is required' });
+	}
+
+	// Validate status page slug
+	if (!slugRegex.pattern.test(slug)) {
+		return res.status(400).json({ message: slugRegex.err });
+	}
+
 	try {
 		// Find the status page by slug
 		const statusPage = await prisma.statusPage.findUnique({
