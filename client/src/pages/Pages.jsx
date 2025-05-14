@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { Page, Section, Card, Tag } from '../components';
+import { Page, Section, Card, Tag, Icon, Button } from '../components';
 
 const API = import.meta.env.VITE_API_URL;
+const SITE_URL = import.meta.env.VITE_SITE_URL;
 
 /**
  * Pages component
@@ -56,18 +57,43 @@ const Pages = () => {
 				<Section>
 					<div className="pages-page__list">
 						{pages.map((page) => (
-							<Card className="pages-page__card">
-								<h2>{page.title}</h2>
-								<p>{page.description}</p>
-								<p>Slug: {page.slug}</p>
-								<Tag>Test</Tag>
-								<button
-									onClick={() => {
-										navigate(`/statuses/${page.slug}`);
-									}}
-								>
-									View Page
-								</button>
+							<Card
+								className="pages-page__card"
+								onClick={() => navigate(`/status/${page.slug}`)}
+								key={page.id}
+							>
+								<div className="pages-page__card-header">
+									<div className="pages-page__card-header-title">
+										<h2>{page.title}</h2>
+										<Tag
+											className="pages-page__card-header-access-pill"
+											variant={page.isPublic ? 'green' : 'red'}
+										>
+											{page.isPublic ? (
+												<>
+													<Icon icon="lockOpen" />
+													Public
+												</>
+											) : (
+												<>
+													<Icon icon="lockClosed" />
+													Private
+												</>
+											)}
+										</Tag>
+									</div>
+									<Button
+										className="pages-page__card-button"
+										variant="secondary"
+										onClick={(e) => {
+											e.stopPropagation();
+											navigate(`/edit/${page.slug}`);
+										}}
+									>
+										Edit
+									</Button>
+								</div>
+								<p className="pages-page__description">{page.description}</p>
 							</Card>
 						))}
 					</div>

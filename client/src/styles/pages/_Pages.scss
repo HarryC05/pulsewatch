@@ -1,6 +1,44 @@
 /* @define pages-page */
 
+.pages-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .pages-page__card {
 	display: grid;
+  gap: 0.5rem;
 	text-align: unset;
+
+  &:hover {
+    background-color: var(--colour-primary-lighter);
+    cursor: pointer;
+  }
+}
+
+.pages-page__card-header {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+
+  .pages-page__card-header-title {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+
+    .pages-page__card-header-access-pill {
+      gap: 0.25rem;
+    }
+  }
+
+  .pages-page__card-button {
+    flex-basis: 0;
+    z-index: 10;
+  }
+}
+
+.pages-page__description {
+  margin: 0;
 }

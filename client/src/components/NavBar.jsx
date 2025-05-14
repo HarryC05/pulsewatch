@@ -53,7 +53,11 @@ const NavBar = () => {
 	return (
 		<nav className="navbar">
 			<div className="navbar__content">
-				<Icon icon="logo" alt="Logo" className="navbar__logo" />
+				<img
+					className="navbar__logo"
+					src="/svgs/logo-dark.min.svg"
+					alt="Logo"
+				/>
 				<ul className="navbar__links">
 					<li>
 						<a className="navbar__links-link" href="/">

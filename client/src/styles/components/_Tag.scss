@@ -1,14 +1,37 @@
 /* @define tag */
 
 .tag {
-	background-color: var(--colour-primary-light);
-	border: 1px solid var(--colour-primary-dark);
+  align-items: center;
+	background-color: var(--colour-primary-lighter);
+	border: 1px solid var(--colour-primary);
 	border-radius: 999px;
-	display: inline-block;
-	font-size: 0.875rem;
+	display: flex;
+	font-size: 0.75rem;
 	font-weight: 500;
-	padding: 0.5rem 1rem;
+	padding: 0.25rem 0.5rem;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
+  width: fit-content;
+}
+
+.tag--green {
+  background-color: var(--colour-green-light);
+  border: 1px solid var(--colour-green);
+  color: var(--colour-green);
+  fill: var(--colour-green);
+}
+
+.tag--yellow {
+  background-color: var(--colour-yellow-light);
+  border: 1px solid var(--colour-yellow);
+  color: var(--colour-yellow);
+  fill: var(--colour-yellow);
+}
+
+.tag--red {
+  background-color: var(--colour-red-light);
+  border: 1px solid var(--colour-red);
+  color: var(--colour-red);
+  fill: var(--colour-red);
 }

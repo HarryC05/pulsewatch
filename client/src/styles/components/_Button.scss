@@ -13,29 +13,29 @@
   }
 
   &--primary {
-    background-color: var(--colour-primary);
-    color: var(--colour-primary-text);
+    background-color: var(--colour-btn-primary);
+    color: var(--colour-btn-primary-text);
 
     &:hover {
-      background-color: var(--colour-primary-hover);
+      background-color: var(--colour-btn-primary-hover);
     }
   }
 
   &--secondary {
-    background-color: var(--colour-secondary);
-    color: var(--colour-secondary-text);
+    background-color: var(--colour-btn-secondary);
+    color: var(--colour-btn-secondary-text);
 
     &:hover {
-      background-color: var(--colour-secondary-hover);
+      background-color: var(--colour-btn-secondary-hover);
     }
   }
 
   &--dangerous {
-    background-color: var(--colour-dangerous);
-    color: var(--colour-dangerous-text);
+    background-color: var(--colour-btn-dangerous);
+    color: var(--colour-btn-dangerous-text);
 
     &:hover {
-      background-color: var(--colour-dangerous-hover);
+      background-color: var(--colour-btn-dangerous-hover);
     }
   }
 

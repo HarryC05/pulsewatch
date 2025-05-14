@@ -11,20 +11,13 @@
 const Tag = ({ variant, children, className = '' }) => {
 	const variants = {
 		default: '',
-		success: 'success',
-		error: 'error',
-		warning: 'warning',
-		info: 'info',
+		green: 'tag--green',
+		red: 'tag--red',
+		yellow: 'tag--yellow',
 	};
 
 	const variantClass = variants[variant] || '';
-	return (
-		<span
-			className={`tag ${variantClass && `tag--${variantClass}`} ${className}`}
-		>
-			{children}
-		</span>
-	);
+	return <span className={`tag ${variantClass} ${className}`}>{children}</span>;
 };
 
 export default Tag;
