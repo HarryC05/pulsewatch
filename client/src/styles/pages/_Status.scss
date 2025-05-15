@@ -47,3 +47,16 @@
 .status-page__monitor--details-card-subtitle {
   font-size: 0.8rem;
 }
+
+.status-page__monitor--response-time-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-page__monitor--response-time-header-select {
+  background-color: var(--colour-primary-light);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.5rem;
+}

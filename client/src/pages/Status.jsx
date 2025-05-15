@@ -7,7 +7,9 @@ import {
 	Button,
 	Card,
 	Page,
+	ResponseChart,
 	Section,
+	UptimeChart,
 	UptimePill,
 } from '../components';
 
@@ -25,6 +27,116 @@ const Status = () => {
 	const [loading, setLoading] = useState(true);
 	const [status, setStatus] = useState({});
 	const [error, setError] = useState({ code: 0, message: '' });
+	const [responseTimeOption, setResponseTimeOption] = useState(24);
+	const [responseTimeHBs, setResponseTimeHBs] = useState([]);
+
+	/**
+	 * Calculate the average response time to the nearest ms from heartbeats
+	 *
+	 * @param {Array}  heartbeats - Array of heartbeat objects
+	 * @param {number} hours      - Number of hours to calculate average for
+	 *
+	 * @returns {string} - Average response time in ms
+	 */
+	const calculateAverageResponseTime = (heartbeats, hours) => {
+		if (!heartbeats || heartbeats.length === 0) {
+			return 'N/A';
+		}
+
+		let hbs = heartbeats;
+
+		if (hours) {
+			const now = new Date();
+			const pastDate = new Date(now.getTime() - hours * 60 * 60 * 1000);
+			hbs = heartbeats.filter((heartbeat) => {
+				return new Date(heartbeat.createdAt) >= pastDate;
+			});
+		}
+
+		// Filter out heartbeats down hbs
+		const filteredHeartbeats = hbs.filter((heartbeat) => {
+			return heartbeat.status === 'up';
+		});
+
+		// if no heartbeats are up, return N/A
+		if (filteredHeartbeats.length === 0) {
+			return 'N/A';
+		}
+
+		const totalResponseTime = filteredHeartbeats.reduce((acc, heartbeat) => {
+			return acc + heartbeat.responseTime;
+		}, 0);
+
+		const averageResponseTime = totalResponseTime / filteredHeartbeats.length;
+		return `${Math.round(averageResponseTime)} ms`;
+	};
+
+	/**
+	 * Calculate the average uptime to 2 decimal places from heartbeats
+	 *
+	 * @param {Array}  heartbeats - Array of heartbeat objects
+	 * @param {number} hours      - Number of hours to calculate average for
+	 *
+	 * @returns {number} - Average uptime percentage
+	 */
+	const calculateAverageUptime = (heartbeats, hours) => {
+		if (!heartbeats || heartbeats.length === 0) {
+			return 0;
+		}
+
+		let hbs = heartbeats;
+		if (hours) {
+			const now = new Date();
+			const pastDate = new Date(now.getTime() - hours * 60 * 60 * 1000);
+			hbs = heartbeats.filter((heartbeat) => {
+				return new Date(heartbeat.createdAt) >= pastDate;
+			});
+		}
+
+		const totalUptime = hbs.reduce((acc, heartbeat) => {
+			return acc + (heartbeat.status === 'up' ? 1 : 0);
+		}, 0);
+
+		const averageUptime = (totalUptime / hbs.length) * 100;
+		return Math.round(averageUptime * 100) / 100;
+	};
+
+	/**
+	 * Handle response time option change
+	 *
+	 * @param {Event} e - Event object
+	 */
+	const handleResponseTimeChange = (e) => {
+		// validate the input
+		if (
+			isNaN(e.target.value) ||
+			(e.target.value !== '24' && e.target.value !== '168')
+		) {
+			return;
+		}
+
+		setResponseTimeOption(e.target.value);
+	};
+
+	// Set the response time heartbeats based on the selected option
+	useEffect(() => {
+		const now = new Date();
+		const pastDate = new Date(
+			now.getTime() - responseTimeOption * 60 * 60 * 1000
+		);
+
+		if (!status.monitors) {
+			return;
+		}
+
+		const hbs = status.monitors.map((monitor) => {
+			return monitor.heartbeats.filter((heartbeat) => {
+				return new Date(heartbeat.createdAt) >= pastDate;
+			});
+		});
+
+		setResponseTimeHBs(hbs);
+	}, [responseTimeOption, status]);
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -101,83 +213,10 @@ const Status = () => {
 		);
 	}
 
-	/**
-	 * Calculate the average response time to the nearest ms from heartbeats
-	 *
-	 * @param {Array}  heartbeats - Array of heartbeat objects
-	 * @param {number} hours      - Number of hours to calculate average for
-	 *
-	 * @returns {string} - Average response time in ms
-	 */
-	const calculateAverageResponseTime = (heartbeats, hours) => {
-		if (!heartbeats || heartbeats.length === 0) {
-			return 0;
-		}
-
-		let hbs = heartbeats;
-
-		if (hours) {
-			const now = new Date();
-			const pastDate = new Date(now.getTime() - hours * 60 * 60 * 1000);
-			hbs = heartbeats.filter((heartbeat) => {
-				return new Date(heartbeat.createdAt) >= pastDate;
-			});
-		}
-
-		// Filter out heartbeats down hbs
-		const filteredHeartbeats = hbs.filter((heartbeat) => {
-			return heartbeat.status === 'up';
-		});
-
-		// if no heartbeats are up, return N/A
-		if (filteredHeartbeats.length === 0) {
-			return 'N/A';
-		}
-
-		const totalResponseTime = filteredHeartbeats.reduce((acc, heartbeat) => {
-			return acc + heartbeat.responseTime;
-		}, 0);
-
-		const averageResponseTime = totalResponseTime / filteredHeartbeats.length;
-		return `${Math.round(averageResponseTime)} ms`;
-	};
-
-	/**
-	 * Calculate the average uptime to 2 decimal places from heartbeats
-	 *
-	 * @param {Array}  heartbeats - Array of heartbeat objects
-	 * @param {number} hours      - Number of hours to calculate average for
-	 *
-	 * @returns {number} - Average uptime percentage
-	 */
-	const calculateAverageUptime = (heartbeats, hours) => {
-		if (!heartbeats || heartbeats.length === 0) {
-			return 0;
-		}
-
-		let hbs = heartbeats;
-		if (hours) {
-			const now = new Date();
-			const pastDate = new Date(now.getTime() - hours * 60 * 60 * 1000);
-			hbs = heartbeats.filter((heartbeat) => {
-				return new Date(heartbeat.createdAt) >= pastDate;
-			});
-		}
-
-		const totalUptime = hbs.reduce((acc, heartbeat) => {
-			return acc + (heartbeat.status === 'up' ? 1 : 0);
-		}, 0);
-
-		const averageUptime = (totalUptime / hbs.length) * 100;
-		return Math.round(averageUptime * 100) / 100;
-	};
-
-	console.log(status);
-
 	return (
 		<Page title={status.title} className="status-page">
 			{status.monitors && status.monitors.length > 0 ? (
-				status.monitors.map((monitor) => (
+				status.monitors.map((monitor, index) => (
 					<Accordion
 						className="status-page__monitor--content"
 						key={monitor.id}
@@ -239,6 +278,26 @@ const Status = () => {
 								/>
 							</Card>
 						</div>
+						<UptimeChart data={monitor.heartbeats} />
+						<Section
+							variant="dark"
+							className="status-page__monitor--response-time"
+						>
+							<div className="status-page__monitor--response-time-header">
+								<h2>Response Time</h2>
+								<select
+									className="status-page__monitor--response-time-header-select"
+									value={responseTimeOption}
+									onChange={handleResponseTimeChange}
+								>
+									<option value="24">Last 24 hours</option>
+									<option value="168">Last 7 days</option>
+								</select>
+							</div>
+							{responseTimeHBs[index] && (
+								<ResponseChart heartbeats={responseTimeHBs[index]} />
+							)}
+						</Section>
 					</Accordion>
 				))
 			) : (
