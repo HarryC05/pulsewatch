@@ -242,7 +242,7 @@ const Status = () => {
 						key={monitor.id}
 						title={monitor.name}
 						status={monitor.status}
-						collapsed={status.monitors.length > 1}
+						collapsed={index !== 0}
 					>
 						<h4>
 							Last Check: {new Date(monitor.lastChecked).toLocaleString()}

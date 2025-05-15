@@ -55,6 +55,7 @@ const Accordion = ({
 				role="button"
 				tabIndex={0}
 			>
+				<span className="accordion__icon">{isCollapsed ? '▶' : '▼'}</span>
 				<div className="accordion__title">
 					{status && (
 						<span
@@ -65,7 +66,6 @@ const Accordion = ({
 					)}
 					<h2>{title}</h2>
 				</div>
-				<span className="accordion__icon">{isCollapsed ? '◀' : '▼'}</span>
 			</div>
 			<div className={`accordion__content ${className}`}>{children}</div>
 		</div>
