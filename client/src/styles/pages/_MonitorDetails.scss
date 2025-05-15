@@ -88,15 +88,3 @@
 .monitor-page__details--downtime-list-table tr:last-child td {
   border-bottom: none;
 }
-
-/* stylelint-disable plugin/selector-bem-pattern */
-.monitor-page__details--info-item > h2,
-.monitor-page__details > h4,
-.monitor-page__details--back > h4,
-.monitor-page__details--info__item-value,
-.monitor-page__details--info__item-subtitle,
-.monitor-page__details--response-time-header > h2,
-.monitor-page__details--downtime > h2 {
-  margin: 0;
-}
-/* stylelint-enable plugin/selector-bem-pattern */
