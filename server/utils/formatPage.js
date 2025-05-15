@@ -31,6 +31,8 @@ const formatPage = (page) => {
 				id: heartbeat.id,
 				status: heartbeat.status,
 				responseTime: heartbeat.responseTime,
+				errorMessage: heartbeat.errorMessage,
+				responseCode: heartbeat.responseCode,
 				createdAt: heartbeat.createdAt,
 			})),
 		})),

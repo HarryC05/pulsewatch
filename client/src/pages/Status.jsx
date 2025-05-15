@@ -29,6 +29,7 @@ const Status = () => {
 	const [error, setError] = useState({ code: 0, message: '' });
 	const [responseTimeOption, setResponseTimeOption] = useState(24);
 	const [responseTimeHBs, setResponseTimeHBs] = useState([]);
+	const [downHBs, setDownHBs] = useState([]);
 
 	/**
 	 * Calculate the average response time to the nearest ms from heartbeats
@@ -137,6 +138,25 @@ const Status = () => {
 
 		setResponseTimeHBs(hbs);
 	}, [responseTimeOption, status]);
+
+	// Set the downtime heartbeats max of 5 for each monitor
+	useEffect(() => {
+		if (!status.monitors) {
+			return;
+		}
+
+		const hbs = status.monitors.map((monitor) => {
+			return monitor.heartbeats.filter((heartbeat) => {
+				return heartbeat.status === 'down';
+			});
+		});
+
+		const downHbs = hbs.map((monitor) => {
+			return monitor.slice(0, 5);
+		});
+
+		setDownHBs(downHbs);
+	}, [status]);
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -297,6 +317,44 @@ const Status = () => {
 							{responseTimeHBs[index] && (
 								<ResponseChart heartbeats={responseTimeHBs[index]} />
 							)}
+						</Section>
+						<Section variant="dark" className="status-page__monitor--downtime">
+							<h2>Downtime</h2>
+							<span className="status-page__monitor--downtime-subtitle">
+								<i>Showing up to 5 most recent events from the last 7 days.</i>
+							</span>
+							<div className="status-page__monitor--downtime-list">
+								{downHBs[index] && downHBs[index].length > 0 ? (
+									<table className="status-page__monitor--downtime-list-table">
+										<thead>
+											<tr>
+												<th className="status-page__monitor--downtime-list-table-header-date">
+													Date
+												</th>
+												<th className="status-page__monitor--downtime-list-table-header-response-code">
+													Response Code
+												</th>
+												<th className="status-page__monitor--downtime-list-table-header-error-message">
+													Error Message
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											{downHBs[index].map((heartbeat) => (
+												<tr key={heartbeat.id}>
+													<td>
+														{new Date(heartbeat.createdAt).toLocaleString()}
+													</td>
+													<td>{heartbeat.responseCode || 'N/A'}</td>
+													<td>{heartbeat.errorMessage || 'N/A'}</td>
+												</tr>
+											))}
+										</tbody>
+									</table>
+								) : (
+									<p>No downtime recorded in the last 7 days.</p>
+								)}
+							</div>
 						</Section>
 					</Accordion>
 				))

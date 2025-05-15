@@ -60,3 +60,34 @@
   cursor: pointer;
   padding: 0.5rem;
 }
+
+.status-page__monitor--downtime-list-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+.status-page__monitor--downtime-list-table th {
+  border-bottom: 2px solid var(--colour-primary-light);
+}
+
+.status-page__monitor--downtime-list-table-header-date {
+  width: 35%;
+}
+
+.status-page__monitor--downtime-list-table-header-error-message {
+  width: 50%;
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+.status-page__monitor--downtime-list-table td {
+  border-bottom: 1px solid var(--colour-primary-light);
+  padding: 1rem;
+  text-align: center;
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+.status-page__monitor--downtime-list-table tr:last-child td {
+  border-bottom: none;
+}
