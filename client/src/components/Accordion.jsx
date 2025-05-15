@@ -5,6 +5,7 @@ import { useState } from 'react';
  *
  * @param {object}    props           - Component properties
  * @param {ReactNode} props.children  - Child components
+ * @param {string=}   props.className - Additional class names
  * @param {string=}   props.title     - Accordion title
  * @param {boolean=}  props.collapsed - Initial collapsed state
  * @param {string=}   props.status    - Status of the accordion
@@ -13,6 +14,7 @@ import { useState } from 'react';
  */
 const Accordion = ({
 	children,
+	className = '',
 	title = '',
 	collapsed = true,
 	status = null,
@@ -65,7 +67,7 @@ const Accordion = ({
 				</div>
 				<span className="accordion__icon">{isCollapsed ? '◀' : '▼'}</span>
 			</div>
-			<div className="accordion__content">{children}</div>
+			<div className={`accordion__content ${className}`}>{children}</div>
 		</div>
 	);
 };
