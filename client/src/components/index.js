@@ -1,3 +1,4 @@
+import Accordion from './Accordion';
 import Button from './Button';
 import Card from './Card';
 import CreateMonitorModal from './CreateMonitorModal';
@@ -15,6 +16,7 @@ import UptimeChart from './UptimeChart';
 import UptimePill from './UptimePill';
 
 export {
+	Accordion,
 	Button,
 	Card,
 	CreateMonitorModal,

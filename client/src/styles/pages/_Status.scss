@@ -7,3 +7,17 @@
   justify-content: center;
   text-align: center;
 }
+
+// stylelint-disable-next-line plugin/selector-bem-pattern
+.status-page .page__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.status-page__monitor-header {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}

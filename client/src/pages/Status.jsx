@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { Button, Page, Section } from '../components';
+import { Accordion, Button, Page, Section } from '../components';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -94,17 +94,29 @@ const Status = () => {
 		);
 	}
 
+	console.log(status);
+
 	return (
-		<Page title="Status">
-			<div className="status">
-				<div className="status__content">
-					<h1 className="status__title">Status</h1>
-					<p className="status__description">
-						PulseWatch is currently up and running. All systems are functioning
-						normally.
-					</p>
-				</div>
-			</div>
+		<Page title={status.title} className="status-page">
+			{status.monitors && status.monitors.length > 0 ? (
+				status.monitors.map((monitor) => (
+					<Accordion
+						className="status-page__monitor"
+						key={monitor.id}
+						title={monitor.name}
+						status={monitor.status}
+						collapsed={status.monitors.length > 1}
+					>
+						<p>Status stuff here</p>
+					</Accordion>
+				))
+			) : (
+				<Section className="status-page__no-monitors">
+					<h1 className="status-page__no-monitors-title">
+						This status page has no monitors
+					</h1>
+				</Section>
+			)}
 		</Page>
 	);
 };
