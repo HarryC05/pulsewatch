@@ -21,3 +21,29 @@
   display: flex;
   gap: 0.5rem;
 }
+
+.status-page__monitor--content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.status-page__monitor--details {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.status-page__monitor--details-card {
+  display: grid;
+  gap: 0.25rem;
+
+  /* stylelint-disable-next-line plugin/selector-bem-pattern */
+  .uptime-pill {
+    margin-top: 0.5rem;
+  }
+}
+
+.status-page__monitor--details-card-subtitle {
+  font-size: 0.8rem;
+}

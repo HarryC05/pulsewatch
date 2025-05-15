@@ -2,7 +2,14 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { Accordion, Button, Page, Section } from '../components';
+import {
+	Accordion,
+	Button,
+	Card,
+	Page,
+	Section,
+	UptimePill,
+} from '../components';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -94,6 +101,77 @@ const Status = () => {
 		);
 	}
 
+	/**
+	 * Calculate the average response time to the nearest ms from heartbeats
+	 *
+	 * @param {Array}  heartbeats - Array of heartbeat objects
+	 * @param {number} hours      - Number of hours to calculate average for
+	 *
+	 * @returns {string} - Average response time in ms
+	 */
+	const calculateAverageResponseTime = (heartbeats, hours) => {
+		if (!heartbeats || heartbeats.length === 0) {
+			return 0;
+		}
+
+		let hbs = heartbeats;
+
+		if (hours) {
+			const now = new Date();
+			const pastDate = new Date(now.getTime() - hours * 60 * 60 * 1000);
+			hbs = heartbeats.filter((heartbeat) => {
+				return new Date(heartbeat.createdAt) >= pastDate;
+			});
+		}
+
+		// Filter out heartbeats down hbs
+		const filteredHeartbeats = hbs.filter((heartbeat) => {
+			return heartbeat.status === 'up';
+		});
+
+		// if no heartbeats are up, return N/A
+		if (filteredHeartbeats.length === 0) {
+			return 'N/A';
+		}
+
+		const totalResponseTime = filteredHeartbeats.reduce((acc, heartbeat) => {
+			return acc + heartbeat.responseTime;
+		}, 0);
+
+		const averageResponseTime = totalResponseTime / filteredHeartbeats.length;
+		return `${Math.round(averageResponseTime)} ms`;
+	};
+
+	/**
+	 * Calculate the average uptime to 2 decimal places from heartbeats
+	 *
+	 * @param {Array}  heartbeats - Array of heartbeat objects
+	 * @param {number} hours      - Number of hours to calculate average for
+	 *
+	 * @returns {number} - Average uptime percentage
+	 */
+	const calculateAverageUptime = (heartbeats, hours) => {
+		if (!heartbeats || heartbeats.length === 0) {
+			return 0;
+		}
+
+		let hbs = heartbeats;
+		if (hours) {
+			const now = new Date();
+			const pastDate = new Date(now.getTime() - hours * 60 * 60 * 1000);
+			hbs = heartbeats.filter((heartbeat) => {
+				return new Date(heartbeat.createdAt) >= pastDate;
+			});
+		}
+
+		const totalUptime = hbs.reduce((acc, heartbeat) => {
+			return acc + (heartbeat.status === 'up' ? 1 : 0);
+		}, 0);
+
+		const averageUptime = (totalUptime / hbs.length) * 100;
+		return Math.round(averageUptime * 100) / 100;
+	};
+
 	console.log(status);
 
 	return (
@@ -101,13 +179,66 @@ const Status = () => {
 			{status.monitors && status.monitors.length > 0 ? (
 				status.monitors.map((monitor) => (
 					<Accordion
-						className="status-page__monitor"
+						className="status-page__monitor--content"
 						key={monitor.id}
 						title={monitor.name}
 						status={monitor.status}
 						collapsed={status.monitors.length > 1}
 					>
-						<p>Status stuff here</p>
+						<h4>
+							Last Check: {new Date(monitor.lastChecked).toLocaleString()}
+						</h4>
+						<div className="status-page__monitor--details">
+							<Card className="status-page__monitor--details-card">
+								<h2>Response</h2>
+								<span className="status-page__monitor--details-card-subtitle">
+									(Current)
+								</span>
+								<h3 className="status-page__monitor--details-card-value">
+									{monitor.heartbeats[0].responseTime
+										? `${monitor.heartbeats[0].responseTime} ms`
+										: 'N/A'}
+								</h3>
+							</Card>
+							<Card className="status-page__monitor--details-card">
+								<h2>Response</h2>
+								<span className="status-page__monitor--details-card-subtitle">
+									(Avg. 24 hrs)
+								</span>
+								<h3 className="status-page__monitor--details-card-value">
+									{calculateAverageResponseTime(monitor.heartbeats, 24)}
+								</h3>
+							</Card>
+							<Card className="status-page__monitor--details-card">
+								<h2>Response</h2>
+								<span className="status-page__monitor--details-card-subtitle">
+									(Avg. 7 Days)
+								</span>
+								<h3 className="status-page__monitor--details-card-value">
+									{calculateAverageResponseTime(monitor.heartbeats)}
+								</h3>
+							</Card>
+							<Card className="status-page__monitor--details-card">
+								<h2>Uptime</h2>
+								<span className="status-page__monitor--details-card-subtitle">
+									(24 hrs)
+								</span>
+								<UptimePill
+									uptime={calculateAverageUptime(monitor.heartbeats, 24)}
+									className="status-page__monitor--details-uptime"
+								/>
+							</Card>
+							<Card className="status-page__monitor--details-card">
+								<h2>Uptime</h2>
+								<span className="status-page__monitor--details-card-subtitle">
+									(7 Days)
+								</span>
+								<UptimePill
+									uptime={calculateAverageUptime(monitor.heartbeats)}
+									className="status-page__monitor--details-uptime"
+								/>
+							</Card>
+						</div>
 					</Accordion>
 				))
 			) : (
