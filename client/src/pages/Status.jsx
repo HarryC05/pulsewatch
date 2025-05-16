@@ -32,6 +32,46 @@ const Status = () => {
 	const [downHBs, setDownHBs] = useState([]);
 
 	/**
+	 * Fetch status page details
+	 *
+	 * @returns {void}
+	 */
+	const getStatus = () => {
+		const controller = new AbortController();
+		axios
+			.get(`${API}/api/v1/page/${slug}`, {
+				withCredentials: true,
+				signal: controller.signal,
+			})
+			.then((res) => {
+				if (res.data) {
+					setStatus(res.data);
+					setLoading(false);
+				} else {
+					setError({
+						code: 404,
+						message: 'Page not found',
+					});
+					setLoading(false);
+				}
+			})
+			.catch((err) => {
+				if (err.name !== 'CanceledError') {
+					console.error(err);
+					setError({
+						code: err.response.status,
+						message: err.response.data.message,
+					});
+					setLoading(false);
+				}
+			});
+
+		return () => {
+			controller.abort();
+		};
+	};
+
+	/**
 	 * Calculate the average response time to the nearest ms from heartbeats
 	 *
 	 * @param {Array}  heartbeats - Array of heartbeat objects
@@ -159,37 +199,14 @@ const Status = () => {
 	}, [status]);
 
 	useEffect(() => {
-		const controller = new AbortController();
-		axios
-			.get(`${API}/api/v1/page/${slug}`, {
-				withCredentials: true,
-				signal: controller.signal,
-			})
-			.then((res) => {
-				if (res.data) {
-					setStatus(res.data);
-					setLoading(false);
-				} else {
-					setError({
-						code: 404,
-						message: 'Page not found',
-					});
-					setLoading(false);
-				}
-			})
-			.catch((err) => {
-				if (err.name !== 'CanceledError') {
-					console.error(err);
-					setError({
-						code: err.response.status,
-						message: err.response.data.message,
-					});
-					setLoading(false);
-				}
-			});
+		getStatus();
 
+		// Polling the API every 60 seconds
+		const interval = setInterval(() => {
+			getStatus();
+		}, 60000);
 		return () => {
-			controller.abort();
+			clearInterval(interval);
 		};
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
