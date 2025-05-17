@@ -1,0 +1,36 @@
+/* @define create-page-modal */
+
+.create-page-modal {
+  min-width: 25rem;
+}
+
+.create-page-modal__description {
+  margin: 0;
+}
+
+.create-page-modal__form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.create-page-modal__form-group {
+  display: grid;
+  gap: 0.5rem;
+
+  /* stylelint-disable-next-line plugin/selector-bem-pattern */
+  .notice {
+    justify-self: center;
+  }
+
+  .create-page-modal__form-group--char-count {
+    font-size: 0.75rem;
+    text-align: right;
+  }
+}
+
+.create-page-modal__form-group--checkbox {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}

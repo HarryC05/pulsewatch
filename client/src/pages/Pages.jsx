@@ -2,7 +2,15 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { Page, Section, Card, Tag, Icon, Button } from '../components';
+import {
+	Page,
+	Section,
+	Card,
+	Tag,
+	Icon,
+	Button,
+	CreatePageModal,
+} from '../components';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -15,6 +23,7 @@ const Pages = () => {
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(true);
 	const [pages, setPages] = useState([]);
+	const [showCreateModal, setShowCreateModal] = useState(true);
 
 	/**
 	 * Fetches the list of pages
@@ -51,54 +60,68 @@ const Pages = () => {
 	}
 
 	return (
-		<Page className="pages-page" title={`Pages (${pages.length}/1)`}>
-			<div className="pages-page__content">
-				<Section>
-					<div className="pages-page__list">
-						{pages.map((page) => (
-							<Card
-								className="pages-page__card"
-								onClick={() => navigate(`/status/${page.slug}`)}
-								key={page.id}
-							>
-								<div className="pages-page__card-header">
-									<div className="pages-page__card-header-title">
-										<h2>{page.title}</h2>
-										<Tag
-											className="pages-page__card-header-access-pill"
-											variant={page.isPublic ? 'green' : 'red'}
+		<>
+			{showCreateModal && (
+				<CreatePageModal onClose={() => setShowCreateModal(false)} />
+			)}
+			<Page className="pages-page">
+				<div className="pages-page__header">
+					<h1 className="pages-page__header-title">{`Pages (${pages.length}/1)`}</h1>
+					<Button
+						onClick={() => setShowCreateModal(true)}
+						disabled={pages.length >= 1}
+					>
+						Create Page
+					</Button>
+				</div>
+				<div className="pages-page__content">
+					<Section>
+						<div className="pages-page__list">
+							{pages.map((page) => (
+								<Card
+									className="pages-page__card"
+									onClick={() => navigate(`/status/${page.slug}`)}
+									key={page.id}
+								>
+									<div className="pages-page__card-header">
+										<div className="pages-page__card-header-title">
+											<h2>{page.title}</h2>
+											<Tag
+												className="pages-page__card-header-access-pill"
+												variant={page.isPublic ? 'green' : 'red'}
+											>
+												{page.isPublic ? (
+													<>
+														<Icon icon="lockOpen" />
+														Public
+													</>
+												) : (
+													<>
+														<Icon icon="lockClosed" />
+														Private
+													</>
+												)}
+											</Tag>
+										</div>
+										<Button
+											className="pages-page__card-button"
+											variant="secondary"
+											onClick={(e) => {
+												e.stopPropagation();
+												navigate(`/edit/${page.slug}`);
+											}}
 										>
-											{page.isPublic ? (
-												<>
-													<Icon icon="lockOpen" />
-													Public
-												</>
-											) : (
-												<>
-													<Icon icon="lockClosed" />
-													Private
-												</>
-											)}
-										</Tag>
+											Edit
+										</Button>
 									</div>
-									<Button
-										className="pages-page__card-button"
-										variant="secondary"
-										onClick={(e) => {
-											e.stopPropagation();
-											navigate(`/edit/${page.slug}`);
-										}}
-									>
-										Edit
-									</Button>
-								</div>
-								<p className="pages-page__description">{page.description}</p>
-							</Card>
-						))}
-					</div>
-				</Section>
-			</div>
-		</Page>
+									<p className="pages-page__description">{page.description}</p>
+								</Card>
+							))}
+						</div>
+					</Section>
+				</div>
+			</Page>
+		</>
 	);
 };
 
