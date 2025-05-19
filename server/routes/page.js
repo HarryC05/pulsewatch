@@ -100,7 +100,7 @@ router.post('/create', protect, async (req, res) => {
 		where: { userId: req.user.id },
 	});
 
-	const statusPageLimit = 100;
+	const statusPageLimit = 100; // TODO: Reset this to the actual limit
 
 	if (userStatusPages >= statusPageLimit) {
 		return res
