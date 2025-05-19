@@ -2,6 +2,7 @@ node_modules
 .env
 /client/dist
 /client/.vite
+/workspaces/
 
 # Mac
 .DS_Store

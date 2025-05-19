@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { nameRegex, slugRegex, descRegex } from '../../../shared/regex';
-import { Modal, Notice, Button } from './';
+import { Modal, Notice, Button, Tag } from './';
 
 /**
  * CreatePageModal component
@@ -16,7 +16,7 @@ const CreatePageModal = ({ onClose }) => {
 	const [slug, setSlug] = useState('');
 	const [slugEdited, setSlugEdited] = useState(false);
 	const [desc, setDesc] = useState('');
-	const [isPublic, setIsPublic] = useState(true);
+	const [isPublic, setIsPublic] = useState(false);
 	const [monitors, setMonitors] = useState([]);
 	const [titleError, setTitleError] = useState('');
 	const [slugError, setSlugError] = useState('');
@@ -141,19 +141,42 @@ const CreatePageModal = ({ onClose }) => {
 						</span>
 						{descError && <Notice message={descError} variant="error" />}
 					</div>
-					<div className="create-page-modal__form-group create-page-modal__form-group--checkbox">
+					<div className="create-page-modal__form-group create-page-modal__form-group--toggle">
 						<label
 							htmlFor="isPublic"
 							title="Make this page visible to the public"
 						>
-							Public
+							Visibility
 						</label>
-						<input
-							type="checkbox"
-							id="isPublic"
-							checked={isPublic}
-							onChange={(e) => setIsPublic(e.target.checked)}
-						/>
+						<div className="create-page-modal__form-group--toggle-input">
+							<button
+								type="button"
+								className={`create-page-modal__form-group--toggle-input-button`}
+								onClick={() => setIsPublic(!isPublic)}
+							>
+								<Tag variant={!isPublic ? 'red' : 'default'}>Private</Tag>
+							</button>
+							<label
+								className="create-page-modal__form-group--toggle-input-label"
+								htmlFor="isPublic"
+							>
+								<input
+									type="checkbox"
+									id="isPublic"
+									checked={isPublic}
+									onChange={() => setIsPublic(!isPublic)}
+									className="create-page-modal__form-group--toggle-input-checkbox"
+								/>
+								<span className="create-page-modal__form-group--toggle-input-slider"></span>
+							</label>
+							<button
+								type="button"
+								className={`create-page-modal__form-group--toggle-input-button`}
+								onClick={() => setIsPublic(!isPublic)}
+							>
+								<Tag variant={isPublic ? 'green' : 'default'}>Public</Tag>
+							</button>
+						</div>
 					</div>
 					<div className="create-page-modal__form-group-buttons">
 						<Button
