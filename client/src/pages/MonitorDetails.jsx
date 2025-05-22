@@ -104,11 +104,7 @@ const MonitorDetails = () => {
 					<Page title="Loading..." />
 				) : (
 					<>
-						<Button
-							variant="text"
-							onClick={() => navigate(-1)}
-							className="monitor-page__details--back"
-						>
+						<Button variant="text" onClick={() => navigate(-1)}>
 							<h4>← Back</h4>
 						</Button>
 						<div className="monitor-page__details--header">

@@ -24,6 +24,7 @@ const Button = ({
 		secondary: 'btn--secondary',
 		dangerous: 'btn--dangerous',
 		text: 'btn--text',
+		back: 'btn--back',
 	};
 
 	const variantClass = variants[variant];
