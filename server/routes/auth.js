@@ -25,8 +25,16 @@ router.get('/', (req, res) => {
 				path: '/api/v1/auth/signup',
 				description: 'Register a new user',
 			},
-			{ method: 'POST', path: '/api/v1/auth/login', description: 'Login' },
-			{ method: 'POST', path: '/api/v1/auth/logout', description: 'Logout' },
+			{
+				method: 'POST',
+				path: '/api/v1/auth/login',
+				description: 'Authenticate a user',
+			},
+			{
+				method: 'POST',
+				path: '/api/v1/auth/logout',
+				description: 'Logout a user',
+			},
 		],
 	});
 });

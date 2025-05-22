@@ -1,7 +1,12 @@
 import express from 'express';
 
 import { protect } from '../middleware/auth.js';
-import { descRegex, nameRegex, slugRegex } from '../../shared/regex.js';
+import {
+	descRegex,
+	nameRegex,
+	slugRegex,
+	idRegex,
+} from '../../shared/regex.js';
 import { prisma, formatPage } from '../utils/index.js';
 
 const router = express.Router();
@@ -30,8 +35,8 @@ router.get('/', (req, res) => {
 			},
 			{
 				method: 'GET',
-				path: '/api/v1/page/:slug',
-				description: 'Get a specific status page by slug',
+				path: '/api/v1/page/:identifier',
+				description: 'Get a specific status page by slug or ID',
 			},
 			{
 				method: 'PUT',
@@ -189,30 +194,39 @@ router.get('/list', protect, async (req, res) => {
 /**
  * Get a specific status page by slug
  *
- * @route GET /api/v1/page/:slug
+ * @route GET /api/v1/page/:identifier
  * @access public
  *
- * @param {string} slug - The slug of the status page
+ * @param {string} identifier - The slug of the status page
  *
  * @returns {object} - The status page object
  */
-router.get('/:slug', async (req, res) => {
-	const { slug } = req.params;
+router.get('/:identifier', async (req, res) => {
+	const { identifier } = req.params;
 
-	// Check that the slug is provided
-	if (!slug) {
-		return res.status(400).json({ message: 'Slug is required' });
+	if (!identifier) {
+		return res.status(400).json({ message: 'Slug or ID is required' });
 	}
 
-	// Validate status page slug
-	if (!slugRegex.pattern.test(slug)) {
-		return res.status(404).json({ message: 'Page not found' });
+	// Check if a slug or ID is provided
+	const isId = identifier.length === 36; // UUID length
+	const slug = isId ? undefined : identifier;
+	const id = isId ? identifier : undefined;
+
+	// Check if the slug is valid
+	if (slug && !slugRegex.pattern.test(slug)) {
+		return res.status(400).json({ message: slugRegex.err });
+	}
+
+	// Check if the ID is valid
+	if (id && !idRegex.pattern.test(id)) {
+		return res.status(400).json({ message: idRegex.err });
 	}
 
 	try {
-		// Find the status page by slug
+		// Find the status page by slug or ID
 		const statusPage = await prisma.statusPage.findUnique({
-			where: { slug },
+			where: { slug, id },
 			include: {
 				monitors: {
 					include: {
