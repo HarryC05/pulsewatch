@@ -23,7 +23,7 @@ const Pages = () => {
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(true);
 	const [pages, setPages] = useState([]);
-	const [showCreateModal, setShowCreateModal] = useState(true);
+	const [showCreateModal, setShowCreateModal] = useState(false);
 
 	/**
 	 * Fetches the list of pages
@@ -108,7 +108,7 @@ const Pages = () => {
 											variant="secondary"
 											onClick={(e) => {
 												e.stopPropagation();
-												navigate(`/edit/${page.slug}`);
+												navigate(`/edit/${page.id}`);
 											}}
 										>
 											Edit
