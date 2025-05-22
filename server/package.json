@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node index.js",
-		"dev": "nodemon index.js",
+		"dev": "concurrently \"npm run dev:api\" \"npm run worker\" --kill-others-on-fail",
+		"dev:api": "nodemon index.js",
+  	"worker": "node monitorWorker.js",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix"
 	},
@@ -28,6 +30,7 @@
 		"uuid": "^11.1.0"
 	},
 	"devDependencies": {
+		"concurrently": "^9.1.2",
 		"eslint": "^8.57.1",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-jsdoc": "^50.6.1",
