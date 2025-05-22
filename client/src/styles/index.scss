@@ -90,6 +90,62 @@ main {
 	padding: 1rem;
 }
 
+.text-colour-primary {
+  color: var(--colour-primary) !important;
+}
+
+.background-colour-primary {
+  background-color: var(--colour-primary) !important;
+}
+
+.text-colour-primary-light {
+  color: var(--colour-primary-light) !important;
+}
+
+.background-colour-primary-light {
+  background-color: var(--colour-primary-light) !important;
+}
+
+.text-colour-primary-lighter {
+  color: var(--colour-primary-lighter) !important;
+}
+
+.background-colour-primary-lighter {
+  background-color: var(--colour-primary-lighter) !important;
+}
+
+.text-colour-primary-dark {
+  color: var(--colour-primary-dark) !important;
+}
+
+.background-colour-primary-dark {
+  background-color: var(--colour-primary-dark) !important;
+}
+
+.text-colour-offwhite {
+  color: var(--colour-offwhite) !important;
+}
+
+.background-colour-offwhite {
+  background-color: var(--colour-offwhite) !important;
+}
+
+.text-colour-white {
+  color: var(--colour-white) !important;
+}
+
+.background-colour-white {
+  background-color: var(--colour-white) !important;
+}
+
+.text-colour-black {
+  color: var(--colour-black) !important;
+}
+
+.background-colour-black {
+  background-color: var(--colour-black) !important;
+}
+
 .text-colour-green {
 	color: var(--colour-green) !important;
 }
@@ -114,12 +170,20 @@ main {
 	background-color: var(--colour-yellow) !important;
 }
 
+.text-colour-yellow-light {
+  color: var(--colour-yellow-light) !important;
+}
+
 .text-colour-red {
 	color: var(--colour-red) !important;
 }
 
 .background-colour-red {
 	background-color: var(--colour-red) !important;
+}
+
+.text-colour-red-light {
+  color: var(--colour-red-light) !important;
 }
 
 input {
