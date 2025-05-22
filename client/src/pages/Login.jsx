@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { unameRegex, emailRegex, passwordRegex } from '../../../shared/regex';
-import { Notice, Button, Icon, Page } from '../components';
+import { Notice, Button, Page } from '../components';
 
 const API = import.meta.env.VITE_API_URL;
 
