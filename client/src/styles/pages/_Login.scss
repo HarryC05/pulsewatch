@@ -1,10 +1,12 @@
 /* @define login-page */
 
+@use '../global/variables' as vars;
+
 .login-page {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - var(--nav-height) - 4rem);
+  height: calc(100vh - vars.$nav-height - 4rem);
   justify-content: center;
 }
 
