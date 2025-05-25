@@ -56,7 +56,7 @@ const Pages = () => {
 	}, [navigate]);
 
 	if (loading) {
-		return <Page title="Loading..." />;
+		return <Page header="Loading..." title="PW | Loading..." />;
 	}
 
 	return (
@@ -64,7 +64,7 @@ const Pages = () => {
 			{showCreateModal && (
 				<CreatePageModal onClose={() => setShowCreateModal(false)} />
 			)}
-			<Page className="pages-page">
+			<Page className="pages-page" title="PW | Pages">
 				<div className="pages-page__header">
 					<h1 className="pages-page__header-title">{`Pages (${pages.length}/1)`}</h1>
 					<Button

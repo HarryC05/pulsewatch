@@ -8,7 +8,7 @@ import { Page } from '../components';
 const Homepage = () => {
 	return (
 		<>
-			<Page className="homepage" title="Welcome to the Homepage">
+			<Page className="homepage" header="Welcome to the Homepage">
 				<div className="homepage__content">
 					<p>This is the main content area.</p>
 				</div>

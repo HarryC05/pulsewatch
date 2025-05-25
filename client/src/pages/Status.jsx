@@ -211,12 +211,16 @@ const Status = () => {
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	if (loading) {
-		return <Page title="Loading..." />;
+		return <Page header="Loading..." title="PW | Loading..." />;
 	}
 
 	if (error.code !== 0) {
 		return (
-			<Page className="status-page" title={`Error ${error.code}`}>
+			<Page
+				className="status-page"
+				header={`Error ${error.code}`}
+				title="PW | Error"
+			>
 				<Section className="status-page__error">
 					{error.code === 404 ? (
 						<div className="status-page__error-content">
@@ -251,7 +255,11 @@ const Status = () => {
 	}
 
 	return (
-		<Page title={status.title} className="status-page">
+		<Page
+			header={status.title}
+			className="status-page"
+			title={`PW | ${status.title}`}
+		>
 			{status.monitors && status.monitors.length > 0 ? (
 				status.monitors.map((monitor, index) => (
 					<Accordion

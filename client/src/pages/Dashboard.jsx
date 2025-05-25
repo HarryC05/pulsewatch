@@ -62,7 +62,7 @@ const Dashboard = () => {
 	}, []);
 
 	if (loading) {
-		return <Page title="Loading..." />;
+		return <Page header="Loading..." title="PW | Loading..." />;
 	}
 
 	return (
@@ -78,7 +78,11 @@ const Dashboard = () => {
 					}}
 				/>
 			)}
-			<Page className="dashboard-page" title={`Welcome ${user?.username}!`}>
+			<Page
+				className="dashboard-page"
+				heading={`Welcome ${user?.username}!`}
+				title="PW | Dashboard"
+			>
 				<Section className="dashboard__content">
 					<div className="dashboard__content-header">
 						<div className="dashboard__content-header-title">

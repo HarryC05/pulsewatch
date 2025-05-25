@@ -195,7 +195,7 @@ function Login() {
 	}, [navigate]);
 
 	return (
-		<Page className="login-page">
+		<Page className="login-page" title={`PW | ${signup ? 'Signup' : 'Login'}`}>
 			<div className="login-page__container">
 				<a href="/">
 					<img

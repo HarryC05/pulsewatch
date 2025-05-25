@@ -98,11 +98,11 @@ const Account = () => {
 	}, [navigate]);
 
 	if (loading) {
-		return <Page title="Loading..." />;
+		return <Page header="Loading..." title="PW | Loading..." />;
 	}
 
 	return (
-		<Page className="account-page" title="Account">
+		<Page className="account-page" header="Account" title="PW | Account">
 			<Section className="account__content">
 				<h2 className="account__title">Your Information</h2>
 				{error && <Notice message={error} variant="error" />}
