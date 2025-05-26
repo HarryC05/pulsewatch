@@ -260,6 +260,12 @@ const Status = () => {
 			className="status-page"
 			title={`PW | ${status.title}`}
 		>
+			{status.description && (
+				<Section className="status-page__description">
+					<h2>Description</h2>
+					<p className="status-page__description-text">{status.description}</p>
+				</Section>
+			)}
 			{status.monitors && status.monitors.length > 0 ? (
 				status.monitors.map((monitor, index) => (
 					<Accordion
