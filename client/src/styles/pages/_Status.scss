@@ -1,5 +1,9 @@
 /* @define status-page */
 
+.status-page__error-description {
+  margin: 1rem 0;
+}
+
 .status-page__error {
   align-items: center;
   display: flex;

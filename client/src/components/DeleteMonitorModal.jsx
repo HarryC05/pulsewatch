@@ -65,7 +65,7 @@ const DeleteMonitorModal = ({ onClose, monitorId, monitorName }) => {
 				</p>
 
 				<div className="delete-monitor-modal__actions">
-					<p>
+					<p className="delete-monitor-modal__confirm-text">
 						Confirm by typing{' '}
 						<code className="delete-monitor-modal__code">{monitorName}</code> in
 						the box below
