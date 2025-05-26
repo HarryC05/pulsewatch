@@ -87,7 +87,7 @@ const Dashboard = () => {
 					<div className="dashboard__content-header">
 						<div className="dashboard__content-header-title">
 							<h2>Your Monitors</h2>
-							<h4>({user?.totalMonitors}/10)</h4>
+							<h4>({monitors.length}/10)</h4>
 						</div>
 						<Button variant="primary" onClick={() => setShowCreateModal(true)}>
 							+ Add Monitor
