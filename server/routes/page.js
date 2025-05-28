@@ -357,10 +357,11 @@ router.put('/:id', protect, async (req, res) => {
 				isPublic,
 				monitors: {
 					deleteMany: {},
-					create: monitors.map((monitorId) => ({
+					create: monitors.map((monitorId, index) => ({
 						monitor: {
 							connect: { id: monitorId },
 						},
+						position: index,
 					})),
 				},
 			},
