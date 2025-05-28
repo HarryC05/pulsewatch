@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { nameRegex, slugRegex, descRegex } from '../../../shared/regex';
-import { Modal, Notice, Button, Tag } from './';
+import { Modal, Notice, Button, VisibilityToggle } from './';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -24,7 +24,6 @@ const CreatePageModal = ({ onClose }) => {
 	const [titleError, setTitleError] = useState('');
 	const [slugError, setSlugError] = useState('');
 	const [descError, setDescError] = useState('');
-	const [error, setError] = useState('');
 
 	const navigate = useNavigate();
 
@@ -143,7 +142,6 @@ const CreatePageModal = ({ onClose }) => {
 				const errorMessage =
 					error.response?.data?.message || 'An error occurred';
 				console.error('Error creating page:', errorMessage);
-				setError(errorMessage);
 			});
 
 		// Close the modal
@@ -220,35 +218,7 @@ const CreatePageModal = ({ onClose }) => {
 						>
 							Page visibility
 						</label>
-						<div className="create-page-modal__form-group--toggle-input">
-							<button
-								type="button"
-								className={`create-page-modal__form-group--toggle-input-button`}
-								onClick={() => setIsPublic(!isPublic)}
-							>
-								<Tag variant={!isPublic ? 'red' : 'default'}>Private</Tag>
-							</button>
-							<label
-								className="create-page-modal__form-group--toggle-input-label"
-								htmlFor="isPublic"
-							>
-								<input
-									type="checkbox"
-									id="isPublic"
-									checked={isPublic}
-									onChange={() => setIsPublic(!isPublic)}
-									className="create-page-modal__form-group--toggle-input-checkbox"
-								/>
-								<span className="create-page-modal__form-group--toggle-input-slider"></span>
-							</label>
-							<button
-								type="button"
-								className={`create-page-modal__form-group--toggle-input-button`}
-								onClick={() => setIsPublic(!isPublic)}
-							>
-								<Tag variant={isPublic ? 'green' : 'default'}>Public</Tag>
-							</button>
-						</div>
+						<VisibilityToggle isVisible={isPublic} onToggle={setIsPublic} />
 					</div>
 					<div className="create-page-modal__form-group-buttons">
 						<Button
