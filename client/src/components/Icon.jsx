@@ -1,14 +1,12 @@
 import React from 'react';
 
-import { LockClosed, LockOpen, LogoIcon } from '../icons';
+import { LockClosed, LockOpen, LogoIcon, EditIcon, MenuIcon } from '../icons';
 
 /**
  * Icon component
  *
  * @param {object}  props           - Component properties
  * @param {string}  props.icon      - Icon name
- * @param {string}  props.width     - Width of the icon
- * @param {string}  props.height    - Height of the icon
  * @param {string=} props.className - Additional class names
  * @param {string=} props.alt       - Alt text for the icon
  *
@@ -19,6 +17,8 @@ const Icon = ({ icon, className = '', alt = '' }) => {
 		logoIcon: LogoIcon,
 		lockClosed: LockClosed,
 		lockOpen: LockOpen,
+		edit: EditIcon,
+		menu: MenuIcon,
 	};
 
 	if (!icons[icon]) {
