@@ -1,0 +1,53 @@
+/* @define visibility-toggle */
+
+.visibility-toggle {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  width: fit-content;
+}
+
+.visibility-toggle--button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.visibility-toggle--checkbox {
+  display: none;
+}
+
+.visibility-toggle--slider {
+  background-color: var(--colour-red);
+  border-radius: 1rem;
+  cursor: pointer;
+  display: block;
+  height: 1.5rem;
+  position: relative;
+  transition: background-color 0.2s ease-in-out;
+  width: 3rem;
+
+  &::before {
+    background-color: var(--colour-white);
+    border-radius: 50%;
+    content: "";
+    height: 1.5rem;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: transform 0.2s ease-in-out;
+    width: 1.5rem;
+  }
+}
+
+.visibility-toggle--label:has(.visibility-toggle--checkbox:checked) {
+  .visibility-toggle--slider {
+    background-color: var(--colour-green);
+
+    &::before {
+      transform: translateX(1.5rem);
+    }
+  }
+}

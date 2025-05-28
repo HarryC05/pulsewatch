@@ -1,35 +1,36 @@
 /**
  * Component Styles
  */
-@import './components/Accordion';
-@import './components/Button';
-@import './components/Card';
-@import './components/CreateMonitorModal';
-@import './components/CreatePageModal';
-@import './components/DeleteMonitorModal';
-@import './components/EditMonitorModal';
-@import './components/Icon';
-@import './components/Modal';
-@import './components/Navbar';
-@import './components/Notice';
-@import './components/Page';
-@import './components/Section';
-@import './components/Tag';
-@import './components/UptimeChart';
-@import './components/UptimePill';
+@import "./components/Accordion";
+@import "./components/Button";
+@import "./components/Card";
+@import "./components/CreateMonitorModal";
+@import "./components/CreatePageModal";
+@import "./components/DeleteMonitorModal";
+@import "./components/EditMonitorModal";
+@import "./components/Icon";
+@import "./components/Modal";
+@import "./components/Navbar";
+@import "./components/Notice";
+@import "./components/Page";
+@import "./components/Section";
+@import "./components/Tag";
+@import "./components/UptimeChart";
+@import "./components/UptimePill";
+@import "./components/VisibilityToggle";
 
 /**
  * Page Styles
  */
-@import './pages/Account';
-@import './pages/Dashboard';
-@import './pages/Login';
-@import './pages/MonitorDetails';
-@import './pages/Pages';
-@import './pages/Status';
+@import "./pages/Account";
+@import "./pages/Dashboard";
+@import "./pages/Login";
+@import "./pages/MonitorDetails";
+@import "./pages/Pages";
+@import "./pages/Status";
 
 /**
  * Global Styles
  */
-@import './global/colours';
-@import './global/html';
+@import "./global/colours";
+@import "./global/html";
