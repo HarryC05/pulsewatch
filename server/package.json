@@ -7,7 +7,7 @@
 		"start": "node index.js",
 		"dev": "concurrently \"npm run dev:api\" \"npm run worker\" --kill-others-on-fail",
 		"dev:api": "nodemon index.js",
-  	"worker": "node monitorWorker.js",
+		"worker": "node monitorWorker.js",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix"
 	},

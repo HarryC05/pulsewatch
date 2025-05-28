@@ -37,57 +37,6 @@
   flex-direction: column;
 }
 
-.create-page-modal__form-group--toggle-input {
-  align-items: center;
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.create-page-modal__form-group--toggle-input-button {
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-}
-
-.create-page-modal__form-group--toggle-input-checkbox {
-  display: none;
-}
-
-.create-page-modal__form-group--toggle-input-slider {
-  background-color: var(--colour-red);
-  border-radius: 1rem;
-  cursor: pointer;
-  display: block;
-  height: 1.5rem;
-  position: relative;
-  transition: background-color 0.2s ease-in-out;
-  width: 3rem;
-
-  &::before {
-    background-color: var(--colour-white);
-    border-radius: 50%;
-    content: '';
-    height: 1.5rem;
-    left: 0;
-    position: absolute;
-    top: 0;
-    transition: transform 0.2s ease-in-out;
-    width: 1.5rem;
-  }
-}
-
-.create-page-modal__form-group--toggle-input-label:has(.create-page-modal__form-group--toggle-input-checkbox:checked) {
-  .create-page-modal__form-group--toggle-input-slider {
-    background-color: var(--colour-green);
-
-    &::before {
-      transform: translateX(1.5rem);
-    }
-  }
-}
-
 .create-page-modal__form-group-buttons {
   display: flex;
   gap: 1rem;
