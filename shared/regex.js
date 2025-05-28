@@ -69,14 +69,27 @@ slugRegex.err =
 
 /**
  * Status page description regex pattern
- * - Must be between 0 and 500 characters long
+ * - Must be between 0 and 512 characters long
  * - Can contain letters, numbers, hyphens, underscores, spaces, full stops, commas, exclamation marks, question marks, colons, semicolons, apostrophes, quotes, parentheses, dashes, slashes, and ampersands
  * - Cannot contain special characters
  */
 const descRegex = {};
-descRegex.pattern = /^[a-zA-Z0-9-_. ,!?;:'"()&/\\]{0,500}$/;
+descRegex.pattern = /^[a-zA-Z0-9-_. ,!?;:'"()&/\\]{0,512}$/;
 descRegex.err =
-	'Status page description must be no longer than 500 characters and can only contain letters, numbers, hyphens, underscores, spaces, full stops, commas, exclamation marks, question marks, colons, semicolons, apostrophes, quotes, parentheses, dashes, slashes, and ampersands.';
+	'Status page description must be no longer than 512 characters and can only contain letters, numbers, hyphens, underscores, spaces, full stops, commas, exclamation marks, question marks, colons, semicolons, apostrophes, quotes, parentheses, dashes, slashes, and ampersands.';
+
+/**
+ * ID regex pattern
+ * - Must be a valid UUID
+ * - Must be 36 characters long
+ * - Must contain 5 groups of characters separated by hyphens
+ * - Each group must contain a specific number of characters (8-4-4-4-12)
+ */
+const idRegex = {};
+idRegex.pattern =
+	/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+idRegex.err =
+	'ID must be a valid UUID (e.g., 123e4567-e89b-12d3-a456-426614174000).';
 
 export {
 	emailRegex,
@@ -86,4 +99,5 @@ export {
 	nameRegex,
 	slugRegex,
 	descRegex,
+	idRegex,
 };
