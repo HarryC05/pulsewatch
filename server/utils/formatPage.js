@@ -17,10 +17,15 @@
  * @returns {object} - Formatted page object
  */
 const formatPage = (page) => {
+	// sort the monitors by the position attribute
+	const sortedMonitors = page.monitors.sort((a, b) => {
+		return (a.position || 0) - (b.position || 0);
+	});
+
 	return {
 		title: page.title,
 		description: page.description,
-		monitors: page.monitors.map((monitor) => ({
+		monitors: sortedMonitors.map((monitor) => ({
 			id: monitor.monitor.id,
 			name: monitor.monitor.name,
 			url: monitor.monitor.url,
@@ -36,6 +41,8 @@ const formatPage = (page) => {
 				createdAt: heartbeat.createdAt,
 			})),
 		})),
+		isPublic: page.isPublic || false,
+		slug: page.slug || null,
 	};
 };
 
