@@ -15,6 +15,7 @@ import Section from './Section';
 import Tag from './Tag';
 import UptimeChart from './UptimeChart';
 import UptimePill from './UptimePill';
+import VisibilityToggle from './VisibilityToggle';
 
 export {
 	Accordion,
@@ -34,4 +35,5 @@ export {
 	Tag,
 	UptimeChart,
 	UptimePill,
+	VisibilityToggle,
 };
