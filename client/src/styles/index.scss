@@ -2,6 +2,7 @@
  * Component Styles
  */
 @import "./components/Accordion";
+@import "./components/AddMonitorModal";
 @import "./components/Button";
 @import "./components/Card";
 @import "./components/CreateMonitorModal";
@@ -24,6 +25,7 @@
  */
 @import "./pages/Account";
 @import "./pages/Dashboard";
+@import "./pages/Edit";
 @import "./pages/Login";
 @import "./pages/MonitorDetails";
 @import "./pages/Pages";

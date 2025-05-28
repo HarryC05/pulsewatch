@@ -1,4 +1,5 @@
 import Accordion from './Accordion';
+import AddMonitorModal from './AddMonitorModal';
 import Button from './Button';
 import Card from './Card';
 import CreateMonitorModal from './CreateMonitorModal';
@@ -7,6 +8,7 @@ import DeleteMonitorModal from './DeleteMonitorModal';
 import EditMonitorModal from './EditMonitorModal';
 import Icon from './Icon';
 import Modal from './Modal';
+import MonitorItem from './MonitorItem';
 import NavBar from './NavBar';
 import Notice from './Notice';
 import Page from './Page';
@@ -19,6 +21,7 @@ import VisibilityToggle from './VisibilityToggle';
 
 export {
 	Accordion,
+	AddMonitorModal,
 	Button,
 	Card,
 	CreateMonitorModal,
@@ -27,6 +30,7 @@ export {
 	EditMonitorModal,
 	Icon,
 	Modal,
+	MonitorItem,
 	NavBar,
 	Notice,
 	Page,

@@ -1,0 +1,24 @@
+/* @define add-monitor-modal */
+
+.add-monitor-modal {
+  min-width: 25vw;
+}
+
+.add-monitor-modal__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.add-monitor-modal__item {
+  align-items: center;
+  border-bottom: 1px solid var(--colour-primary-lighter);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.add-monitor-modal__item:last-child {
+  border-bottom: none;
+}

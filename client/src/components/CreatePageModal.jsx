@@ -203,13 +203,13 @@ const CreatePageModal = ({ onClose }) => {
 							id="desc"
 							value={desc}
 							onChange={handleDescChange}
-							maxLength={500}
+							maxLength={512}
 							placeholder="This is my status page."
 							rows={6}
 							title={descRegex.err}
 						></textarea>
 						<span className="create-page-modal__form-group--char-count">
-							({desc.length} / 500)
+							({desc.length} / 512)
 						</span>
 						{descError && <Notice message={descError} variant="error" />}
 					</div>
