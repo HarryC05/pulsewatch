@@ -61,6 +61,7 @@ model StatusPageMonitor {
   id           String @id @default(uuid())
   statusPageId String
   monitorId    String
+	position     Int
 
   statusPage StatusPage @relation(fields: [statusPageId], references: [id])
   monitor    Monitor    @relation(fields: [monitorId], references: [id])
