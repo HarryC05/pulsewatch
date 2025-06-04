@@ -2,6 +2,8 @@
 
 .notice {
   border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr auto;
   padding: 0.25rem;
   text-align: center;
   width: 100%;
@@ -9,10 +11,32 @@
 
 .notice__success {
   background-color: var(--colour-green);
-  color: var(--colour-black);
+  color: var(--colour-white);
 }
 
 .notice__error {
   background-color: var(--colour-red);
   color: var(--colour-white);
+}
+
+.notice__info {
+  background-color: var(--colour-blue);
+  color: var(--colour-white);
+}
+
+.notice__warning {
+  background-color: var(--colour-yellow);
+  color: var(--colour-black);
+}
+
+.notice__dismiss {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.notice__icon {
+  height: 1.5rem;
+  width: 1.5rem;
 }

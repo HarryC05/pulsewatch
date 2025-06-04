@@ -1,7 +1,8 @@
+import Close from './Close';
+import Edit from './Edit';
 import LockClosed from './LockClosed';
 import LockOpen from './LockOpen';
-import LogoIcon from './LogoIcon';
-import EditIcon from './EditIcon';
-import MenuIcon from './Menu';
+import Logo from './Logo';
+import Menu from './Menu';
 
-export { LockClosed, LockOpen, LogoIcon, EditIcon, MenuIcon };
+export { Close, Edit, LockClosed, LockOpen, Logo, Menu };

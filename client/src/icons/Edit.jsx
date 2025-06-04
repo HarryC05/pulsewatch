@@ -1,12 +1,12 @@
 /**
- * EditIcon Component
+ * Edit Component
  *
  * @param {object} props           - Component properties
  * @param {string} props.className - Additional class names
  *
  * @returns {JSX.Element} - Rendered Edit icon
  */
-const EditIcon = ({ className }) => {
+const Edit = ({ className }) => {
 	return (
 		<svg
 			width="800"
@@ -34,4 +34,4 @@ const EditIcon = ({ className }) => {
 	);
 };
 
-export default EditIcon;
+export default Edit;

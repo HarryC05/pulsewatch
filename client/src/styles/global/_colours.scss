@@ -14,6 +14,8 @@
 	--colour-yellow-light: #fef9e6;
 	--colour-red: #d85148;
 	--colour-red-light: #f8d7da;
+  --colour-blue: #007bff;
+  --colour-blue-light: #cce5ff;
 
 	/* background/text defaults */
 	--colour-background: #242424;
@@ -125,4 +127,24 @@
 
 .text-colour-red-light {
   color: var(--colour-red-light) !important;
+}
+
+.background-colour-red-light {
+  background-color: var(--colour-red-light) !important;
+}
+
+.text-colour-blue {
+  color: var(--colour-blue) !important;
+}
+
+.background-colour-blue {
+  background-color: var(--colour-blue) !important;
+}
+
+.text-colour-blue-light {
+  color: var(--colour-blue-light) !important;
+}
+
+.background-colour-blue-light {
+  background-color: var(--colour-blue-light) !important;
 }

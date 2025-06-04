@@ -1,12 +1,12 @@
 /**
- * LogoIcon component
+ * Logo component
  *
  * @param {object} props           - Component properties
  * @param {string} props.className - Additional class names
  *
  * @returns {JSX.Element} - Rendered logo icon
  */
-const LogoIcon = ({ className }) => {
+const Logo = ({ className }) => {
 	return (
 		<svg
 			width="363.349"
@@ -23,4 +23,4 @@ const LogoIcon = ({ className }) => {
 	);
 };
 
-export default LogoIcon;
+export default Logo;
