@@ -12,7 +12,7 @@ import {
 	AddMonitorModal,
 	VisibilityToggle,
 } from '../components';
-import { nameRegex, descRegex } from '../../../shared/regex';
+import { nameRegex, descRegex, slugRegex } from '../../../shared/regex';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -31,6 +31,7 @@ const Edit = () => {
 	const [edited, setEdited] = useState(false);
 	const [editedPage, setEditedPage] = useState(null);
 	const [titleError, setTitleError] = useState('');
+	const [slugError, setSlugError] = useState('');
 	const [descError, setDescError] = useState('');
 	const [addMonitorModalOpen, setAddMonitorModalOpen] = useState(false);
 
@@ -91,9 +92,11 @@ const Edit = () => {
 			.put(`${API}/api/v1/page/${id}`, updatedPage, { withCredentials: true })
 			.then(() => {
 				setEdited(false);
+				setError('');
 				setPageData((prev) => ({
 					...prev,
 					title: editedPage.title,
+					slug: editedPage.slug,
 					description: editedPage.desc,
 					isPublic: editedPage.isPublic,
 					monitors: editedPage.monitors.map((monitor) => ({
@@ -105,7 +108,13 @@ const Edit = () => {
 				}));
 			})
 			.catch((err) => {
-				setError('An error occurred while saving the page.');
+				if (err.response.status === 401) {
+					navigate('/login');
+				} else if (err.response.status === 400) {
+					setError(err.response.data.message);
+				} else {
+					setError('An error occurred while saving the page.');
+				}
 				console.error(err);
 			});
 	};
@@ -123,6 +132,22 @@ const Edit = () => {
 			setTitleError('');
 		} else {
 			setTitleError(nameRegex.err);
+		}
+	};
+
+	/**
+	 * Handle slug change
+	 *
+	 * @param {object} e - Event object
+	 */
+	const onSlugChange = (e) => {
+		const newSlug = e.target.value;
+		setEditedPage({ ...editedPage, slug: newSlug });
+
+		if (slugRegex.pattern.test(newSlug)) {
+			setSlugError('');
+		} else {
+			setSlugError(slugRegex.err);
 		}
 	};
 
@@ -158,10 +183,11 @@ const Edit = () => {
 	useEffect(() => {
 		// Check if page data is the same as edited page data
 		if (pageData && editedPage) {
-			const isBlocked = titleError;
+			const isBlocked = titleError || slugError || descError;
 
 			const isEdited =
 				pageData.title !== editedPage.title ||
+				pageData.slug !== editedPage.slug ||
 				pageData.description !== editedPage.desc ||
 				pageData.isPublic !== editedPage.isPublic ||
 				JSON.stringify(editedPage.monitors) !==
@@ -237,7 +263,7 @@ const Edit = () => {
 							value={editedPage.title}
 							onChange={onTitleChange}
 							placeholder="Page Title"
-							className="background-colour-primary-light edit-page__title-input"
+							className="background-colour-primary-light edit-page__title-input text-h2"
 							maxLength={32}
 							id="edit-page-title-input"
 						/>
@@ -257,6 +283,30 @@ const Edit = () => {
 						Save Changes
 					</Button>
 				</div>
+				<div className="edit-page__actions-edit-title">
+					<label
+						htmlFor="edit-page-slug-input"
+						className="edit-page__slug-label"
+					>
+						<h3>Slug:</h3>
+						<p>/status/</p>
+					</label>
+					<input
+						type="text"
+						value={editedPage.slug}
+						onChange={onSlugChange}
+						placeholder="Page Slug"
+						className="background-colour-primary-light edit-page__slug-input"
+						maxLength={32}
+						id="edit-page-slug-input"
+					/>
+					<label
+						htmlFor="edit-page-slug-input"
+						className="edit-page__slug-label"
+					>
+						<Icon icon="edit" />
+					</label>
+				</div>
 				<VisibilityToggle
 					isVisible={editedPage.isPublic}
 					onToggle={(isVisible) => {
@@ -268,6 +318,13 @@ const Edit = () => {
 						variant="error"
 						message={titleError}
 						className="edit-page__title-error"
+					/>
+				)}
+				{slugError && (
+					<Notice
+						variant="error"
+						message={slugError}
+						className="edit-page__slug-error"
 					/>
 				)}
 				<Section className="edit-page__section">

@@ -24,21 +24,26 @@
   gap: 0.5rem;
 }
 
-.edit-page__title-input {
+.edit-page__title-input,
+.edit-page__slug-input {
   display: block;
-  font-size: 1.5em;
-  font-weight: bold;
-  line-height: 1.5;
   width: fit-content;
 }
 
 /* stylelint-disable plugin/selector-bem-pattern */
-.edit-page__title-label .icon-edit {
+.edit-page__title-label .icon-edit,
+.edit-page__slug-label .icon-edit {
   cursor: pointer;
   height: 2rem;
   width: 2rem;
 }
 /* stylelint-enable plugin/selector-bem-pattern */
+
+.edit-page__slug-label {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
 
 .edit-page__section-label {
   align-items: center;
