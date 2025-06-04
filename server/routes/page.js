@@ -347,6 +347,15 @@ router.put('/:id', protect, async (req, res) => {
 			return res.status(403).json({ message: 'Forbidden' });
 		}
 
+		// Check if the slug is already taken
+		const slugExists = await prisma.statusPage.findUnique({
+			where: { slug },
+		});
+
+		if (slugExists && slugExists.id !== id) {
+			return res.status(400).json({ message: 'Slug is already taken' });
+		}
+
 		// Update the status page
 		const updatedStatusPage = await prisma.statusPage.update({
 			where: { id },
