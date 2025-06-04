@@ -28,6 +28,8 @@ const Edit = () => {
 	const [loading, setLoading] = useState(true);
 	const [pageData, setPageData] = useState(null);
 	const [error, setError] = useState('');
+	const [success, setSuccess] = useState('');
+	const [information, setInformation] = useState('');
 	const [edited, setEdited] = useState(false);
 	const [editedPage, setEditedPage] = useState(null);
 	const [titleError, setTitleError] = useState('');
@@ -73,6 +75,9 @@ const Edit = () => {
 	 * Handle save action
 	 */
 	const onSave = () => {
+		setInformation('Saving changes...');
+		setSuccess('');
+		setError('');
 		if (!editedPage || !pageData) return;
 
 		if (titleError || descError) {
@@ -93,6 +98,8 @@ const Edit = () => {
 			.then(() => {
 				setEdited(false);
 				setError('');
+				setInformation('');
+				setSuccess('Page updated successfully!');
 				setPageData((prev) => ({
 					...prev,
 					title: editedPage.title,
@@ -108,6 +115,8 @@ const Edit = () => {
 				}));
 			})
 			.catch((err) => {
+				setInformation('');
+				setSuccess('');
 				if (err.response.status === 401) {
 					navigate('/login');
 				} else if (err.response.status === 400) {
@@ -255,7 +264,27 @@ const Edit = () => {
 				>
 					<h4>← Back</h4>
 				</Button>
-				{error && <Notice variant="error" message={error} />}
+				{error && (
+					<Notice
+						variant="error"
+						message={error}
+						onDismiss={() => setError('')}
+					/>
+				)}
+				{success && (
+					<Notice
+						variant="success"
+						message={success}
+						onDismiss={() => setSuccess('')}
+					/>
+				)}
+				{information && (
+					<Notice
+						variant="info"
+						message={information}
+						onDismiss={() => setInformation('')}
+					/>
+				)}
 				<div className="edit-page__actions">
 					<div className="edit-page__actions-edit-title">
 						<input
