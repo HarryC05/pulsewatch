@@ -5,6 +5,7 @@ import Card from './Card';
 import CreateMonitorModal from './CreateMonitorModal';
 import CreatePageModal from './CreatePageModal';
 import DeleteMonitorModal from './DeleteMonitorModal';
+import DeleteStatusPageModal from './DeleteStatusPageModal';
 import EditMonitorModal from './EditMonitorModal';
 import Icon from './Icon';
 import Modal from './Modal';
@@ -27,6 +28,7 @@ export {
 	CreateMonitorModal,
 	CreatePageModal,
 	DeleteMonitorModal,
+	DeleteStatusPageModal,
 	EditMonitorModal,
 	Icon,
 	Modal,
