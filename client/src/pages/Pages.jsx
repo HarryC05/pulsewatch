@@ -108,6 +108,7 @@ const Pages = () => {
 											variant="secondary"
 											onClick={(e) => {
 												e.stopPropagation();
+												e.preventDefault();
 												navigate(`/edit/${page.id}`);
 											}}
 										>
