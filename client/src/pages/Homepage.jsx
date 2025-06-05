@@ -130,6 +130,35 @@ const Homepage = () => {
 						</Card>
 					</div>
 				</Section>
+				<Section className="homepage__how-it-works" data-width="narrow">
+					<h2>How It Works</h2>
+
+					<div className="homepage__how-it-works-steps">
+						<Card className="homepage__how-it-works-step">
+							<Icon icon="plusCircle" className="homepage__step-icon" />
+							<h3>Add a Monitor</h3>
+							<p>Enter any HTTP/S URL, set a name, and save.</p>
+						</Card>
+
+						<Card className="homepage__how-it-works-step">
+							<Icon icon="monitor" className="homepage__step-icon" />
+							<h3>See Live Status</h3>
+							<p>
+								View real‐time uptime metrics and response times for each
+								monitor.
+							</p>
+						</Card>
+
+						<Card className="homepage__how-it-works-step">
+							<Icon icon="share" className="homepage__step-icon" />
+							<h3>Share Your Status Page</h3>
+							<p>
+								Publish a custom status page (public or private) so your users
+								always know you’re up.
+							</p>
+						</Card>
+					</div>
+				</Section>
 			</Page>
 		</>
 	);

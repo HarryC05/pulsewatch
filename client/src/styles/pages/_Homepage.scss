@@ -24,6 +24,7 @@ main.homepage .page__content > div[data-width="full"] {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding-bottom: 1rem;
 }
 /* stylelint-enable plugin/selector-bem-pattern */
 
@@ -49,7 +50,8 @@ main.homepage .page__content > div[data-width="full"] {
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
 
-.homepage__feature-icon {
+.homepage__feature-icon,
+.homepage__step-icon {
   height: 3rem;
   width: 3rem;
 }
@@ -63,4 +65,9 @@ main.homepage .page__content > div[data-width="full"] {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.homepage__how-it-works-steps {
+  display: grid;
+  gap: 1rem;
 }
