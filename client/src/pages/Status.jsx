@@ -285,7 +285,7 @@ const Status = () => {
 									(Current)
 								</span>
 								<h3 className="status-page__monitor--details-card-value">
-									{monitor.heartbeats[0].responseTime
+									{monitor?.heartbeats?.[0]?.responseTime
 										? `${monitor.heartbeats[0].responseTime} ms`
 										: 'N/A'}
 								</h3>
