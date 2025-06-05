@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LockClosed, LockOpen, Logo, Edit, Menu, Close } from '../icons';
+import { LockClosed, LockOpen, Logo, Edit, Menu, Close, Eye } from '../icons';
 
 /**
  * Icon component
@@ -16,6 +16,7 @@ const Icon = ({ icon, className = '', alt = '' }) => {
 	const icons = {
 		close: Close,
 		edit: Edit,
+		eye: Eye,
 		lockClosed: LockClosed,
 		lockOpen: LockOpen,
 		logoIcon: Logo,
