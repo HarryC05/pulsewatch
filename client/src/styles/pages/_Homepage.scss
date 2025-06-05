@@ -71,3 +71,46 @@ main.homepage .page__content > div[data-width="full"] {
   display: grid;
   gap: 1rem;
 }
+
+.homepage__pricing-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+
+  /* stylelint-disable-next-line plugin/selector-bem-pattern */
+  ul {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+
+    /* stylelint-disable-next-line plugin/selector-bem-pattern */
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.homepage__pricing-card {
+  position: relative;
+  text-align: center;
+}
+
+.homepage__price-amount {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+.pricing--upcoming {
+  opacity: 0.75;
+  pointer-events: none;
+
+  /* stylelint-disable-next-line plugin/selector-bem-pattern */
+  .homepage__pricing-tag {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+}

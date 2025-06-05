@@ -159,6 +159,46 @@ const Homepage = () => {
 						</Card>
 					</div>
 				</Section>
+				<Section className="homepage__pricing" data-width="narrow">
+					<h2>Simple, Transparent Plans</h2>
+
+					<div className="homepage__pricing-grid">
+						{/* Free Tier */}
+						<Card className="homepage__pricing-card pricing--free">
+							<h3>Free</h3>
+							<p className="homepage__price-amount">$0 / month</p>
+							<ul>
+								<li>Up to 10 HTTP/S monitors</li>
+								<li>5-minute check interval</li>
+								<li>Email alerts</li>
+								<li>1 year of history</li>
+							</ul>
+							<Button
+								variant="secondary"
+								onClick={() => navigate('/login?signup=true')}
+							>
+								Get Started Free
+							</Button>
+						</Card>
+
+						{/* Pro Tier (Coming Soon) */}
+						<Card className="homepage__pricing-card pricing--upcoming">
+							<Tag className="homepage__pricing-tag">Coming Soon</Tag>
+							<h3>Pro</h3>
+							<p className="homepage__price-amount">$15 / month</p>
+							<ul>
+								<li>Up to 50 monitors</li>
+								<li>1-minute check interval</li>
+								<li>Slack, Webhook & SMS alerts</li>
+								<li>Custom branding</li>
+								<li>Team & organization support</li>
+							</ul>
+							<Button variant="secondary" disabled>
+								Launching Soon
+							</Button>
+						</Card>
+					</div>
+				</Section>
 			</Page>
 		</>
 	);
