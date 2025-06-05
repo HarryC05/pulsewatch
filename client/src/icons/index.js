@@ -12,6 +12,8 @@ import LockOpen from './LockOpen';
 import Logo from './Logo';
 import Menu from './Menu';
 import Monitor from './Monitor';
+import PlusCircle from './PlusCircle';
+import Share from './Share';
 import UserCheck from './UserCheck';
 import Users from './Users';
 import Zap from './Zap';
@@ -31,6 +33,8 @@ export {
 	Logo,
 	Menu,
 	Monitor,
+	PlusCircle,
+	Share,
 	UserCheck,
 	Users,
 	Zap,
