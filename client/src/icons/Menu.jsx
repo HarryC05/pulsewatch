@@ -1,12 +1,12 @@
 /**
- * MenuIcon Component
+ * Menu Component
  *
  * @param {object} props           - Component properties
  * @param {string} props.className - Additional class names
  *
  * @returns {JSX.Element} - Rendered Edit icon
  */
-const MenuIcon = ({ className }) => {
+const Menu = ({ className }) => {
 	return (
 		<svg
 			width="800"
@@ -28,4 +28,4 @@ const MenuIcon = ({ className }) => {
 	);
 };
 
-export default MenuIcon;
+export default Menu;

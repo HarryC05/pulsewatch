@@ -1,6 +1,15 @@
 import React from 'react';
 
-import { LockClosed, LockOpen, Logo, Edit, Menu, Close, Eye } from '../icons';
+import {
+	LockClosed,
+	LockOpen,
+	Logo,
+	Edit,
+	Menu,
+	Close,
+	Eye,
+	UserCheck,
+} from '../icons';
 
 /**
  * Icon component
@@ -21,6 +30,7 @@ const Icon = ({ icon, className = '', alt = '' }) => {
 		lockOpen: LockOpen,
 		logoIcon: Logo,
 		menu: Menu,
+		userCheck: UserCheck,
 	};
 
 	if (!icons[icon]) {
