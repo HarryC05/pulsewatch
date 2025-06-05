@@ -11,6 +11,7 @@ import {
 	MonitorItem,
 	AddMonitorModal,
 	VisibilityToggle,
+	DeleteStatusPageModal,
 } from '../components';
 import { nameRegex, descRegex, slugRegex } from '../../../shared/regex';
 
@@ -36,6 +37,7 @@ const Edit = () => {
 	const [slugError, setSlugError] = useState('');
 	const [descError, setDescError] = useState('');
 	const [addMonitorModalOpen, setAddMonitorModalOpen] = useState(false);
+	const [deletePageModalOpen, setDeletePageModalOpen] = useState(false);
 
 	/**
 	 * Fetch page data
@@ -248,6 +250,14 @@ const Edit = () => {
 					}}
 				/>
 			)}
+			{deletePageModalOpen && (
+				<DeleteStatusPageModal
+					onClose={() => setDeletePageModalOpen(false)}
+					pageId={id}
+					pageSlug={editedPage.slug}
+					pageName={editedPage.title}
+				/>
+			)}
 			<Page className="edit-page" title={`PW | Edit ${pageData.title} Page`}>
 				<Button
 					variant="text"
@@ -294,6 +304,7 @@ const Edit = () => {
 							placeholder="Page Title"
 							className="background-colour-primary-light edit-page__title-input text-h2"
 							maxLength={32}
+							size={32}
 							id="edit-page-title-input"
 						/>
 						<label
@@ -303,14 +314,23 @@ const Edit = () => {
 							<Icon icon="edit" />
 						</label>
 					</div>
-					<Button
-						variant="primary"
-						onClick={onSave}
-						disabled={!edited}
-						className="edit-page__save-button"
-					>
-						Save Changes
-					</Button>
+					<div className="edit-page__actions-buttons">
+						<Button
+							variant="primary"
+							onClick={onSave}
+							disabled={!edited}
+							className="edit-page__save-button"
+						>
+							Save Changes
+						</Button>
+						<Button
+							variant="dangerous"
+							onClick={() => setDeletePageModalOpen(true)}
+							className="edit-page__delete-button"
+						>
+							Delete Page
+						</Button>
+					</div>
 				</div>
 				<div className="edit-page__actions-edit-title">
 					<label
@@ -327,6 +347,7 @@ const Edit = () => {
 						placeholder="Page Slug"
 						className="background-colour-primary-light edit-page__slug-input"
 						maxLength={32}
+						size={32}
 						id="edit-page-slug-input"
 					/>
 					<label

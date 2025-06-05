@@ -45,7 +45,7 @@ const DeleteStatusPageModal = ({ onClose, pageId, pageSlug, pageName }) => {
 			.delete(`${API}/api/v1/page/${pageId}`, { withCredentials: true })
 			.then(() => {
 				onClose();
-				navigate('/dashboard');
+				navigate('/pages');
 			})
 			.catch((err) => {
 				console.error(err);
