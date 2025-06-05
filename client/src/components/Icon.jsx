@@ -1,14 +1,21 @@
-import React from 'react';
-
 import {
+	Bell,
+	Calendar,
+	ClockActivity,
+	Close,
+	DollarCircle,
+	Edit,
+	Eye,
+	FileChecked,
+	Layers,
 	LockClosed,
 	LockOpen,
 	Logo,
-	Edit,
 	Menu,
-	Close,
-	Eye,
+	Monitor,
 	UserCheck,
+	Users,
+	Zap,
 } from '../icons';
 
 /**
@@ -23,14 +30,23 @@ import {
  */
 const Icon = ({ icon, className = '', alt = '' }) => {
 	const icons = {
+		bell: Bell,
+		calendar: Calendar,
+		clockActivity: ClockActivity,
 		close: Close,
+		dollarCircle: DollarCircle,
 		edit: Edit,
 		eye: Eye,
+		fileChecked: FileChecked,
+		layers: Layers,
 		lockClosed: LockClosed,
 		lockOpen: LockOpen,
 		logoIcon: Logo,
 		menu: Menu,
+		monitor: Monitor,
 		userCheck: UserCheck,
+		users: Users,
+		zap: Zap,
 	};
 
 	if (!icons[icon]) {
