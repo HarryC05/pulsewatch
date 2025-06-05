@@ -330,6 +330,12 @@ const Edit = () => {
 						>
 							Delete Page
 						</Button>
+						<Button
+							variant="secondary"
+							onClick={() => window.open(`/status/${pageData.slug}`, '_blank')}
+						>
+							<Icon icon="eye" />
+						</Button>
 					</div>
 				</div>
 				<div className="edit-page__actions-edit-title">
