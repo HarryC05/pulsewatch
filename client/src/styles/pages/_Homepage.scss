@@ -1,0 +1,55 @@
+/* @define homepage */
+
+/* stylelint-disable plugin/selector-bem-pattern */
+main.homepage {
+  margin: 0;
+  max-width: none;
+  padding: 0;
+}
+
+main.homepage .page__content > div {
+  margin: 0 auto;
+  max-width: 60rem;
+  width: calc(100% - 2rem)
+}
+
+main.homepage .page__content > div[data-width="full"] {
+  margin: 0;
+  max-width: none;
+  width: 100%;
+}
+
+.homepage .page__content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+/* stylelint-enable plugin/selector-bem-pattern */
+
+.homepage--hero {
+  align-items: center;
+  /* stylelint-disable-next-line @stylistic/declaration-colon-space-after */
+  background:
+    linear-gradient(#00000066, #00000066),
+    url("/public/images/homepage-hero.png") no-repeat center/cover;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 2rem;
+  text-align: center;
+  width: calc(100% - 4rem) !important;
+}
+
+.homepage__features-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
+.homepage__feature-icon {
+  height: 3rem;
+  width: 3rem;
+}
