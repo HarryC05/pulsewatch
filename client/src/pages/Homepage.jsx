@@ -31,7 +31,7 @@ const Homepage = () => {
 					<div className="homepage__features-grid">
 						<Card className="homepage__feature-card">
 							<Icon icon="userCheck" className="homepage__feature-icon" />
-							<h3>Free Accounts (Ad-Supported)</h3>
+							<h3>Free (Ad-Supported)</h3>
 							<p>
 								No cost to start, your service is monitored in minutes. Ads keep
 								the free tier running.
@@ -88,6 +88,10 @@ const Homepage = () => {
 					<h2 className="homepage__features-coming-soon-heading">
 						Coming Soon
 					</h2>
+					<p className="homepage__features-coming-soon-subheading">
+						We’re working on some exciting new features to make Pulse Watch even
+						better. Here’s a sneak peek at what’s coming next:
+					</p>
 					<div className="homepage__features-grid homepage__features-grid--upcoming">
 						<Card className="homepage__feature-card homepage__feature-card--upcoming">
 							<Icon icon="dollarCircle" className="homepage__feature-icon" />
