@@ -1,9 +1,10 @@
-/* @define tag */
-
 // components/_tag.scss
+
+/* @define tag */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
 .tag {
   align-items: center;
@@ -13,30 +14,30 @@
 	display: flex;
 	font-size: var.$font-size-sm;
 	font-weight: 500;
-	padding: 0.25rem 0.5rem;
+	padding: var.$spacing-xs var.$spacing-sm;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
   width: fit-content;
-}
 
-.tag__green {
-  background-color: colours.$light-green;
-  border: 1px solid colours.$green;
-  color: colours.$green;
-  fill: colours.$green;
-}
+  &__green {
+    background-color: colours.$light-green;
+    border: 1px solid colours.$green;
+    color: colours.$green;
+    fill: colours.$green;
+  }
 
-.tag__yellow {
-  background-color: colours.$light-yellow;
-  border: 1px solid colours.$yellow;
-  color: colours.$yellow;
-  fill: colours.$yellow;
-}
+  &__yellow {
+    background-color: colours.$light-yellow;
+    border: 1px solid colours.$yellow;
+    color: colours.$yellow;
+    fill: colours.$yellow;
+  }
 
-.tag__red {
-  background-color: colours.$light-red;
-  border: 1px solid colours.$red;
-  color: colours.$red;
-  fill: colours.$red;
+  &__red {
+    background-color: colours.$light-red;
+    border: 1px solid colours.$red;
+    color: colours.$red;
+    fill: colours.$red;
+  }
 }

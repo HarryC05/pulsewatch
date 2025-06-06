@@ -1,30 +1,31 @@
-/* @define uptime-chart */
-
 // components/_uptime-chart.scss
+
+/* @define uptime-chart */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
 .uptime-chart {
   display: block;
   padding: var.$spacing-sm;
   width: calc(100% - (2 * var.$spacing-sm));
-}
 
-.uptime-chart__data {
-  display: flex;
-  justify-content: space-evenly;
-}
+  &__data {
+    display: flex;
+    justify-content: space-evenly;
 
-.uptime-chart__data-item {
-  background-color: colours.$primary-light;
-  border-radius: var.$border-radius-circle;
-  height: 2rem;
-  margin: 0.125rem;
-  width: 1rem;
-}
+    &-item {
+      background-color: colours.$primary-light;
+      border-radius: var.$border-radius-circle;
+      height: 2rem;
+      margin: 0.125rem;
+      width: 1rem;
+    }
+  }
 
-.uptime-chart__labels {
-  display: flex;
-  justify-content: space-between;
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+  }
 }

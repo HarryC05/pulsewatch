@@ -1,9 +1,10 @@
-/* @define uptime-pill */
-
 // components/_uptime-pill.scss
+
+/* @define uptime-pill */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
 .uptime-pill {
   background-color: colours.$primary-light;
