@@ -16,16 +16,16 @@
       display: grid;
       gap: var.$spacing-sm;
 
-      &--error-notice {
+      &__error-notice {
         justify-self: center;
       }
 
-      &--char-count {
+      &__char-count {
         font-size: var.$font-size-sm;
         text-align: right;
       }
 
-      &--checkbox {
+      &__checkbox {
         align-items: center;
         display: flex;
         gap: var.$spacing-sm;

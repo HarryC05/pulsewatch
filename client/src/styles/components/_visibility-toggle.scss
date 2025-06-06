@@ -13,18 +13,18 @@
   width: fit-content;
 }
 
-.visibility-toggle--button {
+.visibility-toggle__button {
   background: none;
   border: none;
   color: inherit;
   cursor: pointer;
 }
 
-.visibility-toggle--checkbox {
+.visibility-toggle__checkbox {
   display: none;
 }
 
-.visibility-toggle--slider {
+.visibility-toggle__slider {
   background-color: colours.$red;
   border-radius: var.$border-radius-circle;
   cursor: pointer;
@@ -47,8 +47,8 @@
   }
 }
 
-.visibility-toggle--label:has(.visibility-toggle--checkbox:checked) {
-  .visibility-toggle--slider {
+.visibility-toggle__label:has(.visibility-toggle__checkbox:checked) {
+  .visibility-toggle__slider {
     background-color: colours.$green;
 
     &::before {

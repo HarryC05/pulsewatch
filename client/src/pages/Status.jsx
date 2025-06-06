@@ -269,7 +269,7 @@ const Status = () => {
 			{status.monitors && status.monitors.length > 0 ? (
 				status.monitors.map((monitor, index) => (
 					<Accordion
-						className="status-page__monitor--content"
+						className="status-page__monitor__content"
 						key={monitor.id}
 						title={monitor.name}
 						status={monitor.status}
@@ -278,66 +278,66 @@ const Status = () => {
 						<h4>
 							Last Check: {new Date(monitor.lastChecked).toLocaleString()}
 						</h4>
-						<div className="status-page__monitor--details">
-							<Card className="status-page__monitor--details-card">
+						<div className="status-page__monitor__details">
+							<Card className="status-page__monitor__details-card">
 								<h2>Response</h2>
-								<span className="status-page__monitor--details-card-subtitle">
+								<span className="status-page__monitor__details-card-subtitle">
 									(Current)
 								</span>
-								<h3 className="status-page__monitor--details-card-value">
+								<h3 className="status-page__monitor__details-card-value">
 									{monitor?.heartbeats?.[0]?.responseTime
 										? `${monitor.heartbeats[0].responseTime} ms`
 										: 'N/A'}
 								</h3>
 							</Card>
-							<Card className="status-page__monitor--details-card">
+							<Card className="status-page__monitor__details-card">
 								<h2>Response</h2>
-								<span className="status-page__monitor--details-card-subtitle">
+								<span className="status-page__monitor__details-card-subtitle">
 									(Avg. 24 hrs)
 								</span>
-								<h3 className="status-page__monitor--details-card-value">
+								<h3 className="status-page__monitor__details-card-value">
 									{calculateAverageResponseTime(monitor.heartbeats, 24)}
 								</h3>
 							</Card>
-							<Card className="status-page__monitor--details-card">
+							<Card className="status-page__monitor__details-card">
 								<h2>Response</h2>
-								<span className="status-page__monitor--details-card-subtitle">
+								<span className="status-page__monitor__details-card-subtitle">
 									(Avg. 7 Days)
 								</span>
-								<h3 className="status-page__monitor--details-card-value">
+								<h3 className="status-page__monitor__details-card-value">
 									{calculateAverageResponseTime(monitor.heartbeats)}
 								</h3>
 							</Card>
-							<Card className="status-page__monitor--details-card">
+							<Card className="status-page__monitor__details-card">
 								<h2>Uptime</h2>
-								<span className="status-page__monitor--details-card-subtitle">
+								<span className="status-page__monitor__details-card-subtitle">
 									(24 hrs)
 								</span>
 								<UptimePill
 									uptime={calculateAverageUptime(monitor.heartbeats, 24)}
-									className="status-page__monitor--details-uptime"
+									className="status-page__monitor__details-uptime"
 								/>
 							</Card>
-							<Card className="status-page__monitor--details-card">
+							<Card className="status-page__monitor__details-card">
 								<h2>Uptime</h2>
-								<span className="status-page__monitor--details-card-subtitle">
+								<span className="status-page__monitor__details-card-subtitle">
 									(7 Days)
 								</span>
 								<UptimePill
 									uptime={calculateAverageUptime(monitor.heartbeats)}
-									className="status-page__monitor--details-uptime"
+									className="status-page__monitor__details-uptime"
 								/>
 							</Card>
 						</div>
 						<UptimeChart data={monitor.heartbeats} />
 						<Section
 							variant="dark"
-							className="status-page__monitor--response-time"
+							className="status-page__monitor__response-time"
 						>
-							<div className="status-page__monitor--response-time-header">
+							<div className="status-page__monitor__response-time-header">
 								<h2>Response Time</h2>
 								<select
-									className="status-page__monitor--response-time-header-select"
+									className="status-page__monitor__response-time-header-select"
 									value={responseTimeOption}
 									onChange={handleResponseTimeChange}
 								>
@@ -349,23 +349,23 @@ const Status = () => {
 								<ResponseChart heartbeats={responseTimeHBs[index]} />
 							)}
 						</Section>
-						<Section variant="dark" className="status-page__monitor--downtime">
+						<Section variant="dark" className="status-page__monitor__downtime">
 							<h2>Downtime</h2>
-							<span className="status-page__monitor--downtime-subtitle">
+							<span className="status-page__monitor__downtime-subtitle">
 								<i>Showing up to 5 most recent events from the last 7 days.</i>
 							</span>
-							<div className="status-page__monitor--downtime-list">
+							<div className="status-page__monitor__downtime-list">
 								{downHBs[index] && downHBs[index].length > 0 ? (
-									<table className="status-page__monitor--downtime-list-table">
+									<table className="status-page__monitor__downtime-list-table">
 										<thead>
 											<tr>
-												<th className="status-page__monitor--downtime-list-table-header-date">
+												<th className="status-page__monitor__downtime-list-table-header-date">
 													Date
 												</th>
-												<th className="status-page__monitor--downtime-list-table-header-response-code">
+												<th className="status-page__monitor__downtime-list-table-header-response-code">
 													Response Code
 												</th>
-												<th className="status-page__monitor--downtime-list-table-header-error-message">
+												<th className="status-page__monitor__downtime-list-table-header-error-message">
 													Error Message
 												</th>
 											</tr>
