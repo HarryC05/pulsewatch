@@ -1,21 +1,23 @@
-/* @define account */
-
 // pages/_account.scss
+
+/* @define account */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
-.account__info {
-  display: grid;
-  gap: var.$spacing-md;
-  grid-template-columns: auto 1fr;
-}
+.account {
+  &__info {
+    display: grid;
+    gap: var.$spacing-md;
+    grid-template-columns: auto 1fr;
 
-.account__content .account__title {
-  margin: 0;
-}
+    &-notice {
+      grid-column: span 2;
+    }
+  }
 
-/* stylelint-disable-next-line plugin/selector-bem-pattern */
-.account__info .notice {
-  grid-column: span 2;
+  &__title {
+    margin: 0;
+  }
 }

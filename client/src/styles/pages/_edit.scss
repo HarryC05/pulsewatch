@@ -1,9 +1,10 @@
-/* @define edit-page */
-
 // pages/_edit.scss
+
+/* @define edit-page */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
 /* stylelint-disable plugin/selector-bem-pattern */
 .edit-page .page__content {
@@ -13,106 +14,105 @@
 }
 /* stylelint-enable plugin/selector-bem-pattern */
 
-.edit-page__back-button {
-  width: fit-content;
-}
+.edit-page {
+  &__back-button {
+    width: fit-content;
+  }
 
-.edit-page__actions {
-  display: flex;
-  gap: var.$spacing-md;
-  justify-content: space-between;
-}
+  &__actions {
+    display: flex;
+    gap: var.$spacing-md;
+    justify-content: space-between;
 
-.edit-page__actions-edit-title {
-  align-items: center;
-  display: flex;
-  gap: var.$spacing-sm;
-}
+    &-edit-title {
+      align-items: center;
+      display: flex;
+      gap: var.$spacing-sm;
+    }
 
-.edit-page__title-input,
-.edit-page__slug-input {
-  display: block;
-  width: fit-content;
-}
+    &-buttons {
+      display: flex;
+      gap: var.$spacing-sm;
+    }
+  }
 
-/* stylelint-disable plugin/selector-bem-pattern */
-.edit-page__title-label .icon-edit,
-.edit-page__slug-label .icon-edit {
-  cursor: pointer;
-  height: 2rem;
-  width: 2rem;
-}
-/* stylelint-enable plugin/selector-bem-pattern */
+  &__title-input,
+  &__slug-input {
+    display: block;
+    width: fit-content;
+  }
 
-.edit-page__slug-label {
-  align-items: center;
-  display: flex;
-  gap: var.$spacing-sm;
-}
+  &__title-edit-icon {
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+  }
 
-.edit-page__section-label {
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  gap: var.$spacing-xs;
-}
+  &__slug-label {
+    align-items: center;
+    display: flex;
+    gap: var.$spacing-sm;
+  }
 
-.edit-page__edit-icon {
-  height: 1.5rem;
-  width: 1.5rem;
-}
+  &__section-label {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: var.$spacing-xs;
+  }
 
+  &__desc-edit-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
 
-.edit-page__char-count {
-  font-size: var.$font-size-sm;
-    text-align: right;
-}
+  &__char-count {
+    @include mixins.char-count;
+  }
 
-.edit-page__monitors-list {
-  display: flex;
-  flex-direction: column;
-  gap: var.$spacing-sm;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+  &__monitors-list {
+    display: flex;
+    flex-direction: column;
+    gap: var.$spacing-sm;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-.edit-page__monitor-item {
-  align-items: center;
-  display: flex;
-  gap: var.$spacing-sm;
-  justify-content: space-between;
-}
+  &__monitor {
+    &-item {
+      align-items: center;
+      display: flex;
+      gap: var.$spacing-sm;
+      justify-content: space-between;
+    }
 
-.edit-page__monitor-title {
-  align-items: center;
-  display: flex;
-  gap: var.$spacing-sm;
-  justify-content: start;
-  width: 100%;
-}
+    &-title {
+      align-items: center;
+      display: flex;
+      gap: var.$spacing-sm;
+      justify-content: start;
+      width: 100%;
+    }
 
-.edit-page__monitor-status {
-  background-color: colours.$primary-lighter;
-  border-radius: var.$border-radius-circle;
-  height: 0.75rem;
-  width: 0.75rem;
-}
+    &-status {
+      background-color: colours.$primary-lighter;
+      border-radius: var.$border-radius-circle;
+      height: 0.75rem;
+      width: 0.75rem;
+    }
 
-.edit-page__monitor-menu-icon {
-  cursor: grab;
-  height: 1.5rem;
-  width: 1.5rem;
-}
+    &-menu-icon {
+      cursor: grab;
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
 
-.edit-page__section-header {
-  align-items: center;
-  display: flex;
-  gap: var.$spacing-sm;
-  justify-content: space-between;
-}
-
-.edit-page__actions-buttons {
-  display: flex;
-  gap: var.$spacing-sm;
+  &__section-header {
+    align-items: center;
+    display: flex;
+    gap: var.$spacing-sm;
+    justify-content: space-between;
+  }
 }

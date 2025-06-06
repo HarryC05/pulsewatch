@@ -311,7 +311,7 @@ const Edit = () => {
 							htmlFor="edit-page-title-input"
 							className="edit-page__title-label"
 						>
-							<Icon icon="edit" />
+							<Icon icon="edit" className="edit-page__title-edit-icon" />
 						</label>
 					</div>
 					<div className="edit-page__actions-buttons">
@@ -389,7 +389,7 @@ const Edit = () => {
 						htmlFor="edit-page-desc-input"
 					>
 						<h2>Description</h2>
-						<Icon icon="edit" className="edit-page__edit-icon" />
+						<Icon icon="edit" className="edit-page__desc-edit-icon" />
 					</label>
 					<textarea
 						value={editedPage.desc}

@@ -21,8 +21,7 @@
       }
 
       &--char-count {
-        font-size: var.$font-size-sm;
-        text-align: right;
+        @include mixins.char-count;
       }
 
       &--checkbox {

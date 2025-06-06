@@ -114,14 +114,26 @@ const Account = () => {
 						value={updatedUser.username}
 						onChange={handleUsernameChange}
 					/>
-					{nameError && <Notice message={nameError} variant="error" />}
+					{nameError && (
+						<Notice
+							message={nameError}
+							variant="error"
+							className="account__info-notice"
+						/>
+					)}
 					<label>Email:</label>
 					<input
 						type="email"
 						value={updatedUser.email}
 						onChange={handleEmailChange}
 					/>
-					{emailError && <Notice message={emailError} variant="error" />}
+					{emailError && (
+						<Notice
+							message={emailError}
+							variant="error"
+							className="account__info-notice"
+						/>
+					)}
 				</div>
 				<Button
 					variant="primary"

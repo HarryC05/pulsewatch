@@ -21,3 +21,11 @@
     margin-top: var.$spacing-sm;
   }
 }
+
+// Character Count Mixin
+@mixin char-count {
+  &__count {
+    font-size: var.$font-size-sm;
+    text-align: right;
+  }
+}

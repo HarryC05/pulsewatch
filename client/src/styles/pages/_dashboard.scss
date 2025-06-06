@@ -1,7 +1,10 @@
-/* @define dashboard */ // pages/_dashboard.scss
+// pages/_dashboard.scss
+
+/* @define dashboard */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
 .dashboard {
   &__content {
