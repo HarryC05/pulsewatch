@@ -1,35 +1,35 @@
 // abstracts/_variables.scss
 
-// — Spacing scale — (alphabetical)
+// - Spacing scale -
 $spacing-xl: 4rem;    // 64px
 $spacing-lg: 2rem;    // 32px
 $spacing-md: 1rem;    // 16px
 $spacing-sm: 0.5rem;  // 8px
 $spacing-xs: 0.25rem; // 4px
 
-// — Typography — (alphabetical)
-$font-size-base: 1rem;     // 16px
+// - Typography -
+$font-size-xxl:  2rem;     // 32px
+$font-size-xl:   1.5rem;   // 24px
 $font-size-lg:   1.25rem;  // 20px
 $font-size-sm:   0.875rem; // 14px
-$font-size-xl:   1.5rem;   // 24px
-$font-size-xxl:  2rem;     // 32px
+$font-size-base: 1rem;     // 16px
 $font-family-base: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen,
-		ubuntu, cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
-		sans-serif;
+  ubuntu, cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
 
-$line-height-base: 1.5; // 24px
+$line-height-xxl:  1.2; // 19.2px
+$line-height-xl:   1.3; // 19.2px
 $line-height-lg:   1.6; // 25.6px
 $line-height-sm:   1.4; // 22.4px
-$line-height-xl:   1.3; // 19.2px
-$line-height-xxl: 1.2; // 19.2px
+$line-height-base: 1.5; // 24px
 
-// -Border Radius — (alphabetical)
-$border-radius-base: 0.5rem; // 8px
+// - Border Radius -
 $border-radius-lg:   0.75rem; // 12px
 $border-radius-sm:   0.25rem; // 4px
+$border-radius-base: 0.5rem; // 8px
 $border-radius-circle: 999px; // for circular elements
 
-// — Layout: header & footer heights — (alphabetical)
+// - Layout: header & footer heights -
 $footer-height: calc(
   ($font-size-sm * $line-height-sm) /* copy text (font-size * line-height) */
   + $spacing-sm /* copy margin */
@@ -46,12 +46,12 @@ $nav-height: calc(
   + (2 * $spacing-sm) /* navbar padding (top/bottom combined) */
 );
 
-// — Breakpoints — (alphabetical)
+// - Breakpoints -
 $bp-large:   1024px;
 $bp-medium:  768px;
 $bp-small:   480px;
 
-// — Z-Index — (alphabetical)
+// - Z-Index -
 $z-index-dropdown: 1000;
 $z-index-modal:    1100;
 $z-index-toast:    1200;
