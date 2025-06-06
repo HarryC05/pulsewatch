@@ -1,57 +1,59 @@
-/* @define dashboard */
-
-// pages/_dashboard.scss
+/* @define dashboard */ // pages/_dashboard.scss
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
 
-.dashboard__content > .dashboard__content-header {
-  display: flex;
-  justify-content: space-between;
-}
+.dashboard {
+  &__content {
+    &-header {
+      display: flex;
+      justify-content: space-between;
+    }
 
-.dashboard__content-header-title {
-  align-items: center;
-  display: flex;
-  gap: var.$spacing-sm;
-}
+    &-header-title {
+      align-items: center;
+      display: flex;
+      gap: var.$spacing-sm;
+    }
 
-.dashboard__table {
-  border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
-}
-
-.dashboard__table .dashboard__table-cell {
-  border-bottom: 1px solid colours.$primary-light;
-  padding: var.$spacing-md;
-  text-align: center;
-}
-
-.dashboard__table .dashboard__table-row:last-child .dashboard__table-cell {
-  border-bottom: none;
-}
-
-.dashboard__table .dashboard__table-body .dashboard__table-row {
-  cursor: pointer;
-
-  &:hover {
-    background-color: colours.$primary-light;
+    &-summary {
+      display: grid;
+      gap: var.$spacing-md;
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
-}
 
 
-.dashboard__table-status {
-  background-color: colours.$primary-light;
-  border-radius: 50%;
-  display: block;
-  height: 0.5rem;
-  margin: auto;
-  width: 0.5rem;
-}
+  &__table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
 
-.dashboard__content-summary {
-  display: grid;
-  gap: var.$spacing-md;
-  grid-template-columns: repeat(4, 1fr);
+    &-cell {
+      border-bottom: 1px solid colours.$primary-light;
+      padding: var.$spacing-md;
+      text-align: center;
+    }
+
+    &-row {
+      cursor: pointer;
+
+      &:hover {
+        background-color: colours.$primary-light;
+      }
+
+      &:last-child .dashboard__table-cell {
+        border-bottom: none;
+      }
+    }
+
+    &-status {
+      background-color: colours.$primary-light;
+      border-radius: 50%;
+      display: block;
+      height: 0.5rem;
+      margin: auto;
+      width: 0.5rem;
+    }
+  }
 }
