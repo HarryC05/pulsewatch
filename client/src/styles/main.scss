@@ -16,39 +16,39 @@
 /**
  * Component Styles
  */
-@use "./components/accordion";
-@use "./components/add-monitor-modal";
-@use "./components/button";
-@use "./components/card";
-@use "./components/create-monitor-modal";
-@use "./components/create-page-modal";
-@use "./components/delete-monitor-modal";
-@use "./components/edit-monitor-modal";
-@use "./components/footer";
-@use "./components/icon";
-@use "./components/modal";
-@use "./components/navbar";
-@use "./components/notice";
-@use "./components/page";
-@use "./components/section";
-@use "./components/tag";
-@use "./components/uptime-chart";
-@use "./components/uptime-pill";
-@use "./components/visibility-toggle";
+@use "components/accordion";
+@use "components/add-monitor-modal";
+@use "components/button";
+@use "components/card";
+@use "components/create-monitor-modal";
+@use "components/create-page-modal";
+@use "components/delete-monitor-modal";
+@use "components/edit-monitor-modal";
+@use "components/footer";
+@use "components/icon";
+@use "components/modal";
+@use "components/navbar";
+@use "components/notice";
+@use "components/page";
+@use "components/section";
+@use "components/tag";
+@use "components/uptime-chart";
+@use "components/uptime-pill";
+@use "components/visibility-toggle";
 
 /**
  * Page Styles
  */
-@use "./pages/account";
-@use "./pages/dashboard";
-@use "./pages/edit";
-@use "./pages/homepage";
-@use "./pages/login";
-@use "./pages/monitor-details";
-@use "./pages/pages";
-@use "./pages/status";
+@use "pages/account";
+@use "pages/dashboard";
+@use "pages/edit";
+@use "pages/homepage";
+@use "pages/login";
+@use "pages/monitor-details";
+@use "pages/pages";
+@use "pages/status";
 
 /**
  * Utility Styles
  */
-@use "./utils/colour-utils";
+@use "utils/colour-utils";
