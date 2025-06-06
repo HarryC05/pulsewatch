@@ -46,7 +46,7 @@ input,
 textarea {
   background-color: colours.$primary-darkest;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var.$border-radius-base;
   color: colours.$offwhite;
   font-family: inherit;
   font-size: var.$font-size-base;
