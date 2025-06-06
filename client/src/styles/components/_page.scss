@@ -1,18 +1,18 @@
-/* @define page */
-
 // components/_page.scss
+
+/* @define page */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
-/* stylelint-disable plugin/selector-bem-pattern */
-main {
-	margin: 0 auto;
-	max-width: 60rem;
+.page {
+  margin: 0 auto;
+  max-width: 60rem;
   min-height: calc(100vh - var.$nav-height - var.$footer-height);
-	padding: var.$spacing-md;
-}
+  padding: var.$spacing-md;
 
-.page__header {
-  margin-bottom: var.$spacing-md;
+  &__header {
+    margin-bottom: var.$spacing-md;
+  }
 }

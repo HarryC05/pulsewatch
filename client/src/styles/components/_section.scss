@@ -1,9 +1,10 @@
-/* @define section */
-
 // components/_section.scss
+
+/* @define section */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
 .section {
   background-color: colours.$primary;
@@ -12,8 +13,8 @@
   flex-direction: column;
   gap: var.$spacing-md;
   padding: var.$spacing-md;
-}
 
-.section__dark {
-  background-color: colours.$primary-darkest;
+  &__dark {
+    background-color: colours.$primary-darkest;
+  }
 }
