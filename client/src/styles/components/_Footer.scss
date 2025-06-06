@@ -1,0 +1,40 @@
+/* @define footer */
+
+.footer {
+  background: var(--colour-primary-dark);
+  color: var(--colour-off-white);
+  padding: 2rem 1rem;
+  text-align: center;
+
+  &__copy {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__legal {
+    margin-bottom: 1rem;
+
+    .footer__link {
+      color: var(--colour-off-white);
+      font-size: 0.95rem;
+      margin: 0 0.75rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+  }
+
+  &__socials {
+      margin-bottom: 0.5rem;
+
+      .footer__social-link {
+        color: var(--colour-off-white);
+        margin: 0 0.5rem;
+      }
+
+      .footer__social-icon {
+        height: 1.25rem;
+        width: 1.25rem;
+      }
+    }
+}
