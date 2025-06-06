@@ -1,26 +1,29 @@
 /* @define monitor-page */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .monitor-page__details--header {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 1.25rem 0;
+  padding: var.$spacing-md 0;
 }
 
 .monitor-page__details--header-status {
   align-items: center;
   display: flex;
-  gap: 0.5rem;
+  gap: var.$spacing-sm;
 }
 
 .monitor-page__details--header-buttons {
   display: flex;
-  gap: 0.5rem;
+  gap: var.$spacing-sm;
 }
 
 .monitor-page__details-status {
-  background-color: var(--colour-primary-light);
-  border-radius: 50%;
+  background-color: colours.$primary-light;
+  border-radius: var.$border-radius-base;
   display: block;
   height: 0.75rem;
   width: 0.75rem;
@@ -28,7 +31,7 @@
 
 .monitor-page__details--info {
   display: grid;
-  gap: 1rem;
+  gap: var.$spacing-md;
   grid-template-columns: repeat(6, 1fr);
 }
 
@@ -37,12 +40,12 @@
 }
 
 .monitor-page__details--info-item-subtitle {
-  font-size: 0.8rem;
+  font-size: var.$font-size-sm;
 }
 
 /* stylelint-disable-next-line plugin/selector-bem-pattern */
 .monitor-page__details--info-item .uptime-pill {
-  margin-top: 0.5rem;
+  margin-top: var.$spacing-sm;
 }
 
 .monitor-page__details--response-time-header {
@@ -51,11 +54,11 @@
 }
 
 .monitor-page__details--response-time-header-select {
-  background-color: var(--colour-primary-light);
+  background-color: colours.$primary-light;
   border: none;
-  border-radius: 5px;
+  border-radius: var.$border-radius-base;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: var.$spacing-sm;
 }
 
 .monitor-page__details--downtime-list-table {
@@ -66,7 +69,7 @@
 
 /* stylelint-disable-next-line plugin/selector-bem-pattern */
 .monitor-page__details--downtime-list-table th {
-  border-bottom: 2px solid var(--colour-primary-light);
+  border-bottom: 2px solid colours.$primary-light;
 }
 
 .monitor-page__details--downtime-list-table-header-date {
@@ -79,8 +82,8 @@
 
 /* stylelint-disable-next-line plugin/selector-bem-pattern */
 .monitor-page__details--downtime-list-table td {
-  border-bottom: 1px solid var(--colour-primary-light);
-  padding: 1rem;
+  border-bottom: 1px solid colours.$primary-light;
+  padding: var.$spacing-md;
   text-align: center;
 }
 

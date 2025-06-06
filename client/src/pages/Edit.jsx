@@ -302,7 +302,7 @@ const Edit = () => {
 							value={editedPage.title}
 							onChange={onTitleChange}
 							placeholder="Page Title"
-							className="background-colour-primary-light edit-page__title-input text-h2"
+							className="bg-primary-light edit-page__title-input text-h2"
 							maxLength={32}
 							size={32}
 							id="edit-page-title-input"
@@ -351,7 +351,7 @@ const Edit = () => {
 						value={editedPage.slug}
 						onChange={onSlugChange}
 						placeholder="Page Slug"
-						className="background-colour-primary-light edit-page__slug-input"
+						className="bg-primary-light edit-page__slug-input"
 						maxLength={32}
 						size={32}
 						id="edit-page-slug-input"
@@ -395,7 +395,7 @@ const Edit = () => {
 						value={editedPage.desc}
 						onChange={onDescChange}
 						placeholder="Page Description"
-						className="background-colour-primary-light edit-page__desc-input"
+						className="bg-primary-light edit-page__desc-input"
 						maxLength={512}
 						rows={5}
 						id="edit-page-desc-input"
@@ -435,7 +435,7 @@ const Edit = () => {
 									<Icon icon="menu" className="edit-page__monitor-menu-icon" />
 									<div className="edit-page__monitor-title">
 										<span
-											className={`edit-page__monitor-status ${monitor.status === 'up' ? 'background-colour-green' : monitor.status === 'down' ? 'background-colour-red' : ''}`}
+											className={`edit-page__monitor-status ${monitor.status === 'up' ? 'bg-green' : monitor.status === 'down' ? 'bg-red' : ''}`}
 											title={`Status: ${monitor.status}`}
 										/>
 										<h3 className="edit-page__monitor-name">
@@ -444,7 +444,7 @@ const Edit = () => {
 									</div>
 									<Button
 										variant="text"
-										className="text-colour-red"
+										className="text-red"
 										onClick={() => {
 											const updatedMonitors = editedPage.monitors.filter(
 												(m) => m.id !== monitor.id

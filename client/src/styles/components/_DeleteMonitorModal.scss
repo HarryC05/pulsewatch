@@ -1,17 +1,20 @@
 /* @define delete-monitor-modal */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .delete-monitor-modal__confirm-text {
-  margin: 1rem 0;
+  margin: var.$spacing-md 0;
 }
 
 .delete-monitor-modal__actions .delete-monitor-modal__code {
-  background-color: var(--colour-primary-light);
-  border-radius: 5px;
-  padding: 0.25rem 0.5rem;
+  background-color: colours.$primary-light;
+  border-radius: var.$border-radius-base;
+  padding: var.$spacing-xs var.$spacing-sm;
 }
 
 .delete-monitor-modal__buttons {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: var.$spacing-sm;
+  margin-top: var.$spacing-sm;
 }

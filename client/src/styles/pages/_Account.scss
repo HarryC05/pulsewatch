@@ -1,8 +1,11 @@
 /* @define account */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .account__info {
   display: grid;
-  gap: 1rem;
+  gap: var.$spacing-md;
   grid-template-columns: auto 1fr;
 }
 

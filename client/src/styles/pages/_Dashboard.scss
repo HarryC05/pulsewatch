@@ -1,5 +1,8 @@
 /* @define dashboard */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .dashboard__content > .dashboard__content-header {
   display: flex;
   justify-content: space-between;
@@ -8,7 +11,7 @@
 .dashboard__content-header-title {
   align-items: center;
   display: flex;
-  gap: 0.5rem;
+  gap: var.$spacing-sm;
 }
 
 .dashboard__table {
@@ -18,8 +21,8 @@
 }
 
 .dashboard__table .dashboard__table-cell {
-  border-bottom: 1px solid var(--colour-primary-dark);
-  padding: 1rem;
+  border-bottom: 1px solid colours.$primary-light;
+  padding: var.$spacing-md;
   text-align: center;
 }
 
@@ -31,13 +34,13 @@
   cursor: pointer;
 
   &:hover {
-    background-color: var(--colour-primary-dark);
+    background-color: colours.$primary-light;
   }
 }
 
 
 .dashboard__table-status {
-  background-color: var(--colour-primary-light);
+  background-color: colours.$primary-light;
   border-radius: 50%;
   display: block;
   height: 0.5rem;
@@ -47,6 +50,6 @@
 
 .dashboard__content-summary {
   display: grid;
-  gap: 1rem;
+  gap: var.$spacing-md;
   grid-template-columns: repeat(4, 1fr);
 }

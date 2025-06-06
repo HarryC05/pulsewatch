@@ -1,26 +1,29 @@
 /* @define pages-page */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .pages-page__header {
   align-items: center;
   display: flex;
-  gap: 1rem;
+  gap: var.$spacing-md;
   justify-content: space-between;
-  padding-bottom: 1rem;
+  padding-bottom: var.$spacing-md;
 }
 
 .pages-page__list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var.$spacing-md;
 }
 
 .pages-page__card {
 	display: grid;
-  gap: 0.5rem;
+  gap: var.$spacing-sm;
 	text-align: unset;
 
   &:hover {
-    background-color: var(--colour-primary-lighter);
+    background-color: colours.$primary-lighter;
     cursor: pointer;
   }
 }
@@ -28,21 +31,16 @@
 .pages-page__card-header {
   align-items: center;
   display: flex;
-  gap: 0.5rem;
+  gap: var.$spacing-sm;
   justify-content: space-between;
 
   .pages-page__card-header-title {
     align-items: center;
     display: flex;
-    gap: 0.5rem;
+    gap: var.$spacing-sm;
 
     .pages-page__card-header-access-pill {
-      gap: 0.25rem;
+      gap: var.$spacing-xs;
     }
-  }
-
-  .pages-page__card-button {
-    flex-basis: 0;
-    z-index: 10;
   }
 }

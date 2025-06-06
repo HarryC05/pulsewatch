@@ -1,39 +1,42 @@
 /* @define notice */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .notice {
-  border-radius: 5px;
+  border-radius: var.$border-radius-base;
   display: grid;
   grid-template-columns: 1fr auto;
-  padding: 0.25rem;
+  padding: var.$spacing-xs;
   text-align: center;
   width: 100%;
 }
 
 .notice__success {
-  background-color: var(--colour-green);
-  color: var(--colour-white);
+  background-color: colours.$green;
+  color: colours.$offwhite;
 }
 
 .notice__error {
-  background-color: var(--colour-red);
-  color: var(--colour-white);
+  background-color: colours.$red;
+  color: colours.$offwhite;
 }
 
 .notice__info {
-  background-color: var(--colour-blue);
-  color: var(--colour-white);
+  background-color: colours.$blue;
+  color: colours.$offwhite;
 }
 
 .notice__warning {
-  background-color: var(--colour-yellow);
-  color: var(--colour-black);
+  background-color: colours.$yellow;
+  color: colours.$black;
 }
 
 .notice__dismiss {
   background: none;
   border: none;
   cursor: pointer;
-  margin-left: 0.5rem;
+  margin-left: var.$spacing-sm;
 }
 
 .notice__icon {

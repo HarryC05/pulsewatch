@@ -59,7 +59,7 @@ const Accordion = ({
 				<div className="accordion__title">
 					{status && (
 						<span
-							className={`accordion__title-status ${status === 'up' ? 'background-colour-green' : status === 'down' ? 'background-colour-red' : ''}`}
+							className={`accordion__title-status ${status === 'up' ? 'bg-green' : status === 'down' ? 'bg-red' : ''}`}
 							aria-label={`Status: ${status}`}
 							title={`Status: ${status}`}
 						></span>

@@ -1,11 +1,14 @@
 /* @define btn */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .btn {
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var.$border-radius-base;
   cursor: pointer;
-  font-size: 1rem;
-  padding: 1rem;
+  font-size: var.$font-size-base;
+  padding: var.$spacing-md;
 
   &:disabled {
     cursor: not-allowed;
@@ -13,41 +16,42 @@
   }
 
   &--primary {
-    background-color: var(--colour-btn-primary);
-    color: var(--colour-btn-primary-text);
+    background-color: colours.$primary-light;
+    color: colours.$offwhite;
 
     &:hover {
-      background-color: var(--colour-btn-primary-hover);
+      background-color: colours.$primary-dark;
     }
   }
 
   &--secondary {
-    background-color: var(--colour-btn-secondary);
-    color: var(--colour-btn-secondary-text);
+    background-color: colours.$primary;
+    color: colours.$offwhite;
 
     &:hover {
-      background-color: var(--colour-btn-secondary-hover);
+      background-color: colours.$primary-darker;
     }
   }
 
   &--dangerous {
-    background-color: var(--colour-btn-dangerous);
-    color: var(--colour-btn-dangerous-text);
+    background-color: colours.$red;
+    color: colours.$offwhite;
 
     &:hover {
-      background-color: var(--colour-btn-dangerous-hover);
+      background-color: colours.$red-hover;
     }
   }
 
   &--text {
     background: none;
     border: none;
-    color: inherit;
+    color: colours.$offwhite;
     cursor: pointer;
     font: inherit;
     padding: 0;
 
     &:hover {
+      color: colours.$light-red;
       text-decoration: underline;
     }
   }

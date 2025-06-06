@@ -1,8 +1,11 @@
 /* @define uptime-pill */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .uptime-pill {
-  background-color: var(--colour-primary-light);
-  border-radius: 999px;
+  background-color: colours.$primary-light;
+  border-radius: var.$border-radius-circle;
   height: fit-content;
-  padding: 0.25rem 0.5rem;
+  padding: var.$spacing-xs var.$spacing-sm;
 }

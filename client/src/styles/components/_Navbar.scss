@@ -1,7 +1,10 @@
 /* @define navbar */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .navbar {
-  background-color: var(--colour-primary-dark);
+  background-color: colours.$primary-dark;
 }
 
 .navbar__content {
@@ -10,27 +13,18 @@
   justify-content: space-between;
   margin: 0 auto;
   max-width: 60rem;
-  padding: 0.5rem 1rem;
+  padding: var.$spacing-sm var.$spacing-md;
   width: 100%;
 }
 
 .navbar__logo {
   height: 3.5rem;
-  margin: 0.5rem;
+  margin: var.$spacing-sm;
   width: auto;
 }
 
 .navbar__links {
   display: flex;
-  gap: 1rem;
+  gap: var.$spacing-md;
   list-style: none;
-}
-
-.navbar__links .navbar__links-link {
-  color: var(--colour-white);
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }

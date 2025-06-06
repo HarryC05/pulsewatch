@@ -1,5 +1,8 @@
 /* @define edit-monitor */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .edit-monitor__inputs {
   display: flex;
   flex-direction: column;
@@ -7,7 +10,7 @@
   width: fit-content;
 
   .edit-monitor__input {
-    margin-bottom: 0.5rem;
+    margin-bottom: var.$spacing-sm;
     max-width: 20rem;
     width: 20vw;
 
@@ -17,7 +20,7 @@
   }
 
   .edit-monitor__label {
-    margin-top: 0.5rem;
+    margin-top: var.$spacing-sm;
 
     &:first-child {
       margin-top: 0;

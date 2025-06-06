@@ -38,7 +38,7 @@ const UptimeChart = ({ data }) => {
 				{visibleData.map((item, index) => (
 					<span
 						key={index}
-						className={`uptime-chart__data-item ${item.status === 'up' ? 'background-colour-green' : item.status === 'down' ? 'background-colour-red' : ''}`}
+						className={`uptime-chart__data-item ${item.status === 'up' ? 'bg-green' : item.status === 'down' ? 'bg-red' : ''}`}
 						title={`${new Date(item.createdAt).toLocaleString()} - ${item.responseTime ? `${item.responseTime} ms` : 'N/A'}`}
 					/>
 				))}

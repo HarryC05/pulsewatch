@@ -113,7 +113,7 @@ const MonitorDetails = () => {
 				<div className="monitor-page__details--header">
 					<div className="monitor-page__details--header-status">
 						<span
-							className={`monitor-page__details-status ${monitor.latest.status === 'up' ? 'background-colour-green' : 'background-colour-red'}`}
+							className={`monitor-page__details-status ${monitor.latest.status === 'up' ? 'bg-green' : 'bg-red'}`}
 							title={monitor.latest.status}
 						/>
 						<h1 className="monitor-page__details--info-name">

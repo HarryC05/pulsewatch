@@ -1,7 +1,12 @@
+/* @define icon */
+
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .icon {
   display: inline-block;
   fill: none;
-  height: 1em;
+  height: var.$font-size-base;
   vertical-align: middle;
-  width: 1em;
+  width: var.$font-size-base;
 }

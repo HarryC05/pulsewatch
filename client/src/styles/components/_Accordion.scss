@@ -1,40 +1,43 @@
 /* @define accordion */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .accordion {
-  background-color: var(--colour-primary);
-  border-radius: 10px;
+  background-color: colours.$primary;
+  border-radius: var.$border-radius-base;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
+  gap: var.$spacing-sm;
+  padding: var.$spacing-md;
 }
 
 .accordion__header {
   align-items: center;
   cursor: pointer;
   display: flex;
-  gap: 0.5rem;
+  gap: var.$spacing-sm;
 }
 
 .accordion__title {
   align-items: center;
   display: flex;
-  gap: 0.5rem;
+  gap: var.$spacing-sm;
 }
 
 .accordion__title-status {
-  background-color: var(--colour-primary-light);
-  border-radius: 999px;
+  background-color: colours.$primary-light;
+  border-radius: var.$border-radius-circle;
   display: inline-block;
   height: 0.75rem;
   width: 0.75rem;
 }
 
 .accordion__content {
-  border-top: 1px solid var(--colour-primary-light);
-  margin-top: 1rem;
-  max-height: 9999999999px;
-  padding-top: 1rem;
+  border-top: 1px solid colours.$primary-light;
+  margin-top: var.$spacing-md;
+  max-height: none;
+  padding-top: var.$spacing-md;
   transition: all 0.3s ease;
 }
 

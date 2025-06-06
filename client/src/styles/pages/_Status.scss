@@ -1,7 +1,10 @@
 /* @define status-page */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .status-page__error-description {
-  margin: 1rem 0;
+  margin: var.$spacing-md 0;
 }
 
 .status-page__error {
@@ -16,40 +19,40 @@
 .status-page .page__content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var.$spacing-md;
   justify-content: center;
 }
 
 .status-page__monitor-header {
   align-items: center;
   display: flex;
-  gap: 0.5rem;
+  gap: var.$spacing-sm;
 }
 
 .status-page__monitor--content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var.$spacing-md;
 }
 
 .status-page__monitor--details {
   display: grid;
-  gap: 1rem;
+  gap: var.$spacing-md;
   grid-template-columns: repeat(5, 1fr);
 }
 
 .status-page__monitor--details-card {
   display: grid;
-  gap: 0.25rem;
+  gap: var.$spacing-xs;
 
   /* stylelint-disable-next-line plugin/selector-bem-pattern */
   .uptime-pill {
-    margin-top: 0.5rem;
+    margin-top: var.$spacing-sm;
   }
 }
 
 .status-page__monitor--details-card-subtitle {
-  font-size: 0.8rem;
+  font-size: var.$font-size-sm;
 }
 
 .status-page__monitor--response-time-header {
@@ -58,11 +61,11 @@
 }
 
 .status-page__monitor--response-time-header-select {
-  background-color: var(--colour-primary-light);
+  background-color: colours.$primary-light;
   border: none;
-  border-radius: 5px;
+  border-radius: var.$border-radius-base;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: var.$spacing-sm;
 }
 
 .status-page__monitor--downtime-list-table {
@@ -73,7 +76,7 @@
 
 /* stylelint-disable-next-line plugin/selector-bem-pattern */
 .status-page__monitor--downtime-list-table th {
-  border-bottom: 2px solid var(--colour-primary-light);
+  border-bottom: 2px solid colours.$primary-light;
 }
 
 .status-page__monitor--downtime-list-table-header-date {
@@ -86,8 +89,8 @@
 
 /* stylelint-disable-next-line plugin/selector-bem-pattern */
 .status-page__monitor--downtime-list-table td {
-  border-bottom: 1px solid var(--colour-primary-light);
-  padding: 1rem;
+  border-bottom: 1px solid colours.$primary-light;
+  padding: var.$spacing-md;
   text-align: center;
 }
 

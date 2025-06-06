@@ -1,8 +1,11 @@
 /* @define card */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .card {
-  background-color: var(--colour-primary-light);
-  border-radius: 5px;
-  padding: 1rem;
+  background-color: colours.$primary-light;
+  border-radius: var.$border-radius-base;
+  padding: var.$spacing-md;
   text-align: center;
 }

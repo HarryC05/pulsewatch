@@ -4,7 +4,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import App from './App.jsx';
-import './styles/index.scss';
+import './styles/main.scss';
 
 createRoot(document.getElementById('root')).render(
 	<StrictMode>

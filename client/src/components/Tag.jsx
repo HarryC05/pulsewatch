@@ -11,9 +11,9 @@
 const Tag = ({ variant, children, className = '' }) => {
 	const variants = {
 		default: '',
-		green: 'tag--green',
-		red: 'tag--red',
-		yellow: 'tag--yellow',
+		green: 'tag__green',
+		red: 'tag__red',
+		yellow: 'tag__yellow',
 	};
 
 	const variantClass = variants[variant] || '';

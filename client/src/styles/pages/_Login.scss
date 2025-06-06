@@ -1,5 +1,8 @@
 /* @define login-page */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .login-page {
   align-items: center;
   display: flex;
@@ -7,20 +10,16 @@
   justify-content: center;
 }
 
-.login-page__login-signup-button--text {
-  margin: 1.25rem 0;
-}
-
 .login-page__container {
   align-items: center;
-  background-color: var(--colour-primary);
-  border-radius: 0.5rem;
+  background-color: colours.$primary;
+  border-radius: var.$border-radius-base;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var.$spacing-md;
   justify-content: center;
   max-width: 30rem;
-  padding: 2rem;
+  padding: var.$spacing-lg;
   width: 100%;
 }
 
@@ -30,43 +29,34 @@
 
 .login-page__login-signup {
   display: grid;
-  gap: 1rem;
+  gap: var.$spacing-md;
   grid-template-columns: repeat(2, 1fr);
   list-style: none;
   width: 100%;
 }
 
-.login-page__login-signup > .login-page__login-signup-button {
-  align-items: center;
-  background: none;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-}
+.login-page__login-signup-button:disabled {
+  cursor: auto;
+  opacity: 1;
 
-.login-page__login-signup > .login-page__login-signup-button:hover {
-  background-color: var(--colour-btn-primary-hover);
-}
-
-.login-page__login-signup .login-page__login-signup-button--active {
-  background-color: var(--colour-btn-primary-hover);
+  &:hover {
+    background-color: unset;
+  }
 }
 
 .login-page__form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var.$spacing-md;
   width: 100%;
 }
 
 .login-page__form-input {
-  background-color: var(--colour-background);
+  background-color: colours.$primary-darkest;
   border: none;
-  border-radius: 0.5rem;
-  color: var(--colour-text);
-  font-size: 1rem;
-  padding: 1rem;
+  border-radius: var.$border-radius-base;
+  color: colours.$offwhite;
+  // font-size: var.$font-size-base;
+  padding: var.$spacing-md;
   width: auto;
 }

@@ -1,12 +1,15 @@
 /* @define tag */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .tag {
   align-items: center;
-	background-color: var(--colour-primary-lighter);
-	border: 1px solid var(--colour-primary);
-	border-radius: 999px;
+	background-color: colours.$primary-light;
+	border: 1px solid colours.$primary;
+	border-radius: var.$border-radius-circle;
 	display: flex;
-	font-size: 0.75rem;
+	font-size: var.$font-size-sm;
 	font-weight: 500;
 	padding: 0.25rem 0.5rem;
 	text-align: center;
@@ -15,23 +18,23 @@
   width: fit-content;
 }
 
-.tag--green {
-  background-color: var(--colour-green-light);
-  border: 1px solid var(--colour-green);
-  color: var(--colour-green);
-  fill: var(--colour-green);
+.tag__green {
+  background-color: colours.$light-green;
+  border: 1px solid colours.$green;
+  color: colours.$green;
+  fill: colours.$green;
 }
 
-.tag--yellow {
-  background-color: var(--colour-yellow-light);
-  border: 1px solid var(--colour-yellow);
-  color: var(--colour-yellow);
-  fill: var(--colour-yellow);
+.tag__yellow {
+  background-color: colours.$light-yellow;
+  border: 1px solid colours.$yellow;
+  color: colours.$yellow;
+  fill: colours.$yellow;
 }
 
-.tag--red {
-  background-color: var(--colour-red-light);
-  border: 1px solid var(--colour-red);
-  color: var(--colour-red);
-  fill: var(--colour-red);
+.tag__red {
+  background-color: colours.$light-red;
+  border: 1px solid colours.$red;
+  color: colours.$red;
+  fill: colours.$red;
 }

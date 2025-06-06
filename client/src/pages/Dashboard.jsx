@@ -100,13 +100,13 @@ const Dashboard = () => {
 						</Card>
 						<Card className="dashboard__content-summary-item">
 							<h3>Online</h3>
-							<h4 className="text-colour-green-light">
+							<h4 className="text-light-green">
 								{monitors.filter((m) => m.latest.status === 'up').length}
 							</h4>
 						</Card>
 						<Card className="dashboard__content-summary-item">
 							<h3>Offline</h3>
-							<h4 className="text-colour-red">
+							<h4 className="text-red">
 								{monitors.filter((m) => m.latest.status === 'down').length}
 							</h4>
 						</Card>
@@ -142,7 +142,7 @@ const Dashboard = () => {
 								>
 									<td className="dashboard__table-cell">
 										<span
-											className={`dashboard__table-status ${monitor.latest.status === 'up' ? 'background-colour-green' : monitor.latest.status === 'down' ? 'background-colour-red' : ''}`}
+											className={`dashboard__table-status ${monitor.latest.status === 'up' ? 'bg-green' : monitor.latest.status === 'down' ? 'bg-red' : ''}`}
 											title={monitor.latest.status}
 										/>
 									</td>

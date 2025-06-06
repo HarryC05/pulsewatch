@@ -1,14 +1,17 @@
 /* @define section */
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .section {
-  background-color: var(--colour-primary);
-  border-radius: 5px;
+  background-color: colours.$primary;
+  border-radius: var.$border-radius-base;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
+  gap: var.$spacing-md;
+  padding: var.$spacing-md;
 }
 
 .section__dark {
-  background-color: var(--colour-background);
+  background-color: colours.$primary-darkest;
 }

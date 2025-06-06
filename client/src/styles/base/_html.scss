@@ -1,0 +1,78 @@
+// base/_html.scss
+
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
+:root {
+  background-color: colours.$primary-darkest;
+	color: colours.$offwhite;
+	color-scheme: dark;
+}
+
+a {
+  color: colours.$offwhite;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    color: colours.$light-red;
+    text-decoration: underline;
+  }
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  width: auto;
+}
+
+input,
+textarea {
+  background-color: colours.$primary-darkest;
+  border: none;
+  border-radius: 0.5rem;
+  color: colours.$offwhite;
+  font-family: inherit;
+  font-size: var.$font-size-base;
+  padding: var.$spacing-sm;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  height: 1rem;
+  width: 1rem;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+video {
+  display: block;
+  max-width: 100%;
+}

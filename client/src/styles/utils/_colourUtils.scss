@@ -1,0 +1,130 @@
+// utils/colourUtils.scss
+@use "../abstracts/colours" as colours;
+
+.text-black {
+  color: colours.$black !important;
+}
+
+.bg-black {
+  background-color: colours.$black !important;
+}
+
+.text-blue {
+  color: colours.$blue !important;
+}
+
+.bg-blue {
+  background-color: colours.$blue !important;
+}
+
+.text-green {
+	color: colours.$green !important;
+}
+
+.bg-green {
+	background-color: colours.$green !important;
+}
+
+.text-light-blue {
+  color: colours.$light-blue !important;
+}
+
+.bg-light-blue {
+  background-color: colours.$light-blue !important;
+}
+
+.text-light-green {
+	color: colours.$light-green !important;
+}
+
+.bg-light-green {
+	background-color: colours.$light-green !important;
+}
+
+.text-light-red {
+  color: colours.$light-red !important;
+}
+
+.bg-light-red {
+  background-color: colours.$light-red !important;
+}
+
+.text-light-yellow {
+  color: colours.$light-yellow !important;
+}
+
+.bg-light-yellow {
+  background-color: colours.$light-yellow !important;
+}
+
+.text-offwhite {
+  color: colours.$offwhite !important;
+}
+
+.bg-offwhite {
+  background-color: colours.$offwhite !important;
+}
+
+.text-primary {
+  color: colours.$primary !important;
+}
+
+.bg-primary {
+  background-color: colours.$primary !important;
+}
+
+.text-primary-dark {
+  color: colours.$primary-dark !important;
+}
+
+.bg-primary-dark {
+  background-color: colours.$primary-dark !important;
+}
+
+.text-primary-darkest {
+  color: colours.$primary-darkest !important;
+}
+
+.bg-primary-darkest {
+  background-color: colours.$primary-darkest !important;
+}
+
+.text-primary-light {
+  color: colours.$primary-light !important;
+}
+
+.bg-primary-light {
+  background-color: colours.$primary-light !important;
+}
+
+.text-primary-lighter {
+  color: colours.$primary-lighter !important;
+}
+
+.bg-primary-lighter {
+  background-color: colours.$primary-lighter !important;
+}
+
+.text-red {
+	color: colours.$red !important;
+}
+
+.bg-red {
+	background-color: colours.$red !important;
+}
+
+.text-white {
+  color: colours.$white !important;
+}
+
+.bg-white {
+  background-color: colours.$white !important;
+}
+
+.text-yellow {
+	color: colours.$yellow !important;
+}
+
+.bg-yellow {
+	background-color: colours.$yellow !important;
+}

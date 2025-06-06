@@ -205,8 +205,10 @@ function Login() {
 					/>
 				</a>
 				<div className="login-page__login-signup">
-					<button
-						className={`login-page__login-signup-button${!signup ? ' login-page__login-signup-button--active' : ''}`}
+					<Button
+						variant={!signup ? 'secondary' : 'primary'}
+						disabled={!signup}
+						className="login-page__login-signup-button"
 						onClick={() => {
 							setSignup(false);
 							setError('');
@@ -216,9 +218,11 @@ function Login() {
 						}}
 					>
 						<h2 className="login-page__login-signup-button--text">Login</h2>
-					</button>
-					<button
-						className={`login-page__login-signup-button${signup ? ' login-page__login-signup-button--active' : ''}`}
+					</Button>
+					<Button
+						variant={signup ? 'secondary' : 'primary'}
+						disabled={signup}
+						className={`login-page__login-signup-button`}
 						onClick={() => {
 							setSignup(true);
 							setError('');
@@ -228,7 +232,7 @@ function Login() {
 						}}
 					>
 						<h2 className="login-page__login-signup-button--text">Signup</h2>
-					</button>
+					</Button>
 				</div>
 				{error && <Notice message={error} variant="error" />}
 				{success && <Notice message={success} variant="success" />}

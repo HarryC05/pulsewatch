@@ -1,0 +1,56 @@
+// base/_typography.scss
+
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
+:root {
+  color: colours.$offwhite;
+  font-family: var.$font-family-base;
+  font-size: var.$font-size-base;
+  line-height: var.$line-height-base;
+}
+
+// :root {
+// 	/* Font */
+// 	-moz-osx-font-smoothing: grayscale;
+// 	-webkit-font-smoothing: antialiased;
+// 	font-synthesis: none;
+// 	font-weight: 400;
+// 	line-height: 1.5;
+// 	text-rendering: optimizelegibility;
+// }
+
+h1 {
+  font-size: var.$font-size-xxl;
+  font-weight: 700;
+  line-height: var.$line-height-xxl;
+  margin: 0;
+}
+
+h2 {
+  font-size: var.$font-size-xl;
+  font-weight: 700;
+  line-height: var.$line-height-xl;
+  margin: 0;
+}
+
+p {
+  font-size: var.$font-size-base;
+  font-weight: 400;
+  line-height: var.$line-height-base;
+  margin: 0;
+}
+
+.text-h1 {
+  font-size: var.$font-size-xxl;
+  font-weight: 700;
+  line-height: var.$line-height-xxl;
+  margin: 0;
+}
+
+.text-body {
+  font-size: var.$font-size-base;
+  font-weight: 400;
+  line-height: var.$line-height-base;
+  margin: 0;
+}
