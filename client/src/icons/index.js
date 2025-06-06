@@ -1,4 +1,5 @@
 import Bell from './Bell';
+import Bluesky from './Bluesky';
 import Calendar from './Calendar';
 import ClockActivity from './ClockActivity';
 import Close from './Close';
@@ -6,6 +7,7 @@ import DollarCircle from './DollarCircle';
 import Edit from './Edit';
 import Eye from './Eye';
 import FileChecked from './FileChecked';
+import Instagram from './Instagram';
 import Layers from './Layers';
 import LockClosed from './LockClosed';
 import LockOpen from './LockOpen';
@@ -20,6 +22,7 @@ import Zap from './Zap';
 
 export {
 	Bell,
+	Bluesky,
 	Calendar,
 	ClockActivity,
 	Close,
@@ -27,6 +30,7 @@ export {
 	Edit,
 	Eye,
 	FileChecked,
+	Instagram,
 	Layers,
 	LockClosed,
 	LockOpen,

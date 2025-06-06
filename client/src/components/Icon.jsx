@@ -1,5 +1,6 @@
 import {
 	Bell,
+	Bluesky,
 	Calendar,
 	ClockActivity,
 	Close,
@@ -7,6 +8,7 @@ import {
 	Edit,
 	Eye,
 	FileChecked,
+	Instagram,
 	Layers,
 	LockClosed,
 	LockOpen,
@@ -33,6 +35,7 @@ import {
 const Icon = ({ icon, className = '', alt = '' }) => {
 	const icons = {
 		bell: Bell,
+		bluesky: Bluesky,
 		calendar: Calendar,
 		clockActivity: ClockActivity,
 		close: Close,
@@ -40,6 +43,7 @@ const Icon = ({ icon, className = '', alt = '' }) => {
 		edit: Edit,
 		eye: Eye,
 		fileChecked: FileChecked,
+		instagram: Instagram,
 		layers: Layers,
 		lockClosed: LockClosed,
 		lockOpen: LockOpen,
