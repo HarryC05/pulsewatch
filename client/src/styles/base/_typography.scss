@@ -2,6 +2,7 @@
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
 :root {
   color: colours.$offwhite;

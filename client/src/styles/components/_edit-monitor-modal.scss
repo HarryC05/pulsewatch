@@ -1,17 +1,20 @@
-/* @define edit-monitor */
-
 // components/_edit-monitor-modal.scss
+
+/* @define edit-monitor-modal */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
-.edit-monitor__inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  width: fit-content;
+.edit-monitor-modal {
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: fit-content;
+  }
 
-  .edit-monitor__input {
+  &__input {
     margin-bottom: var.$spacing-sm;
     max-width: 20rem;
     width: 20vw;
@@ -21,7 +24,7 @@
     }
   }
 
-  .edit-monitor__label {
+  &__label {
     margin-top: var.$spacing-sm;
 
     &:first-child {

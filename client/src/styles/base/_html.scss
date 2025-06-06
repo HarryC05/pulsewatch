@@ -2,6 +2,7 @@
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
 :root {
   background-color: colours.$primary-darkest;
@@ -51,6 +52,7 @@ textarea {
   font-family: inherit;
   font-size: var.$font-size-base;
   padding: var.$spacing-sm;
+  width: 100%;
 }
 
 input[type="checkbox"] {

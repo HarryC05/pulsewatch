@@ -1,11 +1,11 @@
-// components/_delete-monitor-modal.scs
+// components/_delete-status-page-modal.scs
 
-/* @define delete-monitor-modal */
+/* @define delete-status-page-modal */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
 @use "../abstracts/mixins" as mixins;
 
-.delete-monitor-modal {
+.delete-status-page-modal {
   @include mixins.delete-modal;
 }

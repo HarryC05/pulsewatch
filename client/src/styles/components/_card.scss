@@ -4,6 +4,7 @@
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
 .card {
   background-color: colours.$primary-light;
