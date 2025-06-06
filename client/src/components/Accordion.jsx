@@ -47,7 +47,7 @@ const Accordion = ({
 		toggleAccordion();
 	};
 	return (
-		<div className={`accordion ${isCollapsed ? 'accordion__collapsed' : ''}`}>
+		<div className="accordion">
 			<div
 				className="accordion__header"
 				onClick={handleClick}
@@ -67,7 +67,11 @@ const Accordion = ({
 					<h2>{title}</h2>
 				</div>
 			</div>
-			<div className={`accordion__content ${className}`}>{children}</div>
+			<div
+				className={`accordion__content ${isCollapsed && 'accordion__content-collapsed'} ${className}`}
+			>
+				{children}
+			</div>
 		</div>
 	);
 };

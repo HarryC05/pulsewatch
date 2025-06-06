@@ -20,18 +20,18 @@ const Button = ({
 	children,
 }) => {
 	const variants = {
-		primary: 'btn--primary',
-		secondary: 'btn--secondary',
-		dangerous: 'btn--dangerous',
-		text: 'btn--text',
-		back: 'btn--back',
+		primary: 'button--primary',
+		secondary: 'button--secondary',
+		dangerous: 'button--dangerous',
+		text: 'button--text',
+		back: 'button--back',
 	};
 
 	const variantClass = variants[variant];
 
 	return (
 		<button
-			className={`btn ${variantClass} ${className}`}
+			className={`button ${variantClass} ${className}`}
 			onClick={onClick}
 			disabled={disabled}
 			type={type}

@@ -1,11 +1,9 @@
-/* @define btn */
-
-// components/_button.scss
+/* @define button */ // components/_button.scss
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
 
-.btn {
+.button {
   border: none;
   border-radius: var.$border-radius-base;
   cursor: pointer;

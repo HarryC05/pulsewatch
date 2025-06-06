@@ -1,28 +1,26 @@
-/* @define add-monitor-modal */
-
-// components/_add-monitor-modal.scss
+/* @define add-monitor-modal */ // components/_add-monitor-modal.scss
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
 
 .add-monitor-modal {
   min-width: 25vw;
-}
 
-.add-monitor-modal__list {
-  margin: 0;
-  padding: 0;
-}
+  &__list {
+    margin: 0;
+    padding: 0;
+  }
 
-.add-monitor-modal__item {
-  align-items: center;
-  border-bottom: 1px solid colours.$primary-lighter;
-  display: flex;
-  gap: 0.5rem;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-}
+  &__item {
+    align-items: center;
+    border-bottom: 1px solid colours.$primary-lighter;
+    display: flex;
+    gap: var.$spacing-sm;
+    justify-content: space-between;
+    padding: var.$spacing-sm 0;
 
-.add-monitor-modal__item:last-child {
-  border-bottom: none;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
 }
