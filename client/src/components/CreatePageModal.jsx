@@ -169,14 +169,14 @@ const CreatePageModal = ({ onClose }) => {
 							title={nameRegex.err}
 							required
 						/>
-						<span className="create-page-modal__form-group__char-count">
+						<span className="create-page-modal__form-group--char-count">
 							({title.length} / 32)
 						</span>
 						{titleError && (
 							<Notice
 								message={titleError}
 								variant="error"
-								className="create-page-modal__form-group__error-notice"
+								className="create-page-modal__form-group--error-notice"
 							/>
 						)}
 					</div>
@@ -194,7 +194,7 @@ const CreatePageModal = ({ onClose }) => {
 							title={slugRegex.err}
 							required
 						/>
-						<span className="create-page-modal__form-group__char-count">
+						<span className="create-page-modal__form-group--char-count">
 							({slug.length} / 32)
 						</span>
 						{slugError && <Notice message={slugError} variant="error" />}
@@ -212,12 +212,12 @@ const CreatePageModal = ({ onClose }) => {
 							rows={6}
 							title={descRegex.err}
 						></textarea>
-						<span className="create-page-modal__form-group__char-count">
+						<span className="create-page-modal__form-group--char-count">
 							({desc.length} / 512)
 						</span>
 						{descError && <Notice message={descError} variant="error" />}
 					</div>
-					<div className="create-page-modal__form-group create-page-modal__form-group__toggle">
+					<div className="create-page-modal__form-group create-page-modal__form-group--toggle">
 						<label
 							htmlFor="isPublic"
 							title="Make this page visible to the public"

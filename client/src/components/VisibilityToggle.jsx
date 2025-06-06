@@ -21,24 +21,24 @@ const VisibilityToggle = ({ isVisible, onToggle }) => {
 		<div className="visibility-toggle">
 			<button
 				type="button"
-				className={`visibility-toggle__button`}
+				className={`visibility-toggle--button`}
 				onClick={() => onToggle(!isVisible)}
 			>
 				<Tag variant={!isVisible ? 'red' : 'default'}>Private</Tag>
 			</button>
-			<label className="visibility-toggle__label" htmlFor="isPublic">
+			<label className="visibility-toggle--label" htmlFor="isPublic">
 				<input
 					type="checkbox"
 					id="isPublic"
 					checked={isVisible}
 					onChange={() => onToggle(!isVisible)}
-					className="visibility-toggle__checkbox"
+					className="visibility-toggle--checkbox"
 				/>
-				<span className="visibility-toggle__slider"></span>
+				<span className="visibility-toggle--slider"></span>
 			</label>
 			<button
 				type="button"
-				className={`visibility-toggle__button`}
+				className={`visibility-toggle--button`}
 				onClick={() => onToggle(!isVisible)}
 			>
 				<Tag variant={isVisible ? 'green' : 'default'}>Public</Tag>

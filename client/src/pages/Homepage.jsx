@@ -13,7 +13,7 @@ const Homepage = () => {
 	return (
 		<>
 			<Page className="homepage">
-				<div className="homepage__hero" data-width="full">
+				<div className="homepage--hero" data-width="full">
 					<h1>Monitor your uptime. Share it with the world.</h1>
 					<p>
 						Show users when you’re up, not just when you’re down. Monitor your
@@ -92,8 +92,8 @@ const Homepage = () => {
 						We’re working on some exciting new features to make Pulse Watch even
 						better. Here’s a sneak peek at what’s coming next:
 					</p>
-					<div className="homepage__features-grid homepage__features-grid__upcoming">
-						<Card className="homepage__feature-card homepage__feature-card__upcoming">
+					<div className="homepage__features-grid homepage__features-grid--upcoming">
+						<Card className="homepage__feature-card homepage__feature-card--upcoming">
 							<Icon icon="dollarCircle" className="homepage__feature-icon" />
 							<h3>Paid Tiers & More Monitors</h3>
 							<p>
@@ -102,7 +102,7 @@ const Homepage = () => {
 							</p>
 						</Card>
 
-						<Card className="homepage__feature-card homepage__feature-card__upcoming">
+						<Card className="homepage__feature-card homepage__feature-card--upcoming">
 							<Icon icon="layers" className="homepage__feature-icon" />
 							<h3>Custom Branding</h3>
 							<p>
@@ -111,7 +111,7 @@ const Homepage = () => {
 							</p>
 						</Card>
 
-						<Card className="homepage__feature-card homepage__feature-card__upcoming">
+						<Card className="homepage__feature-card homepage__feature-card--upcoming">
 							<Icon icon="users" className="homepage__feature-icon" />
 							<h3>Organization & Team Support</h3>
 							<p>
@@ -120,7 +120,7 @@ const Homepage = () => {
 							</p>
 						</Card>
 
-						<Card className="homepage__feature-card homepage__feature-card__upcoming">
+						<Card className="homepage__feature-card homepage__feature-card--upcoming">
 							<Icon icon="zap" className="homepage__feature-icon" />
 							<h3>Slack, Webhooks, SMS Alerts</h3>
 							<p>
@@ -164,7 +164,7 @@ const Homepage = () => {
 
 					<div className="homepage__pricing-grid">
 						{/* Free Tier */}
-						<Card className="homepage__pricing-card pricing__free">
+						<Card className="homepage__pricing-card pricing--free">
 							<h3>Free</h3>
 							<p className="homepage__price-amount">$0 / month</p>
 							<ul>
@@ -182,7 +182,7 @@ const Homepage = () => {
 						</Card>
 
 						{/* Pro Tier (Coming Soon) */}
-						<Card className="homepage__pricing-card pricing__upcoming">
+						<Card className="homepage__pricing-card pricing--upcoming">
 							<Tag className="homepage__pricing-tag">Coming Soon</Tag>
 							<h3>Pro</h3>
 							<p className="homepage__price-amount">$15 / month</p>

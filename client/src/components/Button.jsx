@@ -20,11 +20,11 @@ const Button = ({
 	children,
 }) => {
 	const variants = {
-		primary: 'button__primary',
-		secondary: 'button__secondary',
-		dangerous: 'button__dangerous',
-		text: 'button__text',
-		back: 'button__back',
+		primary: 'button--primary',
+		secondary: 'button--secondary',
+		dangerous: 'button--dangerous',
+		text: 'button--text',
+		back: 'button--back',
 	};
 
 	const variantClass = variants[variant];

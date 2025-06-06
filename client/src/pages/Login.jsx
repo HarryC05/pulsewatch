@@ -217,7 +217,7 @@ function Login() {
 							setConfirmPassword('');
 						}}
 					>
-						<h2 className="login-page__login-signup-button__text">Login</h2>
+						<h2 className="login-page__login-signup-button--text">Login</h2>
 					</Button>
 					<Button
 						variant={signup ? 'secondary' : 'primary'}
@@ -231,7 +231,7 @@ function Login() {
 							setConfirmPassword('');
 						}}
 					>
-						<h2 className="login-page__login-signup-button__text">Signup</h2>
+						<h2 className="login-page__login-signup-button--text">Signup</h2>
 					</Button>
 				</div>
 				{error && <Notice message={error} variant="error" />}
