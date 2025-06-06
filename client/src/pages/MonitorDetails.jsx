@@ -183,21 +183,30 @@ const MonitorDetails = () => {
 							<span className="monitor-page__details--info-item-subtitle">
 								(24 hrs)
 							</span>
-							<UptimePill uptime={monitor.uptime.last24h} />
+							<UptimePill
+								uptime={monitor.uptime.last24h}
+								className="monitor-page__details--info-item-uptime-pill"
+							/>
 						</Card>
 						<Card className="monitor-page__details--info-item">
 							<h2>Uptime</h2>
 							<span className="monitor-page__details--info-item-subtitle">
 								(7 Days)
 							</span>
-							<UptimePill uptime={monitor.uptime.last7d} />
+							<UptimePill
+								uptime={monitor.uptime.last7d}
+								className="monitor-page__details--info-item-uptime-pill"
+							/>
 						</Card>
 						<Card className="monitor-page__details--info-item">
 							<h2>Uptime</h2>
 							<span className="monitor-page__details--info-item-subtitle">
 								(30 Days)
 							</span>
-							<UptimePill uptime={monitor.uptime.last30d} />
+							<UptimePill
+								uptime={monitor.uptime.last30d}
+								className="monitor-page__details--info-item-uptime-pill"
+							/>
 						</Card>
 					</div>
 					<UptimeChart data={monitor.heartbeats.last24h} />
@@ -228,25 +237,32 @@ const MonitorDetails = () => {
 								<table className="monitor-page__details--downtime-list-table">
 									<thead>
 										<tr>
-											<th className="monitor-page__details--downtime-list-table-header-date">
+											<th className="monitor-page__details--downtime-list-table-header monitor-page__details--downtime-list-table-header-date">
 												Date
 											</th>
-											<th className="monitor-page__details--downtime-list-table-header-response-code">
+											<th className="monitor-page__details--downtime-list-table-header monitor-page__details--downtime-list-table-header-response-code">
 												Response Code
 											</th>
-											<th className="monitor-page__details--downtime-list-table-header-error-message">
+											<th className="monitor-page__details--downtime-list-table-header monitor-page__details--downtime-list-table-header-error-message">
 												Error Message
 											</th>
 										</tr>
 									</thead>
 									<tbody>
 										{downHBs.map((heartbeat) => (
-											<tr key={heartbeat.id}>
-												<td>
+											<tr
+												key={heartbeat.id}
+												className="monitor-page__details--downtime-list-table-row"
+											>
+												<td className="monitor-page__details--downtime-list-table-row-cell">
 													{new Date(heartbeat.createdAt).toLocaleString()}
 												</td>
-												<td>{heartbeat.responseCode || 'N/A'}</td>
-												<td>{heartbeat.errorMessage || 'N/A'}</td>
+												<td className="monitor-page__details--downtime-list-table-row-cell">
+													{heartbeat.responseCode || 'N/A'}
+												</td>
+												<td className="monitor-page__details--downtime-list-table-row-cell">
+													{heartbeat.errorMessage || 'N/A'}
+												</td>
 											</tr>
 										))}
 									</tbody>

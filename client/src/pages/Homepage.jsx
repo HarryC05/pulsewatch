@@ -182,8 +182,10 @@ const Homepage = () => {
 						</Card>
 
 						{/* Pro Tier (Coming Soon) */}
-						<Card className="homepage__pricing-card pricing--upcoming">
-							<Tag className="homepage__pricing-tag">Coming Soon</Tag>
+						<Card className="homepage__pricing-card homepage__pricing-card--upcoming">
+							<Tag className="homepage__pricing-card--upcoming-tag">
+								Coming Soon
+							</Tag>
 							<h3>Pro</h3>
 							<p className="homepage__price-amount">$15 / month</p>
 							<ul>
