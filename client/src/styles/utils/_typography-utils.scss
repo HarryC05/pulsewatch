@@ -1,3 +1,8 @@
+// utils/typography-utils.scss
+
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+
 .text-h1 {
   font-size: var.$font-size-xxl;
   font-weight: 700;

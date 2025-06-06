@@ -7,10 +7,11 @@ import Icon from './Icon';
  * @param {string}   props.message   - The message to display
  * @param {string}   props.variant   - The type of notice (e.g., success, error)
  * @param {Function} props.onDismiss - Callback function to dismiss the notice
+ * @param {string}   props.className - Additional class names for styling
  *
  * @returns {JSX.Element} - The rendered component
  */
-const Notice = ({ message, variant, onDismiss }) => {
+const Notice = ({ message, variant, onDismiss, className }) => {
 	const noticeTypes = {
 		success: 'notice__success',
 		error: 'notice__error',
@@ -20,7 +21,7 @@ const Notice = ({ message, variant, onDismiss }) => {
 
 	const noticeType = noticeTypes[variant] || 'notice__info';
 
-	const noticeClass = `notice ${noticeType}`;
+	const noticeClass = `notice ${noticeType} ${className || ''}`.trim();
 
 	return (
 		<div className={noticeClass}>

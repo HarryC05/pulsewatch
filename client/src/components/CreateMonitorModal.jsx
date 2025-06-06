@@ -88,12 +88,12 @@ const CreateMonitorModal = ({ onClose, onCreate }) => {
 	return (
 		<Modal onClose={onClose} title="Create Monitor">
 			{error && <Notice message={error} variant="error" />}
-			<div className="create-monitor__inputs">
+			<div className="create-monitor-modal__inputs">
 				<label htmlFor="monitor-name">Monitor Name</label>
 				<input
 					type="text"
 					id="monitor-name"
-					className="create-monitor__input"
+					className="create-monitor-modal__input"
 					value={monitor.name}
 					onChange={handleNameChange}
 				/>
@@ -102,13 +102,13 @@ const CreateMonitorModal = ({ onClose, onCreate }) => {
 				<input
 					type="text"
 					id="monitor-url"
-					className="create-monitor__input"
+					className="create-monitor-modal__input"
 					value={monitor.url}
 					onChange={handleUrlChange}
 				/>
 				{urlError && <Notice message={urlError} variant="error" />}
 			</div>
-			<div className="create-monitor__footer">
+			<div className="create-monitor-modal__footer">
 				<Button
 					onClick={handleCreateMonitor}
 					disabled={disabled.url || disabled.name}

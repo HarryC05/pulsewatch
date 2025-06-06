@@ -1,23 +1,25 @@
-/* @define create-monitor */
-
 // components/_create-monitor-modal.scss
+
+/* @define create-monitor-modal */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
 
-.create-monitor__inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  width: fit-content;
-
-  .create-monitor__input {
-    margin-bottom: var.$spacing-md;
-    max-width: 20rem;
-    width: 20vw;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+.create-monitor-modal {
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: fit-content;
   }
+
+   &__input {
+      margin-bottom: var.$spacing-md;
+      max-width: 20rem;
+      width: 20vw;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
 }

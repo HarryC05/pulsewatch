@@ -1,39 +1,40 @@
-/* @define create-page-modal */
-
 // components/_create-page-modal.scss
+
+/* @define create-page-modal */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
 
-.create-page-modal__form {
-  display: grid;
-  gap: var.$spacing-md;
-  margin-top: var.$spacing-sm;
-}
+.create-page-modal {
+  &__form {
+    display: grid;
+    gap: var.$spacing-md;
+    margin-top: var.$spacing-sm;
 
-.create-page-modal__form-group {
-  display: grid;
-  gap: var.$spacing-sm;
+    &-group {
+      display: grid;
+      gap: var.$spacing-sm;
 
-  /* stylelint-disable-next-line plugin/selector-bem-pattern */
-  .notice {
-    justify-self: center;
+      &--error-notice {
+        justify-self: center;
+      }
+
+      &--char-count {
+        font-size: var.$font-size-sm;
+        text-align: right;
+      }
+
+      &--checkbox {
+        align-items: center;
+        display: flex;
+        gap: var.$spacing-sm;
+      }
+
+      &-buttons {
+        display: flex;
+        gap: var.$spacing-md;
+        justify-content: end;
+      }
+    }
   }
-
-  .create-page-modal__form-group--char-count {
-    font-size: var.$font-size-sm;
-    text-align: right;
-  }
-}
-
-.create-page-modal__form-group--checkbox {
-  align-items: center;
-  display: flex;
-  gap: var.$spacing-sm;
-}
-
-.create-page-modal__form-group-buttons {
-  display: flex;
-  gap: var.$spacing-md;
-  justify-content: end;
 }

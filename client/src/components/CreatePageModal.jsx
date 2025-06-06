@@ -172,7 +172,13 @@ const CreatePageModal = ({ onClose }) => {
 						<span className="create-page-modal__form-group--char-count">
 							({title.length} / 32)
 						</span>
-						{titleError && <Notice message={titleError} variant="error" />}
+						{titleError && (
+							<Notice
+								message={titleError}
+								variant="error"
+								className="create-page-modal__form-group--error-notice"
+							/>
+						)}
 					</div>
 					<div className="create-page-modal__form-group">
 						<label htmlFor="slug" title={slugRegex.err}>
