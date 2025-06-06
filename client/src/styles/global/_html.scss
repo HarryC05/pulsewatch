@@ -1,3 +1,5 @@
+@use "./variables" as vars;
+
 :root {
   background-color: var(--colour-background);
 	color: var(--colour-text);
@@ -23,6 +25,7 @@ body {
 main {
 	margin: 0 auto;
 	max-width: 60rem;
+  min-height: calc(100vh - vars.$nav-height - vars.$footer-height - 2rem);
 	padding: 1rem;
 }
 

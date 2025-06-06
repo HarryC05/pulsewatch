@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { NavBar } from './';
+import { NavBar, Footer } from './';
 
 /**
  * Page component
@@ -25,6 +25,7 @@ const Page = ({ className = '', header, title, children }) => {
 				{header && <h1 className="page__header">{header}</h1>}
 				<section className="page__content">{children}</section>
 			</main>
+			<Footer />
 		</>
 	);
 };
