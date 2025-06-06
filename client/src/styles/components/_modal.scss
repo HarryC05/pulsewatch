@@ -1,16 +1,10 @@
-/* @define modal */
-
 // components/_modal.scss
+
+/* @define modal */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
-
-.modal__background {
-  background-color: #00000080;
-  inset: 0;
-  position: fixed;
-  z-index: var.$z-index-modal;
-}
+@use "../abstracts/mixins" as mixins;
 
 .modal {
   background-color: colours.$primary;
@@ -24,40 +18,37 @@
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-}
 
-.modal__header {
-  border-bottom: 1px solid colours.$primary-light;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: var.$spacing-md;
-}
+  &__background {
+    background-color: rgba(colours.$black, 0.5);
+    inset: 0;
+    position: fixed;
+    z-index: var.$z-index-modal;
+  }
 
-.modal__title {
-  margin: 0;
-}
+  &__header {
+    border-bottom: 1px solid colours.$primary-light;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: var.$spacing-md;
+  }
 
-.modal__close {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: var.$font-size-xxl;
-  margin: 0;
-}
+  &__title {
+    margin: 0;
+  }
 
-.modal__content {
-  display: flex;
-  flex-direction: column;
-  gap: var.$spacing-md;
-  padding-top: var.$spacing-md;
-}
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: var.$font-size-xxl;
+    margin: 0;
+  }
 
-/* stylelint-disable-next-line plugin/selector-bem-pattern */
-body:has(.modal) {
-  overflow: hidden;
-}
-
-/* stylelint-disable-next-line plugin/selector-bem-pattern */
-.modal .notice {
-  max-width: 20rem;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var.$spacing-md;
+    padding-top: var.$spacing-md;
+  }
 }

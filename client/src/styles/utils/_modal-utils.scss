@@ -1,0 +1,9 @@
+// utils/modal-utils.scss
+
+body:has(.modal) {
+  overflow: hidden;
+}
+
+.modal .notice {
+  max-width: 20rem;
+}

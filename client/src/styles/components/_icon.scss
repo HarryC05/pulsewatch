@@ -1,9 +1,10 @@
-/* @define icon */
-
 // components/_icon.scss
+
+/* @define icon */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
 .icon {
   display: inline-block;
