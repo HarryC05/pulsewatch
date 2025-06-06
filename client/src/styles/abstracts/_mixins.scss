@@ -1,7 +1,7 @@
 // abstract/_mixins.scss
 
-@use "../abstracts/variables" as var;
-@use "../abstracts/colours" as colours;
+@use "variables" as var;
+@use "colours" as colours;
 
 // Delete Modal Mixin
 @mixin delete-modal {
