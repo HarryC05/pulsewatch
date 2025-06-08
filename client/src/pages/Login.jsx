@@ -197,13 +197,6 @@ function Login() {
 	return (
 		<Page className="login-page" title={`PW | ${signup ? 'Signup' : 'Login'}`}>
 			<div className="login-page__container">
-				<a href="/">
-					<img
-						src="/svgs/logo-dark.min.svg"
-						alt="Logo"
-						className="login-page__logo"
-					/>
-				</a>
 				<div className="login-page__login-signup">
 					<Button
 						variant={!signup ? 'secondary' : 'primary'}
