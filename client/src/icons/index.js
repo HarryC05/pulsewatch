@@ -12,6 +12,7 @@ import Layers from './Layers';
 import LockClosed from './LockClosed';
 import LockOpen from './LockOpen';
 import Logo from './Logo';
+import LogoDark from './LogoDark';
 import Menu from './Menu';
 import Monitor from './Monitor';
 import PlusCircle from './PlusCircle';
@@ -35,6 +36,7 @@ export {
 	LockClosed,
 	LockOpen,
 	Logo,
+	LogoDark,
 	Menu,
 	Monitor,
 	PlusCircle,
