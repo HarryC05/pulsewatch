@@ -1,48 +1,51 @@
-/* @define pages-page */
-
 // pages/_pages.scss
+
+/* @define pages-page */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
-.pages-page__header {
-  align-items: center;
-  display: flex;
-  gap: var.$spacing-md;
-  justify-content: space-between;
-  padding-bottom: var.$spacing-md;
-}
-
-.pages-page__list {
-  display: flex;
-  flex-direction: column;
-  gap: var.$spacing-md;
-}
-
-.pages-page__card {
-	display: grid;
-  gap: var.$spacing-sm;
-	text-align: unset;
-
-  &:hover {
-    background-color: colours.$primary-lighter;
-    cursor: pointer;
-  }
-}
-
-.pages-page__card-header {
-  align-items: center;
-  display: flex;
-  gap: var.$spacing-sm;
-  justify-content: space-between;
-
-  .pages-page__card-header-title {
+.pages-page {
+  &__header {
     align-items: center;
     display: flex;
-    gap: var.$spacing-sm;
+    gap: var.$spacing-md;
+    justify-content: space-between;
+    padding-bottom: var.$spacing-md;
+  }
 
-    .pages-page__card-header-access-pill {
-      gap: var.$spacing-xs;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var.$spacing-md;
+  }
+
+  &__card {
+    display: grid;
+    gap: var.$spacing-sm;
+    text-align: unset;
+
+    &:hover {
+      background-color: colours.$primary-lighter;
+      cursor: pointer;
+    }
+
+    &-header {
+      align-items: center;
+      display: flex;
+      gap: var.$spacing-sm;
+      justify-content: space-between;
+
+      &-title {
+        align-items: center;
+        display: flex;
+        gap: var.$spacing-sm;
+      }
+
+      &-access-pill {
+        gap: var.$spacing-xs;
+      }
     }
   }
 }

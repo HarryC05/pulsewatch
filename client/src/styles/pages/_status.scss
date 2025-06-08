@@ -1,102 +1,106 @@
-/* @define status-page */
-
 // pages/_status-page.scss
+
+/* @define status-page */
 
 @use "../abstracts/variables" as var;
 @use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
 
-.status-page__error-description {
-  margin: var.$spacing-md 0;
-}
-
-.status-page__error {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-// stylelint-disable-next-line plugin/selector-bem-pattern
-.status-page .page__content {
-  display: flex;
-  flex-direction: column;
-  gap: var.$spacing-md;
-  justify-content: center;
-}
-
-.status-page__monitor-header {
-  align-items: center;
-  display: flex;
-  gap: var.$spacing-sm;
-}
-
-.status-page__monitor--content {
-  display: flex;
-  flex-direction: column;
-  gap: var.$spacing-md;
-}
-
-.status-page__monitor--details {
-  display: grid;
-  gap: var.$spacing-md;
-  grid-template-columns: repeat(5, 1fr);
-}
-
-.status-page__monitor--details-card {
-  display: grid;
-  gap: var.$spacing-xs;
-
+.status-page {
   /* stylelint-disable-next-line plugin/selector-bem-pattern */
-  .uptime-pill {
-    margin-top: var.$spacing-sm;
+  .page__content {
+    display: flex;
+    flex-direction: column;
+    gap: var.$spacing-md;
+    justify-content: center;
   }
-}
 
-.status-page__monitor--details-card-subtitle {
-  font-size: var.$font-size-sm;
-}
+  &__error {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 
-.status-page__monitor--response-time-header {
-  display: flex;
-  justify-content: space-between;
-}
+    &-description {
+      margin: var.$spacing-md 0;
+    }
+  }
 
-.status-page__monitor--response-time-header-select {
-  background-color: colours.$primary-light;
-  border: none;
-  border-radius: var.$border-radius-base;
-  cursor: pointer;
-  padding: var.$spacing-sm;
-}
+  &__monitor {
+    &-header {
+      align-items: center;
+      display: flex;
+      gap: var.$spacing-sm;
+    }
 
-.status-page__monitor--downtime-list-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
-}
+    &--content {
+      display: flex;
+      flex-direction: column;
+      gap: var.$spacing-md;
+    }
 
-/* stylelint-disable-next-line plugin/selector-bem-pattern */
-.status-page__monitor--downtime-list-table th {
-  border-bottom: 2px solid colours.$primary-light;
-}
+    &--details {
+      display: grid;
+      gap: var.$spacing-md;
+      grid-template-columns: repeat(5, 1fr);
 
-.status-page__monitor--downtime-list-table-header-date {
-  width: 35%;
-}
+      &-card {
+        display: grid;
+        gap: var.$spacing-xs;
 
-.status-page__monitor--downtime-list-table-header-error-message {
-  width: 50%;
-}
+      }
 
-/* stylelint-disable-next-line plugin/selector-bem-pattern */
-.status-page__monitor--downtime-list-table td {
-  border-bottom: 1px solid colours.$primary-light;
-  padding: var.$spacing-md;
-  text-align: center;
-}
+      &-uptime {
+        margin-top: var.$spacing-sm;
+      }
 
-/* stylelint-disable-next-line plugin/selector-bem-pattern */
-.status-page__monitor--downtime-list-table tr:last-child td {
-  border-bottom: none;
+      &-card-subtitle {
+        font-size: var.$font-size-sm;
+      }
+    }
+
+    &--response-time-header {
+      display: flex;
+      justify-content: space-between;
+
+      &-select {
+        background-color: colours.$primary-light;
+        border: none;
+        border-radius: var.$border-radius-base;
+        cursor: pointer;
+        padding: var.$spacing-sm;
+      }
+    }
+
+    &--downtime-list-table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+
+      &-header {
+        border-bottom: 2px solid colours.$primary-light;
+      }
+
+      &-header-error-message {
+        width: 50%;
+      }
+
+      &-date {
+        width: 35%;
+      }
+
+      &-row-cell {
+        border-bottom: 1px solid colours.$primary-light;
+        padding: var.$spacing-md;
+        text-align: center;
+      }
+
+      &-row:last-child {
+        &-cell {
+          border-bottom: none;
+        }
+      }
+    }
+  }
 }

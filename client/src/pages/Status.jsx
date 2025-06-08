@@ -359,25 +359,32 @@ const Status = () => {
 									<table className="status-page__monitor--downtime-list-table">
 										<thead>
 											<tr>
-												<th className="status-page__monitor--downtime-list-table-header-date">
+												<th className="status-page__monitor--downtime-list-table-header status-page__monitor--downtime-list-table-header-date">
 													Date
 												</th>
-												<th className="status-page__monitor--downtime-list-table-header-response-code">
+												<th className="status-page__monitor--downtime-list-table-header status-page__monitor--downtime-list-table-header-response-code">
 													Response Code
 												</th>
-												<th className="status-page__monitor--downtime-list-table-header-error-message">
+												<th className="status-page__monitor--downtime-list-table-header status-page__monitor--downtime-list-table-header-error-message">
 													Error Message
 												</th>
 											</tr>
 										</thead>
 										<tbody>
 											{downHBs[index].map((heartbeat) => (
-												<tr key={heartbeat.id}>
-													<td>
+												<tr
+													key={heartbeat.id}
+													className="status-page__monitor--downtime-list-table-row"
+												>
+													<td className="status-page__monitor--downtime-list-table-row-cell">
 														{new Date(heartbeat.createdAt).toLocaleString()}
 													</td>
-													<td>{heartbeat.responseCode || 'N/A'}</td>
-													<td>{heartbeat.errorMessage || 'N/A'}</td>
+													<td className="status-page__monitor--downtime-list-table-row-cell">
+														{heartbeat.responseCode || 'N/A'}
+													</td>
+													<td className="status-page__monitor--downtime-list-table-row-cell">
+														{heartbeat.errorMessage || 'N/A'}
+													</td>
 												</tr>
 											))}
 										</tbody>
