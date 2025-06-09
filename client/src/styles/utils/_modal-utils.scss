@@ -5,5 +5,5 @@ body:has(.modal) {
 }
 
 .modal .notice {
-  max-width: 20rem;
+  max-width: min(25rem, 95vw);
 }

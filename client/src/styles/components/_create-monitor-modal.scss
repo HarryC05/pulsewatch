@@ -15,11 +15,27 @@
   }
 
    &__input {
-      margin-bottom: var.$spacing-md;
-      max-width: 20rem;
+    box-sizing: border-box;
+    margin-bottom: var.$spacing-md;
+    max-width: 31em;
+    width: min(calc(25rem - (2 * var.$spacing-lg)), calc(95vw - (2 * var.$spacing-lg)));
 
-      &:last-child {
-        margin-bottom: 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--error {
+      margin-bottom: var.$spacing-md;
+      max-width: 31em !important;
+      width: min(calc(25rem - (2 * var.$spacing-lg)), calc(95vw - (2 * var.$spacing-lg))) !important;
+
+      @include mixins.respond-above(sm) {
+        width: 31em !important;
       }
     }
+
+    @include mixins.respond-above(sm) {
+      width: 31em;
+    }
+  }
 }

@@ -96,8 +96,15 @@ const CreateMonitorModal = ({ onClose, onCreate }) => {
 					className="create-monitor-modal__input"
 					value={monitor.name}
 					onChange={handleNameChange}
+					maxLength={32}
 				/>
-				{nameError && <Notice message={nameError} variant="error" />}
+				{nameError && (
+					<Notice
+						message={nameError}
+						variant="error"
+						className="create-monitor-modal__input--error"
+					/>
+				)}
 				<label htmlFor="monitor-url">Monitor URL</label>
 				<input
 					type="text"
@@ -106,7 +113,13 @@ const CreateMonitorModal = ({ onClose, onCreate }) => {
 					value={monitor.url}
 					onChange={handleUrlChange}
 				/>
-				{urlError && <Notice message={urlError} variant="error" />}
+				{urlError && (
+					<Notice
+						message={urlError}
+						variant="error"
+						className="create-monitor-modal__input--error"
+					/>
+				)}
 			</div>
 			<div className="create-monitor-modal__footer">
 				<Button
