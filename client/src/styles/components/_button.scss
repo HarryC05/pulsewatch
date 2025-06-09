@@ -11,7 +11,8 @@
   border-radius: var.$border-radius-base;
   cursor: pointer;
   font-size: var.$font-size-base;
-  padding: var.$spacing-md;
+  line-height: var.$line-height-base;
+  padding: var.$spacing-sm;
 
   &:disabled {
     cursor: not-allowed;
@@ -51,11 +52,15 @@
     color: colours.$offwhite;
     cursor: pointer;
     font: inherit;
-    padding: 0;
+    padding: 0 !important;
 
     &:hover {
       color: colours.$light-red;
       text-decoration: underline;
     }
+  }
+
+  @include mixins.respond-above(sm) {
+    padding: var.$spacing-md;
   }
 }
