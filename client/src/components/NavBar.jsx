@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { Button } from './';
+import { Button, Icon } from './';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -53,11 +53,9 @@ const NavBar = () => {
 	return (
 		<nav className="navbar">
 			<div className="navbar__content">
-				<img
-					className="navbar__logo"
-					src="/svgs/logo-dark.min.svg"
-					alt="Logo"
-				/>
+				<a href="/">
+					<Icon icon="logoDark" className="navbar__logo" />
+				</a>
 				<ul className="navbar__links">
 					<li>
 						<a className="navbar__links-link" href="/">
