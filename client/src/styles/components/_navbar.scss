@@ -25,9 +25,81 @@
     width: auto;
   }
 
+  &__toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var.$spacing-sm;
+
+    &-icon {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
+    @include mixins.respond-above(navbar) {
+      display: none;
+    }
+  }
+
   &__links {
-    display: flex;
+    background-color: colours.$primary-dark;
+    display: none;
+    flex-direction: column;
     gap: var.$spacing-md;
+    height: 100vh;
+    left: 0;
     list-style: none;
+    padding: var.$spacing-md;
+    position: absolute;
+    text-align: right;
+    top: 0;
+    width: 100vw;
+    z-index: var.$z-index-dropdown;
+
+    &--open {
+      display: flex;
+    }
+
+    &--close-icon {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
+    &-link {
+      display: block;
+      padding: var.$spacing-sm var.$spacing-md;
+
+      &:has(.navbar__links--close-icon) {
+        padding: 0 var.$spacing-md;
+      }
+
+      &-anchor {
+        text-decoration: underline;
+      }
+    }
+
+    @include mixins.respond-above(navbar) {
+      background: none;
+      display: flex;
+      flex-direction: row;
+      height: auto;
+      left: auto;
+      padding: 0;
+      position: static;
+      top: auto;
+      width: auto;
+
+      &--open {
+        display: flex;
+      }
+
+      &-link {
+        padding: 0;
+
+        &:has(.navbar__links--close-icon) {
+          display: none;
+        }
+      }
+    }
   }
 }

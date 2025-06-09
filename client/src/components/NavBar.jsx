@@ -12,6 +12,7 @@ const API = import.meta.env.VITE_API_URL;
  */
 const NavBar = () => {
 	const [loggedIn, setLoggedIn] = useState(false);
+	const [menuOpen, setMenuOpen] = useState(false);
 
 	/**
 	 *
@@ -56,31 +57,53 @@ const NavBar = () => {
 				<a href="/">
 					<Icon icon="logoDark" className="navbar__logo" />
 				</a>
-				<ul className="navbar__links">
-					<li>
-						<a className="navbar__links-link" href="/">
+				<button
+					className="navbar__toggle"
+					onClick={() => setMenuOpen(!menuOpen)}
+					aria-label="Toggle menu"
+				>
+					<Icon icon="menu" className="navbar__toggle-icon" />
+				</button>
+				<ul
+					className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}
+				>
+					<li className="navbar__links-link">
+						<button
+							className="navbar__links--close"
+							onClick={() => setMenuOpen(false)}
+							aria-label="Close menu"
+						>
+							<Icon icon="close" className="navbar__links--close-icon" />
+						</button>
+					</li>
+					<li className="navbar__links-link">
+						<a className="navbar__links-link-anchor" href="/">
 							Home
 						</a>
 					</li>
 					{loggedIn && (
 						<>
-							<li>
-								<a className="navbar__links-link" href="/dashboard">
+							<li className="navbar__links-link">
+								<a className="navbar__links-link-anchor" href="/dashboard">
 									Dashboard
 								</a>
 							</li>
-							<li>
-								<a className="navbar__links-link" href="/pages">
+							<li className="navbar__links-link">
+								<a className="navbar__links-link-anchor" href="/pages">
 									Pages
 								</a>
 							</li>
-							<li>
-								<a className="navbar__links-link" href="/account">
+							<li className="navbar__links-link">
+								<a className="navbar__links-link-anchor" href="/account">
 									Account
 								</a>
 							</li>
-							<li>
-								<Button variant="text" onClick={handleLogout}>
+							<li className="navbar__links-link">
+								<Button
+									variant="text"
+									onClick={handleLogout}
+									className="navbar__links-link-anchor"
+								>
 									Logout
 								</Button>
 							</li>
@@ -88,13 +111,16 @@ const NavBar = () => {
 					)}
 					{!loggedIn && (
 						<>
-							<li>
-								<a className="navbar__links-link" href="/login">
+							<li className="navbar__links-link">
+								<a className="navbar__links-link-anchor" href="/login">
 									Login
 								</a>
 							</li>
-							<li>
-								<a className="navbar__links-link" href="/login?signup=true">
+							<li className="navbar__links-link">
+								<a
+									className="navbar__links-link-anchor"
+									href="/login?signup=true"
+								>
 									Sign Up
 								</a>
 							</li>
