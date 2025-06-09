@@ -29,3 +29,16 @@
     text-align: right;
   }
 }
+
+// Breakpoint Mixin
+@mixin respond-to($bp) {
+  @if $bp == sm {
+    @media (max-width: var.$bp-sm) { @content; }
+  } @else if $bp == md {
+    @media (max-width: var.$bp-md) { @content; }
+  } @else if $bp == lg {
+    @media (max-width: var.$bp-lg) { @content; }
+  } @else if $bp == navbar {
+    @media (max-width: var.$bp-navbar) { @content; }
+  }
+}

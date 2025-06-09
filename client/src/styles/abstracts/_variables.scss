@@ -47,9 +47,11 @@ $nav-height: calc(
 );
 
 // - Breakpoints -
-$bp-large:   1024px;
-$bp-medium:  768px;
-$bp-small:   480px;
+$bp-lg:   1024px;
+$bp-md:  768px;
+$bp-sm:   480px;
+
+$bp-navbar:   580px; // Navbar breakpoint for responsive design
 
 // - Z-Index -
 $z-index-dropdown: 1000;
