@@ -53,6 +53,9 @@ $bp-sm:   480px;
 
 $bp-navbar:   580px; // Navbar breakpoint for responsive design
 
+// - Grid Templates -
+$grid-template-columns-sm: repeat(auto-fit, minmax(160px, 1fr));
+
 // - Z-Index -
 $z-index-dropdown: 1000;
 $z-index-modal:    1100;

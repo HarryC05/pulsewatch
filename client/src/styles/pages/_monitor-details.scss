@@ -37,7 +37,7 @@
     &--info {
       display: grid;
       gap: var.$spacing-md;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: var.$grid-template-columns-sm;
 
       &-item {
         display: grid;

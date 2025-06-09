@@ -22,7 +22,7 @@
     &-summary {
       display: grid;
       gap: var.$spacing-md;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: var.$grid-template-columns-sm;
     }
   }
 
