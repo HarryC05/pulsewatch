@@ -9,7 +9,7 @@
 .uptime-chart {
   display: block;
   padding: var.$spacing-sm;
-  width: calc(100% - (2 * var.$spacing-sm));
+  width: 100%;
 
   &__data {
     display: flex;
