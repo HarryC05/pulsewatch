@@ -196,37 +196,37 @@ function Login() {
 
 	return (
 		<Page className="login-page" title={`PW | ${signup ? 'Signup' : 'Login'}`}>
+			<div className="login-page__login-signup">
+				<Button
+					variant={!signup ? 'secondary' : ''}
+					disabled={!signup}
+					className="login-page__login-signup-button"
+					onClick={() => {
+						setSignup(false);
+						setError('');
+						setSuccess('');
+						setPassword('');
+						setConfirmPassword('');
+					}}
+				>
+					<h2 className="login-page__login-signup-button--text">Login</h2>
+				</Button>
+				<Button
+					variant={signup ? 'secondary' : ''}
+					disabled={signup}
+					className={`login-page__login-signup-button`}
+					onClick={() => {
+						setSignup(true);
+						setError('');
+						setSuccess('');
+						setPassword('');
+						setConfirmPassword('');
+					}}
+				>
+					<h2 className="login-page__login-signup-button--text">Signup</h2>
+				</Button>
+			</div>
 			<div className="login-page__container">
-				<div className="login-page__login-signup">
-					<Button
-						variant={!signup ? 'secondary' : 'primary'}
-						disabled={!signup}
-						className="login-page__login-signup-button"
-						onClick={() => {
-							setSignup(false);
-							setError('');
-							setSuccess('');
-							setPassword('');
-							setConfirmPassword('');
-						}}
-					>
-						<h2 className="login-page__login-signup-button--text">Login</h2>
-					</Button>
-					<Button
-						variant={signup ? 'secondary' : 'primary'}
-						disabled={signup}
-						className={`login-page__login-signup-button`}
-						onClick={() => {
-							setSignup(true);
-							setError('');
-							setSuccess('');
-							setPassword('');
-							setConfirmPassword('');
-						}}
-					>
-						<h2 className="login-page__login-signup-button--text">Signup</h2>
-					</Button>
-				</div>
 				{error && <Notice message={error} variant="error" />}
 				{success && <Notice message={success} variant="success" />}
 				<form onSubmit={handleLogin} className="login-page__form">
