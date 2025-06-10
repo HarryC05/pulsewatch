@@ -24,10 +24,9 @@
 
 // Character Count Mixin
 @mixin char-count {
-  &__count {
-    font-size: var.$font-size-sm;
-    text-align: right;
-  }
+  font-size: var.$font-size-sm;
+  line-height: var.$line-height-sm;
+  text-align: right;
 }
 
 // Breakpoint Mixin
