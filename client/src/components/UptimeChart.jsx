@@ -22,7 +22,17 @@ const UptimeChart = ({ data }) => {
 	useEffect(() => {
 		const resizeObserver = new ResizeObserver((entries) => {
 			const width = entries[0].contentRect.width;
-			setVisibleCount(Math.floor(width / (BLOCK_WIDTH + BLOCK_GAP)));
+
+			// Calculate the number of visible blocks based on the container width
+			// width = N * BLOCK_WIDTH + (N - 1) * BLOCK_GAP
+			// width = (BLOCK_WIDTH + BLOCK_GAP)N - (BLOCK_GAP)
+			// N = (width + BLOCK_GAP) / (BLOCK_WIDTH + BLOCK_GAP)
+			const count = Math.max(
+				1,
+				Math.floor((width + BLOCK_GAP) / (BLOCK_WIDTH + BLOCK_GAP))
+			);
+
+			setVisibleCount(count);
 		});
 
 		if (containerRef.current) {
