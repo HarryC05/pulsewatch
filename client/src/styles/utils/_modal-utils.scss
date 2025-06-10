@@ -1,9 +1,24 @@
 // utils/modal-utils.scss
 
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
+
 body:has(.modal) {
   overflow: hidden;
 }
 
 .modal .notice {
-  max-width: min(25rem, 95vw);
+  max-width: 31em !important;
+  width: min(calc(25rem - (2 * var.$spacing-lg)), calc(95vw - (2 * var.$spacing-lg))) !important;
+
+  @include mixins.respond-above(sm) {
+    width: 31em !important;
+  }
+}
+
+.modal input[type="text"] {
+  box-sizing: border-box;
+  max-width: 31em;
+  width: min(calc(25rem - (2 * var.$spacing-lg)), calc(95vw - (2 * var.$spacing-lg)));
 }
