@@ -77,33 +77,21 @@ const NavBar = () => {
 						</button>
 					</li>
 					<li className="navbar__links-link">
-						<a className="navbar__links-link-anchor" href="/">
-							Home
-						</a>
+						<a href="/">Home</a>
 					</li>
 					{loggedIn && (
 						<>
 							<li className="navbar__links-link">
-								<a className="navbar__links-link-anchor" href="/dashboard">
-									Dashboard
-								</a>
+								<a href="/dashboard">Dashboard</a>
 							</li>
 							<li className="navbar__links-link">
-								<a className="navbar__links-link-anchor" href="/pages">
-									Pages
-								</a>
+								<a href="/pages">Pages</a>
 							</li>
 							<li className="navbar__links-link">
-								<a className="navbar__links-link-anchor" href="/account">
-									Account
-								</a>
+								<a href="/account">Account</a>
 							</li>
 							<li className="navbar__links-link">
-								<Button
-									variant="text"
-									onClick={handleLogout}
-									className="navbar__links-link-anchor"
-								>
+								<Button variant="text" onClick={handleLogout}>
 									Logout
 								</Button>
 							</li>
@@ -112,9 +100,7 @@ const NavBar = () => {
 					{!loggedIn && (
 						<>
 							<li className="navbar__links-link">
-								<a className="navbar__links-link-anchor" href="/login">
-									Login
-								</a>
+								<a href="/login">Login</a>
 							</li>
 							<li className="navbar__links-link">
 								<a

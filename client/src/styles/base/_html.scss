@@ -13,11 +13,9 @@
 a {
   color: colours.$offwhite;
   cursor: pointer;
-  text-decoration: none;
 
   &:hover {
     color: colours.$light-red;
-    text-decoration: underline;
   }
 }
 

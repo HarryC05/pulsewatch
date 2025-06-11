@@ -53,10 +53,10 @@
     cursor: pointer;
     font: inherit;
     padding: 0 !important;
+    text-decoration: underline;
 
     &:hover {
       color: colours.$light-red;
-      text-decoration: underline;
     }
   }
 

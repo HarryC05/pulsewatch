@@ -72,10 +72,6 @@
       &:has(.navbar__links--close-icon) {
         padding: 0 var.$spacing-md;
       }
-
-      &-anchor {
-        text-decoration: underline;
-      }
     }
 
     @include mixins.respond-above(navbar) {
