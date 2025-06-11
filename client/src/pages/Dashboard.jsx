@@ -118,7 +118,7 @@ const Dashboard = () => {
 						</Card>
 					</div>
 					<table className="dashboard__table">
-						<thead>
+						<thead className="dashboard__table-header">
 							<tr>
 								<th>Status</th>
 								<th>Name</th>
@@ -140,14 +140,16 @@ const Dashboard = () => {
 										navigate(`/monitor/${monitor.id}`)
 									}
 								>
-									<td className="dashboard__table-cell">
+									<td className="dashboard__table-cell" data-label="Status">
 										<span
 											className={`dashboard__table-status ${monitor.latest.status === 'up' ? 'bg-green' : monitor.latest.status === 'down' ? 'bg-red' : ''}`}
 											title={monitor.latest.status}
 										/>
 									</td>
-									<td className="dashboard__table-cell">{monitor.name}</td>
-									<td className="dashboard__table-cell">
+									<td className="dashboard__table-cell" data-label="Name">
+										{monitor.name}
+									</td>
+									<td className="dashboard__table-cell" data-label="URL">
 										<a
 											className="dashboard__table-link"
 											href={monitor.url}
@@ -157,15 +159,21 @@ const Dashboard = () => {
 											{monitor.url}
 										</a>
 									</td>
-									<td className="dashboard__table-cell">
+									<td className="dashboard__table-cell" data-label="Uptime (%)">
 										<UptimePill uptime={monitor.uptime} />
 									</td>
-									<td className="dashboard__table-cell">
+									<td
+										className="dashboard__table-cell"
+										data-label="Response Time"
+									>
 										{monitor.latest.responseTime
 											? `${monitor.latest.responseTime} ms`
 											: 'N/A'}
 									</td>
-									<td className="dashboard__table-cell">
+									<td
+										className="dashboard__table-cell"
+										data-label="Last Checked"
+									>
 										{monitor.lastChecked
 											? new Date(monitor.lastChecked).toLocaleString()
 											: 'N/A'}
