@@ -360,7 +360,7 @@ const Edit = () => {
 						htmlFor="edit-page-slug-input"
 						className="edit-page__slug-label"
 					>
-						<Icon icon="edit" />
+						<Icon icon="edit" className="edit-page__slug-edit-icon" />
 					</label>
 				</div>
 				<VisibilityToggle
@@ -438,9 +438,7 @@ const Edit = () => {
 											className={`edit-page__monitor-status ${monitor.status === 'up' ? 'bg-green' : monitor.status === 'down' ? 'bg-red' : ''}`}
 											title={`Status: ${monitor.status}`}
 										/>
-										<h3 className="edit-page__monitor-name">
-											{monitor.name} ({monitor.url})
-										</h3>
+										<h3 className="edit-page__monitor-name">{monitor.name}</h3>
 									</div>
 									<Button
 										variant="text"

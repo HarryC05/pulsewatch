@@ -21,6 +21,7 @@
 
   &__actions {
     display: flex;
+    flex-wrap: wrap;
     gap: var.$spacing-md;
     justify-content: space-between;
 
@@ -28,12 +29,21 @@
       align-items: center;
       display: flex;
       gap: var.$spacing-sm;
+      max-width: calc(100vw - (2 * var.$spacing-md));
     }
 
     &-buttons {
       display: flex;
       gap: var.$spacing-sm;
     }
+  }
+
+  &__title-input {
+    max-width: calc(100% - 2rem - var.$spacing-sm);
+  }
+
+  &__slug-input {
+    max-width: calc(100% - 1.5rem - (2 * var.$spacing-sm) - 107px);
   }
 
   &__title-input,
@@ -61,6 +71,7 @@
     gap: var.$spacing-xs;
   }
 
+  &__slug-edit-icon,
   &__desc-edit-icon {
     height: 1.5rem;
     width: 1.5rem;
@@ -105,6 +116,7 @@
     &-menu-icon {
       cursor: grab;
       height: 1.5rem;
+      min-width: 1.5rem;
       width: 1.5rem;
     }
   }
