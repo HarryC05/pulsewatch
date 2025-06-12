@@ -88,6 +88,7 @@ const EditMonitorModal = ({ onClose, monitor, getMonitor }) => {
 					id="monitor-name"
 					value={tmpMonitor.name}
 					onChange={handleNameChange}
+					maxLength={32}
 				/>
 				{nameError && <Notice message={nameError} variant="error" />}
 				<label className="edit-monitor-modal__label" htmlFor="monitor-url">
