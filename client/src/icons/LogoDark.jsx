@@ -22,20 +22,20 @@ const LogoDark = ({ className }) => {
 			<text
 				x="363.349"
 				y="154.391"
-				font-weight="400"
-				font-size="166.667"
-				font-family="Open Sans"
-				word-spacing="0"
+				fontWeight="400"
+				fontSize="166.667"
+				fontFamily="Open Sans"
+				wordSpacing="0"
 				opacity=".998"
 				fill="#fefefe"
 				stroke="#000"
-				stroke-width="0"
-				stroke-linecap="round"
+				strokeWidth="0"
+				strokeLinecap="round"
 			>
-				<tspan x="363.349" y="154.391" font-weight="700">
+				<tspan x="363.349" y="154.391" fontWeight="700">
 					Pulse
 				</tspan>
-				<tspan x="363.349" y="304.391" font-weight="700">
+				<tspan x="363.349" y="304.391" fontWeight="700">
 					Watch
 				</tspan>
 			</text>
