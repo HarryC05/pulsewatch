@@ -237,7 +237,7 @@ const MonitorDetails = () => {
 						<div className="monitor-page__details--downtime-list">
 							{downHBs.length > 0 ? (
 								<table className="monitor-page__details--downtime-list-table">
-									<thead>
+									<thead className="monitor-page__details--downtime-list-table-head">
 										<tr>
 											<th className="monitor-page__details--downtime-list-table-header monitor-page__details--downtime-list-table-header-date">
 												Date
@@ -250,19 +250,28 @@ const MonitorDetails = () => {
 											</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody className="monitor-page__details--downtime-list-table-body">
 										{downHBs.map((heartbeat) => (
 											<tr
 												key={heartbeat.id}
 												className="monitor-page__details--downtime-list-table-row"
 											>
-												<td className="monitor-page__details--downtime-list-table-row-cell">
+												<td
+													className="monitor-page__details--downtime-list-table-row-cell"
+													data-label="Date"
+												>
 													{new Date(heartbeat.createdAt).toLocaleString()}
 												</td>
-												<td className="monitor-page__details--downtime-list-table-row-cell">
+												<td
+													className="monitor-page__details--downtime-list-table-row-cell"
+													data-label="Response Code"
+												>
 													{heartbeat.responseCode || 'N/A'}
 												</td>
-												<td className="monitor-page__details--downtime-list-table-row-cell">
+												<td
+													className="monitor-page__details--downtime-list-table-row-cell"
+													data-label="Error Message"
+												>
 													{heartbeat.errorMessage || 'N/A'}
 												</td>
 											</tr>
