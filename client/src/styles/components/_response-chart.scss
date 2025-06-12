@@ -1,0 +1,12 @@
+// components/_response-chart.scss
+
+/* @define response-chart */
+
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
+
+.response-chart {
+  min-height: 20rem;
+  position: relative;
+}

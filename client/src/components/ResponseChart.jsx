@@ -100,6 +100,7 @@ const ResponseChart = ({ heartbeats }) => {
 			},
 		},
 		responsive: true,
+		maintainAspectRatio: false,
 		plugins: {
 			legend: {
 				display: false,

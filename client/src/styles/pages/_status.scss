@@ -63,14 +63,6 @@
     &--response-time-header {
       display: flex;
       justify-content: space-between;
-
-      &-select {
-        background-color: colours.$primary-light;
-        border: none;
-        border-radius: var.$border-radius-base;
-        cursor: pointer;
-        padding: var.$spacing-sm;
-      }
     }
 
     &--downtime-list-table {

@@ -11,18 +11,44 @@
     &--header {
       align-items: center;
       display: flex;
+      flex-flow: column wrap;
+      gap: var.$spacing-md;
       justify-content: space-between;
       padding: var.$spacing-md 0;
 
-      &-status {
-        align-items: center;
+      &-info {
         display: flex;
-        gap: var.$spacing-sm;
+        flex: 1;
+        flex-direction: column;
+        gap: var.$spacing-xs;
+        max-width: 100%;
+        min-width: 0;
+        padding-right: var.$spacing-md;
+        width: calc(100vw - (2 * var.$spacing-md));
+
+        &-name {
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 100%;
+        }
+
+        &-url {
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
 
       &-buttons {
         display: flex;
         gap: var.$spacing-sm;
+      }
+
+      @include mixins.respond-above(sm) {
+        flex-direction: row;
       }
     }
 
@@ -55,14 +81,6 @@
     &--response-time-header {
       display: flex;
       justify-content: space-between;
-
-      &-select {
-        background-color: colours.$primary-light;
-        border: none;
-        border-radius: var.$border-radius-base;
-        cursor: pointer;
-        padding: var.$spacing-sm;
-      }
     }
 
     &--downtime-list-table {

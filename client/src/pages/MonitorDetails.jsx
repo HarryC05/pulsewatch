@@ -13,6 +13,7 @@ import {
 	Button,
 	DeleteMonitorModal,
 	Page,
+	Tag,
 } from '../components';
 
 const API = import.meta.env.VITE_API_URL;
@@ -111,22 +112,23 @@ const MonitorDetails = () => {
 					<h4>← Back</h4>
 				</Button>
 				<div className="monitor-page__details--header">
-					<div className="monitor-page__details--header-status">
-						<span
-							className={`monitor-page__details-status ${monitor.latest.status === 'up' ? 'bg-green' : 'bg-red'}`}
-							title={monitor.latest.status}
-						/>
-						<h1 className="monitor-page__details--info-name">
-							{monitor.name} -{' '}
+					<div className="monitor-page__details--header-info">
+						<Tag variant={monitor.latest.status === 'up' ? 'green' : 'red'}>
+							{monitor.latest.status === 'up' ? 'Up' : 'Down'}
+						</Tag>
+						<h1 className="monitor-page__details--header-info-name">
+							{monitor.name}
+						</h1>
+						<h2>
 							<a
 								href={monitor.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="monitor-page__details--info-url"
+								className="monitor-page__details--header-info-url"
 							>
 								{monitor.url}
 							</a>
-						</h1>
+						</h2>
 					</div>
 					<div className="monitor-page__details--header-buttons">
 						<Button variant="primary" onClick={() => setShowEditModal(true)}>
