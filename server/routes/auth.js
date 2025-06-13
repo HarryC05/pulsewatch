@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 import { protect } from '../middleware/auth.js';
-import { unameRegex, emailRegex, passwordRegex } from '../../shared/regex.js';
+import { unameRegex, emailRegex, passwordRegex } from '../shared/regex.js';
 import { prisma } from '../utils/index.js';
 
 const router = express.Router();

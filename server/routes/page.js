@@ -6,7 +6,7 @@ import {
 	nameRegex,
 	slugRegex,
 	idRegex,
-} from '../../shared/regex.js';
+} from '../shared/regex.js';
 import { prisma, formatPage } from '../utils/index.js';
 
 const router = express.Router();

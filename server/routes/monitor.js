@@ -2,7 +2,7 @@ import { subDays, subHours } from 'date-fns';
 import express from 'express';
 
 import { protect } from '../middleware/auth.js';
-import { urlRegex, nameRegex } from '../../shared/regex.js';
+import { urlRegex, nameRegex } from '../shared/regex.js';
 import { prisma, calcRespTime, calcUptime } from '../utils/index.js';
 
 const router = express.Router();

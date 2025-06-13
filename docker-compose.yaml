@@ -15,6 +15,18 @@ services:
     networks:
       - pulsewatch-net
 
+  api:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    image: pulsewatch-api:latest
+    env_file:
+      - server/.env
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+
 volumes:
   pulsewatch-db-data:
 
