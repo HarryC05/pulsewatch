@@ -70,6 +70,7 @@
 		"@stylistic/declaration-bang-space-after": "never",
 		"@stylistic/declaration-bang-space-before": "always",
 		"@stylistic/declaration-colon-space-after": "always",
-		"@stylistic/declaration-colon-space-before": "never"
+		"@stylistic/declaration-colon-space-before": "never",
+		"property-no-vendor-prefix": null
 	}
 }

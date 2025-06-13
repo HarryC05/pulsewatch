@@ -96,6 +96,10 @@
       display: flex;
       gap: var.$spacing-sm;
       justify-content: space-between;
+
+      &:hover {
+        background-color: colours.$primary-light;
+      }
     }
 
     &-title {
@@ -104,6 +108,14 @@
       gap: var.$spacing-sm;
       justify-content: start;
       width: 100%;
+    }
+
+    &-remove-button,
+    &-title {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     &-status {

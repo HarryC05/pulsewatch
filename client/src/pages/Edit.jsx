@@ -442,7 +442,7 @@ const Edit = () => {
 									</div>
 									<Button
 										variant="text"
-										className="text-red"
+										className="text-red edit-page__monitor-remove-button"
 										onClick={() => {
 											const updatedMonitors = editedPage.monitors.filter(
 												(m) => m.id !== monitor.id
