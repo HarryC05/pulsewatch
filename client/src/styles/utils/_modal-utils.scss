@@ -21,4 +21,8 @@ body:has(.modal) {
   box-sizing: border-box;
   max-width: 31em;
   width: min(calc(25rem - (2 * var.$spacing-lg)), calc(95vw - (2 * var.$spacing-lg)));
+
+  @include mixins.respond-above(sm) {
+    width: calc(95vw - (2 * var.$spacing-lg));
+  }
 }

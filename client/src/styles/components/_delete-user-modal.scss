@@ -1,0 +1,11 @@
+// components/_delete-user-modal.scs
+
+/* @define delete-user-modal */
+
+@use "../abstracts/variables" as var;
+@use "../abstracts/colours" as colours;
+@use "../abstracts/mixins" as mixins;
+
+.delete-user-modal {
+  @include mixins.delete-modal;
+}

@@ -228,4 +228,64 @@ router.put('/change-password', protect, async (req, res) => {
 	}
 });
 
+/**
+ * Delete user account
+ *
+ * @route DELETE /api/v1/account/:id
+ * @access private
+ *
+ * @param {string} id - User ID
+ *
+ * @returns {object} - Deletion status
+ */
+router.delete('/:id', protect, async (req, res) => {
+	const { id } = req.params;
+
+	try {
+		// Check if the user exists
+		const user = await prisma.user.findUnique({
+			where: { id },
+		});
+
+		if (!user) {
+			return res.status(404).json({ message: 'User not found' });
+		}
+
+		// Check if the user is trying to delete their own account
+		if (user.id !== req.user.id) {
+			return res.status(403).json({ message: 'Forbidden' });
+		}
+
+		// Delete all status page monitors associated with the user
+		await prisma.statusPageMonitor.deleteMany({
+			where: { monitor: { userId: id } },
+		});
+
+		// Delete all heartbeats associated with the user
+		await prisma.heartbeat.deleteMany({
+			where: { monitor: { userId: id } },
+		});
+
+		// Delete all monitors associated with the user
+		await prisma.monitor.deleteMany({
+			where: { userId: id },
+		});
+
+		// Delete all status pages associated with the user
+		await prisma.statusPage.deleteMany({
+			where: { userId: id },
+		});
+
+		// Delete the user account
+		await prisma.user.delete({
+			where: { id },
+		});
+
+		res.json({ message: 'User account deleted successfully' });
+	} catch (error) {
+		console.error('Error deleting user account:', error);
+		res.status(500).json({ message: 'Internal server error' });
+	}
+});
+
 export default router;

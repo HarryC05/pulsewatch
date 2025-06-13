@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { unameRegex, emailRegex, passwordRegex } from '../../../shared/regex';
-import { Notice, Section, Button, Page } from '../components';
+import { Notice, Section, Button, Page, DeleteUserModal } from '../components';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -27,6 +27,7 @@ const Account = () => {
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [changePasswordError, setChangePasswordError] = useState('');
 	const [changePasswordSuccess, setChangePasswordSuccess] = useState('');
+	const [deleteAccountModalOpen, setDeleteAccountModalOpen] = useState(false);
 
 	/**
 	 * Update user information
@@ -169,124 +170,136 @@ const Account = () => {
 	}
 
 	return (
-		<Page className="account-page" header="Account" title="PW | Account">
-			<Section className="account__content">
-				<h2 className="account__title">Your Information</h2>
-				{error && <Notice message={error} variant="error" />}
-				{success && <Notice message={success} variant="success" />}
-				<div className="account__info">
-					<label>Username:</label>
-					<input
-						type="text"
-						value={updatedUser.username}
-						onChange={handleUsernameChange}
-						maxLength={32}
-					/>
-					{nameError && (
-						<Notice
-							message={nameError}
-							variant="error"
-							className="account__info-notice"
+		<>
+			{deleteAccountModalOpen && (
+				<DeleteUserModal
+					onClose={() => setDeleteAccountModalOpen(false)}
+					userId={user.id}
+					username={user.username}
+				/>
+			)}
+			<Page className="account-page" header="Account" title="PW | Account">
+				<Section className="account__content">
+					<h2 className="account__title">Your Information</h2>
+					{error && <Notice message={error} variant="error" />}
+					{success && <Notice message={success} variant="success" />}
+					<div className="account__info">
+						<label>Username:</label>
+						<input
+							type="text"
+							value={updatedUser.username}
+							onChange={handleUsernameChange}
+							maxLength={32}
 						/>
-					)}
-					<label>Email:</label>
-					<input
-						type="email"
-						value={updatedUser.email}
-						onChange={handleEmailChange}
-					/>
-					{emailError && (
-						<Notice
-							message={emailError}
-							variant="error"
-							className="account__info-notice"
-						/>
-					)}
-				</div>
-				<Button
-					variant="primary"
-					disabled={
-						(updatedUser.username === user.username &&
-							updatedUser.email === user.email) ||
-						nameError ||
-						emailError
-					}
-					onClick={() => updateUser(updatedUser)}
-				>
-					Update
-				</Button>
-			</Section>
-			<Section className="account__actions">
-				<h2 className="account__title">Actions</h2>
-				{changePasswordError && (
-					<Notice
-						message={changePasswordError}
-						variant="error"
-						className="account__actions-notice"
-					/>
-				)}
-				{changePasswordSuccess && (
-					<Notice
-						message={changePasswordSuccess}
-						variant="success"
-						className="account__actions-notice"
-					/>
-				)}
-				<h3>Change Password</h3>
-				<div className="account__actions-change-password">
-					<label>Current Password:</label>
-					<input
-						type="password"
-						value={currentPassword}
-						onChange={(e) => setCurrentPassword(e.target.value)}
-					/>
-					<label>New Password:</label>
-					<input
-						type="password"
-						value={newPassword}
-						onChange={handleNewPasswordChange}
-					/>
-					{passwordError && (
-						<Notice
-							message={passwordError}
-							variant="error"
-							className="account__actions-change-password-notice"
-						/>
-					)}
-					<label>Confirm New Password:</label>
-					<input
-						type="password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-					/>
-					{newPassword &&
-						confirmPassword &&
-						newPassword !== confirmPassword && (
+						{nameError && (
 							<Notice
-								message="Passwords do not match"
+								message={nameError}
+								variant="error"
+								className="account__info-notice"
+							/>
+						)}
+						<label>Email:</label>
+						<input
+							type="email"
+							value={updatedUser.email}
+							onChange={handleEmailChange}
+						/>
+						{emailError && (
+							<Notice
+								message={emailError}
+								variant="error"
+								className="account__info-notice"
+							/>
+						)}
+					</div>
+					<Button
+						variant="primary"
+						disabled={
+							(updatedUser.username === user.username &&
+								updatedUser.email === user.email) ||
+							nameError ||
+							emailError
+						}
+						onClick={() => updateUser(updatedUser)}
+					>
+						Update
+					</Button>
+				</Section>
+				<Section className="account__actions">
+					<h2 className="account__title">Actions</h2>
+					{changePasswordError && (
+						<Notice
+							message={changePasswordError}
+							variant="error"
+							className="account__actions-notice"
+						/>
+					)}
+					{changePasswordSuccess && (
+						<Notice
+							message={changePasswordSuccess}
+							variant="success"
+							className="account__actions-notice"
+						/>
+					)}
+					<h3>Change Password</h3>
+					<div className="account__actions-change-password">
+						<label>Current Password:</label>
+						<input
+							type="password"
+							value={currentPassword}
+							onChange={(e) => setCurrentPassword(e.target.value)}
+						/>
+						<label>New Password:</label>
+						<input
+							type="password"
+							value={newPassword}
+							onChange={handleNewPasswordChange}
+						/>
+						{passwordError && (
+							<Notice
+								message={passwordError}
 								variant="error"
 								className="account__actions-change-password-notice"
 							/>
 						)}
-				</div>
-				<Button
-					variant="primary"
-					disabled={
-						!newPassword ||
-						newPassword !== confirmPassword ||
-						passwordError ||
-						currentPassword === newPassword
-					}
-					onClick={handleUpdatePassword}
-				>
-					Update Password
-				</Button>
+						<label>Confirm New Password:</label>
+						<input
+							type="password"
+							value={confirmPassword}
+							onChange={(e) => setConfirmPassword(e.target.value)}
+						/>
+						{newPassword &&
+							confirmPassword &&
+							newPassword !== confirmPassword && (
+								<Notice
+									message="Passwords do not match"
+									variant="error"
+									className="account__actions-change-password-notice"
+								/>
+							)}
+					</div>
+					<Button
+						variant="primary"
+						disabled={
+							!newPassword ||
+							newPassword !== confirmPassword ||
+							passwordError ||
+							currentPassword === newPassword
+						}
+						onClick={handleUpdatePassword}
+					>
+						Update Password
+					</Button>
 
-				<Button variant="dangerous" onClick={() => {}}>
-					Delete Account
-				</Button>
-			</Section>
-		</Page>
+					<Button
+						variant="dangerous"
+						onClick={() => setDeleteAccountModalOpen(true)}
+					>
+						Delete Account
+					</Button>
+				</Section>
+			</Page>
+		</>
 	);
 };
 

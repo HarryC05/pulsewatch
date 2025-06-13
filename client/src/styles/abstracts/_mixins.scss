@@ -18,7 +18,13 @@
   &__buttons {
     display: flex;
     gap: var.$spacing-sm;
+    justify-content: end;
     margin-top: var.$spacing-sm;
+  }
+
+  &__warning {
+    margin: var.$spacing-md 0;
+    max-width: 31em;
   }
 }
 

@@ -15,7 +15,7 @@ const NavBar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	/**
-	 *
+	 * Handle logout action
 	 */
 	const handleLogout = () => {
 		axios

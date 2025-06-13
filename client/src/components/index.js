@@ -6,6 +6,7 @@ import CreateMonitorModal from './CreateMonitorModal';
 import CreatePageModal from './CreatePageModal';
 import DeleteMonitorModal from './DeleteMonitorModal';
 import DeleteStatusPageModal from './DeleteStatusPageModal';
+import DeleteUserModal from './DeleteUserModal';
 import EditMonitorModal from './EditMonitorModal';
 import Footer from './Footer';
 import Icon from './Icon';
@@ -30,6 +31,7 @@ export {
 	CreatePageModal,
 	DeleteMonitorModal,
 	DeleteStatusPageModal,
+	DeleteUserModal,
 	EditMonitorModal,
 	Footer,
 	Icon,
