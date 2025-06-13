@@ -72,7 +72,17 @@ router.post('/create', protect, async (req, res) => {
 		where: { userId: req.user.id },
 	});
 
-	const monitorLimit = 10;
+	// Get the monitor limit from the user
+	const user = await prisma.user.findUnique({
+		where: { id: req.user.id },
+		select: { monitorLimit: true },
+	});
+
+	if (!user) {
+		return res.status(404).json({ message: 'User not found' });
+	}
+
+	const monitorLimit = user.monitorLimit;
 
 	if (userMonitors >= monitorLimit) {
 		return res

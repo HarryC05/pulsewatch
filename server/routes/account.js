@@ -34,6 +34,11 @@ router.get('/', (req, res) => {
 				path: '/api/v1/account/change-password',
 				description: 'Change user password',
 			},
+			{
+				method: 'DELETE',
+				path: '/api/v1/account/:id',
+				description: 'Delete user account',
+			},
 		],
 	});
 });
@@ -76,6 +81,8 @@ router.get('/me', protect, async (req, res) => {
 				username: userData.username,
 				email: userData.email,
 				totalMonitors,
+				monitorLimit: userData.monitorLimit,
+				statusPageLimit: userData.statusPageLimit,
 			},
 		});
 	} catch (error) {

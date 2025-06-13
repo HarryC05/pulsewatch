@@ -9,11 +9,13 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  username  String   @unique
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
+  id              String   @id @default(uuid())
+  username        String   @unique
+  email           String   @unique
+  password        String
+  createdAt       DateTime @default(now())
+	monitorLimit    Int? @default(10)
+	statusPageLimit Int? @default(1)
 
   monitors    Monitor[]
   statusPages StatusPage[]

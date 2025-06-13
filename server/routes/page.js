@@ -105,7 +105,17 @@ router.post('/create', protect, async (req, res) => {
 		where: { userId: req.user.id },
 	});
 
-	const statusPageLimit = 100; // TODO: Reset this to the actual limit
+	// Get the status page limit from the user
+	const user = await prisma.user.findUnique({
+		where: { id: req.user.id },
+		select: { statusPageLimit: true },
+	});
+
+	if (!user) {
+		return res.status(404).json({ message: 'User not found' });
+	}
+
+	const statusPageLimit = user.statusPageLimit;
 
 	if (userStatusPages >= statusPageLimit) {
 		return res

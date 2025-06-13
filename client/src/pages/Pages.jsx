@@ -24,6 +24,7 @@ const Pages = () => {
 	const [loading, setLoading] = useState(true);
 	const [pages, setPages] = useState([]);
 	const [showCreateModal, setShowCreateModal] = useState(false);
+	const [user, setUser] = useState({});
 
 	/**
 	 * Fetches the list of pages
@@ -44,6 +45,7 @@ const Pages = () => {
 			.get(`${API}/api/v1/account/me`, { withCredentials: true })
 			.then((res) => {
 				if (res.data.user) {
+					setUser(res.data.user);
 					getPages();
 					setLoading(false);
 				} else {
@@ -66,10 +68,10 @@ const Pages = () => {
 			)}
 			<Page className="pages-page" title="PW | Pages">
 				<div className="pages-page__header">
-					<h1 className="pages-page__header-title">{`Pages (${pages.length}/1)`}</h1>
+					<h1 className="pages-page__header-title">{`Pages (${pages.length}/${user.statusPageLimit})`}</h1>
 					<Button
 						onClick={() => setShowCreateModal(true)}
-						disabled={pages.length >= 1}
+						disabled={pages.length >= user.statusPageLimit}
 					>
 						Create Page
 					</Button>
