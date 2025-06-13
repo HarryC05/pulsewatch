@@ -282,7 +282,7 @@ const Account = () => {
 					Update Password
 				</Button>
 
-				<Button variant="dangerous" onClick={() => navigate('/delete-account')}>
+				<Button variant="dangerous" onClick={() => {}}>
 					Delete Account
 				</Button>
 			</Section>
