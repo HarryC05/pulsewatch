@@ -18,14 +18,32 @@ services:
   api:
     build:
       context: .
-      dockerfile: server/Dockerfile
+      dockerfile: server/Dockerfile.api
     image: pulsewatch-api:latest
     env_file:
       - server/.env
+    environment:
+      - DATABASE_URL=postgresql://pulsewatch:pulsewatchpass@postgres:5432/pulsewatch
     ports:
       - "4000:4000"
     depends_on:
       - postgres
+    networks:
+      - pulsewatch-net
+
+  worker:
+    build:
+      context: .
+      dockerfile: server/Dockerfile.worker
+    image: pulsewatch-worker:latest
+    env_file:
+      - server/.env       # same env (e.g. DATABASE_URL) so Prisma can connect
+    environment:
+      - DATABASE_URL=postgresql://pulsewatch:pulsewatchpass@postgres:5432/pulsewatch
+    depends_on:
+      - postgres
+    networks:
+      - pulsewatch-net
 
 volumes:
   pulsewatch-db-data:

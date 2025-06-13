@@ -1,0 +1,34 @@
+# ─── Stage 1: deps + Prisma generate ───────────────────────────
+FROM node:22-alpine AS deps
+WORKDIR /app
+
+# 1. Install ALL deps (we need the Prisma CLI)
+COPY server/package.json server/package-lock.json ./
+RUN npm ci
+
+# 2. Copy in your Worker, Server code, Prisma schema & Shared
+COPY server/monitorWorker.js ./monitorWorker.js
+COPY server/utils ./utils
+COPY server/prisma ./prisma
+COPY shared ./shared
+
+# 3. Generate Prisma client (pulls in the linux-musl-arm64 engine)
+RUN npx prisma generate
+
+# 4. Strip out devDependencies, keep only production
+RUN npm prune --production
+
+# ─── Stage 2: runtime image ─────────────────────────────────────
+FROM node:22-alpine AS runner
+WORKDIR /app
+
+# 1. Copy over the pruned node_modules + code/artifacts
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app ./
+
+# 2. Runtime ENV (if your worker needs any)
+ENV NODE_ENV=production
+# If you read the same .env as API, you can pass it in via docker-compose
+
+# 3. Launch the worker
+CMD ["node", "monitorWorker.js"]
