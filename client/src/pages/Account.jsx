@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { unameRegex, emailRegex } from '../../../shared/regex';
+import { unameRegex, emailRegex, passwordRegex } from '../../../shared/regex';
 import { Notice, Section, Button, Page } from '../components';
 
 const API = import.meta.env.VITE_API_URL;
@@ -21,6 +21,12 @@ const Account = () => {
 	const [success, setSuccess] = useState('');
 	const [nameError, setNameError] = useState('');
 	const [emailError, setEmailError] = useState('');
+	const [passwordError, setPasswordError] = useState('');
+	const [currentPassword, setCurrentPassword] = useState('');
+	const [newPassword, setNewPassword] = useState('');
+	const [confirmPassword, setConfirmPassword] = useState('');
+	const [changePasswordError, setChangePasswordError] = useState('');
+	const [changePasswordSuccess, setChangePasswordSuccess] = useState('');
 
 	/**
 	 * Update user information
@@ -81,6 +87,67 @@ const Account = () => {
 		}
 	};
 
+	/**
+	 * Handle new password input change
+	 *
+	 * @param {Event} e - The event object
+	 */
+	const handleNewPasswordChange = (e) => {
+		const value = e.target.value;
+		setNewPassword(value);
+
+		if (!passwordRegex.pattern.test(value)) {
+			setPasswordError(passwordRegex.err);
+			return;
+		}
+
+		if (newPassword && currentPassword && newPassword === confirmPassword) {
+			setPasswordError('Password cannot be the same as current password');
+			return;
+		}
+
+		setPasswordError('');
+	};
+
+	/**
+	 * Handle password update
+	 */
+	const handleUpdatePassword = () => {
+		if (!newPassword || newPassword !== confirmPassword) {
+			setPasswordError('Passwords do not match');
+			return;
+		}
+
+		const data = {
+			currentPassword,
+			newPassword,
+		};
+
+		axios
+			.put(`${API}/api/v1/account/change-password`, data, {
+				withCredentials: true,
+			})
+			.then(() => {
+				setChangePasswordSuccess('Password updated successfully!');
+				setTimeout(() => {
+					setChangePasswordSuccess('');
+				}, 3000);
+				setCurrentPassword('');
+				setNewPassword('');
+				setConfirmPassword('');
+				setPasswordError('');
+			})
+			.catch((err) => {
+				console.log(err);
+				const errorMessage = err.response?.data?.message || 'An error occurred';
+				setChangePasswordError(errorMessage);
+				setTimeout(() => {
+					setChangePasswordError('');
+				}, 3000);
+				setChangePasswordSuccess('');
+			});
+	};
+
 	useEffect(() => {
 		axios
 			.get(`${API}/api/v1/account/me`, { withCredentials: true })
@@ -113,6 +180,7 @@ const Account = () => {
 						type="text"
 						value={updatedUser.username}
 						onChange={handleUsernameChange}
+						maxLength={32}
 					/>
 					{nameError && (
 						<Notice
@@ -146,6 +214,76 @@ const Account = () => {
 					onClick={() => updateUser(updatedUser)}
 				>
 					Update
+				</Button>
+			</Section>
+			<Section className="account__actions">
+				<h2 className="account__title">Actions</h2>
+				{changePasswordError && (
+					<Notice
+						message={changePasswordError}
+						variant="error"
+						className="account__actions-notice"
+					/>
+				)}
+				{changePasswordSuccess && (
+					<Notice
+						message={changePasswordSuccess}
+						variant="success"
+						className="account__actions-notice"
+					/>
+				)}
+				<h3>Change Password</h3>
+				<div className="account__actions-change-password">
+					<label>Current Password:</label>
+					<input
+						type="password"
+						value={currentPassword}
+						onChange={(e) => setCurrentPassword(e.target.value)}
+					/>
+					<label>New Password:</label>
+					<input
+						type="password"
+						value={newPassword}
+						onChange={handleNewPasswordChange}
+					/>
+					{passwordError && (
+						<Notice
+							message={passwordError}
+							variant="error"
+							className="account__actions-change-password-notice"
+						/>
+					)}
+					<label>Confirm New Password:</label>
+					<input
+						type="password"
+						value={confirmPassword}
+						onChange={(e) => setConfirmPassword(e.target.value)}
+					/>
+					{newPassword &&
+						confirmPassword &&
+						newPassword !== confirmPassword && (
+							<Notice
+								message="Passwords do not match"
+								variant="error"
+								className="account__actions-change-password-notice"
+							/>
+						)}
+				</div>
+				<Button
+					variant="primary"
+					disabled={
+						!newPassword ||
+						newPassword !== confirmPassword ||
+						passwordError ||
+						currentPassword === newPassword
+					}
+					onClick={handleUpdatePassword}
+				>
+					Update Password
+				</Button>
+
+				<Button variant="dangerous" onClick={() => navigate('/delete-account')}>
+					Delete Account
 				</Button>
 			</Section>
 		</Page>

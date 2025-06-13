@@ -1,7 +1,8 @@
 import express from 'express';
+import bcrypt from 'bcryptjs';
 
 import { protect } from '../middleware/auth.js';
-import { emailRegex, unameRegex } from '../../shared/regex.js';
+import { emailRegex, unameRegex, passwordRegex } from '../../shared/regex.js';
 import { prisma } from '../utils/index.js';
 
 const router = express.Router();
@@ -27,6 +28,11 @@ router.get('/', (req, res) => {
 				method: 'PUT',
 				path: '/api/v1/account/me',
 				description: 'Update logged-in user info',
+			},
+			{
+				method: 'PUT',
+				path: '/api/v1/account/change-password',
+				description: 'Change user password',
 			},
 		],
 	});
@@ -149,6 +155,75 @@ router.put('/me', protect, async (req, res) => {
 		res.json({ message: 'User information updated', user: updatedUser });
 	} catch (error) {
 		console.error('Error updating user information:', error);
+		res.status(500).json({ message: 'Internal server error' });
+	}
+});
+
+/**
+ * Change user password
+ *
+ * @route PATCH /api/v1/account/change-password
+ * @access private
+ *
+ * @param {string} currentPassword - User's current password
+ * @param {string} newPassword     - User's new password
+ *
+ * @returns {object} - Success message or error
+ */
+router.put('/change-password', protect, async (req, res) => {
+	// Check that the body is provided
+	if (!req.body) {
+		return res.status(400).json({ message: 'Body is required' });
+	}
+
+	const { currentPassword, newPassword } = req.body;
+
+	// Validate input
+	if (!currentPassword || !newPassword) {
+		return res.status(400).json({ message: 'Please fill in all fields' });
+	}
+
+	// Check if new password is valid
+	if (!passwordRegex.pattern.test(newPassword)) {
+		return res.status(400).json({ message: passwordRegex.err });
+	}
+
+	try {
+		// Verify current password
+		const user = await prisma.user.findUnique({
+			where: { id: req.user.id },
+		});
+
+		const isCurrentPasswordValid = await bcrypt.compare(
+			currentPassword,
+			user.password
+		);
+
+		if (!isCurrentPasswordValid) {
+			return res.status(400).json({ message: 'Current password is incorrect' });
+		}
+
+		// Check if the new password is the same as the current one
+		const isSame = await bcrypt.compare(newPassword, user.password);
+
+		if (isSame) {
+			return res.status(400).json({
+				message: 'New password cannot be the same as the current password',
+			});
+		}
+
+		// Hash the new password
+		const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+
+		// Update password
+		await prisma.user.update({
+			where: { id: req.user.id },
+			data: { password: hashedNewPassword },
+		});
+
+		res.json({ message: 'Password updated successfully' });
+	} catch (error) {
+		console.error('Error changing password:', error);
 		res.status(500).json({ message: 'Internal server error' });
 	}
 });
