@@ -24,5 +24,5 @@ trim_trailing_whitespace = false
 [app.config,cron.yaml]
 indent_style = space
 
-[*.yml]
+[*.yml, *.yaml]
 indent_style = space
