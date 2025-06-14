@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-import { urlRegex, nameRegex } from '../../../shared/regex';
+import { urlRegex, nameRegex } from '../../shared/regex';
 import { Modal, Notice, Button } from './';
 
 const API = import.meta.env.VITE_API_URL;

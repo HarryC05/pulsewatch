@@ -40,8 +40,23 @@ services:
       - server/.env       # same env (e.g. DATABASE_URL) so Prisma can connect
     environment:
       - DATABASE_URL=postgresql://pulsewatch:pulsewatchpass@postgres:5432/pulsewatch
+      - CORS_ORIGIN=http://client:3000
     depends_on:
       - postgres
+    networks:
+      - pulsewatch-net
+
+  client:
+    build:
+      context: .            # monorepo root
+      dockerfile: client/Dockerfile.client
+      args:
+        VITE_API_URL: "http://localhost:4000"
+    image: pulsewatch-client:latest
+    ports:
+      - "3000:80"          # host:container
+    depends_on:
+      - api
     networks:
       - pulsewatch-net
 

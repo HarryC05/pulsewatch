@@ -13,7 +13,7 @@ import {
 	VisibilityToggle,
 	DeleteStatusPageModal,
 } from '../components';
-import { nameRegex, descRegex, slugRegex } from '../../../shared/regex';
+import { nameRegex, descRegex, slugRegex } from '../../shared/regex';
 
 const API = import.meta.env.VITE_API_URL;
 
